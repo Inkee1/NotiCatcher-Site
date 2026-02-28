@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotiCatcher - Download</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .download-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px); /* Subtract navbar height */
+            text-align: center;
+            padding: 2rem 5%;
+        }
+        
+        .download-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            width: 100%;
+            margin-top: -5vh; /* Visual vertical center adjustment */
+            backdrop-filter: blur(var(--glass-blur));
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .download-card h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .download-card p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-inline: auto;
+            line-height: 1.6;
+        }
+        
+        .btn-large {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.25rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 260px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-large i {
+            font-size: 1.8rem;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-android {
+            background: linear-gradient(135deg, #00C853, #64DD17);
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 200, 83, 0.3);
+            border: none;
+            text-decoration: none;
+        }
+        
+        .btn-android:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 200, 83, 0.4);
+            filter: brightness(1.05);
+        }
+        
+        .btn-ios {
+            background: linear-gradient(135deg, #111, #333);
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            text-decoration: none;
+        }
+        
+        .btn-ios:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #222, #444);
+        }
+    </style>
+</head>
+<body>
+    <!-- Abstract Background Gradients -->
+    <div class="bg-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class='bx bx-bell'></i></div>
+            NotiCatcher
+        </a>
+        
+        <button class="menu-toggle" id="mobile-menu-btn">
+            <i class='bx bx-menu'></i>
+        </button>
+
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="price.html">Price</a>
+            <a href="download.html" class="active">Download</a>
+            <a href="myinfo.html" id="auth-link" class="btn btn-glass" style="padding: 0.5rem 1.25rem;">Login / My Info</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="download-container">
+        <div class="download-card">
+            <div style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;">
+                <i class='bx bxs-cloud-download'></i>
+            </div>
+            <h1>Get NotiCatcher Today</h1>
+            <p>
+                Available now on your favorite platform. Never miss an important keyword or alarm again!
+            </p>
+            
+            <div class="download-buttons">
+                <!-- Using placeholder links for now -->
+                <a href="#download-android" class="btn-large btn-android">
+                    <i class='bx bxl-play-store'></i> 
+                    <div>
+                        <div style="font-size: 0.8rem; font-weight: 500; opacity: 0.9; text-align: left;">GET IT ON</div>
+                        <div style="font-weight: 700;">Google Play</div>
+                    </div>
+                </a>
+                
+                <a href="#download-ios" class="btn-large btn-ios">
+                    <i class='bx bxl-apple'></i> 
+                    <div>
+                        <div style="font-size: 0.8rem; font-weight: 500; opacity: 0.9; text-align: left;">Download on the</div>
+                        <div style="font-weight: 700;">App Store</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

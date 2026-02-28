@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotiCatcher - My Info</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+        
+        /* Auth States */
+        #logged-out-view, #logged-in-view {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        #logged-out-view.active, #logged-in-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Login Card */
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(var(--glass-blur));
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .login-card i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .login-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .login-card p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .btn-google {
+            background: white;
+            color: #333;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.1rem;
+        }
+        .btn-google:hover {
+            background: #f1f1f1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+        .btn-google img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Dashboard Profile */
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            border: 4px solid rgba(255,255,255,0.1);
+        }
+        .user-avatar img {
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+        }
+        .user-info h2 { font-size: 2rem; margin-bottom: 4px; }
+        .user-info p { color: var(--text-muted); }
+        
+        /* Dashboard Stats/Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .info-card h3 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .info-card .val {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .val.pro { color: var(--primary); }
+
+        .dashboard-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .dashboard-actions .btn { flex: 1; min-width: 200px; }
+        
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class='bx bx-bell'></i></div>
+            NotiCatcher
+        </a>
+        <button class="menu-toggle" id="mobile-menu-btn"><i class='bx bx-menu'></i></button>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="price.html">Price</a>
+            <a href="download.html">Download</a>
+            <a href="myinfo.html" class="active">My Info</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Initial Loading State -->
+        <div id="loading-view" style="display: flex; justify-content: center; padding: 4rem;">
+            <div class="loader"></div>
+        </div>
+
+        <!-- Logged Out View -->
+        <div id="logged-out-view">
+            <div class="login-card">
+                <i class='bx bxs-user-account'></i>
+                <h2>로그인이 필요합니다</h2>
+                <p>현재 등급, 다음 결제일, 결제 수단을 확인하고<br>구독을 갱신하거나 취소하려면 로그인해 주세요.</p>
+                <button class="btn-google" id="btn-login" style="margin-top: 1rem;">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                    구글로 계속하기
+                </button>
+            </div>
+        </div>
+
+        <!-- Logged In View -->
+        <div id="logged-in-view">
+            <div class="dashboard-header">
+                <div class="user-avatar" id="user-avatar">?</div>
+                <div class="user-info">
+                    <h2 id="user-name">Loading...</h2>
+                    <p id="user-email">email@example.com</p>
+                </div>
+            </div>
+
+            <!-- Explicit Subscription Info -->
+            <div class="info-grid">
+                <div class="info-card" style="border-left: 4px solid var(--primary);">
+                    <h3><i class='bx bxs-crown'></i> 현재 등급 (Current Tier)</h3>
+                    <div class="val pro" id="tier-val">Pro Plan</div>
+                </div>
+                <div class="info-card">
+                    <h3><i class='bx bx-calendar-check'></i> 다음 페이 날짜 (Next Payment)</h3>
+                    <div class="val" style="color: #e2e8f0;">Aug 15, 2026</div>
+                </div>
+                <div class="info-card">
+                    <h3><i class='bx bxl-mastercard' ></i> 페이 등록된 수단 (Payment Method)</h3>
+                    <div class="val" style="color: #e2e8f0;">•••• 4242</div>
+                </div>
+            </div>
+
+            <!-- Explicit Action Buttons -->
+            <div style="background: var(--bg-card); border-radius: 16px; padding: 2rem; border: 1px solid var(--border-light); backdrop-filter: blur(var(--glass-blur)); margin-bottom: 2rem; text-align: center;">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem;">구독 관리 (Subscription Management)</h3>
+                <div class="dashboard-actions" style="justify-content: center; max-width: 600px; margin: 0 auto;">
+                    <button class="btn btn-primary" onclick="window.location.href='price.html'" style="font-size: 1.1rem; padding: 1rem;">
+                        <i class='bx bx-refresh'></i> 구독 갱신 / 업그레이드
+                    </button>
+                    <button class="btn btn-danger" onclick="alert('Calls Stripe Customer Portal to cancel subscription')" style="font-size: 1.1rem; padding: 1rem;">
+                        <i class='bx bx-x-circle'></i> 구독 취소
+                    </button>
+                </div>
+            </div>
+
+            <div class="dashboard-actions" style="justify-content: flex-end;">
+                <button class="btn btn-glass" id="btn-logout" style="min-width: 120px;">
+                    <i class='bx bx-log-out'></i> 로그아웃 (Logout)
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { auth, provider, signInWithPopup, signOut, onAuthStateChanged } from "./js/firebase-config.js";
+        
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        // Initialize UI based on Auth state changes
+        onAuthStateChanged(auth, (user) => {
+            document.getElementById('loading-view').style.display = 'none';
+            if (user) {
+                document.getElementById('logged-out-view').classList.remove('active');
+                document.getElementById('logged-in-view').classList.add('active');
+                
+                // Update profile info
+                document.getElementById('user-name').textContent = user.displayName || 'User';
+                document.getElementById('user-email').textContent = user.email;
+                if(user.photoURL) {
+                    document.getElementById('user-avatar').innerHTML = `<img src="${user.photoURL}" alt="avatar">`;
+                } else {
+                    document.getElementById('user-avatar').textContent = user.email.charAt(0).toUpperCase();
+                }
+            } else {
+                document.getElementById('logged-in-view').classList.remove('active');
+                document.getElementById('logged-out-view').classList.add('active');
+            }
+        });
+
+        document.getElementById('btn-login').addEventListener('click', async () => {
+            try {
+                await signInWithPopup(auth, provider);
+            } catch(e) {
+                console.error("Login Error:", e);
+                alert("로그인 중 오류가 발생했습니다. 콘솔을 확인해주세요.");
+            }
+        });
+
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            signOut(auth);
+        });
+    </script>
+</body>
+</html>

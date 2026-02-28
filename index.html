@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NotiCatcher - Never Miss an Important Alarm</title>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .loader {
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <script>
+        const SUPPORTED = ["en"]; // Add "ko" back when ko/ pages are created
+        const ALIASES = { "ko-kr": "ko" };
+
+        function normalize(tag) {
+            return tag ? tag.toLowerCase().replace(/_/g, "-") : "";
+        }
+
+        function resolve(tag) {
+            let t = normalize(tag);
+            if (!t) return "";
+            if (ALIASES[t]) t = ALIASES[t];
+            if (SUPPORTED.includes(t)) return t;
+            
+            while (t.includes("-")) {
+                t = t.substring(0, t.lastIndexOf("-"));
+                if (ALIASES[t]) t = ALIASES[t];
+                if (SUPPORTED.includes(t)) return t;
+            }
+            return SUPPORTED.includes(t) ? t : "";
+        }
+
+        function pickBestLang() {
+            const qsLang = new URLSearchParams(location.search).get("lang");
+            const saved = localStorage.getItem("lang");
+
+            let r = resolve(qsLang);
+            if (r) return r;
+
+            r = resolve(saved);
+            if (r) return r;
+
+            const list = (navigator.languages && navigator.languages.length)
+                ? navigator.languages
+                : [navigator.language || "en"];
+
+            for (const l of list) {
+                r = resolve(l);
+                if (r) return r;
+            }
+
+            return "en";
+        }
+
+        const lang = pickBestLang();
+        localStorage.setItem("lang", lang);
+        location.replace(new URL(lang + "/", location.href).toString());
+    </script>
+</body>
+</html>

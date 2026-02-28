@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotiCatcher - Never Miss an Important Alarm</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Abstract Background Gradients -->
+    <div class="bg-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class='bx bx-bell'></i></div>
+            NotiCatcher
+        </a>
+        
+        <button class="menu-toggle" id="mobile-menu-btn">
+            <i class='bx bx-menu'></i>
+        </button>
+
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="price.html">Price</a>
+            <a href="download.html">Download</a>
+            <a href="myinfo.html" id="auth-link" class="btn btn-glass" style="padding: 0.5rem 1.25rem;">Login / My Info</a>
+        </div>
+    </nav>
+
+    <!-- Main Hero Section -->
+    <main class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">The Ultimate Notification Manager</div>
+            <h1>Never Miss a <br><span>Precious Alarm</span></h1>
+            <p>
+                A powerful keyword alarm that pierces through silent mode! <br>
+                When you only want to receive calls from loved ones. When you don't want to miss crucial signals in crypto, stocks, or finance. <strong>NotiCatcher is here for you.</strong>
+            </p>
+            
+            <div class="hero-actions">
+                <a href="download.html" class="btn btn-primary" style="background: linear-gradient(135deg, #00C853, #64DD17); color: white;">
+                    <i class='bx bxl-play-store' style="font-size: 1.2rem;"></i> Google Play
+                </a>
+                <a href="download.html" class="btn btn-primary" style="background: linear-gradient(135deg, #000000, #333333); color: white;">
+                    <i class='bx bxl-apple' style="font-size: 1.2rem;"></i> App Store
+                </a>
+                <a href="price.html" class="btn btn-glass">
+                    View Pricing Plans <i class='bx bx-right-arrow-alt'></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="mockup-container">
+                <div class="mockup-screen">
+                    <!-- Placeholder using the app's image path. If not found, uses an unpkg fallback visually via CSS or alt text -->
+                    <img src="../img/main1.jpg" alt="NotiCatcher App Screenshot" onerror="this.src='https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600&auto=format&fit=crop';">
+                </div>
+            </div>
+
+            <!-- Floating UI elements around the phone -->
+            <div class="floating-card fc-1">
+                <div class="icon-box" style="background: rgba(236, 72, 153, 0.2); color: #f472b6;">
+                    <i class='bx bx-message-rounded-dots'></i>
+                </div>
+                <div class="fc-text">
+                    <h4>Keyword Match!</h4>
+                    <p>"Bitcoin +5%"</p>
+                </div>
+            </div>
+
+            <div class="floating-card fc-2">
+                <div class="icon-box">
+                    <i class='bx bx-volume-full'></i>
+                </div>
+                <div class="fc-text">
+                    <h4>Silent Mode Override</h4>
+                    <p>Loud Ringing Triggered</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
