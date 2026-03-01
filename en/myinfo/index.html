@@ -575,10 +575,6 @@
                     <h3><i class='bx bx-calendar-check'></i> Next Payment</h3>
                     <div class="val" style="color: #e2e8f0;" id="next-payment-val">—</div>
                 </div>
-                <div class="info-card">
-                    <h3><i class='bx bxl-mastercard' ></i> Payment Method</h3>
-                    <div class="val" style="color: #e2e8f0;">Manage in Stripe</div>
-                </div>
             </div>
 
             <div class="action-card">
@@ -605,7 +601,7 @@
         import { auth, db, provider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile } from "./js/firebase-config.js";
         import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        const FUNCTIONS_ORIGIN = "https://asia-northeast1-noticatcher-eb157.cloudfunctions.net";
+        const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
 
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
