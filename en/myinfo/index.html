@@ -415,6 +415,175 @@
             color: white;
         }
 
+        /* Keyword Stats */
+        .stats-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(var(--glass-blur));
+            margin-bottom: 2rem;
+        }
+        .stats-card > h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+        .stats-card > h3 i {
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        .stats-tabs {
+            display: flex;
+            background: rgba(0,0,0,0.25);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .stats-tab {
+            flex: 1;
+            padding: 0.65rem 0.5rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            font-family: inherit;
+        }
+        .stats-tab.active {
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+        }
+        .stats-summary {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .stats-total {
+            flex: 1;
+            background: rgba(0,0,0,0.2);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .stats-total-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .stats-total-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+        }
+        .keyword-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .keyword-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.7rem 1rem;
+            background: rgba(0,0,0,0.15);
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+        .keyword-item:hover {
+            background: rgba(0,0,0,0.25);
+        }
+        .keyword-rank {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.06);
+            color: var(--text-muted);
+        }
+        .keyword-item:nth-child(1) .keyword-rank {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #1e293b;
+        }
+        .keyword-item:nth-child(2) .keyword-rank {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            color: white;
+        }
+        .keyword-item:nth-child(3) .keyword-rank {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            color: white;
+        }
+        .keyword-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .keyword-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .keyword-bar-bg {
+            width: 100%;
+            height: 5px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .keyword-bar {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.5s ease;
+        }
+        .keyword-count {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+            min-width: 36px;
+            text-align: right;
+        }
+        .keyword-empty {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+        .keyword-empty i {
+            display: block;
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            opacity: 0.4;
+        }
+        .stats-loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+        }
+        .stats-loading i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
         @media (max-width: 600px) {
             .dashboard-header {
                 flex-direction: column;
@@ -427,6 +596,9 @@
             }
             .dashboard-btns button { width: 100%; justify-content: center; }
             .login-card { padding: 2rem 1.5rem; }
+            .stats-card { padding: 1.25rem; }
+            .stats-total { flex-direction: column; text-align: center; gap: 4px; padding: 1rem; }
+            .stats-total-value { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -589,6 +761,27 @@
                 </div>
             </div>
 
+            <div class="stats-card" id="stats-section" style="display:none;">
+                <h3><i class='bx bx-bar-chart-alt-2'></i> Keyword Statistics</h3>
+                <div class="stats-tabs">
+                    <button class="stats-tab active" data-period="today">Today</button>
+                    <button class="stats-tab" data-period="week">7 Days</button>
+                    <button class="stats-tab" data-period="month">30 Days</button>
+                </div>
+                <div class="stats-summary">
+                    <div class="stats-total">
+                        <span class="stats-total-label">Total Notifications</span>
+                        <span class="stats-total-value" id="stats-total-count">—</span>
+                    </div>
+                </div>
+                <div id="keyword-list" class="keyword-list">
+                    <div class="stats-loading">
+                        <i class='bx bx-loader-alt bx-spin'></i>
+                        Loading stats...
+                    </div>
+                </div>
+            </div>
+
             <div class="btn-logout-wrap">
                 <button class="btn-logout" id="btn-logout">
                     <i class='bx bx-log-out'></i> Sign Out
@@ -599,7 +792,7 @@
 
     <script type="module">
         import { auth, db, provider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile } from "./js/firebase-config.js";
-        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { doc, onSnapshot, collection, getDocs, query, where, documentId } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
 
@@ -692,24 +885,50 @@
             }
         }
 
-        async function refreshSubscriptionUI(user) {
-            setTierUI("free");
+        let unsubscribeUserDoc = null;
+
+        function applySubscriptionData(data) {
             const nextEl = document.getElementById("next-payment-val");
-            if (nextEl) nextEl.textContent = "—";
+            const grade = (data && data.grade) ? data.grade : "free";
+            setTierUI(grade);
 
+            // If user scheduled cancellation, reflect it immediately in UI
             try {
-                const snap = await getDoc(doc(db, "users", user.uid));
-                if (!snap.exists()) return;
-                const data = snap.data() || {};
-                setTierUI(data.grade || "free");
+                const isCanceled = Boolean(data && data.isCanceled);
+                const tierEl = document.getElementById('tier-val');
+                if (tierEl && isCanceled && String(grade).toLowerCase() !== 'free') {
+                    tierEl.textContent = tierEl.textContent + " (Canceling)";
+                }
+            } catch (_) {}
 
-                const exp = data.expired;
-                if (exp && typeof exp.toDate === "function" && nextEl) {
+            if (nextEl) {
+                nextEl.textContent = "—";
+                const exp = data ? data.expired : null;
+                if (exp && typeof exp.toDate === "function") {
                     nextEl.textContent = formatDate(exp.toDate());
                 }
-            } catch (e) {
-                console.warn("Failed to load user subscription info", e);
             }
+        }
+
+        function startUserDocListener(user) {
+            // reset ui immediately
+            applySubscriptionData({ grade: "free" });
+
+            if (unsubscribeUserDoc) {
+                try { unsubscribeUserDoc(); } catch (_) {}
+                unsubscribeUserDoc = null;
+            }
+
+            const ref = doc(db, "users", user.uid);
+            unsubscribeUserDoc = onSnapshot(ref, (snap) => {
+                if (!snap.exists()) {
+                    applySubscriptionData({ grade: "free" });
+                    return;
+                }
+                applySubscriptionData(snap.data() || {});
+            }, (err) => {
+                console.warn("User doc listener error", err);
+            });
         }
 
         async function openBillingPortal() {
@@ -751,8 +970,32 @@
                     document.getElementById('user-avatar').textContent = (user.email || '?').charAt(0).toUpperCase();
                 }
 
-                refreshSubscriptionUI(user);
+                // If user came here from a protected action (e.g., subscribe), send them back after login.
+                if (!window.__postLoginRedirectDone) {
+                    const params = new URLSearchParams(window.location.search);
+                    const next = params.get("next");
+                    const isSafeNext =
+                        typeof next === "string" &&
+                        next.startsWith("/") &&
+                        !next.startsWith("//") &&
+                        !next.includes("://");
+                    if (next && isSafeNext && next !== window.location.pathname) {
+                        window.__postLoginRedirectDone = true;
+                        window.location.href = next;
+                        return;
+                    }
+                    window.__postLoginRedirectDone = true;
+                }
+
+                startUserDocListener(user);
+                loadKeywordStats(user.uid);
             } else {
+                if (unsubscribeUserDoc) {
+                    try { unsubscribeUserDoc(); } catch (_) {}
+                    unsubscribeUserDoc = null;
+                }
+                cachedStatsDocs = null;
+                document.getElementById('stats-section').style.display = 'none';
                 document.getElementById('logged-in-view').classList.remove('active');
                 document.getElementById('logged-out-view').classList.add('active');
             }
@@ -846,6 +1089,122 @@
         document.getElementById('btn-logout').addEventListener('click', () => {
             signOut(auth);
         });
+
+        // ── Keyword Statistics ──
+        let cachedStatsDocs = null;
+        let currentPeriod = 'today';
+
+        function dateStr(date) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function getDaysAgoStr(n) {
+            const d = new Date();
+            d.setDate(d.getDate() - n);
+            return dateStr(d);
+        }
+
+        async function fetchStats(uid) {
+            const statsRef = collection(db, "users", uid, "stats");
+            const startDate = getDaysAgoStr(30);
+            const endDate = getDaysAgoStr(0);
+            const q = query(
+                statsRef,
+                where(documentId(), '>=', startDate),
+                where(documentId(), '<=', endDate)
+            );
+            const snap = await getDocs(q);
+            const docs = [];
+            snap.forEach(d => docs.push({ id: d.id, ...d.data() }));
+            return docs;
+        }
+
+        function aggregateStats(docs, period) {
+            const today = getDaysAgoStr(0);
+            let startDate;
+            if (period === 'today') {
+                startDate = today;
+            } else if (period === 'week') {
+                startDate = getDaysAgoStr(6);
+            } else {
+                startDate = getDaysAgoStr(29);
+            }
+
+            let totalCount = 0;
+            const merged = {};
+            for (const d of docs) {
+                if (d.id < startDate || d.id > today) continue;
+                totalCount += d.total_count || 0;
+                const kw = d.keywords || {};
+                for (const [k, v] of Object.entries(kw)) {
+                    merged[k] = (merged[k] || 0) + v;
+                }
+            }
+
+            const sorted = Object.entries(merged)
+                .sort((a, b) => b[1] - a[1]);
+
+            return { totalCount, keywords: sorted };
+        }
+
+        function renderStats(period) {
+            currentPeriod = period;
+            const totalEl = document.getElementById('stats-total-count');
+            const listEl = document.getElementById('keyword-list');
+
+            if (!cachedStatsDocs) {
+                listEl.innerHTML = `<div class="keyword-empty"><i class='bx bx-info-circle'></i>No data available</div>`;
+                totalEl.textContent = '—';
+                return;
+            }
+
+            const { totalCount, keywords } = aggregateStats(cachedStatsDocs, period);
+            totalEl.textContent = totalCount.toLocaleString();
+
+            if (keywords.length === 0) {
+                listEl.innerHTML = `<div class="keyword-empty"><i class='bx bx-info-circle'></i>No keyword data for this period</div>`;
+                return;
+            }
+
+            const maxVal = keywords[0][1];
+            listEl.innerHTML = keywords.map(([name, count], i) => {
+                const pct = Math.max(4, (count / maxVal) * 100);
+                return `
+                <div class="keyword-item">
+                    <div class="keyword-rank">${i + 1}</div>
+                    <div class="keyword-info">
+                        <div class="keyword-name">${name}</div>
+                        <div class="keyword-bar-bg"><div class="keyword-bar" style="width:${pct}%"></div></div>
+                    </div>
+                    <div class="keyword-count">${count.toLocaleString()}</div>
+                </div>`;
+            }).join('');
+        }
+
+        document.querySelectorAll('.stats-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.stats-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderStats(tab.dataset.period);
+            });
+        });
+
+        async function loadKeywordStats(uid) {
+            const section = document.getElementById('stats-section');
+            section.style.display = 'block';
+
+            try {
+                cachedStatsDocs = await fetchStats(uid);
+                renderStats(currentPeriod);
+            } catch (e) {
+                console.warn("Failed to load keyword stats", e);
+                document.getElementById('keyword-list').innerHTML =
+                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>Failed to load statistics</div>`;
+            }
+        }
     </script>
 </body>
 </html>

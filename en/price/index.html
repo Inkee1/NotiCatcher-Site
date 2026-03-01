@@ -434,7 +434,7 @@
             <div class="card-tier">Basic</div>
             <div class="card-price">$2.99 <span>/ month</span></div>
             <ul class="card-features">
-                <li><i class='bx bxs-gift check'></i> <span><strong></strong>3-day free trial</strong></span></li>
+                <li><i class='bx bxs-check-circle check'></i> <span><strong></strong>3-day free trial</strong></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span><strong>General apps</strong> keyword catches: <span class="highlight">Unlimited</span></span></li>
                 <li><i class='bx bxs-info-circle limit'></i> <span><strong>Financial & Telegram</strong> keyword catches: 2 per day</span></li>
                 <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited financial & Telegram catches</span></li>
@@ -451,7 +451,7 @@
             <div class="card-tier">Pro</div>
             <div class="card-price">$7.99 <span>/ month</span></div>
             <ul class="card-features">
-                <li><i class='bx bxs-gift check'></i> <span><strong></strong>3-day free trial</strong></span></li>
+                <li><i class='bx bxs-check-circle check'></i> <span><strong></strong>3-day free trial</strong></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span><strong>All apps</strong> keyword catches: <span class="highlight">Unlimited</span></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span>Includes financial apps & Telegram — <strong>no limits</strong></span></li>
             </ul>
@@ -607,7 +607,7 @@
     </div>
 
     <script type="module">
-        import { auth, provider, signInWithPopup } from "./js/firebase-config.js";
+        import { auth, onAuthStateChanged } from "./js/firebase-config.js";
 
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
@@ -621,19 +621,13 @@
 
         window.handleCheckout = async function(plan) {
             if (!auth.currentUser) {
-                const loginChoice = confirm("You need to log in to subscribe.\n\n[OK] → Sign in with Google\n[Cancel] → Go to login page (email sign-in)");
-                if (loginChoice) {
-                    try {
-                        await signInWithPopup(auth, provider);
-                    } catch(err) {
-                        console.error("Login failed", err);
-                        alert("An error occurred during login. Please try again.");
-                        return;
-                    }
-                } else {
-                    window.location.href = '/en/myinfo/';
-                    return;
-                }
+                alert("You need to log in before subscribing.\n\nYou'll be taken to the login page now.");
+
+                const returnUrl = new URL(window.location.href);
+                returnUrl.searchParams.set("checkoutPlan", plan);
+                const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
+                window.location.href = `/en/myinfo/?next=${encodeURIComponent(next)}`;
+                return;
             }
 
             document.getElementById('checkout-overlay').classList.add('active');
@@ -672,6 +666,21 @@
                 alert((e && e.message) ? e.message : "Checkout failed. Please try again.");
                 document.getElementById('checkout-overlay').classList.remove('active');
             }
+        }
+
+        // If we came back from login with a plan selected, auto-start checkout.
+        const params = new URLSearchParams(window.location.search);
+        const checkoutPlan = params.get("checkoutPlan");
+        if (checkoutPlan) {
+            onAuthStateChanged(auth, (user) => {
+                if (!user) return;
+                if (window.__checkoutAutoStarted) return;
+                window.__checkoutAutoStarted = true;
+                try {
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                } catch (_) {}
+                window.handleCheckout(checkoutPlan);
+            });
         }
     </script>
 </body>
