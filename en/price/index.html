@@ -434,12 +434,13 @@
             <div class="card-tier">Basic</div>
             <div class="card-price">$2.99 <span>/ month</span></div>
             <ul class="card-features">
+                <li><i class='bx bxs-gift check'></i> <span><strong></strong>3-day free trial</strong></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span><strong>General apps</strong> keyword catches: <span class="highlight">Unlimited</span></span></li>
                 <li><i class='bx bxs-info-circle limit'></i> <span><strong>Financial & Telegram</strong> keyword catches: 2 per day</span></li>
                 <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited financial & Telegram catches</span></li>
             </ul>
             <button class="btn btn-primary btn-buy" onclick="handleCheckout('basic')" style="background: var(--secondary);">
-                       <i class='bx bx-rocket'></i> Start 3-day Free Trial
+                       <i class='bx bx-rocket'></i> Subscribe
 
             </button>
         </div>
@@ -450,11 +451,12 @@
             <div class="card-tier">Pro</div>
             <div class="card-price">$7.99 <span>/ month</span></div>
             <ul class="card-features">
+                <li><i class='bx bxs-gift check'></i> <span><strong></strong>3-day free trial</strong></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span><strong>All apps</strong> keyword catches: <span class="highlight">Unlimited</span></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span>Includes financial apps & Telegram — <strong>no limits</strong></span></li>
             </ul>
             <button class="btn btn-primary btn-buy" onclick="handleCheckout('pro')">
-<i class='bx bx-crown'></i> Start 3-day Free Trial
+<i class='bx bx-crown'></i> Subscribe
 
             </button>
         </div>
@@ -615,7 +617,7 @@
             if (e.target === this) this.classList.remove('active');
         });
 
-        const FUNCTIONS_ORIGIN = "https://asia-northeast1-noticatcher-eb157.cloudfunctions.net";
+        const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
 
         window.handleCheckout = async function(plan) {
             if (!auth.currentUser) {
