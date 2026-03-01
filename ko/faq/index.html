@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotiCatcher - FAQ</title>
+    <meta name="description" content="NotiCatcher FAQ: 키워드 알림, 무음 모드 우회, 설정 방법과 자주 묻는 질문을 확인하세요." />
+    <link rel="canonical" href="https://noticatcher.com/ko/faq/" />
+    <link rel="alternate" hreflang="en" href="https://noticatcher.com/en/faq/" />
+    <link rel="alternate" hreflang="ko" href="https://noticatcher.com/ko/faq/" />
+    <link rel="alternate" hreflang="x-default" href="https://noticatcher.com/en/" />
+    <base href="/ko/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/en/css/style.css">
+
+    <style>
+        .faq-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem 5% 4rem;
+        }
+        .faq-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 1.25rem 1.25rem;
+            margin: 0.75rem 0;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .faq-card h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.05rem;
+        }
+        .faq-card p {
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <nav class="navbar">
+        <a href="/ko/" class="logo">
+            <div class="logo-icon"><i class='bx bx-bell'></i></div>
+            NotiCatcher
+        </a>
+        
+        <button class="menu-toggle" id="mobile-menu-btn">
+            <i class='bx bx-menu'></i>
+        </button>
+
+        <div class="nav-links" id="nav-links">
+            <a href="/ko/">홈</a>
+            <a href="/ko/price/">요금제</a>
+            <a href="/ko/download/">다운로드</a>
+            <a href="/ko/faq/" class="active">FAQ</a>
+            <a href="/ko/myinfo/" id="auth-link" class="btn btn-glass" style="padding: 0.5rem 1.25rem;">로그인 / 내 정보</a>
+            <a href="/en/faq/" class="btn btn-glass" style="padding: 0.5rem 1.25rem;">EN</a>
+        </div>
+    </nav>
+
+    <div class="faq-wrap">
+        <div class="hero-badge">Help</div>
+        <h1 style="margin: 0.5rem 0 0.75rem;">자주 묻는 질문 <span style="opacity: .8;">(FAQ)</span></h1>
+        <p style="color: var(--text-muted); max-width: 70ch;">
+            한국어 페이지는 순차적으로 업데이트됩니다. 더 자세한 내용이 필요하면 영문 FAQ를 참고해 주세요.
+        </p>
+
+        <div class="faq-card">
+            <h3>무음 모드에서도 알림이 울리나요?</h3>
+            <p>기기 설정 및 권한/제약에 따라 동작 방식이 달라질 수 있습니다. 앱 내 안내에 따라 설정을 확인해 주세요.</p>
+        </div>
+        <div class="faq-card">
+            <h3>키워드 알림은 어떻게 설정하나요?</h3>
+            <p>원하는 앱/채널에서 특정 단어가 포함된 알림이 왔을 때만 울리도록 설정할 수 있습니다.</p>
+        </div>
+        <div class="faq-card">
+            <h3>더 자세한 가이드는 어디서 보나요?</h3>
+            <p><a href="/en/faq/" style="color: inherit; text-decoration: underline;">영문 FAQ</a>를 먼저 제공하고 있어요. 한국어는 계속 보강할 예정입니다.</p>
+        </div>
+    </div>
+
+    <script type="module" src="/en/js/firebase-config.js"></script>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

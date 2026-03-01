@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NotiCatcher - Never Miss an Important Alarm</title>
+    <title>NotiCatcher - Powerful Keyword Alert App</title>
+    <meta name="description" content="Never miss important notifications. NotiCatcher bypasses silent mode and delivers powerful keyword alerts." />
+    <link rel="canonical" href="https://noticatcher.com/en/" />
     <style>
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -31,8 +33,11 @@
 </head>
 <body>
     <div class="loader"></div>
+    <noscript>
+        <a href="/en/">Go to English site</a>
+    </noscript>
     <script>
-        const SUPPORTED = ["en"]; // Add "ko" back when ko/ pages are created
+        const SUPPORTED = ["en", "ko"];
         const ALIASES = { "ko-kr": "ko" };
 
         function normalize(tag) {

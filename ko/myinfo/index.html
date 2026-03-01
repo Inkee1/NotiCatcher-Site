@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotiCatcher - My Info</title>
+    <title>NotiCatcher - 내 정보</title>
+    <meta name="description" content="NotiCatcher에 로그인하여 계정과 구독 정보를 확인하세요." />
+    <link rel="canonical" href="https://noticatcher.com/ko/myinfo/" />
+    <link rel="alternate" hreflang="en" href="https://noticatcher.com/en/myinfo/" />
+    <link rel="alternate" hreflang="ko" href="https://noticatcher.com/ko/myinfo/" />
+    <link rel="alternate" hreflang="x-default" href="https://noticatcher.com/en/" />
+    <base href="/ko/">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/en/css/style.css">
     <style>
         .container {
             max-width: 800px;
@@ -153,27 +159,26 @@
     <div class="bg-glow"></div>
 
     <nav class="navbar">
-        <a href="index.html" class="logo">
+        <a href="/ko/" class="logo">
             <div class="logo-icon"><i class='bx bx-bell'></i></div>
             NotiCatcher
         </a>
         <button class="menu-toggle" id="mobile-menu-btn"><i class='bx bx-menu'></i></button>
         <div class="nav-links" id="nav-links">
-            <a href="index.html">Home</a>
-            <a href="price.html">Price</a>
-            <a href="download.html">Download</a>
-            <a href="faq.html">FAQ</a>
-            <a href="myinfo.html" class="active">My Info</a>
+            <a href="/ko/">홈</a>
+            <a href="/ko/price/">요금제</a>
+            <a href="/ko/download/">다운로드</a>
+            <a href="/ko/faq/">FAQ</a>
+            <a href="/ko/myinfo/" class="active" id="auth-link">내 정보</a>
+            <a href="/en/myinfo/" class="btn btn-glass" style="padding: 0.5rem 1.25rem;">EN</a>
         </div>
     </nav>
 
     <main class="container">
-        <!-- Initial Loading State -->
         <div id="loading-view" style="display: flex; justify-content: center; padding: 4rem;">
             <div class="loader"></div>
         </div>
 
-        <!-- Logged Out View -->
         <div id="logged-out-view">
             <div class="login-card">
                 <i class='bx bxs-user-account'></i>
@@ -186,7 +191,6 @@
             </div>
         </div>
 
-        <!-- Logged In View -->
         <div id="logged-in-view">
             <div class="dashboard-header">
                 <div class="user-avatar" id="user-avatar">?</div>
@@ -196,27 +200,25 @@
                 </div>
             </div>
 
-            <!-- Explicit Subscription Info -->
             <div class="info-grid">
                 <div class="info-card" style="border-left: 4px solid var(--primary);">
-                    <h3><i class='bx bxs-crown'></i> 현재 등급 (Current Tier)</h3>
+                    <h3><i class='bx bxs-crown'></i> 현재 등급</h3>
                     <div class="val pro" id="tier-val">Pro Plan</div>
                 </div>
                 <div class="info-card">
-                    <h3><i class='bx bx-calendar-check'></i> 다음 페이 날짜 (Next Payment)</h3>
+                    <h3><i class='bx bx-calendar-check'></i> 다음 결제일</h3>
                     <div class="val" style="color: #e2e8f0;">Aug 15, 2026</div>
                 </div>
                 <div class="info-card">
-                    <h3><i class='bx bxl-mastercard' ></i> 페이 등록된 수단 (Payment Method)</h3>
+                    <h3><i class='bx bxl-mastercard' ></i> 결제 수단</h3>
                     <div class="val" style="color: #e2e8f0;">•••• 4242</div>
                 </div>
             </div>
 
-            <!-- Explicit Action Buttons -->
             <div style="background: var(--bg-card); border-radius: 16px; padding: 2rem; border: 1px solid var(--border-light); backdrop-filter: blur(var(--glass-blur)); margin-bottom: 2rem; text-align: center;">
-                <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem;">구독 관리 (Subscription Management)</h3>
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem;">구독 관리</h3>
                 <div class="dashboard-actions" style="justify-content: center; max-width: 600px; margin: 0 auto;">
-                    <button class="btn btn-primary" onclick="window.location.href='price.html'" style="font-size: 1.1rem; padding: 1rem;">
+                    <button class="btn btn-primary" onclick="window.location.href='/ko/price/'" style="font-size: 1.1rem; padding: 1rem;">
                         <i class='bx bx-refresh'></i> 구독 갱신 / 업그레이드
                     </button>
                     <button class="btn btn-danger" onclick="alert('Calls Stripe Customer Portal to cancel subscription')" style="font-size: 1.1rem; padding: 1rem;">
@@ -227,27 +229,25 @@
 
             <div class="dashboard-actions" style="justify-content: flex-end;">
                 <button class="btn btn-glass" id="btn-logout" style="min-width: 120px;">
-                    <i class='bx bx-log-out'></i> 로그아웃 (Logout)
+                    <i class='bx bx-log-out'></i> 로그아웃
                 </button>
             </div>
         </div>
     </main>
 
     <script type="module">
-        import { auth, provider, signInWithPopup, signOut, onAuthStateChanged } from "./js/firebase-config.js";
+        import { auth, provider, signInWithPopup, signOut, onAuthStateChanged } from "/en/js/firebase-config.js";
         
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
         });
 
-        // Initialize UI based on Auth state changes
         onAuthStateChanged(auth, (user) => {
             document.getElementById('loading-view').style.display = 'none';
             if (user) {
                 document.getElementById('logged-out-view').classList.remove('active');
                 document.getElementById('logged-in-view').classList.add('active');
                 
-                // Update profile info
                 document.getElementById('user-name').textContent = user.displayName || 'User';
                 document.getElementById('user-email').textContent = user.email;
                 if(user.photoURL) {
