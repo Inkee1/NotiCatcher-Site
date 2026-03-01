@@ -439,9 +439,9 @@
                 <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited financial & Telegram catches</span></li>
             </ul>
             <button class="btn btn-primary btn-buy" onclick="handleCheckout('basic')" style="background: var(--secondary);">
-                <i class='bx bx-rocket'></i> Subscribe
+                       <i class='bx bx-rocket'></i> Start 3-day Free Trial
+
             </button>
-            <div class="trial-under-btn">3-day free trial</div>
         </div>
 
         <!-- Pro -->
@@ -454,9 +454,9 @@
                 <li><i class='bx bxs-check-circle check'></i> <span>Includes financial apps & Telegram — <strong>no limits</strong></span></li>
             </ul>
             <button class="btn btn-primary btn-buy" onclick="handleCheckout('pro')">
-                <i class='bx bx-crown'></i> Subscribe
+<i class='bx bx-crown'></i> Start 3-day Free Trial
+
             </button>
-            <div class="trial-under-btn">3-day free trial</div>
         </div>
     </div>
 
@@ -619,13 +619,13 @@
 
         window.handleCheckout = async function(plan) {
             if (!auth.currentUser) {
-                const loginChoice = confirm("구독하려면 로그인이 필요합니다.\n\n[확인] → 구글 로그인\n[취소] → 로그인 페이지로 이동 (이메일 로그인)");
+                const loginChoice = confirm("You need to log in to subscribe.\n\n[OK] → Sign in with Google\n[Cancel] → Go to login page (email sign-in)");
                 if (loginChoice) {
                     try {
                         await signInWithPopup(auth, provider);
                     } catch(err) {
                         console.error("Login failed", err);
-                        alert("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
+                        alert("An error occurred during login. Please try again.");
                         return;
                     }
                 } else {
