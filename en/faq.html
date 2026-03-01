@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotiCatcher - FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .faq-header {
+            text-align: center;
+            padding: 3rem 1.25rem 2rem;
+        }
+        .faq-header i {
+            font-size: 3rem;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+        .faq-header h1 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            margin-bottom: 0.75rem;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .faq-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5% 2rem;
+            width: 100%;
+        }
+        .faq-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+        }
+        .faq-category:first-child { margin-top: 0; }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 1.1rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            text-align: left;
+        }
+        .faq-question i {
+            transition: transform 0.3s;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+        .faq-item.open .faq-question i { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        .faq-item.open .faq-answer { max-height: 500px; }
+        .faq-answer p {
+            padding: 0 1.25rem 1.1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .contact-section {
+            max-width: 800px;
+            margin: 1rem auto 0;
+            padding: 0 5% 3rem;
+            width: 100%;
+        }
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .contact-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 999px;
+            color: #818cf8;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .contact-email:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 900px) {
+            .faq-section { padding: 0 1.25rem 2rem; }
+            .contact-section { padding: 0 1.25rem 3rem; }
+            .faq-question { font-size: 1rem; }
+            .faq-answer p { font-size: 0.95rem; }
+        }
+        @media (max-width: 480px) {
+            .faq-header { padding: 2rem 1rem 1.5rem; }
+            .faq-section { padding: 0 1rem 2rem; }
+            .contact-section { padding: 0 1rem 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><i class='bx bx-bell'></i></div>
+            NotiCatcher
+        </a>
+        <button class="menu-toggle" id="mobile-menu-btn"><i class='bx bx-menu'></i></button>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="price.html">Price</a>
+            <a href="download.html">Download</a>
+            <a href="faq.html" class="active">FAQ</a>
+            <a href="myinfo.html" id="auth-link" class="btn btn-glass" style="padding: 0.5rem 1.25rem;">Login / My Info</a>
+        </div>
+    </nav>
+
+    <div class="faq-header">
+        <i class='bx bxs-help-circle'></i>
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about NotiCatcher.</p>
+    </div>
+
+    <div class="faq-section">
+        <div class="faq-category">Subscription & Pricing</div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                What counts as a "keyword catch"?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>A keyword catch occurs when NotiCatcher detects a notification containing your configured keywords and triggers an alarm. Each successful detection counts as one catch.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                What are "Financial & Telegram" apps?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>These include crypto exchanges (Binance, Bybit, Coinbase, etc.), trading platforms (TradingView, Robinhood, etc.), wallet apps (MetaMask, Trust Wallet, etc.), and Telegram. You can view the full list on the <a href="price.html" style="color: var(--primary);">Pricing page</a>.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                How does the 3-day free trial work?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>Both Basic and Pro plans include a 3-day free trial. You won't be charged during the trial period. If you cancel before the trial ends, you won't be billed.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Can I upgrade from Basic to Pro?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. You can upgrade from Basic to Pro at any time. The remaining balance of your Basic plan will be prorated toward your Pro subscription.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                When does the daily catch limit reset?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>The daily keyword catch limit resets at midnight (local device time) every day.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                How do I cancel my subscription?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>You can manage or cancel your subscription from the "My Info" page after logging in, or directly through Google Play Store's subscription management.</p>
+            </div>
+        </div>
+
+        <div class="faq-category">General</div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Does NotiCatcher work in silent / Do Not Disturb mode?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. NotiCatcher can override silent mode and Do Not Disturb to ring loudly when a keyword match is detected. This is one of the core features available on all plans.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Which platforms are supported?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>NotiCatcher is currently available on Android via Google Play Store. iOS support is planned for the future.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Is my data safe?
+                <i class='bx bx-chevron-down'></i>
+            </button>
+            <div class="faq-answer">
+                <p>NotiCatcher processes notifications locally on your device. Your notification content is never sent to any external server. We only store essential account information for subscription management.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <div class="contact-card">
+            <i class='bx bxs-envelope'></i>
+            <h3>Still have questions?</h3>
+            <p>Can't find what you're looking for? Feel free to reach out to us.</p>
+            <a href="mailto:info@wise-signal.com" class="contact-email">
+                <i class='bx bx-mail-send'></i> info@wise-signal.com
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

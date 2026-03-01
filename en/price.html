@@ -322,62 +322,6 @@
             padding: 0.25rem 0;
         }
 
-        /* FAQ Section */
-        .faq-section {
-            max-width: 1100px;
-            margin: 3rem auto 0;
-            padding: 0 5% 3rem;
-            width: 100%;
-        }
-        .faq-section h2 {
-            text-align: center;
-            font-size: clamp(1.3rem, 3vw, 1.75rem);
-            margin-bottom: 1.5rem;
-        }
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 14px;
-            margin-bottom: 0.75rem;
-            overflow: hidden;
-            backdrop-filter: blur(var(--glass-blur));
-        }
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            color: var(--text-main);
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 1rem 1.25rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            text-align: left;
-        }
-        .faq-question i {
-            transition: transform 0.3s;
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            flex-shrink: 0;
-        }
-        .faq-item.open .faq-question i { transform: rotate(180deg); }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease;
-        }
-        .faq-item.open .faq-answer { max-height: 300px; }
-        .faq-answer p {
-            padding: 0 1.25rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            line-height: 1.7;
-        }
-
         /* Checkout Overlay */
         #checkout-overlay {
             display: none;
@@ -403,8 +347,6 @@
             .price-card { padding: 1.75rem 1.25rem; }
             .app-note { padding: 0 1.25rem; }
             .comparison-section { padding: 0 1.25rem; }
-            .faq-section { padding: 0 1.25rem 3rem; max-width: 100%; }
-
             .card-tier { font-size: 1.6rem; }
             .card-price { font-size: 2.4rem; }
             .card-features li { font-size: 1.1rem; }
@@ -424,8 +366,6 @@
             .comparison-table td:first-child,
             .comparison-table th:first-child { min-width: 140px; }
 
-            .faq-question { font-size: 1rem; }
-            .faq-answer p { font-size: 0.95rem; }
         }
 
         @media (max-width: 480px) {
@@ -433,7 +373,6 @@
             .pricing-grid { padding: 1rem; }
             .app-note { padding: 0 1rem; }
             .comparison-section { padding: 0 1rem; }
-            .faq-section { padding: 0 1rem 3rem; }
             .app-list { grid-template-columns: 1fr; }
         }
     </style>
@@ -451,6 +390,7 @@
             <a href="index.html">Home</a>
             <a href="price.html" class="active">Price</a>
             <a href="download.html">Download</a>
+            <a href="faq.html">FAQ</a>
             <a href="myinfo.html" id="auth-link" class="btn btn-glass" style="padding: 0.5rem 1.25rem;">Login / My Info</a>
         </div>
     </nav>
@@ -473,7 +413,6 @@
                 <li><i class='bx bxs-check-circle check'></i> <span>Keyword catches for <strong>all apps</strong>: <span class="highlight">2 per day</span></span></li>
                 <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited general app catches</span></li>
                 <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited financial & Telegram catches</span></li>
-                <li><i class='bx bx-x cross'></i> <span class="disabled-feature">3-day free trial</span></li>
             </ul>
             <button class="btn btn-glass btn-buy" disabled>Current Plan</button>
         </div>
@@ -512,7 +451,6 @@
     <!-- App Category Note -->
     <div class="app-note" style="margin-top: 1rem;">
         <div class="app-note-box">
-            <i class='bx bxs-info-circle'></i>
             <div>
                 <p>
                     <strong>General apps</strong> = Any app <em>except</em> financial/crypto-related apps and Telegram.<br>
@@ -571,71 +509,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="faq-section">
-        <h2>Frequently Asked Questions</h2>
-
-        <div class="faq-item">
-            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                What counts as a "keyword catch"?
-                <i class='bx bx-chevron-down'></i>
-            </button>
-            <div class="faq-answer">
-                <p>A keyword catch occurs when NotiCatcher detects a notification containing your configured keywords and triggers an alarm. Each successful detection counts as one catch.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                What are "Financial & Telegram" apps?
-                <i class='bx bx-chevron-down'></i>
-            </button>
-            <div class="faq-answer">
-                <p>These include crypto exchanges (Binance, Bybit, Coinbase, etc.), trading platforms (TradingView, Robinhood, etc.), wallet apps (MetaMask, Trust Wallet, etc.), and Telegram. You can view the full list by clicking "View restricted app list" above.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                How does the 3-day free trial work?
-                <i class='bx bx-chevron-down'></i>
-            </button>
-            <div class="faq-answer">
-                <p>Both Basic and Pro plans include a 3-day free trial. You won't be charged during the trial period. If you cancel before the trial ends, you won't be billed.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                Can I upgrade from Basic to Pro?
-                <i class='bx bx-chevron-down'></i>
-            </button>
-            <div class="faq-answer">
-                <p>Yes. You can upgrade from Basic to Pro at any time. The remaining balance of your Basic plan will be prorated toward your Pro subscription.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                When does the daily catch limit reset?
-                <i class='bx bx-chevron-down'></i>
-            </button>
-            <div class="faq-answer">
-                <p>The daily keyword catch limit resets at midnight (local device time) every day.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
-                How do I cancel my subscription?
-                <i class='bx bx-chevron-down'></i>
-            </button>
-            <div class="faq-answer">
-                <p>You can manage or cancel your subscription from the "My Info" page after logging in, or directly through Google Play Store's subscription management.</p>
-            </div>
         </div>
     </div>
 
