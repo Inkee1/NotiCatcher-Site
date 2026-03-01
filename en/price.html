@@ -50,6 +50,9 @@
             transform: translateY(-6px);
         }
 
+        .price-card.free-tier {
+            border-color: #475569;
+        }
         .price-card.recommended {
             border-color: var(--primary);
             box-shadow: 0 8px 30px rgba(99, 102, 241, 0.25);
@@ -107,10 +110,13 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.75rem;
             color: var(--text-main);
             font-size: 0.9rem;
-            line-height: 1.4;
+            line-height: 1.5;
+        }
+        .card-features li:last-child {
+            margin-bottom: 0;
         }
         .card-features i {
             font-size: 1.1rem;
@@ -124,6 +130,11 @@
         .card-features .highlight {
             color: #fbbf24;
             font-weight: 600;
+        }
+        .card-features .disabled-feature {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            opacity: 0.6;
         }
 
         .btn-buy {
@@ -394,9 +405,9 @@
             .comparison-section { padding: 0 1.25rem; }
             .faq-section { padding: 0 1.25rem 3rem; max-width: 100%; }
 
-            .card-tier { font-size: 1.5rem; }
-            .card-price { font-size: 2.5rem; }
-            .card-features li { font-size: 1rem; }
+            .card-tier { font-size: 1.6rem; }
+            .card-price { font-size: 2.4rem; }
+            .card-features li { font-size: 1.1rem; }
             .btn-buy { padding: 1rem; font-size: 1.1rem; }
 
             .app-note-box p { font-size: 0.95rem; }
@@ -455,12 +466,14 @@
     <!-- Pricing Cards -->
     <div class="pricing-grid">
         <!-- Free -->
-        <div class="price-card">
+        <div class="price-card free-tier">
             <div class="card-tier free-color">Free</div>
             <div class="card-price">Free</div>
             <ul class="card-features">
                 <li><i class='bx bxs-check-circle check'></i> <span>Keyword catches for <strong>all apps</strong>: <span class="highlight">2 per day</span></span></li>
-                <li><i class='bx bxs-info-circle limit'></i> <span>Includes financial apps & Telegram</span></li>
+                <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited general app catches</span></li>
+                <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited financial & Telegram catches</span></li>
+                <li><i class='bx bx-x cross'></i> <span class="disabled-feature">3-day free trial</span></li>
             </ul>
             <button class="btn btn-glass btn-buy" disabled>Current Plan</button>
         </div>
@@ -472,7 +485,8 @@
             <ul class="card-features">
                 <li><i class='bx bxs-gift check'></i> <span><strong>3-day free trial</strong></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span><strong>General apps</strong> keyword catches: <span class="highlight">Unlimited</span></span></li>
-                <li><i class='bx bxs-info-circle limit'></i> <span><strong>Financial & Telegram</strong> keyword catches: <span class="highlight">2 per day</span></span></li>
+                <li><i class='bx bxs-info-circle limit'></i> <span><strong>Financial & Telegram</strong> keyword catches: 2 per day</span></li>
+                <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited financial & Telegram catches</span></li>
             </ul>
             <button class="btn btn-primary btn-buy" onclick="handleCheckout('basic_price_id')" style="background: var(--secondary);">
                 <i class='bx bx-rocket'></i> Start 3-day Free Trial
