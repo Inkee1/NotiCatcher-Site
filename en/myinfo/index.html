@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         .container {
-            max-width: 800px;
-            margin: 4rem auto;
+            max-width: 900px;
+            margin: 3rem auto;
             padding: 0 1.5rem;
             width: 100%;
         }
@@ -37,121 +37,396 @@
 
         /* Login Card */
         .login-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             text-align: center;
-            backdrop-filter: blur(var(--glass-blur));
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 420px;
+            margin: 0 auto;
         }
-        .login-card i {
-            font-size: 4rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-        .login-card h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .login-card p {
-            color: var(--text-muted);
+        .login-header {
             margin-bottom: 2rem;
         }
+        .login-header i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.4));
+        }
+        .login-header h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            font-weight: 700;
+        }
+        .login-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Google Button */
         .btn-google {
             background: white;
-            color: #333;
+            color: #1e293b;
             font-weight: 600;
-            padding: 1rem 2rem;
-            border-radius: 999px;
-            display: inline-flex;
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: 12px;
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
-            text-decoration: none;
             border: none;
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            font-family: inherit;
+            margin-top: 1.5rem; /* Moved margin to top */
         }
         .btn-google:hover {
-            background: #f1f1f1;
+            background: #f8fafc;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.15);
         }
         .btn-google img {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
         }
 
-        /* Dashboard Profile */
+        /* Divider */
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0 0; /* Adjusted margin */
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Auth Tabs */
+        .auth-tabs {
+            display: flex;
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .auth-tab.active {
+            background: var(--bg-card); /* fallback */
+            background: rgba(255,255,255,0.1);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Forms */
+        .auth-form {
+            display: none;
+            text-align: left;
+            animation: slideUp 0.3s ease forwards;
+        }
+        .auth-form.active { display: block; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            margin-left: 4px;
+        }
+        
+        .input-wrapper {
+            position: relative;
+        }
+        .input-wrapper i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .input-wrapper input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.8rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .input-wrapper input:focus {
+            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        .input-wrapper input:focus + i {
+            color: var(--primary);
+        }
+        .input-wrapper input::placeholder {
+            color: rgba(255,255,255,0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.95rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .auth-links {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .auth-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .auth-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Messages */
+        .auth-message {
+            display: none;
+            padding: 0.9rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            line-height: 1.5;
+            /* Removed flex styles to prevent icon gap if icon is removed */
+            color: var(--text-main);
+        }
+        .auth-message.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+        }
+        .auth-message.success {
+            display: block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+        }
+
+        /* Dashboard Styles */
         .dashboard-header {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
         }
         .user-avatar {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: grid;
             place-items: center;
             font-size: 2.5rem;
-            font-weight: bold;
+            font-weight: 700;
             color: white;
-            border: 4px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+            border: 4px solid rgba(30, 41, 59, 0.5);
         }
         .user-avatar img {
             width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
         }
-        .user-info h2 { font-size: 2rem; margin-bottom: 4px; }
-        .user-info p { color: var(--text-muted); }
-        
-        /* Dashboard Stats/Cards */
+        .user-info h2 { font-size: 1.8rem; margin-bottom: 6px; font-weight: 700; }
+        .user-info p { color: var(--text-muted); font-size: 1rem; }
+
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         .info-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 1.75rem;
             backdrop-filter: blur(var(--glass-blur));
+            transition: transform 0.2s;
         }
+        .info-card:hover { transform: translateY(-3px); }
         .info-card h3 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            letter-spacing: 1.2px;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 600;
         }
         .info-card .val {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
+            color: white;
         }
-        .val.pro { color: var(--primary); }
+        .val.pro { 
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        .dashboard-actions {
+        .action-card {
+            background: var(--bg-card); 
+            border-radius: 20px; 
+            padding: 2.5rem; 
+            border: 1px solid var(--border-light); 
+            backdrop-filter: blur(var(--glass-blur)); 
+            margin-bottom: 2rem; 
+            text-align: center;
+        }
+        .action-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .dashboard-btns {
             display: flex;
             gap: 1rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
-        .dashboard-actions .btn { flex: 1; min-width: 200px; }
+        .dashboard-btns button {
+            padding: 0.9rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .btn-upgrade {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-upgrade:hover { background: #4f46e5; transform: translateY(-2px); }
         
-        .btn-danger {
+        .btn-cancel {
             background: rgba(239, 68, 68, 0.1);
             color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            border: 1px solid rgba(239, 68, 68, 0.2);
         }
-        .btn-danger:hover {
-            background: rgba(239, 68, 68, 0.2);
+        .btn-cancel:hover { background: rgba(239, 68, 68, 0.2); }
+
+        .btn-logout-wrap {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .btn-logout {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-muted);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .btn-logout:hover {
+            border-color: var(--text-muted);
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+            .dashboard-btns {
+                flex-direction: column;
+            }
+            .dashboard-btns button { width: 100%; justify-content: center; }
+            .login-card { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -182,13 +457,102 @@
         <!-- Logged Out View -->
         <div id="logged-out-view">
             <div class="login-card">
-                <i class='bx bxs-user-account'></i>
-                <h2>로그인이 필요합니다</h2>
-                <p>현재 등급, 다음 결제일, 결제 수단을 확인하고<br>구독을 갱신하거나 취소하려면 로그인해 주세요.</p>
-                <button class="btn-google" id="btn-login" style="margin-top: 1rem;">
-                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
-                    구글로 계속하기
-                </button>
+                <div class="login-header">
+                    <i class='bx bxs-user-circle'></i>
+                    <h2>Welcome Back</h2>
+                    <p>Manage your subscription and preferences</p>
+                </div>
+
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Sign In</button>
+                    <button class="auth-tab" data-tab="signup">Sign Up</button>
+                </div>
+
+                <!-- Removed the info-circle icon -->
+                <div id="auth-msg" class="auth-message">
+                    <span></span>
+                </div>
+
+                <!-- Login Form -->
+                <form id="form-login" class="auth-form active" autocomplete="on">
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="login-email" placeholder="name@example.com" required autocomplete="email">
+                            <i class='bx bx-envelope'></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-pw">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="login-pw" placeholder="Enter your password" required autocomplete="current-password">
+                            <i class='bx bx-lock-alt'></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class='bx bx-log-in'></i> Sign In</button>
+                    
+                    <div class="auth-divider">or continue with</div>
+
+                    <button type="button" class="btn-google" id="btn-google-login">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                        Google
+                    </button>
+
+                    <div class="auth-links">
+                        <a id="link-forgot">Forgot your password?</a>
+                    </div>
+                </form>
+
+                <!-- Sign-up Form -->
+                <form id="form-signup" class="auth-form" autocomplete="on">
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="signup-email" placeholder="name@example.com" required autocomplete="email">
+                            <i class='bx bx-envelope'></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-pw">Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="signup-pw" placeholder="At least 6 characters" required minlength="6" autocomplete="new-password">
+                            <i class='bx bx-lock-alt'></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-pw2">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="signup-pw2" placeholder="Re-enter password" required minlength="6" autocomplete="new-password">
+                            <i class='bx bx-check-shield'></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class='bx bx-user-plus'></i> Create Account</button>
+                    
+                    <div class="auth-divider">or continue with</div>
+
+                    <button type="button" class="btn-google" id="btn-google-signup">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                        Google
+                    </button>
+                </form>
+
+                <!-- Forgot Password Form -->
+                <form id="form-forgot" class="auth-form" autocomplete="on" style="display:none;">
+                    <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.5rem; text-align:left;">
+                        Enter your email address and we'll send you a link to reset your password.
+                    </p>
+                    <div class="form-group">
+                        <label for="forgot-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="forgot-email" placeholder="name@example.com" required autocomplete="email">
+                            <i class='bx bx-envelope'></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class='bx bx-send'></i> Send Reset Link</button>
+                    <div class="auth-links">
+                        <a id="link-back-login"><i class='bx bx-arrow-back'></i> Back to Sign In</a>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -202,78 +566,285 @@
                 </div>
             </div>
 
-            <!-- Explicit Subscription Info -->
             <div class="info-grid">
                 <div class="info-card" style="border-left: 4px solid var(--primary);">
-                    <h3><i class='bx bxs-crown'></i> 현재 등급 (Current Tier)</h3>
-                    <div class="val pro" id="tier-val">Pro Plan</div>
+                    <h3><i class='bx bxs-crown'></i> Current Plan</h3>
+                    <div class="val pro" id="tier-val">Loading...</div>
                 </div>
                 <div class="info-card">
-                    <h3><i class='bx bx-calendar-check'></i> 다음 페이 날짜 (Next Payment)</h3>
-                    <div class="val" style="color: #e2e8f0;">Aug 15, 2026</div>
+                    <h3><i class='bx bx-calendar-check'></i> Next Payment</h3>
+                    <div class="val" style="color: #e2e8f0;" id="next-payment-val">—</div>
                 </div>
                 <div class="info-card">
-                    <h3><i class='bx bxl-mastercard' ></i> 페이 등록된 수단 (Payment Method)</h3>
-                    <div class="val" style="color: #e2e8f0;">•••• 4242</div>
+                    <h3><i class='bx bxl-mastercard' ></i> Payment Method</h3>
+                    <div class="val" style="color: #e2e8f0;">Manage in Stripe</div>
                 </div>
             </div>
 
-            <!-- Explicit Action Buttons -->
-            <div style="background: var(--bg-card); border-radius: 16px; padding: 2rem; border: 1px solid var(--border-light); backdrop-filter: blur(var(--glass-blur)); margin-bottom: 2rem; text-align: center;">
-                <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem;">구독 관리 (Subscription Management)</h3>
-                <div class="dashboard-actions" style="justify-content: center; max-width: 600px; margin: 0 auto;">
-                    <button class="btn btn-primary" onclick="window.location.href='/en/price/'" style="font-size: 1.1rem; padding: 1rem;">
-                        <i class='bx bx-refresh'></i> 구독 갱신 / 업그레이드
+            <div class="action-card">
+                <h3>Subscription Management</h3>
+                <div class="dashboard-btns">
+                    <button class="btn-upgrade" onclick="window.location.href='/en/price/'">
+                        <i class='bx bx-up-arrow-circle'></i> Upgrade / Renew Plan
                     </button>
-                    <button class="btn btn-danger" onclick="alert('Calls Stripe Customer Portal to cancel subscription')" style="font-size: 1.1rem; padding: 1rem;">
-                        <i class='bx bx-x-circle'></i> 구독 취소
+                    <button class="btn-cancel" id="btn-manage-subscription">
+                        <i class='bx bx-x-circle'></i> Cancel Subscription
                     </button>
                 </div>
             </div>
 
-            <div class="dashboard-actions" style="justify-content: flex-end;">
-                <button class="btn btn-glass" id="btn-logout" style="min-width: 120px;">
-                    <i class='bx bx-log-out'></i> 로그아웃 (Logout)
+            <div class="btn-logout-wrap">
+                <button class="btn-logout" id="btn-logout">
+                    <i class='bx bx-log-out'></i> Sign Out
                 </button>
             </div>
         </div>
     </main>
 
     <script type="module">
-        import { auth, provider, signInWithPopup, signOut, onAuthStateChanged } from "./js/firebase-config.js";
-        
+        import { auth, db, provider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile } from "./js/firebase-config.js";
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const FUNCTIONS_ORIGIN = "https://asia-northeast1-noticatcher-eb157.cloudfunctions.net";
+
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
         });
 
-        // Initialize UI based on Auth state changes
+        const msgEl = document.getElementById('auth-msg');
+        const msgText = msgEl.querySelector('span');
+        const formLogin = document.getElementById('form-login');
+        const formSignup = document.getElementById('form-signup');
+        const formForgot = document.getElementById('form-forgot');
+        const tabs = document.querySelectorAll('.auth-tab');
+        const tabContainer = document.querySelector('.auth-tabs');
+
+        function showMsg(text, type) {
+            msgText.textContent = text;
+            msgEl.className = 'auth-message ' + type;
+            msgEl.style.display = 'block'; // Changed from flex to block since icon removed
+        }
+        function hideMsg() {
+            msgEl.style.display = 'none';
+            msgEl.className = 'auth-message';
+            msgText.textContent = '';
+        }
+
+        function switchToForm(name) {
+            hideMsg();
+            formLogin.classList.remove('active');
+            formSignup.classList.remove('active');
+            formForgot.style.display = 'none';
+            tabs.forEach(t => t.classList.remove('active'));
+
+            if (name === 'login') {
+                formLogin.classList.add('active');
+                tabContainer.style.display = 'flex';
+                tabs[0].classList.add('active');
+            } else if (name === 'signup') {
+                formSignup.classList.add('active');
+                tabContainer.style.display = 'flex';
+                tabs[1].classList.add('active');
+            } else if (name === 'forgot') {
+                formForgot.style.display = 'block';
+                tabContainer.style.display = 'none';
+            }
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => switchToForm(tab.dataset.tab));
+        });
+        document.getElementById('link-forgot').addEventListener('click', () => switchToForm('forgot'));
+        document.getElementById('link-back-login').addEventListener('click', () => switchToForm('login'));
+
+        function firebaseErrorMsg(code) {
+            const map = {
+                'auth/email-already-in-use': 'This email is already in use.',
+                'auth/invalid-email': 'Please enter a valid email address.',
+                'auth/weak-password': 'Password is too weak (min 6 chars).',
+                'auth/user-not-found': 'No account found with this email.',
+                'auth/wrong-password': 'Incorrect password.',
+                'auth/invalid-credential': 'Invalid email or password.',
+                'auth/too-many-requests': 'Too many attempts. Please try again later.',
+                'auth/network-request-failed': 'Network error. Please check your connection.'
+            };
+            return map[code] || 'An error occurred. Please try again (' + code + ').';
+        }
+
+        function formatDate(d) {
+            try {
+                return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+            } catch (_) {
+                return String(d);
+            }
+        }
+
+        function setTierUI(grade) {
+            const tierEl = document.getElementById('tier-val');
+            if (!tierEl) return;
+
+            const g = (grade || "free").toLowerCase();
+            if (g === "pro") {
+                tierEl.textContent = "Pro";
+                tierEl.classList.add("pro");
+            } else if (g === "basic") {
+                tierEl.textContent = "Basic";
+                tierEl.classList.remove("pro");
+            } else {
+                tierEl.textContent = "Free";
+                tierEl.classList.remove("pro");
+            }
+        }
+
+        async function refreshSubscriptionUI(user) {
+            setTierUI("free");
+            const nextEl = document.getElementById("next-payment-val");
+            if (nextEl) nextEl.textContent = "—";
+
+            try {
+                const snap = await getDoc(doc(db, "users", user.uid));
+                if (!snap.exists()) return;
+                const data = snap.data() || {};
+                setTierUI(data.grade || "free");
+
+                const exp = data.expired;
+                if (exp && typeof exp.toDate === "function" && nextEl) {
+                    nextEl.textContent = formatDate(exp.toDate());
+                }
+            } catch (e) {
+                console.warn("Failed to load user subscription info", e);
+            }
+        }
+
+        async function openBillingPortal() {
+            if (!auth.currentUser) return;
+            try {
+                const idToken = await auth.currentUser.getIdToken(true);
+                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreatePortalSession`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${idToken}`
+                    },
+                    body: JSON.stringify({})
+                });
+                const data = await resp.json().catch(() => ({}));
+                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
+                if (!data.url) throw new Error("Missing portal URL");
+                window.location.href = data.url;
+            } catch (e) {
+                console.error("Portal error", e);
+                alert((e && e.message) ? e.message : "Failed to open billing portal.");
+            }
+        }
+
+        const manageBtn = document.getElementById("btn-manage-subscription");
+        if (manageBtn) manageBtn.addEventListener("click", openBillingPortal);
+
         onAuthStateChanged(auth, (user) => {
             document.getElementById('loading-view').style.display = 'none';
             if (user) {
                 document.getElementById('logged-out-view').classList.remove('active');
                 document.getElementById('logged-in-view').classList.add('active');
-                
-                // Update profile info
+
                 document.getElementById('user-name').textContent = user.displayName || 'User';
                 document.getElementById('user-email').textContent = user.email;
-                if(user.photoURL) {
+                if (user.photoURL) {
                     document.getElementById('user-avatar').innerHTML = `<img src="${user.photoURL}" alt="avatar">`;
                 } else {
-                    document.getElementById('user-avatar').textContent = user.email.charAt(0).toUpperCase();
+                    document.getElementById('user-avatar').textContent = (user.email || '?').charAt(0).toUpperCase();
                 }
+
+                refreshSubscriptionUI(user);
             } else {
                 document.getElementById('logged-in-view').classList.remove('active');
                 document.getElementById('logged-out-view').classList.add('active');
             }
         });
 
-        document.getElementById('btn-login').addEventListener('click', async () => {
+        // Google Login Handler
+        async function handleGoogleLogin() {
             try {
                 await signInWithPopup(auth, provider);
-            } catch(e) {
-                console.error("Login Error:", e);
-                alert("로그인 중 오류가 발생했습니다. 콘솔을 확인해주세요.");
+            } catch (e) {
+                console.error("Google Login Error:", e);
+                showMsg('Google sign-in failed. Please try again.', 'error');
             }
+        }
+
+        // Add listeners to both Google buttons
+        const googleLoginBtn = document.getElementById('btn-google-login');
+        if(googleLoginBtn) googleLoginBtn.addEventListener('click', handleGoogleLogin);
+        
+        const googleSignupBtn = document.getElementById('btn-google-signup');
+        if(googleSignupBtn) googleSignupBtn.addEventListener('click', handleGoogleLogin);
+
+        formLogin.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMsg();
+            const email = document.getElementById('login-email').value.trim();
+            const pw = document.getElementById('login-pw').value;
+            const btn = formLogin.querySelector('.btn-submit');
+            
+            const originalBtnContent = btn.innerHTML;
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Signing In...';
+            btn.disabled = true;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, pw);
+            } catch (err) {
+                showMsg(firebaseErrorMsg(err.code), 'error');
+                btn.innerHTML = originalBtnContent;
+                btn.disabled = false;
+            }
+        });
+
+        formSignup.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMsg();
+            const email = document.getElementById('signup-email').value.trim();
+            const pw = document.getElementById('signup-pw').value;
+            const pw2 = document.getElementById('signup-pw2').value;
+
+            if (pw !== pw2) {
+                showMsg('Passwords do not match.', 'error');
+                return;
+            }
+
+            const btn = formSignup.querySelector('.btn-submit');
+            const originalBtnContent = btn.innerHTML;
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Creating Account...';
+            btn.disabled = true;
+
+            try {
+                await createUserWithEmailAndPassword(auth, email, pw);
+                // Redirect or show success handled by auth state change
+            } catch (err) {
+                showMsg(firebaseErrorMsg(err.code), 'error');
+                btn.innerHTML = originalBtnContent;
+                btn.disabled = false;
+            }
+        });
+
+        formForgot.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMsg();
+            const email = document.getElementById('forgot-email').value.trim();
+            const btn = formForgot.querySelector('.btn-submit');
+            
+            const originalBtnContent = btn.innerHTML;
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+            btn.disabled = true;
+
+            try {
+                await sendPasswordResetEmail(auth, email);
+                showMsg('Password reset link sent! Check your inbox.', 'success');
+            } catch (err) {
+                showMsg(firebaseErrorMsg(err.code), 'error');
+            }
+            
+            btn.innerHTML = originalBtnContent;
+            btn.disabled = false;
         });
 
         document.getElementById('btn-logout').addEventListener('click', () => {

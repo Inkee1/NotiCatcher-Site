@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://noticatcher.com/en/</loc>
-  </url>
-  <url>
-    <loc>https://noticatcher.com/ko/</loc>
-  </url>
-  <url>
-    <loc>https://noticatcher.com/en/price/</loc>
-  </url>
-  <url>
     <loc>https://noticatcher.com/en/download/</loc>
   </url>
   <url>
     <loc>https://noticatcher.com/en/faq/</loc>
   </url>
   <url>
+    <loc>https://noticatcher.com/en/</loc>
+  </url>
+  <url>
     <loc>https://noticatcher.com/en/myinfo/</loc>
   </url>
   <url>
-    <loc>https://noticatcher.com/ko/price/</loc>
-  </url>
-  <url>
-    <loc>https://noticatcher.com/ko/download/</loc>
-  </url>
-  <url>
-    <loc>https://noticatcher.com/ko/faq/</loc>
-  </url>
-  <url>
-    <loc>https://noticatcher.com/ko/myinfo/</loc>
+    <loc>https://noticatcher.com/en/price/</loc>
   </url>
 </urlset>
