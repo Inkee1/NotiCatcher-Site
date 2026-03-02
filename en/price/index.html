@@ -607,29 +607,10 @@
 
     <script type="module">
         import { auth, db, onAuthStateChanged, signInWithCustomToken } from "./js/firebase-config.js";
+        import { autoLoginFromFragment } from "./js/auto-login.js";
         import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        async function tryAutoLoginFromFragment() {
-            const raw = window.location.hash || "";
-            const m = raw.match(/(?:^#|[&#])ct=([^&]+)/);
-            if (!m) return;
-            const token = decodeURIComponent(m[1] || "");
-            try {
-                if (!token) return;
-                if (auth.currentUser) return;
-                await signInWithCustomToken(auth, token);
-            } catch (e) {
-                console.warn("Auto-login failed", e);
-            } finally {
-                try {
-                    const u = new URL(window.location.href);
-                    u.hash = "";
-                    window.history.replaceState({}, document.title, u.pathname + u.search);
-                } catch (_) {}
-            }
-        }
-
-        await tryAutoLoginFromFragment();
+        await autoLoginFromFragment(auth, signInWithCustomToken, "ct");
 
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');

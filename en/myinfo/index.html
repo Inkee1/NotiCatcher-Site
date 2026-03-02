@@ -797,31 +797,24 @@
 
     <script type="module">
         import { auth, db, provider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, signInWithCustomToken } from "./js/firebase-config.js";
+        import { autoLoginFromFragment } from "./js/auto-login.js";
         import { doc, onSnapshot, collection, getDocs, query, where, documentId } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
 
-        async function tryAutoLoginFromFragment() {
-            const raw = window.location.hash || "";
-            const m = raw.match(/(?:^#|[&#])ct=([^&]+)/);
-            if (!m) return;
-            const token = decodeURIComponent(m[1] || "");
+        // Avoid flashing the logged-out login form while we auto-login from #ct.
+        const __ctPresentAtStart = (() => {
             try {
-                if (!token) return;
-                if (auth.currentUser) return;
-                await signInWithCustomToken(auth, token);
-            } catch (e) {
-                console.warn("Auto-login failed", e);
-            } finally {
-                try {
-                    const u = new URL(window.location.href);
-                    u.hash = "";
-                    window.history.replaceState({}, document.title, u.pathname + u.search);
-                } catch (_) {}
+                const rawHash = window.location.hash || "";
+                const params = new URLSearchParams(rawHash.startsWith("#") ? rawHash.slice(1) : rawHash);
+                return params.has("ct");
+            } catch (_) {
+                return false;
             }
-        }
+        })();
+        const __autoLoginDeadlineMs = Date.now() + 2500;
 
-        await tryAutoLoginFromFragment();
+        await autoLoginFromFragment(auth, signInWithCustomToken, "ct");
 
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
@@ -1034,10 +1027,23 @@
         if (btnBasic) btnBasic.addEventListener("click", () => changePlan("basic"));
 
         onAuthStateChanged(auth, (user) => {
-            document.getElementById('loading-view').style.display = 'none';
+            const loadingView = document.getElementById('loading-view');
+            const loggedOutView = document.getElementById('logged-out-view');
+            const loggedInView = document.getElementById('logged-in-view');
+
+            // If we *just* came in with an app-provided token, keep showing the loader
+            // until auth settles (or timeout), to avoid a brief "login form" flash.
+            if (!user && __ctPresentAtStart && Date.now() < __autoLoginDeadlineMs) {
+                if (loadingView) loadingView.style.display = 'flex';
+                if (loggedOutView) loggedOutView.classList.remove('active');
+                if (loggedInView) loggedInView.classList.remove('active');
+                return;
+            }
+
+            if (loadingView) loadingView.style.display = 'none';
             if (user) {
-                document.getElementById('logged-out-view').classList.remove('active');
-                document.getElementById('logged-in-view').classList.add('active');
+                if (loggedOutView) loggedOutView.classList.remove('active');
+                if (loggedInView) loggedInView.classList.add('active');
 
                 document.getElementById('user-name').textContent = user.displayName || 'User';
                 document.getElementById('user-email').textContent = user.email;
@@ -1073,8 +1079,8 @@
                 }
                 cachedStatsDocs = null;
                 document.getElementById('stats-section').style.display = 'none';
-                document.getElementById('logged-in-view').classList.remove('active');
-                document.getElementById('logged-out-view').classList.add('active');
+                if (loggedInView) loggedInView.classList.remove('active');
+                if (loggedOutView) loggedOutView.classList.add('active');
             }
         });
 
