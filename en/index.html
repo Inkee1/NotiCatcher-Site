@@ -20,6 +20,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lang-widget.css">
 </head>
 <body>
     <!-- Abstract Background Gradients -->
@@ -42,13 +43,6 @@
             <a href="/en/download/">Download</a>
             <a href="/en/faq/">FAQ</a>
             <a href="/en/myinfo/" id="auth-link" class="btn btn-glass" style="padding: 0.5rem 1.25rem;">Login / My Info</a>
-            
-            <!-- Language Selector -->
-            <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
-                <option value="en" selected>English</option>
-                <option value="ko">한국어</option>
-                <option value="ja">日本語</option>
-            </select>
         </div>
     </nav>
 
@@ -108,19 +102,12 @@
 
     <!-- Scripts -->
     <script type="module" src="js/firebase-config.js"></script>
+    <script src="js/lang-widget.js" defer></script>
     <script>
         // Mobile Menu Toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
         });
-
-        // Language Change Function
-        function changeLanguage(lang) {
-            localStorage.setItem("lang", lang);
-            const currentPath = window.location.pathname;
-            const newPath = currentPath.replace(/^\/[a-z]{2}\//, `/${lang}/`);
-            window.location.href = window.location.origin + newPath;
-        }
     </script>
 </body>
 </html>
