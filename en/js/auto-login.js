@@ -1,4 +1,7 @@
 export async function autoLoginFromFragment(auth, signInWithCustomToken, paramName = "ct") {
+  let attempted = false;
+  let success = false;
+  let error = null;
   try {
     const rawHash = window.location.hash || "";
     if (!rawHash || rawHash === "#") return;
@@ -7,10 +10,13 @@ export async function autoLoginFromFragment(auth, signInWithCustomToken, paramNa
     const token = params.get(paramName);
     if (!token) return;
 
+    attempted = true;
     if (!auth?.currentUser) {
       await signInWithCustomToken(auth, token);
     }
+    success = true;
   } catch (e) {
+    error = (e && e.message) ? e.message : String(e || "Auto-login failed");
     console.warn("Auto-login failed", e);
   } finally {
     try {
@@ -24,5 +30,7 @@ export async function autoLoginFromFragment(auth, signInWithCustomToken, paramNa
       window.history.replaceState({}, document.title, u.pathname + u.search + u.hash);
     } catch (_) {}
   }
+
+  return { attempted, success, error };
 }
 

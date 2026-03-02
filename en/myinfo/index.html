@@ -803,6 +803,14 @@
         const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
 
         // Avoid flashing the logged-out login form while we auto-login from #ct.
+        const __fromApp = (() => {
+            try {
+                return new URLSearchParams(window.location.search).get("src") === "app";
+            } catch (_) {
+                return false;
+            }
+        })();
+
         const __ctPresentAtStart = (() => {
             try {
                 const rawHash = window.location.hash || "";
@@ -814,7 +822,7 @@
         })();
         const __autoLoginDeadlineMs = Date.now() + 2500;
 
-        await autoLoginFromFragment(auth, signInWithCustomToken, "ct");
+        const __autoLoginResult = await autoLoginFromFragment(auth, signInWithCustomToken, "ct");
 
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
@@ -1081,6 +1089,18 @@
                 document.getElementById('stats-section').style.display = 'none';
                 if (loggedInView) loggedInView.classList.remove('active');
                 if (loggedOutView) loggedOutView.classList.add('active');
+
+                // If user came from the app, show a helpful message when auto-login failed/missing.
+                try {
+                    if (__fromApp) {
+                        if (!__ctPresentAtStart) {
+                            showMsg("Auto-login token is missing. Please try again from the app.", "error");
+                        } else if (__autoLoginResult && __autoLoginResult.attempted && !__autoLoginResult.success) {
+                            const detail = __autoLoginResult.error ? (" (" + __autoLoginResult.error + ")") : "";
+                            showMsg("Auto-login failed. Please try again." + detail, "error");
+                        }
+                    }
+                } catch (_) {}
             }
         });
 
