@@ -9,13 +9,13 @@ from pathlib import Path
 FOOTER_ID = "wisesignal-legal-footer"
 
 FOOTER_HTML = f"""
-<footer id="{FOOTER_ID}" style="padding: 2.5rem 5% 2rem; color: rgba(255,255,255,0.70); font-size: 0.9rem; line-height: 1.65; text-align: center;">
+<footer id="{FOOTER_ID}" style="margin-top: 4rem; padding: 3rem 5% 2.5rem; color: rgba(148,163,184,0.90); font-size: 0.82rem; line-height: 1.7; text-align: center;">
   <div style="max-width: 1100px; margin: 0 auto;">
-    <div style="height: 1px; background: rgba(255,255,255,0.12); margin: 0 0 1.25rem;"></div>
+    <div style="height: 1px; background: rgba(148,163,184,0.22); margin: 0 0 1.5rem;"></div>
     <div>© 2026 WiseSignal Ltd.</div>
     <div>WiseSignal Ltd is registered in England and Wales (No. 16253236).</div>
     <div>Registered Office: 71-75 Shelton Street, London, WC2H 9JQ, UK.</div>
-    <div>Contact: <a href="mailto:info@wise-signal.com" style="color: inherit; text-decoration: underline;">info@wise-signal.com</a></div>
+    <div>Contact: <a href="mailto:info@wise-signal.com" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">info@wise-signal.com</a></div>
   </div>
 </footer>
 """.strip(
@@ -24,13 +24,17 @@ FOOTER_HTML = f"""
 
 
 RE_BODY_CLOSE = re.compile(r"</body\s*>", re.IGNORECASE)
+RE_EXISTING_FOOTER = re.compile(
+    r'<footer\b[^>]*\bid\s*=\s*["\']' + re.escape(FOOTER_ID) + r'["\'][^>]*>.*?</footer\s*>',
+    re.IGNORECASE | re.DOTALL,
+)
 
 
 def patch_html(html: str) -> tuple[str, bool]:
+    # Update existing footer (style tweaks, copy changes, etc.)
     if FOOTER_ID in html:
-        return html, False
-    if "WiseSignal Ltd is registered in England and Wales" in html:
-        return html, False
+        updated = RE_EXISTING_FOOTER.sub(FOOTER_HTML, html, count=1)
+        return (updated, updated != html)
 
     m = RE_BODY_CLOSE.search(html)
     if not m:
