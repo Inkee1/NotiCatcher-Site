@@ -434,15 +434,14 @@
             <div class="card-tier">Basic</div>
             <div class="card-price">$2.99 <span>/ month</span></div>
             <ul class="card-features">
-                <li><i class='bx bxs-check-circle check'></i> <span><strong></strong>3-day free trial</strong></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span><strong>General apps</strong> keyword catches: <span class="highlight">Unlimited</span></span></li>
                 <li><i class='bx bxs-info-circle limit'></i> <span><strong>Financial & Telegram</strong> keyword catches: 2 per day</span></li>
                 <li><i class='bx bx-x cross'></i> <span class="disabled-feature">Unlimited financial & Telegram catches</span></li>
             </ul>
-            <button class="btn btn-primary btn-buy" onclick="handleCheckout('basic')" style="background: var(--secondary);">
-                       <i class='bx bx-rocket'></i> Subscribe
-
+            <button class="btn btn-primary btn-buy" id="btn-basic-cta" style="background: var(--secondary);">
+                <i class='bx bx-rocket'></i> Subscribe
             </button>
+            <div class="trial-under-btn" id="basic-trial-note" style="display:none;">3-day free trial</div>
         </div>
 
         <!-- Pro -->
@@ -451,14 +450,13 @@
             <div class="card-tier">Pro</div>
             <div class="card-price">$7.99 <span>/ month</span></div>
             <ul class="card-features">
-                <li><i class='bx bxs-check-circle check'></i> <span><strong></strong>3-day free trial</strong></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span><strong>All apps</strong> keyword catches: <span class="highlight">Unlimited</span></span></li>
                 <li><i class='bx bxs-check-circle check'></i> <span>Includes financial apps & Telegram — <strong>no limits</strong></span></li>
             </ul>
-            <button class="btn btn-primary btn-buy" onclick="handleCheckout('pro')">
-<i class='bx bx-crown'></i> Subscribe
-
+            <button class="btn btn-primary btn-buy" id="btn-pro-cta">
+                <i class='bx bx-crown'></i> Subscribe
             </button>
+            <div class="trial-under-btn" id="pro-trial-note" style="display:none;">3-day free trial</div>
         </div>
     </div>
 
@@ -607,7 +605,8 @@
     </div>
 
     <script type="module">
-        import { auth, onAuthStateChanged } from "./js/firebase-config.js";
+        import { auth, db, onAuthStateChanged } from "./js/firebase-config.js";
+        import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');
@@ -618,6 +617,171 @@
         });
 
         const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
+
+        const btnBasic = document.getElementById('btn-basic-cta');
+        const btnPro = document.getElementById('btn-pro-cta');
+        const noteBasicTrial = document.getElementById('basic-trial-note');
+        const noteProTrial = document.getElementById('pro-trial-note');
+
+        let unsubscribeUserDoc = null;
+        let ctaAction = {
+            basic: { type: 'checkout', plan: 'basic' },
+            pro: { type: 'checkout', plan: 'pro' }
+        };
+
+        function setButton(btn, iconHtml, label) {
+            if (!btn) return;
+            btn.innerHTML = `${iconHtml} ${label}`;
+        }
+
+        function setTrialNotesVisible(visible) {
+            if (noteBasicTrial) noteBasicTrial.style.display = visible ? '' : 'none';
+            if (noteProTrial) noteProTrial.style.display = visible ? '' : 'none';
+        }
+
+        function applyPricingUIFromUserDoc(data) {
+            const grade = String(data?.grade || 'free').toLowerCase();
+            const subStatus = String(data?.subscriptionStatus || '').toLowerCase();
+            const hasUsedTrial = Boolean(data?.hasUsedTrial);
+            const hasEverPaid = Boolean(data?.hasEverPaid);
+            const hadStripeHistory = Boolean(data?.hadStripeHistory);
+
+            const isTrialing = subStatus === 'trialing';
+            const isActive = subStatus === 'active';
+
+            // Defaults (new user / no subscription): show trial CTAs + show trial note.
+            let showTrial = (!hasUsedTrial && !hasEverPaid && !hadStripeHistory);
+            let basicLabel = 'Start Free Trial';
+            let proLabel = 'Start Pro Free';
+            let basicAction = { type: 'checkout', plan: 'basic' };
+            let proAction = { type: 'checkout', plan: 'pro' };
+
+            // Scenario 2: free trial in progress
+            if (isTrialing) {
+                showTrial = false;
+                basicLabel = 'Manage Plan';
+                basicAction = { type: 'portal' };
+
+                if (grade === 'basic') {
+                    proLabel = 'Upgrade to Pro';
+                    proAction = { type: 'changePlan', plan: 'pro' };
+                } else {
+                    // If already on Pro (trialing), "Upgrade" doesn't make sense.
+                    proLabel = 'Manage Plan';
+                    proAction = { type: 'portal' };
+                }
+            }
+            // Paid active subscription (not explicitly listed, but keep sensible UX)
+            else if (isActive) {
+                showTrial = false;
+                if (grade === 'basic') {
+                    basicLabel = 'Manage Plan';
+                    basicAction = { type: 'portal' };
+                    proLabel = 'Upgrade to Pro';
+                    proAction = { type: 'changePlan', plan: 'pro' };
+                } else if (grade === 'pro') {
+                    basicLabel = 'Manage Plan';
+                    basicAction = { type: 'portal' };
+                    proLabel = 'Manage Plan';
+                    proAction = { type: 'portal' };
+                } else {
+                    basicLabel = 'Manage Plan';
+                    basicAction = { type: 'portal' };
+                    proLabel = 'Manage Plan';
+                    proAction = { type: 'portal' };
+                }
+            }
+            // No active subscription
+            else {
+                // Scenario 4: resubscribe (paid before)
+                if (hasEverPaid) {
+                    showTrial = false;
+                    basicLabel = 'Resume Basic';
+                    proLabel = 'Resume Pro';
+                    basicAction = { type: 'checkout', plan: 'basic' };
+                    proAction = { type: 'checkout', plan: 'pro' };
+                }
+                // Scenario 3: trial ended, never paid
+                else if (hasUsedTrial || hadStripeHistory) {
+                    showTrial = false;
+                    basicLabel = 'Start Basic Now';
+                    proLabel = 'Go Pro Now';
+                    basicAction = { type: 'checkout', plan: 'basic' };
+                    proAction = { type: 'checkout', plan: 'pro' };
+                }
+                // Scenario 1: new user (trial eligible)
+                else {
+                    showTrial = true;
+                    basicLabel = 'Start Free Trial';
+                    proLabel = 'Start Pro Free';
+                    basicAction = { type: 'checkout', plan: 'basic' };
+                    proAction = { type: 'checkout', plan: 'pro' };
+                }
+            }
+
+            setButton(btnBasic, "<i class='bx bx-rocket'></i>", basicLabel);
+            setButton(btnPro, "<i class='bx bx-crown'></i>", proLabel);
+            setTrialNotesVisible(showTrial);
+
+            ctaAction = { basic: basicAction, pro: proAction };
+        }
+
+        async function openBillingPortal() {
+            if (!auth.currentUser) {
+                const next = "/en/price/";
+                window.location.href = `/en/myinfo/?next=${encodeURIComponent(next)}`;
+                return;
+            }
+            try {
+                const idToken = await auth.currentUser.getIdToken(true);
+                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreatePortalSession`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${idToken}`
+                    },
+                    body: JSON.stringify({})
+                });
+                const data = await resp.json().catch(() => ({}));
+                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
+                if (!data.url) throw new Error("Missing portal URL");
+                window.location.href = data.url;
+            } catch (e) {
+                console.error("Portal error", e);
+                alert((e && e.message) ? e.message : "Failed to open billing portal.");
+            }
+        }
+
+        async function changePlan(plan) {
+            if (!auth.currentUser) {
+                const returnUrl = new URL(window.location.href);
+                returnUrl.searchParams.set("checkoutPlan", plan);
+                const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
+                window.location.href = `/en/myinfo/?next=${encodeURIComponent(next)}`;
+                return;
+            }
+            try {
+                const idToken = await auth.currentUser.getIdToken(true);
+                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiChangePlan`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${idToken}`
+                    },
+                    body: JSON.stringify({ plan })
+                });
+                const data = await resp.json().catch(() => ({}));
+                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
+                if (data.hostedInvoiceUrl) {
+                    window.location.href = data.hostedInvoiceUrl;
+                    return;
+                }
+                window.location.href = "/en/myinfo/";
+            } catch (e) {
+                console.error("Change plan error", e);
+                alert((e && e.message) ? e.message : "Failed to change plan.");
+            }
+        }
 
         window.handleCheckout = async function(plan) {
             if (!auth.currentUser) {
@@ -667,6 +831,47 @@
                 document.getElementById('checkout-overlay').classList.remove('active');
             }
         }
+
+        async function handleCtaClick(which) {
+            const action = ctaAction[which];
+            if (!action) return;
+            if (action.type === 'portal') return await openBillingPortal();
+            if (action.type === 'changePlan') return await changePlan(action.plan);
+            return await window.handleCheckout(action.plan || which);
+        }
+
+        if (btnBasic) btnBasic.addEventListener('click', () => handleCtaClick('basic'));
+        if (btnPro) btnPro.addEventListener('click', () => handleCtaClick('pro'));
+
+        function stopUserDocListener() {
+            if (unsubscribeUserDoc) {
+                try { unsubscribeUserDoc(); } catch (_) {}
+                unsubscribeUserDoc = null;
+            }
+        }
+
+        function startUserDocListener(user) {
+            stopUserDocListener();
+            const ref = doc(db, "users", user.uid);
+            unsubscribeUserDoc = onSnapshot(ref, (snap) => {
+                applyPricingUIFromUserDoc(snap.exists() ? (snap.data() || {}) : {});
+            }, (err) => {
+                console.warn("User doc listener error", err);
+                applyPricingUIFromUserDoc({});
+            });
+        }
+
+        // Default UI for logged-out/new users
+        applyPricingUIFromUserDoc({});
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                startUserDocListener(user);
+            } else {
+                stopUserDocListener();
+                applyPricingUIFromUserDoc({});
+            }
+        });
 
         // If we came back from login with a plan selected, auto-start checkout.
         const params = new URLSearchParams(window.location.search);

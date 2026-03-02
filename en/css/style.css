@@ -352,3 +352,27 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 }
+
+/* Language Selector */
+.lang-select {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  outline: none;
+  backdrop-filter: blur(8px);
+  margin-left: 0.5rem;
+}
+
+.lang-select:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-select option {
+  background: var(--bg-dark);
+  color: var(--text-main);
+}

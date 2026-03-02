@@ -422,6 +422,7 @@
             border-radius: 20px;
             padding: 2rem;
             backdrop-filter: blur(var(--glass-blur));
+            margin-top: 1.5rem;
             margin-bottom: 2rem;
         }
         .stats-card > h3 {
@@ -752,8 +753,11 @@
             <div class="action-card">
                 <h3>Subscription Management</h3>
                 <div class="dashboard-btns">
-                    <button class="btn-upgrade" onclick="window.location.href='/en/price/'">
-                        <i class='bx bx-up-arrow-circle'></i> Upgrade / Renew Plan
+                    <button class="btn-upgrade" id="btn-change-pro" style="display:none;">
+                        <i class='bx bx-crown'></i> Switch to Pro
+                    </button>
+                    <button class="btn-upgrade" id="btn-change-basic" style="display:none;">
+                        <i class='bx bx-rocket'></i> Switch to Basic
                     </button>
                     <button class="btn-cancel" id="btn-manage-subscription">
                         <i class='bx bx-x-circle'></i> Cancel Subscription
@@ -895,9 +899,13 @@
             // If user scheduled cancellation, reflect it immediately in UI
             try {
                 const isCanceled = Boolean(data && data.isCanceled);
+                const pendingPlan = (data && data.pendingPlan) ? String(data.pendingPlan).toLowerCase() : null;
                 const tierEl = document.getElementById('tier-val');
-                if (tierEl && isCanceled && String(grade).toLowerCase() !== 'free') {
-                    tierEl.textContent = tierEl.textContent + " (Canceling)";
+                if (tierEl && String(grade).toLowerCase() !== 'free') {
+                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (Canceling)";
+                    if (pendingPlan && pendingPlan !== String(grade).toLowerCase()) {
+                        tierEl.textContent = tierEl.textContent + " (Changing)";
+                    }
                 }
             } catch (_) {}
 
@@ -908,6 +916,15 @@
                     nextEl.textContent = formatDate(exp.toDate());
                 }
             }
+
+            // Show relevant plan-change buttons
+            try {
+                const g = String(grade || 'free').toLowerCase();
+                const btnPro = document.getElementById('btn-change-pro');
+                const btnBasic = document.getElementById('btn-change-basic');
+                if (btnPro) btnPro.style.display = (g === 'basic') ? '' : 'none';
+                if (btnBasic) btnBasic.style.display = (g === 'pro') ? '' : 'none';
+            } catch (_) {}
         }
 
         function startUserDocListener(user) {
@@ -955,6 +972,43 @@
 
         const manageBtn = document.getElementById("btn-manage-subscription");
         if (manageBtn) manageBtn.addEventListener("click", openBillingPortal);
+
+        async function changePlan(plan) {
+            if (!auth.currentUser) return;
+            try {
+                const idToken = await auth.currentUser.getIdToken(true);
+                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiChangePlan`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${idToken}`
+                    },
+                    body: JSON.stringify({ plan })
+                });
+                const data = await resp.json().catch(() => ({}));
+                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
+
+                if (data.hostedInvoiceUrl) {
+                    window.location.href = data.hostedInvoiceUrl;
+                    return;
+                }
+
+                if (data.mode === 'scheduled_downgrade' && data.effectiveAt) {
+                    alert("Plan will change on next billing date.");
+                    return;
+                }
+
+                alert("Plan updated. It may take a few seconds to reflect.");
+            } catch (e) {
+                console.error("Change plan error", e);
+                alert((e && e.message) ? e.message : "Failed to change plan.");
+            }
+        }
+
+        const btnPro = document.getElementById("btn-change-pro");
+        if (btnPro) btnPro.addEventListener("click", () => changePlan("pro"));
+        const btnBasic = document.getElementById("btn-change-basic");
+        if (btnBasic) btnBasic.addEventListener("click", () => changePlan("basic"));
 
         onAuthStateChanged(auth, (user) => {
             document.getElementById('loading-view').style.display = 'none';
