@@ -994,13 +994,60 @@
                 alert((e && e.message) ? e.message : "Failed to change plan.");
             }
         }
+        const __PLAN_CHANGE_I18N = {"tierLabelBasic": "Osnovni", "tierLabelPro": "Pro", "tierBasicBulletNonFinancialUnlimited": "Кључна реч „Опште апликације“ хвата: Неограничено", "tierBasicBulletFinancialLimit": "Кључна реч „Финансијске апликације“ хвата: 2 дневно", "tierProBulletUnlimitedIncludingFinancial": "Кључна реч „Све апликације (укључујући финансијске)“ хвата: Неограничено"};
+
+        function __planLabel(key, fallback) {
+            try {
+                const v = __PLAN_CHANGE_I18N && __PLAN_CHANGE_I18N[key];
+                return (typeof v === 'string' && v.trim()) ? v : fallback;
+            } catch (_) {
+                return fallback;
+            }
+        }
+
+        function __planBullet(key, fallback) {
+            try {
+                const v = __PLAN_CHANGE_I18N && __PLAN_CHANGE_I18N[key];
+                return (typeof v === 'string' && v.trim()) ? v : fallback;
+            } catch (_) {
+                return fallback;
+            }
+        }
+
+        function __buildPlanConfirmMessage(targetPlan) {
+            const basicLabel = __planLabel('tierLabelBasic', 'Basic');
+            const proLabel = __planLabel('tierLabelPro', 'Pro');
+            const basicNonFin = __planBullet('tierBasicBulletNonFinancialUnlimited', "'General apps' keyword catches: Unlimited");
+            const basicFin = __planBullet('tierBasicBulletFinancialLimit', "'Financial apps & Telegram' keyword catches: 2/day");
+            const proAll = __planBullet('tierProBulletUnlimitedIncludingFinancial', "'All apps (incl. financial & Telegram)' keyword catches: Unlimited");
+
+            const parts = [];
+            const t = String(targetPlan || '').toLowerCase();
+            const targetLabel = (t === 'pro') ? proLabel : basicLabel;
+            parts.push(targetLabel);
+            parts.push('');
+            parts.push(basicLabel);
+            parts.push('- ' + basicNonFin);
+            parts.push('- ' + basicFin);
+            parts.push('');
+            parts.push(proLabel);
+            parts.push('- ' + proAll);
+            return parts.join('\n');
+        }
+
+        async function confirmAndChangePlan(plan) {
+            const msg = __buildPlanConfirmMessage(plan);
+            const ok = confirm(msg);
+            if (!ok) return;
+            return changePlan(String(plan || '').toLowerCase());
+        }
 
         const btnPro = document.getElementById("btn-change-pro");
-        if (btnPro) btnPro.addEventListener("click", () => changePlan("pro"));
+        if (btnPro) btnPro.addEventListener("click", () => confirmAndChangePlan("pro"));
         const btnBasic = document.getElementById("btn-change-basic");
-        if (btnBasic) btnBasic.addEventListener("click", () => changePlan("basic"));
+        if (btnBasic) btnBasic.addEventListener("click", () => confirmAndChangePlan("basic"));
 
-        onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, (user) => {
             const loadingView = document.getElementById('loading-view');
             const loggedOutView = document.getElementById('logged-out-view');
             const loggedInView = document.getElementById('logged-in-view');
