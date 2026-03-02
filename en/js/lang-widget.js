@@ -132,13 +132,27 @@
       `.trim();
 
       b.addEventListener("click", () => {
-        try {
-          localStorage.setItem(STORAGE_KEY, lang);
-        } catch {}
         const u = new URL(href, location.href);
         u.search = location.search;
         u.hash = location.hash;
-        location.href = u.toString();
+
+        // Defensive: verify target exists before persisting lang.
+        // Prevents "missing site" being remembered and requiring cache/localStorage cleanup.
+        const dest = u.toString();
+        fetch(dest, { method: "HEAD", cache: "no-store" })
+          .then((r) => {
+            if (r && r.ok) {
+              try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
+              location.href = dest;
+              return;
+            }
+            try { localStorage.setItem(STORAGE_KEY, "en"); } catch {}
+            location.href = new URL("/en/", location.origin).toString();
+          })
+          .catch(() => {
+            // If HEAD isn't supported, proceed with navigation but don't persist a potentially bad lang.
+            location.href = dest;
+          });
       });
 
       menu.appendChild(b);

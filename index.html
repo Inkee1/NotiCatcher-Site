@@ -82,7 +82,23 @@
 
         const lang = pickBestLang();
         localStorage.setItem("lang", lang);
-        location.replace(new URL(lang + "/", location.href).toString());
+        const target = new URL(lang + "/", location.href).toString();
+
+        // Defensive: if a language folder is missing (future locales / partial deploy),
+        // don't redirect into a cached 404 loop. Fall back to English.
+        fetch(target, { method: "HEAD", cache: "no-store" })
+            .then((r) => {
+                if (r && r.ok) {
+                    location.replace(target);
+                    return;
+                }
+                localStorage.setItem("lang", "en");
+                location.replace(new URL("en/", location.href).toString());
+            })
+            .catch(() => {
+                localStorage.setItem("lang", "en");
+                location.replace(new URL("en/", location.href).toString());
+            });
     </script>
 </body>
 </html>

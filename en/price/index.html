@@ -395,7 +395,7 @@
 
     <nav class="navbar">
         <a href="index.html" class="logo">
-            <div class="logo-icon"><i class='bx bx-bell'></i></div>
+            <div class="logo-icon"><img src="/img/appicon.png" alt="NotiCatcher"></div>
             NotiCatcher
         </a>
         <button class="menu-toggle" id="mobile-menu-btn"><i class='bx bx-menu'></i></button>
@@ -606,8 +606,30 @@
     </div>
 
     <script type="module">
-        import { auth, db, onAuthStateChanged } from "./js/firebase-config.js";
+        import { auth, db, onAuthStateChanged, signInWithCustomToken } from "./js/firebase-config.js";
         import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        async function tryAutoLoginFromFragment() {
+            const raw = window.location.hash || "";
+            const m = raw.match(/(?:^#|[&#])ct=([^&]+)/);
+            if (!m) return;
+            const token = decodeURIComponent(m[1] || "");
+            try {
+                if (!token) return;
+                if (auth.currentUser) return;
+                await signInWithCustomToken(auth, token);
+            } catch (e) {
+                console.warn("Auto-login failed", e);
+            } finally {
+                try {
+                    const u = new URL(window.location.href);
+                    u.hash = "";
+                    window.history.replaceState({}, document.title, u.pathname + u.search);
+                } catch (_) {}
+            }
+        }
+
+        await tryAutoLoginFromFragment();
 
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('nav-links').classList.toggle('active');

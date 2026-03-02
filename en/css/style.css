@@ -96,7 +96,16 @@ body {
   border-radius: 8px;
   display: grid;
   place-items: center;
+  overflow: hidden;
+  padding: 4px;
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .nav-links {
@@ -207,6 +216,11 @@ body {
   color: var(--text-muted);
   margin-bottom: 2.5rem;
   line-height: 1.8;
+}
+.hero p .hero-emphasis {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .hero-actions {
