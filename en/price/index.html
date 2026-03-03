@@ -843,7 +843,7 @@ let unsubscribeUserDoc = null;
                     throw new Error(data.error || `Failed (${resp.status})`);
                 }
                 if (data.alreadySubscribed) {
-                    alert(data.message || __WEB_SUB_COPY.msgAlreadySubscribed);
+                    alert(__WEB_SUB_COPY.msgAlreadySubscribed);
                     window.location.href = "/en/myinfo/";
                     return;
                 }
