@@ -840,18 +840,21 @@
         document.getElementById('link-forgot').addEventListener('click', () => switchToForm('forgot'));
         document.getElementById('link-back-login').addEventListener('click', () => switchToForm('login'));
 
-        function firebaseErrorMsg(code) {
+                                function firebaseErrorMsg(code) {
             const map = {
-                'auth/email-already-in-use': 'This email is already in use.',
-                'auth/invalid-email': 'Please enter a valid email address.',
-                'auth/weak-password': 'Password is too weak (min 6 chars).',
-                'auth/user-not-found': 'No account found with this email.',
-                'auth/wrong-password': 'Incorrect password.',
-                'auth/invalid-credential': 'Invalid email or password.',
-                'auth/too-many-requests': 'Too many attempts. Please try again later.',
-                'auth/network-request-failed': 'Network error. Please check your connection.'
+                'auth/email-already-in-use': __WEB_SUB_COPY.authEmailAlreadyInUse,
+                'auth/invalid-email': __WEB_SUB_COPY.authInvalidEmail,
+                'auth/weak-password': __WEB_SUB_COPY.authWeakPassword,
+                'auth/user-not-found': __WEB_SUB_COPY.authUserNotFound,
+                'auth/wrong-password': __WEB_SUB_COPY.authWrongPassword,
+                'auth/invalid-credential': __WEB_SUB_COPY.authInvalidCredential,
+                'auth/too-many-requests': __WEB_SUB_COPY.authTooManyRequests,
+                'auth/network-request-failed': __WEB_SUB_COPY.authNetworkRequestFailed,
             };
-            return map[code] || 'An error occurred. Please try again (' + code + ').';
+            const c = String(code || '');
+            if (map[c]) return map[c];
+            const tpl = __WEB_SUB_COPY.authGenericWithCode || 'An error occurred. Please try again ({code}).';
+            return tpl.replace('{code}', c);
         }
 
         function formatDate(d) {
@@ -884,7 +887,11 @@
         function applySubscriptionData(data) {
             const nextEl = document.getElementById("next-payment-val");
             const grade = (data && data.grade) ? data.grade : "free";
-            setTierUI(grade);
+            
+                
+                window.__currentGrade = String(grade || 'free').toLowerCase();
+                if (typeof __syncManageButtonUI === 'function') __syncManageButtonUI();
+setTierUI(grade);
 
             // If user scheduled cancellation, reflect it immediately in UI
             try {
@@ -956,14 +963,25 @@
                 window.location.href = data.url;
             } catch (e) {
                 console.error("Portal error", e);
-                alert((e && e.message) ? e.message : "Failed to open billing portal.");
+                __showPlanToast('✗ ' + __WEB_SUB_COPY.errPortalFailed);
             }
         }
 
-        const manageBtn = document.getElementById("btn-manage-subscription");
-        if (manageBtn) manageBtn.addEventListener("click", openBillingPortal);
+                const manageBtn = document.getElementById("btn-manage-subscription");
+        async function __handleManageSubscriptionClick() {
+            try {
+                const g = String(window.__currentGrade || 'free').toLowerCase();
+                if (g === 'free') {
+                    // base href is set (e.g., /ko/), so this resolves to /<lang>/price/
+                    window.location.href = 'price/';
+                    return;
+                }
+            } catch (_) {}
+            return openBillingPortal();
+        }
+        if (manageBtn) manageBtn.addEventListener("click", __handleManageSubscriptionClick);
 
-        async function changePlan(plan) {
+async function changePlan(plan) {
             if (!auth.currentUser) return;
             try {
                 const idToken = await auth.currentUser.getIdToken(true);
@@ -984,54 +1002,87 @@
                 }
 
                 if (data.mode === 'scheduled_downgrade' && data.effectiveAt) {
-                    alert("Plan will change on next billing date.");
+                    /* scheduled */
                     return;
                 }
 
-                alert("Plan updated. It may take a few seconds to reflect.");
+                /* updated */
             } catch (e) {
                 console.error("Change plan error", e);
-                alert((e && e.message) ? e.message : "Failed to change plan.");
+                __showPlanToast('✗ ' + __WEB_SUB_COPY.errPlanChangeFailed);
             }
         }
-        const __PLAN_CHANGE_I18N = {"tierLabelBasic": "أساسي", "tierLabelPro": "محترف", "tierBasicBulletNonFinancialUnlimited": "الكلمات الرئيسية \"للتطبيقات العامة\": غير محدودة", "tierBasicBulletFinancialLimit": "الكلمات الرئيسية \"للتطبيقات المالية\": 2/يوم", "tierProBulletUnlimitedIncludingFinancial": "الكلمات الرئيسية \"جميع التطبيقات (بما في ذلك المالية)\": غير محدودة"};
+        // --- Web subscription copy (localized per locale) ---
+        const __WEB_SUB_COPY = {
+            subscribeBasic: 'اشترك',
+            subscribePro: 'اشترك',
+            trialNote: 'تجربة مجانية لمدة 3 أيام',
+            manage: 'إدارة الاشتراك',
+            upgradeToPro: 'التبديل إلى Pro',
+            switchToBasic: 'التبديل إلى Basic',
+            basicBullets: ['التقاط الكلمات المفتاحية لتطبيقات عامة : غير محدود', 'التقاط الكلمات المفتاحية لـ المالية وTelegram : مرتان يوميًا', 'التقاط غير محدود للتطبيقات المالية وTelegram'],
+            proBullets: ['التقاط الكلمات المفتاحية لـ جميع التطبيقات : غير محدود', 'يشمل التطبيقات المالية وTelegram — بدون حدود'],
+            toastUpdated: 'تم تحديث الخطة.',
+            toastScheduled: 'سيتم تغيير الخطة في تاريخ الفوترة التالي.',
+            errPlanChangeFailed: 'تعذر تغيير الخطة.',
+            errPortalFailed: 'تعذر فتح بوابة الفوترة.',
+            errRequestFailed: 'فشل الطلب. يرجى المحاولة مرة أخرى.',
+            authEmailAlreadyInUse: 'هذا البريد الإلكتروني مستخدم بالفعل.',
+            authInvalidEmail: 'يرجى إدخال عنوان بريد إلكتروني صالح.',
+            authWeakPassword: 'كلمة المرور ضعيفة جدًا (الحد الأدنى 6 أحرف).',
+            authUserNotFound: 'لم يتم العثور على حساب بهذا البريد الإلكتروني.',
+            authWrongPassword: 'كلمة المرور غير صحيحة.',
+            authInvalidCredential: 'البريد الإلكتروني أو كلمة المرور غير صحيحة.',
+            authTooManyRequests: 'محاولات كثيرة جدًا. يرجى المحاولة لاحقًا.',
+            authNetworkRequestFailed: 'خطأ في الشبكة. يرجى التحقق من اتصالك.',
+            authGenericWithCode: 'حدث خطأ. يرجى المحاولة مرة أخرى ({code}).',
+        };
 
-        function __planLabel(key, fallback) {
+        function __showPlanToast(text) {
             try {
-                const v = __PLAN_CHANGE_I18N && __PLAN_CHANGE_I18N[key];
-                return (typeof v === 'string' && v.trim()) ? v : fallback;
-            } catch (_) {
-                return fallback;
-            }
-        }
-
-        function __planBullet(key, fallback) {
-            try {
-                const v = __PLAN_CHANGE_I18N && __PLAN_CHANGE_I18N[key];
-                return (typeof v === 'string' && v.trim()) ? v : fallback;
-            } catch (_) {
-                return fallback;
-            }
+                const id = 'plan-toast';
+                let el = document.getElementById(id);
+                if (!el) {
+                    el = document.createElement('div');
+                    el.id = id;
+                    el.style.position = 'fixed';
+                    el.style.left = '50%';
+                    el.style.bottom = '22px';
+                    el.style.transform = 'translateX(-50%)';
+                    el.style.zIndex = '9999';
+                    el.style.padding = '10px 14px';
+                    el.style.borderRadius = '12px';
+                    el.style.background = 'rgba(15, 23, 42, 0.92)';
+                    el.style.border = '1px solid rgba(148,163,184,0.22)';
+                    el.style.color = 'rgba(226,232,240,0.95)';
+                    el.style.fontSize = '0.9rem';
+                    el.style.maxWidth = '92vw';
+                    el.style.textAlign = 'center';
+                    el.style.boxShadow = '0 12px 30px rgba(0,0,0,0.35)';
+                    el.style.opacity = '0';
+                    el.style.transition = 'opacity 200ms ease, transform 200ms ease';
+                    document.body.appendChild(el);
+                }
+                el.textContent = String(text || '');
+                el.style.opacity = '1';
+                el.style.transform = 'translateX(-50%) translateY(-4px)';
+                clearTimeout(el.__t);
+                el.__t = setTimeout(() => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateX(-50%) translateY(0px)';
+                }, 1800);
+            } catch (_) {}
         }
 
         function __buildPlanConfirmMessage(targetPlan) {
-            const basicLabel = __planLabel('tierLabelBasic', 'Basic');
-            const proLabel = __planLabel('tierLabelPro', 'Pro');
-            const basicNonFin = __planBullet('tierBasicBulletNonFinancialUnlimited', "'General apps' keyword catches: Unlimited");
-            const basicFin = __planBullet('tierBasicBulletFinancialLimit', "'Financial apps & Telegram' keyword catches: 2/day");
-            const proAll = __planBullet('tierProBulletUnlimitedIncludingFinancial', "'All apps (incl. financial & Telegram)' keyword catches: Unlimited");
-
-            const parts = [];
             const t = String(targetPlan || '').toLowerCase();
-            const targetLabel = (t === 'pro') ? proLabel : basicLabel;
-            parts.push(targetLabel);
+            const title = (t === 'pro') ? __WEB_SUB_COPY.upgradeToPro : __WEB_SUB_COPY.switchToBasic;
+            const parts = [title, ''];
+            parts.push('Basic');
+            for (const b of (__WEB_SUB_COPY.basicBullets || [])) parts.push('- ' + b);
             parts.push('');
-            parts.push(basicLabel);
-            parts.push('- ' + basicNonFin);
-            parts.push('- ' + basicFin);
-            parts.push('');
-            parts.push(proLabel);
-            parts.push('- ' + proAll);
+            parts.push('Pro');
+            for (const b of (__WEB_SUB_COPY.proBullets || [])) parts.push('- ' + b);
             return parts.join('\n');
         }
 
@@ -1046,6 +1097,24 @@
         if (btnPro) btnPro.addEventListener("click", () => confirmAndChangePlan("pro"));
         const btnBasic = document.getElementById("btn-change-basic");
         if (btnBasic) btnBasic.addEventListener("click", () => confirmAndChangePlan("basic"));
+
+        function __syncManageButtonUI() {
+            try {
+                const manageBtn = document.getElementById('btn-manage-subscription');
+                if (!manageBtn) return;
+                const g = String(window.__currentGrade || 'free').toLowerCase();
+                if (g === 'free') {
+                    manageBtn.classList.remove('btn-cancel');
+                    manageBtn.classList.add('btn-upgrade');
+                    manageBtn.innerHTML = `<i class='bx bx-crown'></i> ${__WEB_SUB_COPY.subscribePro}`;
+                } else {
+                    manageBtn.classList.remove('btn-upgrade');
+                    manageBtn.classList.add('btn-cancel');
+                }
+            } catch (_) {}
+        }
+
+        __syncManageButtonUI();
 
 onAuthStateChanged(auth, (user) => {
             const loadingView = document.getElementById('loading-view');

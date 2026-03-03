@@ -559,7 +559,41 @@
         const noteBasicTrial = document.getElementById('basic-trial-note');
         const noteProTrial = document.getElementById('pro-trial-note');
 
-        let unsubscribeUserDoc = null;
+        
+
+        
+
+
+
+        
+
+
+
+        
+
+
+
+        
+
+
+
+        const __WEB_SUB_COPY = {
+                subscribeBasic: 'စာရင်းသွင်းရန်',
+                subscribePro: 'စာရင်းသွင်းရန်',
+                manage: 'စာရင်းသွင်းမှု စီမံခန့်ခွဲမှု',
+                upgradeToPro: 'Pro သို့ ပြောင်းရန်',
+                toastUpdated: 'အစီအစဉ်ကို အပ်ဒိတ်လုပ်ပြီးပါပြီ။',
+                toastScheduled: 'နောက်တစ်ကြိမ် ငွေတောင်းခံမည့်နေ့တွင် အစီအစဉ်ပြောင်းလဲမည်။',
+                errPlanChangeFailed: 'အစီအစဉ်ပြောင်းလဲရန် မအောင်မြင်ပါ။',
+                errPortalFailed: 'ငွေတောင်းခံမှု ပေါ်တယ်ကို ဖွင့်မရပါ။',
+                errRequestFailed: 'တောင်းဆိုမှု မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ။',
+                errLoginRequiredSubscribe: 'စာရင်းသွင်းရန် အရင်ဆုံး လော့ဂ်အင်ဝင်ရန် လိုအပ်သည်။\n\nယခု လော့ဂ်အင်စာမျက်နှာသို့ ခေါ်ဆောင်သွားပါမည်။',
+                msgAlreadySubscribed: 'သင်သည် စာရင်းသွင်းပြီးသား ဖြစ်သည်။',
+                errCheckoutMissingUrl: 'Checkout session ကို ဖန်တီးပြီးပါပြီ၊ သို့သော် redirect URL မရှိပါ။ အကူအညီအဖွဲ့ကို ဆက်သွယ်ပါ။',
+                errCheckoutFailed: 'Checkout မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ။',
+        };
+
+let unsubscribeUserDoc = null;
         let ctaAction = {
             basic: { type: 'checkout', plan: 'basic' },
             pro: { type: 'checkout', plan: 'pro' }
@@ -576,6 +610,8 @@
         }
 
         function applyPricingUIFromUserDoc(data) {
+                                                            
+
             const grade = String(data?.grade || 'free').toLowerCase();
             const subStatus = String(data?.subscriptionStatus || '').toLowerCase();
             const hasUsedTrial = Boolean(data?.hasUsedTrial);
@@ -586,24 +622,24 @@
             const isActive = subStatus === 'active';
 
             // Defaults (new user / no subscription): show trial CTAs + show trial note.
+                        // Defaults (new user / no subscription): show trial CTAs + show trial note.
             let showTrial = (!hasUsedTrial && !hasEverPaid && !hadStripeHistory);
-            let basicLabel = 'Start Free Trial';
-            let proLabel = 'Start Pro Free';
+            let basicLabel = __WEB_SUB_COPY.subscribeBasic;
+            let proLabel = __WEB_SUB_COPY.subscribePro;
             let basicAction = { type: 'checkout', plan: 'basic' };
             let proAction = { type: 'checkout', plan: 'pro' };
-
-            // Scenario 2: free trial in progress
+// Scenario 2: free trial in progress
             if (isTrialing) {
                 showTrial = false;
-                basicLabel = 'Manage Plan';
+                basicLabel = __WEB_SUB_COPY.manage;
                 basicAction = { type: 'portal' };
 
                 if (grade === 'basic') {
-                    proLabel = 'Upgrade to Pro';
+                    proLabel = __WEB_SUB_COPY.upgradeToPro;
                     proAction = { type: 'changePlan', plan: 'pro' };
                 } else {
                     // If already on Pro (trialing), "Upgrade" doesn't make sense.
-                    proLabel = 'Manage Plan';
+                    proLabel = __WEB_SUB_COPY.manage;
                     proAction = { type: 'portal' };
                 }
             }
@@ -611,19 +647,19 @@
             else if (isActive) {
                 showTrial = false;
                 if (grade === 'basic') {
-                    basicLabel = 'Manage Plan';
+                    basicLabel = __WEB_SUB_COPY.manage;
                     basicAction = { type: 'portal' };
-                    proLabel = 'Upgrade to Pro';
+                    proLabel = __WEB_SUB_COPY.upgradeToPro;
                     proAction = { type: 'changePlan', plan: 'pro' };
                 } else if (grade === 'pro') {
-                    basicLabel = 'Manage Plan';
+                    basicLabel = __WEB_SUB_COPY.manage;
                     basicAction = { type: 'portal' };
-                    proLabel = 'Manage Plan';
+                    proLabel = __WEB_SUB_COPY.manage;
                     proAction = { type: 'portal' };
                 } else {
-                    basicLabel = 'Manage Plan';
+                    basicLabel = __WEB_SUB_COPY.manage;
                     basicAction = { type: 'portal' };
-                    proLabel = 'Manage Plan';
+                    proLabel = __WEB_SUB_COPY.manage;
                     proAction = { type: 'portal' };
                 }
             }
@@ -632,24 +668,24 @@
                 // Scenario 4: resubscribe (paid before)
                 if (hasEverPaid) {
                     showTrial = false;
-                    basicLabel = 'Resume Basic';
-                    proLabel = 'Resume Pro';
+                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
+                    proLabel = __WEB_SUB_COPY.subscribePro;
                     basicAction = { type: 'checkout', plan: 'basic' };
                     proAction = { type: 'checkout', plan: 'pro' };
                 }
                 // Scenario 3: trial ended, never paid
                 else if (hasUsedTrial || hadStripeHistory) {
                     showTrial = false;
-                    basicLabel = 'Start Basic Now';
-                    proLabel = 'Go Pro Now';
+                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
+                    proLabel = __WEB_SUB_COPY.subscribePro;
                     basicAction = { type: 'checkout', plan: 'basic' };
                     proAction = { type: 'checkout', plan: 'pro' };
                 }
                 // Scenario 1: new user (trial eligible)
                 else {
                     showTrial = true;
-                    basicLabel = 'Start Free Trial';
-                    proLabel = 'Start Pro Free';
+                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
+                    proLabel = __WEB_SUB_COPY.subscribePro;
                     basicAction = { type: 'checkout', plan: 'basic' };
                     proAction = { type: 'checkout', plan: 'pro' };
                 }
@@ -665,7 +701,7 @@
         async function openBillingPortal() {
             if (!auth.currentUser) {
                 const next = "/my/price/";
-                window.location.href = `/en/myinfo/?next=${encodeURIComponent(next)}`;
+                window.location.href = `/my/myinfo/?next=${encodeURIComponent(next)}`;
                 return;
             }
             try {
@@ -684,7 +720,7 @@
                 window.location.href = data.url;
             } catch (e) {
                 console.error("Portal error", e);
-                alert((e && e.message) ? e.message : "Failed to open billing portal.");
+                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errPortalFailed);
             }
         }
 
@@ -693,7 +729,7 @@
                 const returnUrl = new URL(window.location.href);
                 returnUrl.searchParams.set("checkoutPlan", plan);
                 const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
-                window.location.href = `/en/myinfo/?next=${encodeURIComponent(next)}`;
+                window.location.href = `/my/myinfo/?next=${encodeURIComponent(next)}`;
                 return;
             }
             try {
@@ -715,18 +751,18 @@
                 window.location.href = "/my/myinfo/";
             } catch (e) {
                 console.error("Change plan error", e);
-                alert((e && e.message) ? e.message : "Failed to change plan.");
+                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errPlanChangeFailed);
             }
         }
 
         window.handleCheckout = async function(plan) {
             if (!auth.currentUser) {
-                alert("You need to log in before subscribing.\n\nYou'll be taken to the login page now.");
+                alert(__WEB_SUB_COPY.errLoginRequiredSubscribe);
 
                 const returnUrl = new URL(window.location.href);
                 returnUrl.searchParams.set("checkoutPlan", plan);
                 const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
-                window.location.href = `/en/myinfo/?next=${encodeURIComponent(next)}`;
+                window.location.href = `/my/myinfo/?next=${encodeURIComponent(next)}`;
                 return;
             }
 
@@ -747,7 +783,7 @@
                     throw new Error(data.error || `Failed (${resp.status})`);
                 }
                 if (data.alreadySubscribed) {
-                    alert(data.message || "You are already subscribed.");
+                    alert(data.message || __WEB_SUB_COPY.msgAlreadySubscribed);
                     window.location.href = "/my/myinfo/";
                     return;
                 }
@@ -757,13 +793,13 @@
                     return;
                 }
                 if (data.sessionId) {
-                    alert("Checkout session created, but missing redirect URL. Please contact support.");
+                    alert(__WEB_SUB_COPY.errCheckoutMissingUrl);
                     return;
                 }
                 throw new Error("Unexpected response from server");
             } catch (e) {
                 console.error("Checkout error", e);
-                alert((e && e.message) ? e.message : "Checkout failed. Please try again.");
+                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errCheckoutFailed);
                 document.getElementById('checkout-overlay').classList.remove('active');
             }
         }

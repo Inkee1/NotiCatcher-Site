@@ -31,26 +31,43 @@ async function ensureUserDoc(user) {
     const p = (async () => {
         const userRef = doc(db, "users", user.uid);
         const snap = await getDoc(userRef);
-        if (snap.exists()) return;
-
+        const now = serverTimestamp();
         const providerIds = Array.isArray(user.providerData)
             ? user.providerData.map((p) => p && p.providerId).filter(Boolean)
             : [];
 
-        await setDoc(
-            userRef,
-            {
-                uid: user.uid,
-                email: user.email || null,
-                displayName: user.displayName || null,
-                photoURL: user.photoURL || null,
-                providerIds,
-                grade: "free",
-                createdAt: serverTimestamp(),
-                updatedAt: serverTimestamp(),
-            },
-            { merge: true }
-        );
+        if (!snap.exists()) {
+            await setDoc(
+                userRef,
+                {
+                    uid: user.uid,
+                    email: user.email || null,
+                    displayName: user.displayName || null,
+                    photoURL: user.photoURL || null,
+                    providerIds,
+                    grade: "free",
+                    createdAt: now,
+                    updatedAt: now,
+                },
+                { merge: true }
+            );
+            return;
+        }
+
+        const data = snap.data() || {};
+        const updates = {
+            uid: user.uid,
+            email: user.email || null,
+            displayName: user.displayName || null,
+            photoURL: user.photoURL || null,
+            providerIds,
+            updatedAt: now,
+        };
+        if (!Object.prototype.hasOwnProperty.call(data, "grade")) {
+            updates.grade = "free";
+        }
+
+        await setDoc(userRef, updates, { merge: true });
     })().catch((err) => {
         ensuredUserDocPromises.delete(user.uid);
         throw err;

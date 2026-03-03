@@ -58,6 +58,19 @@ RE_OLD_CONFIRM_HELPERS = re.compile(
     re.IGNORECASE | re.VERBOSE,
 )
 
+RE_MANAGE_BTN_LISTENER = re.compile(
+    r"""
+    const\s+manageBtn\s*=\s*document\.getElementById\("btn-manage-subscription"\)\s*;\s*
+    if\s*\(manageBtn\)\s*manageBtn\.addEventListener\("click",\s*openBillingPortal\)\s*;\s*
+    """,
+    re.IGNORECASE | re.VERBOSE,
+)
+
+RE_GRADE_LINE = re.compile(
+    r"""const\s+grade\s*=\s*\(data\s*&&\s*data\.grade\)\s*\?\s*data\.grade\s*:\s*["']free["']\s*;\s*""",
+    re.IGNORECASE,
+)
+
 
 def build_injected_js(i18n: dict[str, str]) -> str:
     # Keep this minimal and fully translatable via ARB values already available.
@@ -104,6 +117,14 @@ def build_injected_js(i18n: dict[str, str]) -> str:
         "            parts.push('- ' + proAll);\n"
         "            return parts.join('\\n');\n"
         "        }\n\n"
+        "        function __t(key, fallback) {\n"
+        "            try {\n"
+        "                const v = __PLAN_CHANGE_I18N && __PLAN_CHANGE_I18N[key];\n"
+        "                return (typeof v === 'string' && v.trim()) ? v : fallback;\n"
+        "            } catch (_) {\n"
+        "                return fallback;\n"
+        "            }\n"
+        "        }\n\n"
         "        async function confirmAndChangePlan(plan) {\n"
         "            const msg = __buildPlanConfirmMessage(plan);\n"
         "            const ok = confirm(msg);\n"
@@ -114,6 +135,40 @@ def build_injected_js(i18n: dict[str, str]) -> str:
         "        if (btnPro) btnPro.addEventListener(\"click\", () => confirmAndChangePlan(\"pro\"));\n"
         "        const btnBasic = document.getElementById(\"btn-change-basic\");\n"
         "        if (btnBasic) btnBasic.addEventListener(\"click\", () => confirmAndChangePlan(\"basic\"));\n\n"
+        "        // Localize existing English alerts without changing behavior.\n"
+        "        (function () {\n"
+        "            try {\n"
+        "                if (typeof window.alert !== 'function') return;\n"
+        "                const _alert = window.alert;\n"
+        "                window.alert = function (msg) {\n"
+        "                    const m = String(msg || '');\n"
+        "                    if (m === 'Plan updated. It may take a few seconds to reflect.') {\n"
+        "                        return _alert(__t('tierRefreshUpdated', 'Tier updated.'));\n"
+        "                    }\n"
+        "                    if (m === 'Failed to change plan.') {\n"
+        "                        return _alert(__t('authRequestFailed', 'Request failed. Please try again.'));\n"
+        "                    }\n"
+        "                    return _alert(msg);\n"
+        "                };\n"
+        "            } catch (_) {}\n"
+        "        })();\n\n"
+        "        function __syncManageButtonUI() {\n"
+        "            try {\n"
+        "                const manageBtn = document.getElementById('btn-manage-subscription');\n"
+        "                if (!manageBtn) return;\n"
+        "                const g = String(window.__currentGrade || 'free').toLowerCase();\n"
+        "                if (g === 'free') {\n"
+        "                    manageBtn.classList.remove('btn-cancel');\n"
+        "                    manageBtn.classList.add('btn-upgrade');\n"
+        "                    manageBtn.innerHTML = `<i class='bx bx-crown'></i> ${__t('subscribePro', 'Subscribe')}`;\n"
+        "                } else {\n"
+        "                    manageBtn.classList.remove('btn-upgrade');\n"
+        "                    manageBtn.classList.add('btn-cancel');\n"
+        "                    // Keep existing localized label in HTML for subscribed users.\n"
+        "                }\n"
+        "            } catch (_) {}\n"
+        "        }\n\n"
+        "        __syncManageButtonUI();\n\n"
     )
 
 
@@ -124,6 +179,9 @@ def pick_i18n(arb: dict, fallback: dict) -> dict[str, str]:
         "tierBasicBulletNonFinancialUnlimited",
         "tierBasicBulletFinancialLimit",
         "tierProBulletUnlimitedIncludingFinancial",
+        "tierRefreshUpdated",
+        "authRequestFailed",
+        "subscribePro",
     ]
     out: dict[str, str] = {}
     for k in keys:
@@ -144,6 +202,34 @@ def patch_myinfo_file(path: Path, *, locale: str, arb_map: dict[str, dict], fall
 
     # If older (ko/en-only) confirm helpers exist, remove them to avoid duplicate declarations.
     html = RE_OLD_CONFIRM_HELPERS.sub("\n\n", html, count=1)
+
+    # Ensure grade is mirrored into a global so the manage button can switch to "subscribe" on Free.
+    def _grade_repl(m: re.Match) -> str:
+        return (
+            m.group(0)
+            + "\n                window.__currentGrade = String(grade || 'free').toLowerCase();\n"
+            + "                if (typeof __syncManageButtonUI === 'function') __syncManageButtonUI();\n"
+        )
+
+    html = RE_GRADE_LINE.sub(_grade_repl, html, count=1)
+
+    # Replace manage button click handler: Free => go to pricing, otherwise open billing portal.
+    manage_snippet = (
+        '        const manageBtn = document.getElementById("btn-manage-subscription");\n'
+        '        async function __handleManageSubscriptionClick() {\n'
+        "            try {\n"
+        "                const g = String(window.__currentGrade || 'free').toLowerCase();\n"
+        "                if (g === 'free') {\n"
+        "                    // base href is set (e.g., /ko/), so this resolves to /<lang>/price/\n"
+        "                    window.location.href = 'price/';\n"
+        "                    return;\n"
+        "                }\n"
+        "            } catch (_) {}\n"
+        "            return openBillingPortal();\n"
+        "        }\n"
+        '        if (manageBtn) manageBtn.addEventListener("click", __handleManageSubscriptionClick);\n\n'
+    )
+    html = RE_MANAGE_BTN_LISTENER.sub(manage_snippet, html, count=1)
 
     # Use a function replacement so backslashes are treated literally (avoid \n becoming a real newline).
     if RE_EXISTING_I18N_SECTION.search(html):
