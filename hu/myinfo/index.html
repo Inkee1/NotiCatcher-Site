@@ -726,7 +726,7 @@
 <div class="val pro" id="tier-val">Betöltés...</div>
 </div>
 <div class="info-card">
-<h3><i class="bx bx-calendar-check"></i> Következő fizetés</h3>
+<h3><i class="bx bx-calendar-check"></i> <span id="next-payment-label">Következő fizetés</span></h3>
 <div class="val" id="next-payment-val" style="color: #e2e8f0;">—</div>
 </div>
 </div>
@@ -903,14 +903,29 @@ setTierUI(grade);
             } catch (_) {}
 
             if (nextEl) {
+                // __nextPayCanceledAware
+                const _isCanceled = Boolean(data && data.isCanceled);
+                const _grade = String(grade || 'free').toLowerCase();
+                const _isPaid = _grade === 'basic' || _grade === 'pro';
+                const _label = _isCanceled
+                    ? (__WEB_SUB_COPY.endDateLabel || 'End date')
+                    : (__WEB_SUB_COPY.renewDateLabel || 'Renewal date');
+try {
+                    const _labelEl = document.getElementById("next-payment-label");
+                    if (_labelEl) {
+                        const _base = _labelEl.getAttribute("data-base") || (_labelEl.textContent || "");
+                        if (!_labelEl.getAttribute("data-base")) _labelEl.setAttribute("data-base", _base);
+                        _labelEl.textContent = _isPaid ? (_base + " (" + _label + ")") : _base;
+                    }
+                } catch (_) {}
                 nextEl.textContent = "—";
                 const exp = data ? data.expired : null;
-                if (exp && typeof exp.toDate === "function") {
-                    nextEl.textContent = formatDate(exp.toDate());
+                if (_isPaid && exp && typeof exp.toDate === "function") {
+                    nextEl.textContent = formatDate(exp.toDate()) + " (" + _label + ")";
                 }
             }
 
-            // Show relevant plan-change buttons
+// Show relevant plan-change buttons
             try {
                 const g = String(grade || 'free').toLowerCase();
                 const btnPro = document.getElementById('btn-change-pro');
@@ -1016,6 +1031,9 @@ async function changePlan(plan) {
             subscribePro: 'Előfizetés',
             trialNote: '3 napos ingyenes próba',
             manage: 'Előfizetés kezelése',
+            endDateLabel: 'Lejárati dátum',
+            renewDateLabel: 'Megújítási dátum',
+
             upgradeToPro: 'Váltás Pro csomagra',
             switchToBasic: 'Váltás Basic csomagra',
             basicBullets: ['Általános alkalmazások kulcsszó-észlelései: Korlátlan', 'Pénzügyi és Telegram kulcsszó-észlelések: napi 2', 'Korlátlan pénzügyi és Telegram-észlelés'],
@@ -1108,7 +1126,8 @@ async function changePlan(plan) {
                 } else {
                     manageBtn.classList.remove('btn-upgrade');
                     manageBtn.classList.add('btn-cancel');
-                }
+                        manageBtn.innerHTML = `<i class='bx bx-cog'></i> ${__WEB_SUB_COPY.manage}`;
+}
             } catch (_) {}
         }
 
