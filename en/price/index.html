@@ -648,6 +648,7 @@
         };
 
 let unsubscribeUserDoc = null;
+        let hasLoadedUserDocSnapshot = false;
         let ctaAction = {
             basic: { type: 'checkout', plan: 'basic' },
             pro: { type: 'checkout', plan: 'pro' }
@@ -656,6 +657,18 @@ let unsubscribeUserDoc = null;
         function setButton(btn, iconHtml, label) {
             if (!btn) return;
             btn.innerHTML = `${iconHtml} ${label}`;
+        }
+
+        function setPricingButtonsDisabled(disabled) {
+            if (btnBasic) btnBasic.disabled = disabled;
+            if (btnPro) btnPro.disabled = disabled;
+        }
+
+        function applyPricingLoadingState() {
+            setButton(btnBasic, "<i class='bx bx-loader-alt'></i>", "Loading...");
+            setButton(btnPro, "<i class='bx bx-loader-alt'></i>", "Loading...");
+            setTrialNotesVisible(false);
+            setPricingButtonsDisabled(true);
         }
 
         function setTrialNotesVisible(visible) {
@@ -751,6 +764,7 @@ let unsubscribeUserDoc = null;
             setButton(btnBasic, "<i class='bx bx-rocket'></i>", basicLabel);
             setButton(btnPro, "<i class='bx bx-crown'></i>", proLabel);
             setTrialNotesVisible(showTrial);
+            setPricingButtonsDisabled(false);
 
             ctaAction = { basic: basicAction, pro: proAction };
         }
@@ -865,6 +879,7 @@ let unsubscribeUserDoc = null;
         }
 
         async function handleCtaClick(which) {
+            if (auth.currentUser && !hasLoadedUserDocSnapshot) return;
             const action = ctaAction[which];
             if (!action) return;
             if (action.type === 'portal') return await openBillingPortal();
@@ -884,11 +899,15 @@ let unsubscribeUserDoc = null;
 
         function startUserDocListener(user) {
             stopUserDocListener();
+            hasLoadedUserDocSnapshot = false;
+            applyPricingLoadingState();
             const ref = doc(db, "users", user.uid);
             unsubscribeUserDoc = onSnapshot(ref, (snap) => {
+                hasLoadedUserDocSnapshot = true;
                 applyPricingUIFromUserDoc(snap.exists() ? (snap.data() || {}) : {});
             }, (err) => {
                 console.warn("User doc listener error", err);
+                hasLoadedUserDocSnapshot = true;
                 applyPricingUIFromUserDoc({});
             });
         }
@@ -901,6 +920,7 @@ let unsubscribeUserDoc = null;
                 startUserDocListener(user);
             } else {
                 stopUserDocListener();
+                hasLoadedUserDocSnapshot = false;
                 applyPricingUIFromUserDoc({});
             }
         });

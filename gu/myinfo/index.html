@@ -879,6 +879,7 @@
         }
 
         let unsubscribeUserDoc = null;
+        let hasReceivedUserDocSnapshot = false;
 
         function applySubscriptionData(data) {
             const nextEl = document.getElementById("next-payment-val");
@@ -936,9 +937,7 @@ try {
         }
 
         function startUserDocListener(user) {
-            // reset ui immediately
-            applySubscriptionData({ grade: "free" });
-
+            hasReceivedUserDocSnapshot = false;
             if (unsubscribeUserDoc) {
                 try { unsubscribeUserDoc(); } catch (_) {}
                 unsubscribeUserDoc = null;
@@ -946,6 +945,7 @@ try {
 
             const ref = doc(db, "users", user.uid);
             unsubscribeUserDoc = onSnapshot(ref, (snap) => {
+                hasReceivedUserDocSnapshot = true;
                 if (!snap.exists()) {
                     applySubscriptionData({ grade: "free" });
                     return;
@@ -1184,6 +1184,8 @@ onAuthStateChanged(auth, (user) => {
                     try { unsubscribeUserDoc(); } catch (_) {}
                     unsubscribeUserDoc = null;
                 }
+                hasReceivedUserDocSnapshot = false;
+                applySubscriptionData({ grade: \"free\" });
                 cachedStatsDocs = null;
                 document.getElementById('stats-section').style.display = 'none';
                 if (loggedInView) loggedInView.classList.remove('active');

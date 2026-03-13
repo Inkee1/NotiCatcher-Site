@@ -161,6 +161,122 @@ def patch_price_subscription_state(js_or_html: str) -> tuple[str, int]:
     return js_or_html, edits
 
 
+def patch_myinfo_userdoc_loading_state(html: str) -> tuple[str, int]:
+    edits = 0
+    if "function startUserDocListener(user)" not in html:
+        return html, 0
+    if "let hasReceivedUserDocSnapshot = false;" in html:
+        return html, 0
+
+    html, n = re.subn(
+        r"let unsubscribeUserDoc = null;",
+        "let unsubscribeUserDoc = null;\n        let hasReceivedUserDocSnapshot = false;",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r'function startUserDocListener\(user\) \{\s*\n\s*// reset ui immediately\s*\n\s*applySubscriptionData\(\{ grade: "free" \}\);\s*\n',
+        "function startUserDocListener(user) {\n            hasReceivedUserDocSnapshot = false;\n",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(unsubscribeUserDoc = onSnapshot\(ref, \(snap\) => \{\s*\n)",
+        r"\1                hasReceivedUserDocSnapshot = true;\n",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(\s*if \(unsubscribeUserDoc\) \{\s*\n\s*try \{ unsubscribeUserDoc\(\); \} catch \(_\) \{\}\s*\n\s*unsubscribeUserDoc = null;\s*\n\s*\}\s*\n)(\s*cachedStatsDocs = null;)",
+        r"\1                hasReceivedUserDocSnapshot = false;\n                applySubscriptionData({ grade: \"free\" });\n\2",
+        html,
+        count=1,
+    )
+    edits += n
+
+    return html, edits
+
+
+def patch_price_userdoc_loading_state(html: str) -> tuple[str, int]:
+    edits = 0
+    if "function startUserDocListener(user)" not in html:
+        return html, 0
+    if "let hasLoadedUserDocSnapshot = false;" in html:
+        return html, 0
+
+    html, n = re.subn(
+        r"let unsubscribeUserDoc = null;",
+        "let unsubscribeUserDoc = null;\n        let hasLoadedUserDocSnapshot = false;",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(function setButton\(btn, iconHtml, label\) \{\s*\n\s*if \(!btn\) return;\s*\n\s*btn\.innerHTML = `\$\{iconHtml\} \$\{label\}`;\s*\n\s*\}\s*\n)",
+        r"\1\n        function setPricingButtonsDisabled(disabled) {\n            if (btnBasic) btnBasic.disabled = disabled;\n            if (btnPro) btnPro.disabled = disabled;\n        }\n\n        function applyPricingLoadingState() {\n            setButton(btnBasic, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");\n            setButton(btnPro, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");\n            setTrialNotesVisible(false);\n            setPricingButtonsDisabled(true);\n        }\n",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(setTrialNotesVisible\(showTrial\);\s*\n)",
+        r"\1            setPricingButtonsDisabled(false);\n",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(async function handleCtaClick\(which\) \{\s*\n)",
+        r"\1            if (auth.currentUser && !hasLoadedUserDocSnapshot) return;\n",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(function startUserDocListener\(user\) \{\s*\n\s*stopUserDocListener\(\);\s*\n)",
+        r"\1            hasLoadedUserDocSnapshot = false;\n            applyPricingLoadingState();\n",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(unsubscribeUserDoc = onSnapshot\(ref, \(snap\) => \{\s*\n)",
+        r"\1                hasLoadedUserDocSnapshot = true;\n",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(console\.warn\(\"User doc listener error\", err\);\s*\n)",
+        r"\1                hasLoadedUserDocSnapshot = true;\n",
+        html,
+        count=1,
+    )
+    edits += n
+
+    html, n = re.subn(
+        r"(\s*stopUserDocListener\(\);\s*\n)(\s*applyPricingUIFromUserDoc\(\{\}\);)",
+        r"\1                hasLoadedUserDocSnapshot = false;\n\2",
+        html,
+        count=1,
+    )
+    edits += n
+
+    return html, edits
+
+
 def patch_stripe_locale_persistence_price(html: str, *, locale: str) -> tuple[str, int]:
     edits = 0
 
@@ -274,15 +390,16 @@ def main() -> int:
             updated = original
 
             updated, n1 = patch_price_subscription_state(updated)
-            updated, n2 = patch_stripe_locale_persistence_price(updated, locale=loc)
+            updated, n2 = patch_price_userdoc_loading_state(updated)
+            updated, n3 = patch_stripe_locale_persistence_price(updated, locale=loc)
 
             if updated != original:
                 _write_text(price, updated)
                 stats = PatchStats(
                     files_touched=stats.files_touched,
                     files_changed=stats.files_changed + 1,
-                    edits_subscription=stats.edits_subscription + n1,
-                    edits_stripe_locale=stats.edits_stripe_locale + n2,
+                    edits_subscription=stats.edits_subscription + n1 + n2,
+                    edits_stripe_locale=stats.edits_stripe_locale + n3,
                     edits_hreflang=stats.edits_hreflang,
                 )
 
@@ -297,14 +414,15 @@ def main() -> int:
             )
             original = _read_text(myinfo)
             updated = original
-            updated, n = patch_stripe_locale_persistence_myinfo(updated, locale=loc)
+            updated, n1 = patch_myinfo_userdoc_loading_state(updated)
+            updated, n2 = patch_stripe_locale_persistence_myinfo(updated, locale=loc)
             if updated != original:
                 _write_text(myinfo, updated)
                 stats = PatchStats(
                     files_touched=stats.files_touched,
                     files_changed=stats.files_changed + 1,
-                    edits_subscription=stats.edits_subscription,
-                    edits_stripe_locale=stats.edits_stripe_locale + n,
+                    edits_subscription=stats.edits_subscription + n1,
+                    edits_stripe_locale=stats.edits_stripe_locale + n2,
                     edits_hreflang=stats.edits_hreflang,
                 )
 
