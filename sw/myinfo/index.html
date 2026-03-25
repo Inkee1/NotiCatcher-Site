@@ -390,6 +390,15 @@
             border: 1px solid rgba(239, 68, 68, 0.2);
         }
         .btn-cancel:hover { background: rgba(239, 68, 68, 0.2); }
+        .dashboard-btns button:disabled {
+            cursor: not-allowed;
+            opacity: 0.72;
+            transform: none;
+            box-shadow: none;
+        }
+        .dashboard-btns button:disabled:hover {
+            transform: none;
+        }
 
         .btn-logout-wrap {
             display: flex;
@@ -733,9 +742,9 @@
 <div class="action-card">
 <h3>Usimamizi wa Usajili</h3>
 <div class="dashboard-btns">
-<button class="btn-upgrade" id="btn-change-pro" style="display:none;"><i class="bx bx-crown"></i> Badilisha hadi Pro</button>
-<button class="btn-upgrade" id="btn-change-basic" style="display:none;"><i class="bx bx-rocket"></i> Badilisha hadi Basic</button>
-<button class="btn-cancel" id="btn-manage-subscription"><i class="bx bx-x-circle"></i> Ghairi Usajili</button>
+<button class="btn-upgrade" id="btn-upgrade-subscription" style="display:none;"><i class="bx bx-crown"></i> Badilisha hadi Pro</button>
+<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> Badilisha hadi Basic</button>
+<button class="btn-cancel" id="btn-cancel-subscription" style="display:none;"><i class="bx bx-x-circle"></i> Ghairi Usajili</button>
 </div>
 </div>
 <div class="stats-card" id="stats-section" style="display:none;">
@@ -884,15 +893,22 @@
         function applySubscriptionData(data) {
             const nextEl = document.getElementById("next-payment-val");
             const grade = (data && data.grade) ? data.grade : "free";
-            
-                
-                window.__currentGrade = String(grade || 'free').toLowerCase();
-                if (typeof __syncManageButtonUI === 'function') __syncManageButtonUI();
-setTierUI(grade);
+            const isCanceled = Boolean(data && data.isCanceled);
+            const exp = data ? data.expired : null;
+            const endDateText = (exp && typeof exp.toDate === "function")
+                ? formatDate(exp.toDate())
+                : "";
+
+            window.__lastSubscriptionData = data || {};
+            window.__currentGrade = String(grade || 'free').toLowerCase();
+            window.__currentIsCanceled = isCanceled;
+            window.__currentSubscriptionEndText = endDateText;
+
+            setTierUI(grade);
+            if (typeof __syncSubscriptionActionUI === 'function') __syncSubscriptionActionUI();
 
             // If user scheduled cancellation, reflect it immediately in UI
             try {
-                const isCanceled = Boolean(data && data.isCanceled);
                 const pendingPlan = (data && data.pendingPlan) ? String(data.pendingPlan).toLowerCase() : null;
                 const tierEl = document.getElementById('tier-val');
                 if (tierEl && String(grade).toLowerCase() !== 'free') {
@@ -905,13 +921,12 @@ setTierUI(grade);
 
             if (nextEl) {
                 // __nextPayCanceledAware
-                const _isCanceled = Boolean(data && data.isCanceled);
                 const _grade = String(grade || 'free').toLowerCase();
                 const _isPaid = _grade === 'basic' || _grade === 'pro';
-                const _label = _isCanceled
+                const _label = isCanceled
                     ? (__WEB_SUB_COPY.endDateLabel || 'End date')
                     : (__WEB_SUB_COPY.renewDateLabel || 'Renewal date');
-try {
+                try {
                     const _labelEl = document.getElementById("next-payment-label");
                     if (_labelEl) {
                         const _base = _labelEl.getAttribute("data-base") || (_labelEl.textContent || "");
@@ -920,20 +935,10 @@ try {
                     }
                 } catch (_) {}
                 nextEl.textContent = "—";
-                const exp = data ? data.expired : null;
-                if (_isPaid && exp && typeof exp.toDate === "function") {
-                    nextEl.textContent = formatDate(exp.toDate()) + " (" + _label + ")";
+                if (_isPaid && endDateText) {
+                    nextEl.textContent = endDateText + " (" + _label + ")";
                 }
             }
-
-// Show relevant plan-change buttons
-            try {
-                const g = String(grade || 'free').toLowerCase();
-                const btnPro = document.getElementById('btn-change-pro');
-                const btnBasic = document.getElementById('btn-change-basic');
-                if (btnPro) btnPro.style.display = (g === 'basic') ? '' : 'none';
-                if (btnBasic) btnBasic.style.display = (g === 'pro') ? '' : 'none';
-            } catch (_) {}
         }
 
         function startUserDocListener(user) {
@@ -956,75 +961,6 @@ try {
             });
         }
 
-        async function openBillingPortal() {
-            if (!auth.currentUser) return;
-            try {
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreatePortalSession`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({})
-                });
-                const data = await resp.json().catch(() => ({}));
-                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
-                if (!data.url) throw new Error("Missing portal URL");
-                try { localStorage.setItem("lang", document.documentElement.lang || "sw"); } catch (_) {}
-                window.location.href = data.url;
-            } catch (e) {
-                console.error("Portal error", e);
-                __showPlanToast('✗ ' + __WEB_SUB_COPY.errPortalFailed);
-            }
-        }
-
-                const manageBtn = document.getElementById("btn-manage-subscription");
-        async function __handleManageSubscriptionClick() {
-            try {
-                const g = String(window.__currentGrade || 'free').toLowerCase();
-                if (g === 'free') {
-                    // base href is set (e.g., /ko/), so this resolves to /<lang>/price/
-                    window.location.href = 'price/';
-                    return;
-                }
-            } catch (_) {}
-            return openBillingPortal();
-        }
-        if (manageBtn) manageBtn.addEventListener("click", __handleManageSubscriptionClick);
-
-async function changePlan(plan) {
-            if (!auth.currentUser) return;
-            try {
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiChangePlan`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({ plan })
-                });
-                const data = await resp.json().catch(() => ({}));
-                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
-
-                if (data.hostedInvoiceUrl) {
-                    try { localStorage.setItem("lang", document.documentElement.lang || "sw"); } catch (_) {}
-                    window.location.href = data.hostedInvoiceUrl;
-                    return;
-                }
-
-                if (data.mode === 'scheduled_downgrade' && data.effectiveAt) {
-                    /* scheduled */
-                    return;
-                }
-
-                /* updated */
-            } catch (e) {
-                console.error("Change plan error", e);
-                __showPlanToast('✗ ' + __WEB_SUB_COPY.errPlanChangeFailed);
-            }
-        }
         // --- Web subscription copy (localized per locale) ---
         const __WEB_SUB_COPY = {
             subscribeBasic: 'Jiandikishe',
@@ -1053,6 +989,52 @@ async function changePlan(plan) {
             authNetworkRequestFailed: 'Hitilafu ya mtandao. Tafadhali angalia muunganisho wako.',
             authGenericWithCode: 'Hitilafu imetokea. Tafadhali jaribu tena ({code}).',
         };
+
+        const __WEB_SUB_COPY_LOCALE_OVERRIDES = {
+            ko: {
+                upgradeSubscription: "구독 업그레이드",
+                changeSubscription: "구독 변경하기",
+                cancelSubscription: "구독 취소",
+                cancellationScheduled: "구독 취소 예정",
+                cancelConfirmTitle: "구독을 취소할까요?",
+                cancelConfirmBody: "{date}까지 구독이 유지되며, 이후 자동 갱신되지 않습니다.",
+                cancelConfirmBodyNoDate: "현재 결제 기간이 끝날 때까지 구독이 유지되며, 이후 자동 갱신되지 않습니다.",
+                toastCancelScheduled: "구독 취소가 예약되었습니다.",
+                toastAlreadyCanceled: "이미 구독 취소가 예약되어 있습니다.",
+                errCancelFailed: "구독 취소에 실패했습니다.",
+            },
+        };
+        try {
+            const __locale = String(document.documentElement.lang || '').toLowerCase();
+            const __override = __WEB_SUB_COPY_LOCALE_OVERRIDES[__locale];
+            if (__override) Object.assign(__WEB_SUB_COPY, __override);
+        } catch (_) {}
+
+        const __WEB_SUB_BUTTON_TEXT = (() => {
+            const readText = (id) => {
+                try {
+                    const el = document.getElementById(id);
+                    return el ? String(el.textContent || '').replace(/\s+/g, ' ').trim() : '';
+                } catch (_) {
+                    return '';
+                }
+            };
+            return {
+                upgrade: readText('btn-upgrade-subscription'),
+                cancel: readText('btn-cancel-subscription'),
+            };
+        })();
+
+        __WEB_SUB_COPY.upgradeSubscription = __WEB_SUB_COPY.upgradeSubscription || __WEB_SUB_COPY.upgradeToPro || __WEB_SUB_BUTTON_TEXT.upgrade || 'Upgrade Subscription';
+        __WEB_SUB_COPY.changeSubscription = __WEB_SUB_COPY.changeSubscription || __WEB_SUB_COPY.manage || 'Change Subscription';
+        __WEB_SUB_COPY.cancelSubscription = __WEB_SUB_COPY.cancelSubscription || __WEB_SUB_BUTTON_TEXT.cancel || 'Cancel Subscription';
+        __WEB_SUB_COPY.cancellationScheduled = __WEB_SUB_COPY.cancellationScheduled || 'Cancellation Scheduled';
+        __WEB_SUB_COPY.cancelConfirmTitle = __WEB_SUB_COPY.cancelConfirmTitle || __WEB_SUB_COPY.cancelSubscription || 'Cancel Subscription?';
+        __WEB_SUB_COPY.cancelConfirmBody = __WEB_SUB_COPY.cancelConfirmBody || 'Your subscription will remain active until {date}. After that, it will not renew.';
+        __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || 'Your subscription will remain active until the end of the current billing period. After that, it will not renew.';
+        __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || 'Subscription cancellation scheduled.';
+        __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || 'Cancellation is already scheduled.';
+        __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || 'Failed to cancel subscription.';
 
         function __showPlanToast(text) {
             try {
@@ -1090,48 +1072,98 @@ async function changePlan(plan) {
             } catch (_) {}
         }
 
-        function __buildPlanConfirmMessage(targetPlan) {
-            const t = String(targetPlan || '').toLowerCase();
-            const title = (t === 'pro') ? __WEB_SUB_COPY.upgradeToPro : __WEB_SUB_COPY.switchToBasic;
-            const parts = [title, ''];
-            parts.push('Basic');
-            for (const b of (__WEB_SUB_COPY.basicBullets || [])) parts.push('- ' + b);
-            parts.push('');
-            parts.push('Pro');
-            for (const b of (__WEB_SUB_COPY.proBullets || [])) parts.push('- ' + b);
-            return parts.join('\n');
+        function goToPricingPage() {
+            window.location.href = 'price/';
         }
 
-        async function confirmAndChangePlan(plan) {
-            const msg = __buildPlanConfirmMessage(plan);
-            const ok = confirm(msg);
-            if (!ok) return;
-            return changePlan(String(plan || '').toLowerCase());
+        async function cancelSubscription() {
+            if (!auth.currentUser) return;
+
+            const idToken = await auth.currentUser.getIdToken(true);
+            const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCancelSubscription`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${idToken}`
+                },
+                body: JSON.stringify({})
+            });
+            const data = await resp.json().catch(() => ({}));
+            if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
+
+            const nextData = Object.assign({}, window.__lastSubscriptionData || {}, {
+                isCanceled: true
+            });
+            applySubscriptionData(nextData);
+
+            const toastText = data.alreadyCanceled
+                ? __WEB_SUB_COPY.toastAlreadyCanceled
+                : __WEB_SUB_COPY.toastCancelScheduled;
+            __showPlanToast('✓ ' + toastText);
+            return data;
         }
 
-        const btnPro = document.getElementById("btn-change-pro");
-        if (btnPro) btnPro.addEventListener("click", () => confirmAndChangePlan("pro"));
-        const btnBasic = document.getElementById("btn-change-basic");
-        if (btnBasic) btnBasic.addEventListener("click", () => confirmAndChangePlan("basic"));
-
-        function __syncManageButtonUI() {
+        async function __handleCancelSubscriptionClick() {
             try {
-                const manageBtn = document.getElementById('btn-manage-subscription');
-                if (!manageBtn) return;
                 const g = String(window.__currentGrade || 'free').toLowerCase();
-                if (g === 'free') {
-                    manageBtn.classList.remove('btn-cancel');
-                    manageBtn.classList.add('btn-upgrade');
-                    manageBtn.innerHTML = `<i class='bx bx-crown'></i> ${__WEB_SUB_COPY.subscribePro}`;
-                } else {
-                    manageBtn.classList.remove('btn-upgrade');
-                    manageBtn.classList.add('btn-cancel');
-                        manageBtn.innerHTML = `<i class='bx bx-cog'></i> ${__WEB_SUB_COPY.manage}`;
-}
+                if (g !== 'basic' && g !== 'pro') return;
+                if (Boolean(window.__currentIsCanceled)) return;
+
+                const when = String(window.__currentSubscriptionEndText || '').trim();
+                const body = when
+                    ? __WEB_SUB_COPY.cancelConfirmBody.replace('{date}', when)
+                    : __WEB_SUB_COPY.cancelConfirmBodyNoDate;
+                const ok = confirm(`${__WEB_SUB_COPY.cancelConfirmTitle}\n\n${body}`);
+                if (!ok) return;
+
+                await cancelSubscription();
+            } catch (e) {
+                console.error("Cancel subscription error", e);
+                const msg = (e && e.message) ? e.message : __WEB_SUB_COPY.errCancelFailed;
+                __showPlanToast('✗ ' + msg);
+            }
+        }
+
+        const upgradeBtn = document.getElementById("btn-upgrade-subscription");
+        if (upgradeBtn) upgradeBtn.addEventListener("click", goToPricingPage);
+        const changeSubscriptionBtn = document.getElementById("btn-change-subscription");
+        if (changeSubscriptionBtn) changeSubscriptionBtn.addEventListener("click", goToPricingPage);
+        const cancelBtn = document.getElementById("btn-cancel-subscription");
+        if (cancelBtn) cancelBtn.addEventListener("click", __handleCancelSubscriptionClick);
+
+        function __syncSubscriptionActionUI() {
+            try {
+                const upgradeBtn = document.getElementById('btn-upgrade-subscription');
+                const changeSubscriptionBtn = document.getElementById('btn-change-subscription');
+                const cancelBtn = document.getElementById('btn-cancel-subscription');
+                const g = String(window.__currentGrade || 'free').toLowerCase();
+                const isCanceled = Boolean(window.__currentIsCanceled);
+                const isPaid = g === 'basic' || g === 'pro';
+
+                if (upgradeBtn) {
+                    const showUpgrade = g === 'free' || g === 'basic';
+                    upgradeBtn.style.display = showUpgrade ? '' : 'none';
+                    upgradeBtn.disabled = false;
+                    upgradeBtn.innerHTML = `<i class='bx bx-crown'></i> ${g === 'free' ? __WEB_SUB_COPY.subscribePro : __WEB_SUB_COPY.upgradeSubscription}`;
+                }
+
+                if (changeSubscriptionBtn) {
+                    changeSubscriptionBtn.style.display = (g === 'pro') ? '' : 'none';
+                    changeSubscriptionBtn.disabled = false;
+                    changeSubscriptionBtn.innerHTML = `<i class='bx bx-transfer-alt'></i> ${__WEB_SUB_COPY.changeSubscription}`;
+                }
+
+                if (cancelBtn) {
+                    cancelBtn.style.display = isPaid ? '' : 'none';
+                    cancelBtn.disabled = !isPaid || isCanceled;
+                    cancelBtn.innerHTML = isCanceled
+                        ? `<i class='bx bx-check-circle'></i> ${__WEB_SUB_COPY.cancellationScheduled}`
+                        : `<i class='bx bx-x-circle'></i> ${__WEB_SUB_COPY.cancelSubscription}`;
+                }
             } catch (_) {}
         }
 
-        __syncManageButtonUI();
+        __syncSubscriptionActionUI();
 
 onAuthStateChanged(auth, (user) => {
             const loadingView = document.getElementById('loading-view');
@@ -1185,7 +1217,7 @@ onAuthStateChanged(auth, (user) => {
                     unsubscribeUserDoc = null;
                 }
                 hasReceivedUserDocSnapshot = false;
-                applySubscriptionData({ grade: \"free\" });
+                applySubscriptionData({ grade: "free" });
                 cachedStatsDocs = null;
                 document.getElementById('stats-section').style.display = 'none';
                 if (loggedInView) loggedInView.classList.remove('active');
