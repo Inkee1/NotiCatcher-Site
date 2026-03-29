@@ -7,6 +7,8 @@
 <title>NotiCatcher - Mes infos</title>
 <meta content="Connectez-vous à NotiCatcher pour gérer votre compte et vos préférences de notification." name="description"/>
 <base href="/fr/"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 <link href="css/style.css" rel="stylesheet"/>
@@ -609,6 +611,18 @@
             .stats-total-value { font-size: 1.5rem; }
         }
     </style>
+<link href="/img/appicon.png" rel="icon" type="image/png"/>
+<meta content="NotiCatcher - Mes infos" property="og:title"/>
+<meta content="Connectez-vous à NotiCatcher pour gérer votre compte et vos préférences de notification." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://noticatcher.com/fr/myinfo/" property="og:url"/>
+<meta content="https://noticatcher.com/img/main1.jpg" property="og:image"/>
+<meta content="NotiCatcher" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="NotiCatcher - Mes infos" name="twitter:title"/>
+<meta content="Connectez-vous à NotiCatcher pour gérer votre compte et vos préférences de notification." name="twitter:description"/>
+<meta content="https://noticatcher.com/img/main1.jpg" name="twitter:image"/>
+<meta content="noindex,follow" name="robots"/>
 </head>
 <body>
 <div class="bg-glow"></div>
@@ -912,9 +926,9 @@
                 const pendingPlan = (data && data.pendingPlan) ? String(data.pendingPlan).toLowerCase() : null;
                 const tierEl = document.getElementById('tier-val');
                 if (tierEl && String(grade).toLowerCase() !== 'free') {
-                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (Canceling)";
+                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "Canceling" + ")";
                     if (pendingPlan && pendingPlan !== String(grade).toLowerCase()) {
-                        tierEl.textContent = tierEl.textContent + " (Changing)";
+                        tierEl.textContent = tierEl.textContent + " (" + "Changing" + ")";
                     }
                 }
             } catch (_) {}
@@ -1021,20 +1035,21 @@
             };
             return {
                 upgrade: readText('btn-upgrade-subscription'),
+                change: readText('btn-change-subscription'),
                 cancel: readText('btn-cancel-subscription'),
             };
         })();
 
-        __WEB_SUB_COPY.upgradeSubscription = __WEB_SUB_COPY.upgradeSubscription || __WEB_SUB_COPY.upgradeToPro || __WEB_SUB_BUTTON_TEXT.upgrade || 'Upgrade Subscription';
-        __WEB_SUB_COPY.changeSubscription = __WEB_SUB_COPY.changeSubscription || __WEB_SUB_COPY.manage || 'Change Subscription';
-        __WEB_SUB_COPY.cancelSubscription = __WEB_SUB_COPY.cancelSubscription || __WEB_SUB_BUTTON_TEXT.cancel || 'Cancel Subscription';
-        __WEB_SUB_COPY.cancellationScheduled = __WEB_SUB_COPY.cancellationScheduled || 'Cancellation Scheduled';
-        __WEB_SUB_COPY.cancelConfirmTitle = __WEB_SUB_COPY.cancelConfirmTitle || __WEB_SUB_COPY.cancelSubscription || 'Cancel Subscription?';
-        __WEB_SUB_COPY.cancelConfirmBody = __WEB_SUB_COPY.cancelConfirmBody || 'Your subscription will remain active until {date}. After that, it will not renew.';
-        __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || 'Your subscription will remain active until the end of the current billing period. After that, it will not renew.';
-        __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || 'Subscription cancellation scheduled.';
-        __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || 'Cancellation is already scheduled.';
-        __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || 'Failed to cancel subscription.';
+                                __WEB_SUB_COPY.upgradeSubscription = __WEB_SUB_COPY.upgradeSubscription || __WEB_SUB_BUTTON_TEXT.upgrade || __WEB_SUB_COPY.upgradeToPro || 'Upgrade Subscription';
+                                __WEB_SUB_COPY.changeSubscription = __WEB_SUB_COPY.changeSubscription || __WEB_SUB_BUTTON_TEXT.change || __WEB_SUB_COPY.manage || 'Change Subscription';
+                                __WEB_SUB_COPY.cancelSubscription = __WEB_SUB_COPY.cancelSubscription || __WEB_SUB_BUTTON_TEXT.cancel || 'Cancel Subscription';
+                                __WEB_SUB_COPY.cancellationScheduled = __WEB_SUB_COPY.cancellationScheduled || "Annulation planifiée";
+                                __WEB_SUB_COPY.cancelConfirmTitle = __WEB_SUB_COPY.cancelConfirmTitle || "Annuler l’abonnement ?";
+                                __WEB_SUB_COPY.cancelConfirmBody = __WEB_SUB_COPY.cancelConfirmBody || "Votre abonnement restera actif jusqu’au {date}. Après cela, il ne sera pas renouvelé.";
+                                __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || "Votre abonnement restera actif jusqu’à la fin de la période de facturation en cours. Après cela, il ne sera pas renouvelé.";
+                                __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || "Annulation de l’abonnement planifiée.";
+                                __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || "L’annulation est déjà planifiée.";
+                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || "Échec de l’annulation de l’abonnement.";
 
         function __showPlanToast(text) {
             try {
@@ -1227,10 +1242,10 @@ onAuthStateChanged(auth, (user) => {
                 try {
                     if (__fromApp) {
                         if (!__ctPresentAtStart) {
-                            showMsg("Auto-login token is missing. Please try again from the app.", "error");
+                            showMsg("Le jeton de connexion automatique est manquant. Veuillez réessayer depuis l’application.", "error");
                         } else if (__autoLoginResult && __autoLoginResult.attempted && !__autoLoginResult.success) {
                             const detail = __autoLoginResult.error ? (" (" + __autoLoginResult.error + ")") : "";
-                            showMsg("Auto-login failed. Please try again." + detail, "error");
+                            showMsg("La connexion automatique a échoué. Veuillez réessayer." + detail, "error");
                         }
                     }
                 } catch (_) {}
@@ -1243,7 +1258,7 @@ onAuthStateChanged(auth, (user) => {
                 await signInWithPopup(auth, provider);
             } catch (e) {
                 console.error("Google Login Error:", e);
-                showMsg('Google sign-in failed. Please try again.', 'error');
+                showMsg("Échec de la connexion Google.", 'error');
             }
         }
 
@@ -1262,7 +1277,7 @@ onAuthStateChanged(auth, (user) => {
             const btn = formLogin.querySelector('.btn-submit');
             
             const originalBtnContent = btn.innerHTML;
-            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Signing In...';
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "Se connecter...";
             btn.disabled = true;
 
             try {
@@ -1282,13 +1297,13 @@ onAuthStateChanged(auth, (user) => {
             const pw2 = document.getElementById('signup-pw2').value;
 
             if (pw !== pw2) {
-                showMsg('Passwords do not match.', 'error');
+                showMsg("Les mots de passe ne correspondent pas.", 'error');
                 return;
             }
 
             const btn = formSignup.querySelector('.btn-submit');
             const originalBtnContent = btn.innerHTML;
-            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Creating Account...';
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "S'inscrire...";
             btn.disabled = true;
 
             try {
@@ -1308,12 +1323,12 @@ onAuthStateChanged(auth, (user) => {
             const btn = formForgot.querySelector('.btn-submit');
             
             const originalBtnContent = btn.innerHTML;
-            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "Envoi en cours...";
             btn.disabled = true;
 
             try {
                 await sendPasswordResetEmail(auth, email);
-                showMsg('Password reset link sent! Check your inbox.', 'success');
+                showMsg("E-mail de réinitialisation du mot de passe envoyé.", 'success');
             } catch (err) {
                 showMsg(firebaseErrorMsg(err.code), 'error');
             }
@@ -1392,7 +1407,7 @@ onAuthStateChanged(auth, (user) => {
             const listEl = document.getElementById('keyword-list');
 
             if (!cachedStatsDocs) {
-                listEl.innerHTML = `<div class="keyword-empty"><i class='bx bx-info-circle'></i>No data available</div>`;
+                listEl.innerHTML = "<div class=\"keyword-empty\"><i class='bx bx-info-circle'></i>" + "Aucune donnée disponible" + "</div>";
                 totalEl.textContent = '—';
                 return;
             }
@@ -1401,7 +1416,7 @@ onAuthStateChanged(auth, (user) => {
             totalEl.textContent = totalCount.toLocaleString();
 
             if (keywords.length === 0) {
-                listEl.innerHTML = `<div class="keyword-empty"><i class='bx bx-info-circle'></i>No keyword data for this period</div>`;
+                listEl.innerHTML = "<div class=\"keyword-empty\"><i class='bx bx-info-circle'></i>" + "Aucune donnée de mots-clés pour cette période" + "</div>";
                 return;
             }
 

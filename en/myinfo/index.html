@@ -11,6 +11,8 @@
 
 
 <base href="/en/"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 <link href="css/style.css" rel="stylesheet"/>
@@ -613,7 +615,19 @@
             .stats-total-value { font-size: 1.5rem; }
         }
     </style>
-</meta></head>
+<link href="/img/appicon.png" rel="icon" type="image/png"/>
+<meta content="NotiCatcher - My Info" property="og:title"/>
+<meta content="Sign in to NotiCatcher to manage your account and notification preferences." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://noticatcher.com/en/myinfo/" property="og:url"/>
+<meta content="https://noticatcher.com/img/main1.jpg" property="og:image"/>
+<meta content="NotiCatcher" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="NotiCatcher - My Info" name="twitter:title"/>
+<meta content="Sign in to NotiCatcher to manage your account and notification preferences." name="twitter:description"/>
+<meta content="https://noticatcher.com/img/main1.jpg" name="twitter:image"/>
+<meta content="noindex,follow" name="robots"/>
+</head>
 <body>
 <div class="bg-glow"></div>
 <nav class="navbar">
@@ -932,9 +946,9 @@
                 const pendingPlan = (data && data.pendingPlan) ? String(data.pendingPlan).toLowerCase() : null;
                 const tierEl = document.getElementById('tier-val');
                 if (tierEl && String(grade).toLowerCase() !== 'free') {
-                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (Canceling)";
+                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "Canceling" + ")";
                     if (pendingPlan && pendingPlan !== String(grade).toLowerCase()) {
-                        tierEl.textContent = tierEl.textContent + " (Changing)";
+                        tierEl.textContent = tierEl.textContent + " (" + "Changing" + ")";
                     }
                 }
             } catch (_) {}
@@ -1216,7 +1230,7 @@ onAuthStateChanged(auth, (user) => {
                 await signInWithPopup(auth, provider);
             } catch (e) {
                 console.error("Google Login Error:", e);
-                showMsg('Google sign-in failed. Please try again.', 'error');
+                showMsg("Google sign-in failed.", 'error');
             }
         }
 
@@ -1235,7 +1249,7 @@ onAuthStateChanged(auth, (user) => {
             const btn = formLogin.querySelector('.btn-submit');
             
             const originalBtnContent = btn.innerHTML;
-            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Signing In...';
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "Sign in...";
             btn.disabled = true;
 
             try {
@@ -1255,13 +1269,13 @@ onAuthStateChanged(auth, (user) => {
             const pw2 = document.getElementById('signup-pw2').value;
 
             if (pw !== pw2) {
-                showMsg('Passwords do not match.', 'error');
+                showMsg("Passwords do not match.", 'error');
                 return;
             }
 
             const btn = formSignup.querySelector('.btn-submit');
             const originalBtnContent = btn.innerHTML;
-            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Creating Account...';
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "Sign up...";
             btn.disabled = true;
 
             try {
@@ -1281,12 +1295,12 @@ onAuthStateChanged(auth, (user) => {
             const btn = formForgot.querySelector('.btn-submit');
             
             const originalBtnContent = btn.innerHTML;
-            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+            btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "Sending...";
             btn.disabled = true;
 
             try {
                 await sendPasswordResetEmail(auth, email);
-                showMsg('Password reset link sent! Check your inbox.', 'success');
+                showMsg("Password reset email sent.", 'success');
             } catch (err) {
                 showMsg(firebaseErrorMsg(err.code), 'error');
             }
@@ -1365,7 +1379,7 @@ onAuthStateChanged(auth, (user) => {
             const listEl = document.getElementById('keyword-list');
 
             if (!cachedStatsDocs) {
-                listEl.innerHTML = `<div class="keyword-empty"><i class='bx bx-info-circle'></i>No data available</div>`;
+                listEl.innerHTML = "<div class=\"keyword-empty\"><i class='bx bx-info-circle'></i>" + "No data available" + "</div>";
                 totalEl.textContent = '—';
                 return;
             }
@@ -1374,7 +1388,7 @@ onAuthStateChanged(auth, (user) => {
             totalEl.textContent = totalCount.toLocaleString();
 
             if (keywords.length === 0) {
-                listEl.innerHTML = `<div class="keyword-empty"><i class='bx bx-info-circle'></i>No keyword data for this period</div>`;
+                listEl.innerHTML = "<div class=\"keyword-empty\"><i class='bx bx-info-circle'></i>" + "No keyword data for this period" + "</div>";
                 return;
             }
 
