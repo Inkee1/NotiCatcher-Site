@@ -1,5 +1,6 @@
 (() => {
   const STORAGE_KEY = "lang";
+  const MANUAL_STORAGE_KEY = "lang_manual";
 
   function normalizeLang(tag) {
     return (tag || "")
@@ -142,11 +143,11 @@
         fetch(dest, { method: "HEAD", cache: "no-store" })
           .then((r) => {
             if (r && r.ok) {
-              try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
+              try { localStorage.setItem(STORAGE_KEY, lang); localStorage.setItem(MANUAL_STORAGE_KEY, lang); } catch {}
               location.href = dest;
               return;
             }
-            try { localStorage.setItem(STORAGE_KEY, "en"); } catch {}
+            try { localStorage.setItem(STORAGE_KEY, "en"); localStorage.setItem(MANUAL_STORAGE_KEY, "en"); } catch {}
             location.href = new URL("/en/", location.origin).toString();
           })
           .catch(() => {

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>NotiCatcher - Never Miss Important Notifications with Alarms</title>
     <meta name="description" content="Never miss important notifications. NotiCatcher bypasses silent mode and delivers powerful keyword alerts." />
-    <link rel="canonical" href="https://noticatcher.com/en/" />
+    <link rel="canonical" href="https://noticatcher.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://noticatcher.com/" />
     <style>
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -34,7 +35,7 @@
 <meta content="NotiCatcher - Never Miss Important Notifications with Alarms" property="og:title"/>
 <meta content="Never miss important notifications. NotiCatcher bypasses silent mode and delivers powerful keyword alerts." property="og:description"/>
 <meta content="website" property="og:type"/>
-<meta content="https://noticatcher.com/en/" property="og:url"/>
+<meta content="https://noticatcher.com/" property="og:url"/>
 <meta content="https://noticatcher.com/img/main1.jpg" property="og:image"/>
 <meta content="NotiCatcher" property="og:site_name"/>
 <meta content="summary_large_image" name="twitter:card"/>
@@ -50,6 +51,7 @@
     <script>
         const SUPPORTED = ["en", "am", "ar", "bg", "bn", "cs", "da", "de", "el", "es", "es-419", "et", "fa", "fi", "fil", "fr", "gu", "he", "hi", "hr", "hu", "id", "it", "ja", "km", "kn", "ko", "lo", "lt", "lv", "ml", "mr", "ms", "my", "nl", "no", "pa", "pl", "pt", "pt-br", "ro", "ru", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tr", "uk", "ur", "vi", "zh", "zh-hans", "zh-hant"];
         const ALIASES = { "ko-kr": "ko" };
+        const MANUAL_STORAGE_KEY = "lang_manual";
 
         function normalize(tag) {
             return tag ? tag.toLowerCase().replace(/_/g, "-") : "";
@@ -69,14 +71,22 @@
             return SUPPORTED.includes(t) ? t : "";
         }
 
+        function getStoredManualLang() {
+            try {
+                return localStorage.getItem(MANUAL_STORAGE_KEY);
+            } catch (_) {
+                return "";
+            }
+        }
+
         function pickBestLang() {
             const qsLang = new URLSearchParams(location.search).get("lang");
-            const saved = localStorage.getItem("lang");
+            const manual = getStoredManualLang();
 
             let r = resolve(qsLang);
             if (r) return r;
 
-            r = resolve(saved);
+            r = resolve(manual);
             if (r) return r;
 
             const list = (navigator.languages && navigator.languages.length)
@@ -92,7 +102,6 @@
         }
 
         const lang = pickBestLang();
-        localStorage.setItem("lang", lang);
         const target = new URL(lang + "/", location.href).toString();
 
         // Defensive: if a language folder is missing (future locales / partial deploy),
@@ -103,11 +112,9 @@
                     location.replace(target);
                     return;
                 }
-                localStorage.setItem("lang", "en");
                 location.replace(new URL("en/", location.href).toString());
             })
             .catch(() => {
-                localStorage.setItem("lang", "en");
                 location.replace(new URL("en/", location.href).toString());
             });
     </script>
