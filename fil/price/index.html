@@ -242,24 +242,34 @@
         .comparison-table .col-pro { color: var(--primary); font-weight: 600; }
 
         /* Restricted Apps Button & Modal */
+        @keyframes pulse-btn {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+
         .restricted-apps-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             margin-top: 1.5rem;
-            padding: 0.7rem 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-light);
+            padding: 0.85rem 1.5rem;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid #f59e0b;
             border-radius: 12px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
             font-family: inherit;
+            animation: pulse-btn 2s infinite;
         }
         .restricted-apps-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-main);
+            background: rgba(245, 158, 11, 0.25);
+            transform: translateY(-2px);
+            animation: none;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
         }
 
         .modal-overlay {
@@ -368,8 +378,8 @@
             .restricted-apps-btn {
                 width: 100%;
                 justify-content: center;
-                font-size: 0.95rem;
-                padding: 0.85rem 1rem;
+                font-size: 1.05rem;
+                padding: 1rem;
                 margin-top: 1.25rem;
             }
 
