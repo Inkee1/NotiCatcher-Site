@@ -18,6 +18,8 @@ except Exception:
 RE_LOCALE_DIR = re.compile(r"^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$")
 BASE_DOMAIN = "https://noticatcher.com"
 OG_IMAGE_URL = f"{BASE_DOMAIN}/img/main1.jpg"
+NOINDEX_FOLLOW_META = '<meta content="noindex,follow" name="robots"/>'
+LOCALE_HOMEPAGE_RE = re.compile(r"^[^/\\]+/index\.html$")
 
 FAQ_SOURCE_EN = (
     "These include crypto exchanges (Binance, Bybit, Coinbase, etc.), trading platforms "
@@ -441,8 +443,17 @@ def insert_before_head_close(html_text: str, snippet: str) -> str:
     return re.sub(r"</head>", snippet + "\n</head>", html_text, count=1, flags=re.IGNORECASE)
 
 
+def normalize_x_default_homepage(html_text: str) -> str:
+    pattern = re.compile(
+        rf'(<link\b(?=[^>]*\bhreflang=["\']x-default["\'])[^>]*\bhref=["\']){re.escape(BASE_DOMAIN)}/(["\'][^>]*>)',
+        flags=re.IGNORECASE,
+    )
+    return pattern.sub(rf"\1{BASE_DOMAIN}/en/\2", html_text, count=1)
+
+
 def ensure_meta_tag(html_text: str, rel_path: str) -> tuple[str, bool]:
     original = html_text
+    normalized_rel_path = rel_path.replace("\\", "/")
     html_text = html_text.replace("</meta></head>", "</head>")
 
     font_match = re.search(r'<link\b[^>]*href="https://fonts\.googleapis\.com/css2[^"]*"[^>]*>', html_text, flags=re.IGNORECASE)
@@ -469,7 +480,7 @@ def ensure_meta_tag(html_text: str, rel_path: str) -> tuple[str, bool]:
     description = extract_description(html_text)
     canonical = extract_canonical(html_text)
     if not canonical:
-        normalized = rel_path.replace("\\", "/")
+        normalized = normalized_rel_path
         if normalized.endswith("/index.html"):
             normalized = normalized[: -len("index.html")]
         canonical = f"{BASE_DOMAIN}/{normalized.lstrip('/')}"
@@ -489,8 +500,14 @@ def ensure_meta_tag(html_text: str, rel_path: str) -> tuple[str, bool]:
         )
         html_text = insert_before_head_close(html_text, og_block)
 
-    if rel_path.replace("\\", "/").endswith("/myinfo/index.html") and 'name="robots"' not in html_text:
-        html_text = insert_before_head_close(html_text, '<meta content="noindex,follow" name="robots"/>')
+    if normalized_rel_path == "index.html" or LOCALE_HOMEPAGE_RE.fullmatch(normalized_rel_path):
+        html_text = normalize_x_default_homepage(html_text)
+
+    if (
+        normalized_rel_path == "index.html"
+        or normalized_rel_path.endswith("/myinfo/index.html")
+    ) and 'name="robots"' not in html_text:
+        html_text = insert_before_head_close(html_text, NOINDEX_FOLLOW_META)
 
     return html_text, html_text != original
 
