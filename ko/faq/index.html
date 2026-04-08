@@ -166,6 +166,132 @@
 <meta content="NotiCatcher - FAQ" name="twitter:title"/>
 <meta content="NotiCatcher FAQ: 키워드 알림, 무음 모드 우회, 그리고 알림을 최대한 활용하는 방법." name="twitter:description"/>
 <meta content="https://noticatcher.com/img/main1.jpg" name="twitter:image"/>
+<!-- noticatcher-structured-data:start -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://noticatcher.com/#organization",
+      "name": "NotiCatcher",
+      "url": "https://noticatcher.com",
+      "logo": "https://noticatcher.com/img/appicon.png",
+      "image": "https://noticatcher.com/img/main1.jpg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://noticatcher.com/#website",
+      "url": "https://noticatcher.com",
+      "name": "NotiCatcher",
+      "publisher": {
+        "@id": "https://noticatcher.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://noticatcher.com/ko/faq/#faq",
+      "url": "https://noticatcher.com/ko/faq/",
+      "name": "NotiCatcher - FAQ",
+      "description": "NotiCatcher FAQ: 키워드 알림, 무음 모드 우회, 그리고 알림을 최대한 활용하는 방법.",
+      "inLanguage": "ko",
+      "isPartOf": {
+        "@id": "https://noticatcher.com/#website"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "\"키워드 캐치\"로 무엇이 집계되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "키워드 캐치는 NotiCatcher이(가) 설정한 키워드가 포함된 알림을 감지하고 알람을 울릴 때 발생합니다. 감지에 성공할 때마다 1회 캐치로 집계됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "\"금융 & Telegram\" 앱이란 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "여기에는 암호화폐 거래소(Binance, Bybit, Coinbase 등), 트레이딩 플랫폼(TradingView, Robinhood 등), 지갑 앱(MetaMask, Trust Wallet 등), 그리고 Telegram이 포함됩니다. 전체 목록은 요금 페이지에서 확인할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "3일 무료 체험은 어떻게 작동하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Basic과 Pro 플랜 모두 3일 무료 체험이 포함됩니다. 체험 기간에는 요금이 청구되지 않습니다. 체험이 끝나기 전에 취소하면 청구되지 않습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Basic에서 Pro로 업그레이드할 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. 언제든지 Basic에서 Pro로 업그레이드할 수 있습니다. Basic 플랜의 남은 금액은 Pro 구독에 일할 계산되어 반영됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "일일 캐치 제한은 언제 초기화되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "일일 키워드 캐치 제한은 매일 자정(기기 현지 시간)에 초기화됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "구독은 어떻게 취소하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "로그인 후 \"내 정보\" 페이지에서 구독을 관리하거나 취소할 수 있으며, 또는 Google Play Store의 구독 관리에서 직접 처리할 수도 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "NotiCatcher는 무음 / 방해 금지 모드에서도 작동하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네. NotiCatcher는 키워드 일치가 감지되면 무음 모드와 방해 금지 모드를 무시하고 크게 울리도록 설정할 수 있습니다. 이는 모든 요금제에서 제공되는 핵심 기능 중 하나입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "어떤 플랫폼을 지원하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NotiCatcher는 현재 Google Play 스토어를 통해 Android에서 이용할 수 있습니다. iOS 지원은 향후 제공될 예정입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "내 데이터는 안전한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NotiCatcher는 기기에서 알림을 로컬로 처리합니다. 알림 내용은 어떤 외부 서버로도 전송되지 않습니다. 구독 관리를 위해 필수적인 계정 정보만 저장합니다."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "NotiCatcher",
+          "item": "https://noticatcher.com/ko/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "NotiCatcher - FAQ",
+          "item": "https://noticatcher.com/ko/faq/"
+        }
+      ]
+    }
+  ]
+}</script>
+<!-- noticatcher-structured-data:end -->
 </head>
 <body>
 <div class="bg-glow"></div>

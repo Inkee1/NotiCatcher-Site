@@ -166,6 +166,132 @@
 <meta content="NotiCatcher - Câu hỏi thường gặp" name="twitter:title"/>
 <meta content="FAQ NotiCatcher: cảnh báo từ khóa, bỏ qua chế độ im lặng và cách tận dụng tối đa thông báo của bạn." name="twitter:description"/>
 <meta content="https://noticatcher.com/img/main1.jpg" name="twitter:image"/>
+<!-- noticatcher-structured-data:start -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://noticatcher.com/#organization",
+      "name": "NotiCatcher",
+      "url": "https://noticatcher.com",
+      "logo": "https://noticatcher.com/img/appicon.png",
+      "image": "https://noticatcher.com/img/main1.jpg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://noticatcher.com/#website",
+      "url": "https://noticatcher.com",
+      "name": "NotiCatcher",
+      "publisher": {
+        "@id": "https://noticatcher.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://noticatcher.com/vi/faq/#faq",
+      "url": "https://noticatcher.com/vi/faq/",
+      "name": "NotiCatcher - Câu hỏi thường gặp",
+      "description": "FAQ NotiCatcher: cảnh báo từ khóa, bỏ qua chế độ im lặng và cách tận dụng tối đa thông báo của bạn.",
+      "inLanguage": "vi",
+      "isPartOf": {
+        "@id": "https://noticatcher.com/#website"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Thế nào được tính là một \"lần bắt từ khóa\"?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Một lần bắt từ khóa xảy ra khi NotiCatcher phát hiện một thông báo có chứa các từ khóa bạn đã cấu hình và kích hoạt báo động. Mỗi lần phát hiện thành công được tính là một lần bắt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Các ứng dụng \"Tài chính & Telegram\" là gì?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bao gồm các sàn giao dịch crypto (Binance, Bybit, Coinbase, v.v.), nền tảng giao dịch (TradingView, Robinhood, v.v.), ứng dụng ví (MetaMask, Trust Wallet, v.v.) và Telegram. Bạn có thể xem danh sách đầy đủ tại Trang giá."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bản dùng thử miễn phí 3 ngày hoạt động như thế nào?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cả gói Basic và Pro đều bao gồm bản dùng thử miễn phí 3 ngày. Bạn sẽ không bị tính phí trong thời gian dùng thử. Nếu bạn hủy trước khi thời gian dùng thử kết thúc, bạn sẽ không bị tính phí."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tôi có thể nâng cấp từ Basic lên Pro không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Có. Bạn có thể nâng cấp từ Basic lên Pro bất cứ lúc nào. Phần giá trị còn lại của gói Basic sẽ được tính theo tỷ lệ và trừ vào gói đăng ký Pro của bạn."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Khi nào giới hạn bắt hằng ngày được đặt lại?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Giới hạn bắt từ khóa hằng ngày sẽ được đặt lại vào lúc nửa đêm (theo giờ địa phương của thiết bị) mỗi ngày."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tôi hủy gói đăng ký như thế nào?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bạn có thể quản lý hoặc hủy gói đăng ký từ trang \"Thông tin của tôi\" sau khi đăng nhập, hoặc trực tiếp thông qua mục quản lý gói đăng ký của Google Play Store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "NotiCatcher có hoạt động ở chế độ im lặng / Không làm phiền không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Có. NotiCatcher có thể ghi đè chế độ im lặng và Không làm phiền để đổ chuông lớn khi phát hiện khớp từ khóa. Đây là một trong những tính năng cốt lõi có trên mọi gói."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hỗ trợ những nền tảng nào?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NotiCatcher hiện có trên Android qua Google Play Store. Hỗ trợ iOS được lên kế hoạch trong tương lai."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dữ liệu của tôi có an toàn không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "NotiCatcher xử lý thông báo cục bộ trên thiết bị của bạn. Nội dung thông báo của bạn không bao giờ được gửi đến bất kỳ máy chủ bên ngoài nào. Chúng tôi chỉ lưu thông tin tài khoản thiết yếu để quản lý đăng ký."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "NotiCatcher",
+          "item": "https://noticatcher.com/vi/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "NotiCatcher - Câu hỏi thường gặp",
+          "item": "https://noticatcher.com/vi/faq/"
+        }
+      ]
+    }
+  ]
+}</script>
+<!-- noticatcher-structured-data:end -->
 </head>
 <body>
 <div class="bg-glow"></div>

@@ -17,9 +17,23 @@ except Exception:
 
 RE_LOCALE_DIR = re.compile(r"^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$")
 BASE_DOMAIN = "https://noticatcher.com"
+APP_NAME = "NotiCatcher"
 OG_IMAGE_URL = f"{BASE_DOMAIN}/img/main1.jpg"
+ANDROID_APP_URL = "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher"
+ORGANIZATION_ID = f"{BASE_DOMAIN}/#organization"
+WEBSITE_ID = f"{BASE_DOMAIN}/#website"
 NOINDEX_FOLLOW_META = '<meta content="noindex,follow" name="robots"/>'
 LOCALE_HOMEPAGE_RE = re.compile(r"^[^/\\]+/index\.html$")
+STRUCTURED_DATA_START = "<!-- noticatcher-structured-data:start -->"
+STRUCTURED_DATA_END = "<!-- noticatcher-structured-data:end -->"
+STRUCTURED_DATA_BLOCK_RE = re.compile(
+    rf"\s*{re.escape(STRUCTURED_DATA_START)}.*?{re.escape(STRUCTURED_DATA_END)}\s*",
+    flags=re.DOTALL,
+)
+FAQ_ITEM_RE = re.compile(
+    r'<button class="faq-question"[^>]*>\s*(.*?)\s*<i\b[^>]*></i>\s*</button>\s*<div class="faq-answer">\s*<p>(.*?)</p>',
+    flags=re.IGNORECASE | re.DOTALL,
+)
 
 FAQ_SOURCE_EN = (
     "These include crypto exchanges (Binance, Bybit, Coinbase, etc.), trading platforms "
@@ -451,6 +465,216 @@ def normalize_x_default_homepage(html_text: str) -> str:
     return pattern.sub(rf"\1{BASE_DOMAIN}/en/\2", html_text, count=1)
 
 
+def extract_html_lang(html_text: str) -> str:
+    match = re.search(r'<html[^>]*\blang="([^"]+)"', html_text, flags=re.IGNORECASE)
+    return match.group(1).strip() if match else "en"
+
+
+def strip_html_fragment(fragment: str) -> str:
+    text = re.sub(r"<br\s*/?>", " ", fragment, flags=re.IGNORECASE)
+    text = re.sub(r"</p\s*>", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"<[^>]+>", "", text)
+    return re.sub(r"\s+", " ", html.unescape(text)).strip()
+
+
+def structured_page_context(normalized_rel_path: str) -> tuple[str, str] | None:
+    parts = normalized_rel_path.split("/")
+    if len(parts) < 2:
+        return None
+
+    locale = (parts[0] or "").strip().lower()
+    if not RE_LOCALE_DIR.fullmatch(locale):
+        return None
+
+    if len(parts) == 2 and parts[1] == "index.html":
+        return locale, "home"
+
+    if len(parts) == 3 and parts[2] == "index.html" and parts[1] in {"download", "faq", "price"}:
+        return locale, parts[1]
+
+    return None
+
+
+def extract_faq_entities(html_text: str) -> list[dict]:
+    entities: list[dict] = []
+    for question_html, answer_html in FAQ_ITEM_RE.findall(html_text):
+        question = strip_html_fragment(question_html)
+        answer = strip_html_fragment(answer_html)
+        if not question or not answer:
+            continue
+        entities.append(
+            {
+                "@type": "Question",
+                "name": question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": answer,
+                },
+            }
+        )
+    return entities
+
+
+def build_breadcrumb_schema(locale: str, title: str, canonical: str) -> dict:
+    return {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": APP_NAME,
+                "item": f"{BASE_DOMAIN}/{locale}/",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": title,
+                "item": canonical,
+            },
+        ],
+    }
+
+
+def build_structured_data_graph(html_text: str, normalized_rel_path: str, title: str, description: str, canonical: str) -> list[dict] | None:
+    page_context = structured_page_context(normalized_rel_path)
+    if not page_context:
+        return None
+
+    locale, page_kind = page_context
+    lang = extract_html_lang(html_text) or locale
+
+    organization = {
+        "@type": "Organization",
+        "@id": ORGANIZATION_ID,
+        "name": APP_NAME,
+        "url": BASE_DOMAIN,
+        "logo": f"{BASE_DOMAIN}/img/appicon.png",
+        "image": OG_IMAGE_URL,
+    }
+    website = {
+        "@type": "WebSite",
+        "@id": WEBSITE_ID,
+        "url": BASE_DOMAIN,
+        "name": APP_NAME,
+        "publisher": {"@id": ORGANIZATION_ID},
+    }
+
+    graph: list[dict] = [organization, website]
+
+    if page_kind == "faq":
+        faq_entities = extract_faq_entities(html_text)
+        if faq_entities:
+            graph.append(
+                {
+                    "@type": "FAQPage",
+                    "@id": f"{canonical}#faq",
+                    "url": canonical,
+                    "name": title,
+                    "description": description,
+                    "inLanguage": lang,
+                    "isPartOf": {"@id": WEBSITE_ID},
+                    "mainEntity": faq_entities,
+                }
+            )
+        else:
+            graph.append(
+                {
+                    "@type": "WebPage",
+                    "@id": f"{canonical}#webpage",
+                    "url": canonical,
+                    "name": title,
+                    "description": description,
+                    "inLanguage": lang,
+                    "isPartOf": {"@id": WEBSITE_ID},
+                }
+            )
+        graph.append(build_breadcrumb_schema(locale, title, canonical))
+        return graph
+
+    app_schema = {
+        "@type": "SoftwareApplication",
+        "@id": f"{canonical}#app",
+        "name": APP_NAME,
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Android",
+        "url": canonical,
+        "downloadUrl": ANDROID_APP_URL,
+        "image": OG_IMAGE_URL,
+        "description": description,
+        "publisher": {"@id": ORGANIZATION_ID},
+    }
+
+    if page_kind == "price":
+        app_schema["offers"] = [
+            {
+                "@type": "Offer",
+                "name": "Free",
+                "price": "0.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": canonical,
+            },
+            {
+                "@type": "Offer",
+                "name": "Basic",
+                "price": "2.99",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": canonical,
+            },
+            {
+                "@type": "Offer",
+                "name": "Pro",
+                "price": "7.99",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock",
+                "url": canonical,
+            },
+        ]
+
+    graph.append(app_schema)
+    graph.append(
+        {
+            "@type": "WebPage",
+            "@id": f"{canonical}#webpage",
+            "url": canonical,
+            "name": title,
+            "description": description,
+            "inLanguage": lang,
+            "isPartOf": {"@id": WEBSITE_ID},
+            "about": {"@id": app_schema["@id"]},
+        }
+    )
+
+    if page_kind != "home":
+        graph.append(build_breadcrumb_schema(locale, title, canonical))
+
+    return graph
+
+
+def render_structured_data_block(graph: list[dict]) -> str:
+    payload = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
+    return (
+        f"{STRUCTURED_DATA_START}\n"
+        f"<script type=\"application/ld+json\">{payload}</script>\n"
+        f"{STRUCTURED_DATA_END}"
+    )
+
+
+def upsert_structured_data(html_text: str, normalized_rel_path: str, title: str, description: str, canonical: str) -> str:
+    html_text = STRUCTURED_DATA_BLOCK_RE.sub("", html_text)
+    graph = build_structured_data_graph(
+        html_text=html_text,
+        normalized_rel_path=normalized_rel_path,
+        title=title,
+        description=description,
+        canonical=canonical,
+    )
+    if not graph:
+        return html_text
+    return insert_before_head_close(html_text, render_structured_data_block(graph))
+
+
 def ensure_meta_tag(html_text: str, rel_path: str) -> tuple[str, bool]:
     original = html_text
     normalized_rel_path = rel_path.replace("\\", "/")
@@ -499,6 +723,14 @@ def ensure_meta_tag(html_text: str, rel_path: str) -> tuple[str, bool]:
             f'<meta content="{html.escape(OG_IMAGE_URL, quote=True)}" name="twitter:image"/>'
         )
         html_text = insert_before_head_close(html_text, og_block)
+
+    html_text = upsert_structured_data(
+        html_text=html_text,
+        normalized_rel_path=normalized_rel_path,
+        title=title,
+        description=description,
+        canonical=canonical,
+    )
 
     if normalized_rel_path == "index.html" or LOCALE_HOMEPAGE_RE.fullmatch(normalized_rel_path):
         html_text = normalize_x_default_homepage(html_text)

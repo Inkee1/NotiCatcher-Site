@@ -409,6 +409,101 @@
 <meta content="NotiCatcher - Cennik" name="twitter:title"/>
 <meta content="Porównaj plany cenowe NotiCatcher i odblokuj zaawansowane alerty słów kluczowych, które mogą omijać tryb cichy." name="twitter:description"/>
 <meta content="https://noticatcher.com/img/main1.jpg" name="twitter:image"/>
+<!-- noticatcher-structured-data:start -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://noticatcher.com/#organization",
+      "name": "NotiCatcher",
+      "url": "https://noticatcher.com",
+      "logo": "https://noticatcher.com/img/appicon.png",
+      "image": "https://noticatcher.com/img/main1.jpg"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://noticatcher.com/#website",
+      "url": "https://noticatcher.com",
+      "name": "NotiCatcher",
+      "publisher": {
+        "@id": "https://noticatcher.com/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://noticatcher.com/pl/price/#app",
+      "name": "NotiCatcher",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Android",
+      "url": "https://noticatcher.com/pl/price/",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+      "image": "https://noticatcher.com/img/main1.jpg",
+      "description": "Porównaj plany cenowe NotiCatcher i odblokuj zaawansowane alerty słów kluczowych, które mogą omijać tryb cichy.",
+      "publisher": {
+        "@id": "https://noticatcher.com/#organization"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0.00",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://noticatcher.com/pl/price/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Basic",
+          "price": "2.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://noticatcher.com/pl/price/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "7.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://noticatcher.com/pl/price/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://noticatcher.com/pl/price/#webpage",
+      "url": "https://noticatcher.com/pl/price/",
+      "name": "NotiCatcher - Cennik",
+      "description": "Porównaj plany cenowe NotiCatcher i odblokuj zaawansowane alerty słów kluczowych, które mogą omijać tryb cichy.",
+      "inLanguage": "pl",
+      "isPartOf": {
+        "@id": "https://noticatcher.com/#website"
+      },
+      "about": {
+        "@id": "https://noticatcher.com/pl/price/#app"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "NotiCatcher",
+          "item": "https://noticatcher.com/pl/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "NotiCatcher - Cennik",
+          "item": "https://noticatcher.com/pl/price/"
+        }
+      ]
+    }
+  ]
+}</script>
+<!-- noticatcher-structured-data:end -->
 </head>
 <body>
 <div class="bg-glow"></div>
