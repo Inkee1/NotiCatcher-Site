@@ -207,8 +207,23 @@ def patch_price_userdoc_loading_state(html: str) -> tuple[str, int]:
     edits = 0
     if "function startUserDocListener(user)" not in html:
         return html, 0
+
+    # Older patch output accidentally wrote escaped quotes into JS source
+    # for non-English locales, which breaks the entire module script.
+    broken_basic = r"""setButton(btnBasic, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");"""
+    fixed_basic = """setButton(btnBasic, "<i class='bx bx-loader-alt'></i>", "Loading...");"""
+    if broken_basic in html:
+        html = html.replace(broken_basic, fixed_basic)
+        edits += 1
+
+    broken_pro = r"""setButton(btnPro, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");"""
+    fixed_pro = """setButton(btnPro, "<i class='bx bx-loader-alt'></i>", "Loading...");"""
+    if broken_pro in html:
+        html = html.replace(broken_pro, fixed_pro)
+        edits += 1
+
     if "let hasLoadedUserDocSnapshot = false;" in html:
-        return html, 0
+        return html, edits
 
     html, n = re.subn(
         r"let unsubscribeUserDoc = null;",
@@ -220,7 +235,19 @@ def patch_price_userdoc_loading_state(html: str) -> tuple[str, int]:
 
     html, n = re.subn(
         r"(function setButton\(btn, iconHtml, label\) \{\s*\n\s*if \(!btn\) return;\s*\n\s*btn\.innerHTML = `\$\{iconHtml\} \$\{label\}`;\s*\n\s*\}\s*\n)",
-        r"\1\n        function setPricingButtonsDisabled(disabled) {\n            if (btnBasic) btnBasic.disabled = disabled;\n            if (btnPro) btnPro.disabled = disabled;\n        }\n\n        function applyPricingLoadingState() {\n            setButton(btnBasic, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");\n            setButton(btnPro, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");\n            setTrialNotesVisible(false);\n            setPricingButtonsDisabled(true);\n        }\n",
+        r'''\1
+        function setPricingButtonsDisabled(disabled) {
+            if (btnBasic) btnBasic.disabled = disabled;
+            if (btnPro) btnPro.disabled = disabled;
+        }
+
+        function applyPricingLoadingState() {
+            setButton(btnBasic, "<i class='bx bx-loader-alt'></i>", "Loading...");
+            setButton(btnPro, "<i class='bx bx-loader-alt'></i>", "Loading...");
+            setTrialNotesVisible(false);
+            setPricingButtonsDisabled(true);
+        }
+''',
         html,
         count=1,
     )

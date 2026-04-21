@@ -726,8 +726,8 @@ let unsubscribeUserDoc = null;
         }
 
         function applyPricingLoadingState() {
-            setButton(btnBasic, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");
-            setButton(btnPro, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");
+            setButton(btnBasic, "<i class='bx bx-loader-alt'></i>", "Loading...");
+            setButton(btnPro, "<i class='bx bx-loader-alt'></i>", "Loading...");
             setTrialNotesVisible(false);
             setPricingButtonsDisabled(true);
         }
@@ -904,6 +904,7 @@ let unsubscribeUserDoc = null;
             document.getElementById('checkout-overlay').classList.add('active');
 
             try {
+                try { localStorage.setItem("lang", document.documentElement.lang || "vi"); } catch (_) {}
                 const idToken = await auth.currentUser.getIdToken(true);
                 const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreateCheckoutSession`, {
                     method: "POST",
