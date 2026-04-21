@@ -651,26 +651,31 @@
 <h2>안전한 결제를 준비하는 중...</h2>
 <p style="color: var(--text-muted)">Stripe(으)로 이동하는 중입니다.</p>
 </div>
-<div id="checkout-debug-static" style="position: fixed; left: 12px; right: 12px; top: 12px; z-index: 10002; background: rgba(127, 29, 29, 0.96); color: #fff; border: 2px solid rgba(254, 202, 202, 0.7); border-radius: 14px; padding: 12px 14px; box-shadow: 0 18px 40px rgba(0,0,0,0.3); font-size: 13px; line-height: 1.45;">
-<div style="font-weight: 800; margin-bottom: 6px;">DEBUG ACTIVE</div>
-<div id="checkout-debug-static-text">이 빨간 박스가 보이면 최신 가격 페이지는 열렸습니다. 아래 큰 디버그 패널은 JS가 실행되어야 뜹니다.</div>
-</div>
-<script>
-  (function() {
-    try {
-      var el = document.getElementById('checkout-debug-static-text');
-      if (el) {
-        el.textContent = '정적 디버그 배너 표시됨. 이제 아래 자동 디버그 패널과 로그가 이어서 떠야 합니다.';
-      }
-    } catch (_) {}
-  })();
-</script>
 <script type="module">
         import { auth, db, onAuthStateChanged, signInWithCustomToken } from "./js/firebase-config.js";
         import { autoLoginFromFragment } from "./js/auto-login.js";
         import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         function createCheckoutDebug(options = {}) {
+            const summarizeUser = (user) => {
+                if (!user) return null;
+                const uid = String(user.uid || '');
+                const email = String(user.email || '').trim();
+                const at = email.indexOf('@');
+                const maskedEmail = at <= 0
+                    ? email
+                    : `${email.slice(0, Math.min(2, at))}${at > 2 ? '***' : ''}${email.slice(at)}`;
+                return {
+                    uid: uid ? `${uid.slice(0, 6)}...${uid.slice(-4)}` : '',
+                    email: maskedEmail,
+                    anonymous: Boolean(user.isAnonymous),
+                };
+            };
+            return {
+                enabled: false,
+                log() {},
+                summarizeUser,
+            };
             const params = new URLSearchParams(window.location.search);
             const enabled = params.get('debugCheckout') !== '0';
             const autoOpen = true;
@@ -988,8 +993,8 @@ let unsubscribeUserDoc = null;
         }
 
         function applyPricingLoadingState() {
-            setButton(btnBasic, "<i class='bx bx-loader-alt'></i>", "Loading...");
-            setButton(btnPro, "<i class='bx bx-loader-alt'></i>", "Loading...");
+            setButton(btnBasic, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");
+            setButton(btnPro, \"<i class='bx bx-loader-alt'></i>\", \"Loading...\");
             setTrialNotesVisible(false);
             setPricingButtonsDisabled(true);
             __checkoutDebug.log('ui', 'applyPricingLoadingState');

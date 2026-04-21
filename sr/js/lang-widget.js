@@ -1,6 +1,65 @@
 (() => {
   const STORAGE_KEY = "lang";
   const MANUAL_STORAGE_KEY = "lang_manual";
+  const LANGUAGE_LABELS = {
+    am: "አማርኛ",
+    ar: "العربية",
+    bg: "Български",
+    bn: "বাংলা",
+    cs: "Čeština",
+    da: "Dansk",
+    de: "Deutsch",
+    el: "Ελληνικά",
+    en: "English",
+    es: "Español",
+    "es-419": "Español (Latinoamérica)",
+    et: "Eesti",
+    fa: "فارسی",
+    fi: "Suomi",
+    fil: "Filipino",
+    fr: "Français",
+    gu: "ગુજરાતી",
+    he: "עברית",
+    hi: "हिन्दी",
+    hr: "Hrvatski",
+    hu: "Magyar",
+    id: "Bahasa Indonesia",
+    it: "Italiano",
+    ja: "日本語",
+    km: "ខ្មែរ",
+    kn: "ಕನ್ನಡ",
+    ko: "한국어",
+    lo: "ລາວ",
+    lt: "Lietuvių",
+    lv: "Latviešu",
+    ml: "മലയാളം",
+    mr: "मराठी",
+    ms: "Bahasa Melayu",
+    my: "မြန်မာဘာသာ",
+    nl: "Nederlands",
+    no: "Norsk",
+    pa: "ਪੰਜਾਬੀ",
+    pl: "Polski",
+    pt: "Português",
+    "pt-br": "Português (Brasil)",
+    ro: "Română",
+    ru: "Русский",
+    sk: "Slovenčina",
+    sl: "Slovenščina",
+    sr: "Српски",
+    sv: "Svenska",
+    sw: "Kiswahili",
+    ta: "தமிழ்",
+    te: "తెలుగు",
+    th: "ไทย",
+    tr: "Türkçe",
+    uk: "Українська",
+    ur: "اردو",
+    vi: "Tiếng Việt",
+    zh: "中文",
+    "zh-hans": "简体中文",
+    "zh-hant": "繁體中文",
+  };
 
   function normalizeLang(tag) {
     return (tag || "")
@@ -8,6 +67,20 @@
       .trim()
       .toLowerCase()
       .replace(/_/g, "-");
+  }
+
+  function formatTag(lang) {
+    const parts = normalizeLang(lang).split("-").filter(Boolean);
+    if (!parts.length) return "";
+    return parts
+      .map((part) => {
+        if (/^\d+$/.test(part)) return part;
+        if (part.length === 4) {
+          return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+        }
+        return part.toUpperCase();
+      })
+      .join("-");
   }
 
   function getCurrentLang() {
@@ -18,28 +91,26 @@
     return normalizeLang(seg) || "en";
   }
 
+  function nativeNameFor(lang) {
+    const l = normalizeLang(lang);
+    if (LANGUAGE_LABELS[l]) return LANGUAGE_LABELS[l];
+    try {
+      if (typeof Intl !== "undefined" && typeof Intl.DisplayNames === "function") {
+        const name = new Intl.DisplayNames([l], { type: "language" }).of(l);
+        if (name) return name;
+      }
+    } catch {}
+    return l || "Language";
+  }
+
   function labelFor(lang) {
     const l = normalizeLang(lang);
-    const map = {
-      en: { name: "English", tag: "EN" },
-      ko: { name: "한국어", tag: "KO" },
-      ja: { name: "日本語", tag: "JA" },
-      "zh-hans": { name: "简体中文", tag: "ZH-Hans" },
-      "zh-hant": { name: "繁體中文", tag: "ZH-Hant" },
-      fr: { name: "Français", tag: "FR" },
-      de: { name: "Deutsch", tag: "DE" },
-      es: { name: "Español", tag: "ES" },
-      it: { name: "Italiano", tag: "IT" },
-      pt: { name: "Português", tag: "PT" },
-      ru: { name: "Русский", tag: "RU" },
-      vi: { name: "Tiếng Việt", tag: "VI" },
-      id: { name: "Bahasa Indonesia", tag: "ID" },
-      th: { name: "ไทย", tag: "TH" },
-      tr: { name: "Türkçe", tag: "TR" },
-      ar: { name: "العربية", tag: "AR" },
-      hi: { name: "हिन्दी", tag: "HI" },
+    const tag = formatTag(l);
+    return {
+      name: nativeNameFor(l),
+      tag,
+      sortTag: tag.toUpperCase(),
     };
-    return map[l] || { name: l || "Language", tag: (l || "").toUpperCase() };
   }
 
   function uniqueByLang(items) {
@@ -67,6 +138,80 @@
     }));
   }
 
+  function resolveSupportedLang(tag, supportedLangs) {
+    let l = normalizeLang(tag);
+    if (!l) return "";
+
+    const special = resolveSpecialLang(l, supportedLangs);
+    if (special) return special;
+    if (supportedLangs.has(l)) return l;
+
+    while (l.includes("-")) {
+      l = l.substring(0, l.lastIndexOf("-"));
+      const fallback = resolveSpecialLang(l, supportedLangs);
+      if (fallback) return fallback;
+      if (supportedLangs.has(l)) return l;
+    }
+
+    return supportedLangs.has(l) ? l : "";
+  }
+
+  function resolveSpecialLang(lang, supportedLangs) {
+    const l = normalizeLang(lang);
+    if (!l) return "";
+
+    if (supportedLangs.has("zh-hant") && /^zh-(hant|tw|hk|mo)(-|$)/.test(l)) return "zh-hant";
+    if (supportedLangs.has("zh-hans") && /^zh-(hans|cn|sg)(-|$)/.test(l)) return "zh-hans";
+    if (supportedLangs.has("es-419") && /^es-(?!es(-|$))/.test(l)) return "es-419";
+    if (supportedLangs.has("pt-br") && /^pt-br(-|$)/.test(l)) return "pt-br";
+    if (supportedLangs.has("ko") && /^ko-kr(-|$)/.test(l)) return "ko";
+
+    return "";
+  }
+
+  function getLocalLang(items, currentLang) {
+    const supportedLangs = new Set(items.map((it) => normalizeLang(it.lang)).filter(Boolean));
+    const browserLangs =
+      typeof navigator !== "undefined" && Array.isArray(navigator.languages) && navigator.languages.length
+        ? navigator.languages
+        : [typeof navigator !== "undefined" ? navigator.language || "" : ""];
+
+    for (const candidate of browserLangs) {
+      const resolved = resolveSupportedLang(candidate, supportedLangs);
+      if (resolved) return resolved;
+    }
+
+    return resolveSupportedLang(currentLang, supportedLangs) || "en";
+  }
+
+  function menuPriority(lang, localLang) {
+    if (lang === localLang) return 0;
+    if (localLang !== "en" && lang === "en") return 1;
+    return 2;
+  }
+
+  function sortItems(items, currentLang) {
+    const localLang = getLocalLang(items, currentLang);
+    return [...items].sort((a, b) => {
+      const aLang = normalizeLang(a.lang);
+      const bLang = normalizeLang(b.lang);
+      const priorityDiff = menuPriority(aLang, localLang) - menuPriority(bLang, localLang);
+      if (priorityDiff !== 0) return priorityDiff;
+
+      const aLabel = labelFor(aLang);
+      const bLabel = labelFor(bLang);
+      const tagDiff = aLabel.sortTag.localeCompare(bLabel.sortTag, "en", {
+        sensitivity: "base",
+        numeric: true,
+      });
+      if (tagDiff !== 0) return tagDiff;
+
+      return aLabel.name.localeCompare(bLabel.name, undefined, {
+        sensitivity: "base",
+      });
+    });
+  }
+
   function fallbackTargets(currentLang) {
     const supported = ["en", "ko", "ja"];
     const currentPath = location.pathname || "/";
@@ -90,6 +235,7 @@
     const current = getCurrentLang();
     const targets = alternatesFromHead();
     const items = targets.length ? targets : fallbackTargets(current);
+    const orderedItems = sortItems(items, current);
 
     const root = document.createElement("div");
     root.className = "lang-fab";
@@ -113,7 +259,8 @@
     menu.className = "lang-fab__menu";
     menu.setAttribute("role", "menu");
 
-    for (const it of items) {
+    // Put the browser's local language first, English second, then sort the rest by code.
+    for (const it of orderedItems) {
       const lang = normalizeLang(it.lang);
       const href = it.href;
       const l = labelFor(lang);

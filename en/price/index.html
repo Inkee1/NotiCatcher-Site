@@ -5,7 +5,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>NotiCatcher - Pricing</title>
-<meta content="Compare NotiCatcher pricing plans and unlock powerful keyword alerts that can bypass silent mode." name="description"/>
+<meta content="Compare NotiCatcher pricing plans and unlock powerful keyword alerts that can bypass silent mode." name="description">
+
+
+
+
 <base href="/en/"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -399,7 +403,7 @@
         }
     </style>
 <link href="/img/appicon.png" rel="icon" type="image/png"/>
-<meta content="NotiCatcher - Pricing" property="og:title">
+<meta content="NotiCatcher - Pricing" property="og:title"/>
 <meta content="Compare NotiCatcher pricing plans and unlock powerful keyword alerts that can bypass silent mode." property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://noticatcher.com/en/price/" property="og:url"/>
@@ -504,7 +508,7 @@
   ]
 }</script>
 <!-- noticatcher-structured-data:end -->
-</meta></head>
+</head>
 <body>
 <div class="bg-glow"></div>
 <nav class="navbar">
@@ -705,26 +709,31 @@
 <h2>Preparing Secure Checkout...</h2>
 <p style="color: var(--text-muted)">Redirecting you to Stripe.</p>
 </div>
-<div id="checkout-debug-static" style="position: fixed; left: 12px; right: 12px; top: 12px; z-index: 10002; background: rgba(127, 29, 29, 0.96); color: #fff; border: 2px solid rgba(254, 202, 202, 0.7); border-radius: 14px; padding: 12px 14px; box-shadow: 0 18px 40px rgba(0,0,0,0.3); font-size: 13px; line-height: 1.45;">
-<div style="font-weight: 800; margin-bottom: 6px;">DEBUG ACTIVE</div>
-<div id="checkout-debug-static-text">If you can see this red box, the latest pricing page HTML loaded. The larger debug panel below still requires JS to execute.</div>
-</div>
-<script>
-  (function() {
-    try {
-      var el = document.getElementById('checkout-debug-static-text');
-      if (el) {
-        el.textContent = 'Static debug banner is visible. The auto-open debug panel and logs should appear next if JS runs.';
-      }
-    } catch (_) {}
-  })();
-</script>
 <script type="module">
         import { auth, db, onAuthStateChanged, signInWithCustomToken } from "./js/firebase-config.js";
         import { autoLoginFromFragment } from "./js/auto-login.js";
         import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         function createCheckoutDebug(options = {}) {
+            const summarizeUser = (user) => {
+                if (!user) return null;
+                const uid = String(user.uid || '');
+                const email = String(user.email || '').trim();
+                const at = email.indexOf('@');
+                const maskedEmail = at <= 0
+                    ? email
+                    : `${email.slice(0, Math.min(2, at))}${at > 2 ? '***' : ''}${email.slice(at)}`;
+                return {
+                    uid: uid ? `${uid.slice(0, 6)}...${uid.slice(-4)}` : '',
+                    email: maskedEmail,
+                    anonymous: Boolean(user.isAnonymous),
+                };
+            };
+            return {
+                enabled: false,
+                log() {},
+                summarizeUser,
+            };
             const params = new URLSearchParams(window.location.search);
             const enabled = params.get('debugCheckout') !== '0';
             const autoOpen = true;
