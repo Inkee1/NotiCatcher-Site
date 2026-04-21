@@ -997,7 +997,10 @@ let unsubscribeUserDoc = null;
         }
 
         async function handleCtaClick(which) {
-            if (auth.currentUser && !hasLoadedUserDocSnapshot) return;
+            if (auth.currentUser && !hasLoadedUserDocSnapshot) {
+                alert('Your account is still loading. Please try again in a moment.');
+                return;
+            }
             const action = ctaAction[which];
             if (!action) return;
             if (action.type === 'portal') return await openBillingPortal();

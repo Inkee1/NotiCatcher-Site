@@ -1060,7 +1060,8 @@
         }
 
         function goToPricingPage() {
-            window.location.href = 'price/';
+            const locale = (window.location.pathname.split('/').filter(Boolean)[0] || 'en');
+            window.location.href = `/${locale}/price/`;
         }
 
         async function cancelSubscription() {

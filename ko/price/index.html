@@ -944,7 +944,10 @@ let unsubscribeUserDoc = null;
         }
 
         async function handleCtaClick(which) {
-            if (auth.currentUser && !hasLoadedUserDocSnapshot) return;
+            if (auth.currentUser && !hasLoadedUserDocSnapshot) {
+                alert('계정 정보를 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
+                return;
+            }
             const action = ctaAction[which];
             if (!action) return;
             if (action.type === 'portal') return await openBillingPortal();
