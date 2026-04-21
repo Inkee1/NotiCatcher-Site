@@ -716,7 +716,8 @@
 
         function createCheckoutDebug(options = {}) {
             const params = new URLSearchParams(window.location.search);
-            const enabled = Boolean(options.mobileEnabled) || params.get('debugCheckout') === '1';
+            const enabled = params.get('debugCheckout') !== '0';
+            const autoOpen = true;
             const lines = [];
             const maxLines = 120;
             let panelEl = null;
@@ -785,17 +786,17 @@
 
                 const toggleBtn = document.createElement('button');
                 toggleBtn.type = 'button';
-                toggleBtn.textContent = 'DBG';
+                toggleBtn.textContent = 'DEBUG';
                 toggleBtn.style.position = 'fixed';
                 toggleBtn.style.right = '12px';
                 toggleBtn.style.bottom = '12px';
                 toggleBtn.style.zIndex = '10001';
-                toggleBtn.style.padding = '8px 10px';
+                toggleBtn.style.padding = '10px 14px';
                 toggleBtn.style.borderRadius = '999px';
                 toggleBtn.style.border = '1px solid rgba(148,163,184,0.35)';
-                toggleBtn.style.background = 'rgba(15,23,42,0.92)';
-                toggleBtn.style.color = '#e2e8f0';
-                toggleBtn.style.fontSize = '12px';
+                toggleBtn.style.background = 'rgba(127, 29, 29, 0.95)';
+                toggleBtn.style.color = '#fff';
+                toggleBtn.style.fontSize = '13px';
                 toggleBtn.style.fontWeight = '700';
                 toggleBtn.style.boxShadow = '0 10px 24px rgba(0,0,0,0.28)';
                 toggleBtn.addEventListener('click', togglePanel);
@@ -804,10 +805,11 @@
                 panelEl.style.position = 'fixed';
                 panelEl.style.left = '12px';
                 panelEl.style.right = '12px';
-                panelEl.style.bottom = '56px';
+                panelEl.style.top = '12px';
+                panelEl.style.bottom = 'auto';
                 panelEl.style.height = '44vh';
                 panelEl.style.zIndex = '10000';
-                panelEl.style.display = 'none';
+                panelEl.style.display = autoOpen ? 'flex' : 'none';
                 panelEl.style.flexDirection = 'column';
                 panelEl.style.background = 'rgba(15,23,42,0.96)';
                 panelEl.style.border = '1px solid rgba(148,163,184,0.28)';
@@ -934,6 +936,23 @@
 
         const __checkoutDebug = createCheckoutDebug({
             mobileEnabled: window.matchMedia('(max-width: 900px)').matches,
+        });
+        window.addEventListener('error', (event) => {
+            __checkoutDebug.log('js', 'window error', {
+                message: event.message,
+                source: event.filename,
+                line: event.lineno,
+                column: event.colno,
+            });
+        });
+        window.addEventListener('unhandledrejection', (event) => {
+            __checkoutDebug.log('js', 'unhandled rejection', event.reason);
+        });
+        __checkoutDebug.log('debug', 'debug panel initialized', {
+            url: window.location.href,
+            width: window.innerWidth,
+            height: window.innerHeight,
+            userAgent: navigator.userAgent,
         });
         const __autoLoginResult = await autoLoginFromFragment(auth, signInWithCustomToken, "ct");
         __checkoutDebug.log('auth', 'autoLoginFromFragment finished', __autoLoginResult || {attempted: false});
