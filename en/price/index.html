@@ -5,7 +5,11 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>NotiCatcher - Pricing</title>
-<meta content="Compare NotiCatcher pricing plans and unlock powerful keyword alerts that can bypass silent mode." name="description"/>
+<meta content="Compare NotiCatcher pricing plans and unlock powerful keyword alerts that can bypass silent mode." name="description">
+
+
+
+
 <base href="/en/"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -399,7 +403,7 @@
         }
     </style>
 <link href="/img/appicon.png" rel="icon" type="image/png"/>
-<meta content="NotiCatcher - Pricing" property="og:title">
+<meta content="NotiCatcher - Pricing" property="og:title"/>
 <meta content="Compare NotiCatcher pricing plans and unlock powerful keyword alerts that can bypass silent mode." property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://noticatcher.com/en/price/" property="og:url"/>
@@ -504,7 +508,7 @@
   ]
 }</script>
 <!-- noticatcher-structured-data:end -->
-</meta></head>
+</head>
 <body>
 <div class="bg-glow"></div>
 <nav class="navbar">
@@ -730,223 +734,6 @@
                 log() {},
                 summarizeUser,
             };
-            const params = new URLSearchParams(window.location.search);
-            const enabled = params.get('debugCheckout') !== '0';
-            const autoOpen = true;
-            const lines = [];
-            const maxLines = 120;
-            let panelEl = null;
-            let bodyEl = null;
-            let badgeEl = null;
-
-            function maskEmail(email) {
-                const raw = String(email || '').trim();
-                const at = raw.indexOf('@');
-                if (at <= 0) return raw;
-                const local = raw.slice(0, at);
-                const domain = raw.slice(at + 1);
-                const visible = local.slice(0, Math.min(2, local.length));
-                const masked = visible + (local.length > visible.length ? '***' : '');
-                return `${masked}@${domain}`;
-            }
-
-            function summarizeUser(user) {
-                if (!user) return null;
-                const uid = String(user.uid || '');
-                return {
-                    uid: uid ? `${uid.slice(0, 6)}...${uid.slice(-4)}` : '',
-                    email: maskEmail(user.email),
-                    anonymous: Boolean(user.isAnonymous),
-                };
-            }
-
-            function sanitize(value) {
-                if (value == null) return value;
-                if (value instanceof Error) {
-                    return {
-                        name: value.name,
-                        message: value.message,
-                    };
-                }
-                if (Array.isArray(value)) {
-                    return value.map(sanitize);
-                }
-                if (typeof value === 'object') {
-                    const out = {};
-                    for (const [key, item] of Object.entries(value)) {
-                        if (/token|authorization|secret|password/i.test(key)) continue;
-                        out[key] = sanitize(item);
-                    }
-                    return out;
-                }
-                if (typeof value === 'string' && value.length > 220) {
-                    return value.slice(0, 220) + '...';
-                }
-                return value;
-            }
-
-            function render() {
-                if (!bodyEl) return;
-                bodyEl.textContent = lines.join('\n');
-                if (badgeEl) badgeEl.textContent = String(lines.length);
-            }
-
-            function togglePanel() {
-                if (!panelEl) return;
-                panelEl.style.display = panelEl.style.display === 'none' ? 'flex' : 'none';
-            }
-
-            function ensureUi() {
-                if (!enabled || panelEl) return;
-
-                const toggleBtn = document.createElement('button');
-                toggleBtn.type = 'button';
-                toggleBtn.textContent = 'DEBUG';
-                toggleBtn.style.position = 'fixed';
-                toggleBtn.style.right = '12px';
-                toggleBtn.style.bottom = '12px';
-                toggleBtn.style.zIndex = '10001';
-                toggleBtn.style.padding = '10px 14px';
-                toggleBtn.style.borderRadius = '999px';
-                toggleBtn.style.border = '1px solid rgba(148,163,184,0.35)';
-                toggleBtn.style.background = 'rgba(127, 29, 29, 0.95)';
-                toggleBtn.style.color = '#fff';
-                toggleBtn.style.fontSize = '13px';
-                toggleBtn.style.fontWeight = '700';
-                toggleBtn.style.boxShadow = '0 10px 24px rgba(0,0,0,0.28)';
-                toggleBtn.addEventListener('click', togglePanel);
-
-                panelEl = document.createElement('div');
-                panelEl.style.position = 'fixed';
-                panelEl.style.left = '12px';
-                panelEl.style.right = '12px';
-                panelEl.style.top = '12px';
-                panelEl.style.bottom = 'auto';
-                panelEl.style.height = '44vh';
-                panelEl.style.zIndex = '10000';
-                panelEl.style.display = autoOpen ? 'flex' : 'none';
-                panelEl.style.flexDirection = 'column';
-                panelEl.style.background = 'rgba(15,23,42,0.96)';
-                panelEl.style.border = '1px solid rgba(148,163,184,0.28)';
-                panelEl.style.borderRadius = '14px';
-                panelEl.style.overflow = 'hidden';
-                panelEl.style.boxShadow = '0 18px 50px rgba(0,0,0,0.42)';
-
-                const headerEl = document.createElement('div');
-                headerEl.style.display = 'flex';
-                headerEl.style.alignItems = 'center';
-                headerEl.style.justifyContent = 'space-between';
-                headerEl.style.gap = '8px';
-                headerEl.style.padding = '10px 12px';
-                headerEl.style.background = 'rgba(30,41,59,0.95)';
-                headerEl.style.color = '#f8fafc';
-                headerEl.style.fontSize = '12px';
-
-                const titleEl = document.createElement('div');
-                titleEl.textContent = 'Mobile Checkout Debug';
-                titleEl.style.fontWeight = '700';
-
-                const rightEl = document.createElement('div');
-                rightEl.style.display = 'flex';
-                rightEl.style.alignItems = 'center';
-                rightEl.style.gap = '6px';
-
-                badgeEl = document.createElement('span');
-                badgeEl.textContent = '0';
-                badgeEl.style.minWidth = '20px';
-                badgeEl.style.height = '20px';
-                badgeEl.style.display = 'inline-flex';
-                badgeEl.style.alignItems = 'center';
-                badgeEl.style.justifyContent = 'center';
-                badgeEl.style.borderRadius = '999px';
-                badgeEl.style.background = 'rgba(180, 83, 9, 0.9)';
-                badgeEl.style.color = '#fff';
-                badgeEl.style.fontSize = '11px';
-                badgeEl.style.fontWeight = '700';
-
-                const copyBtn = document.createElement('button');
-                copyBtn.type = 'button';
-                copyBtn.textContent = 'Copy';
-                copyBtn.style.border = 'none';
-                copyBtn.style.borderRadius = '8px';
-                copyBtn.style.padding = '6px 8px';
-                copyBtn.style.background = 'rgba(148,163,184,0.2)';
-                copyBtn.style.color = '#e2e8f0';
-                copyBtn.addEventListener('click', async () => {
-                    try {
-                        await navigator.clipboard.writeText(lines.join('\n'));
-                    } catch (_) {}
-                });
-
-                const clearBtn = document.createElement('button');
-                clearBtn.type = 'button';
-                clearBtn.textContent = 'Clear';
-                clearBtn.style.border = 'none';
-                clearBtn.style.borderRadius = '8px';
-                clearBtn.style.padding = '6px 8px';
-                clearBtn.style.background = 'rgba(148,163,184,0.2)';
-                clearBtn.style.color = '#e2e8f0';
-                clearBtn.addEventListener('click', () => {
-                    lines.length = 0;
-                    render();
-                });
-
-                const closeBtn = document.createElement('button');
-                closeBtn.type = 'button';
-                closeBtn.textContent = 'Close';
-                closeBtn.style.border = 'none';
-                closeBtn.style.borderRadius = '8px';
-                closeBtn.style.padding = '6px 8px';
-                closeBtn.style.background = 'rgba(148,163,184,0.2)';
-                closeBtn.style.color = '#e2e8f0';
-                closeBtn.addEventListener('click', togglePanel);
-
-                bodyEl = document.createElement('pre');
-                bodyEl.style.margin = '0';
-                bodyEl.style.padding = '12px';
-                bodyEl.style.flex = '1';
-                bodyEl.style.overflow = 'auto';
-                bodyEl.style.whiteSpace = 'pre-wrap';
-                bodyEl.style.wordBreak = 'break-word';
-                bodyEl.style.color = '#cbd5e1';
-                bodyEl.style.fontSize = '11px';
-                bodyEl.style.lineHeight = '1.45';
-
-                rightEl.appendChild(badgeEl);
-                rightEl.appendChild(copyBtn);
-                rightEl.appendChild(clearBtn);
-                rightEl.appendChild(closeBtn);
-                headerEl.appendChild(titleEl);
-                headerEl.appendChild(rightEl);
-                panelEl.appendChild(headerEl);
-                panelEl.appendChild(bodyEl);
-
-                document.body.appendChild(panelEl);
-                document.body.appendChild(toggleBtn);
-            }
-
-            function log(stage, message, extra) {
-                const cleaned = sanitize(extra);
-                const stamp = new Date().toLocaleTimeString([], {hour12: false});
-                let suffix = '';
-                if (cleaned !== undefined) {
-                    try {
-                        suffix = ' ' + JSON.stringify(cleaned);
-                    } catch (_) {
-                        suffix = ' ' + String(cleaned);
-                    }
-                }
-                const line = `[${stamp}] ${String(stage || 'log').toUpperCase()} ${message}${suffix}`;
-                console.log('[checkout-debug]', stage, message, cleaned);
-                if (!enabled) return;
-                ensureUi();
-                lines.push(line);
-                if (lines.length > maxLines) lines.shift();
-                render();
-            }
-
-            ensureUi();
-            return {enabled, log, summarizeUser};
         }
 
         const __checkoutDebug = createCheckoutDebug({
