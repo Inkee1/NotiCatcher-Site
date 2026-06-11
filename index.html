@@ -103,7 +103,13 @@
         }
 
         const lang = pickBestLang();
-        const target = new URL(lang + "/", location.href).toString();
+        const pathname = location.pathname || "/";
+        const basePath = pathname.endsWith("/")
+            ? pathname
+            : /\.html?$/i.test(pathname)
+                ? pathname.replace(/[^/]*$/, "")
+                : pathname + "/";
+        const target = new URL("./" + lang + "/", location.origin + basePath).toString();
 
         // Defensive: if a language folder is missing (future locales / partial deploy),
         // don't redirect into a cached 404 loop. Fall back to English.
@@ -113,10 +119,10 @@
                     location.replace(target);
                     return;
                 }
-                location.replace(new URL("en/", location.href).toString());
+                location.replace(new URL("./en/", location.origin + basePath).toString());
             })
             .catch(() => {
-                location.replace(new URL("en/", location.href).toString());
+                location.replace(target);
             });
     </script>
 </body>

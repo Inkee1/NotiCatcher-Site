@@ -236,9 +236,11 @@
     const targets = alternatesFromHead();
     const items = targets.length ? targets : fallbackTargets(current);
     const orderedItems = sortItems(items, current);
+    const navLinks = document.querySelector(".navbar .nav-links");
+    const mountInNav = navLinks instanceof HTMLElement;
 
     const root = document.createElement("div");
-    root.className = "lang-fab";
+    root.className = "lang-fab" + (mountInNav ? " lang-fab--nav" : "");
     root.setAttribute("data-open", "false");
 
     const btn = document.createElement("button");
@@ -316,13 +318,19 @@
       setOpen(root.getAttribute("data-open") !== "true");
     });
 
-    document.addEventListener("click", () => setOpen(false));
+    document.addEventListener("click", (e) => {
+      if (!root.contains(e.target)) setOpen(false);
+    });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setOpen(false);
     });
 
     root.appendChild(btn);
     root.appendChild(menu);
+    if (mountInNav) {
+      navLinks.prepend(root);
+      return;
+    }
     document.body.appendChild(root);
   }
 

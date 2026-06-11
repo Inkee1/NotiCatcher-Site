@@ -6,6 +6,15 @@
   font-family: inherit;
 }
 
+.lang-fab--nav {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  z-index: auto;
+  margin-right: 0.35rem;
+  flex: 0 0 auto;
+}
+
 .lang-fab__btn {
   width: 46px;
   height: 46px;
@@ -66,6 +75,13 @@
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
 
+}
+
+.lang-fab--nav .lang-fab__menu {
+  top: calc(100% + 10px);
+  bottom: auto;
+  left: 0;
+  right: auto;
 }
 
 .lang-fab[data-open="true"] .lang-fab__menu {
@@ -133,6 +149,26 @@
   }
   .lang-fab__menu {
     min-width: 176px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lang-fab--nav {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .lang-fab--nav .lang-fab__btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lang-fab--nav .lang-fab__menu {
+    width: 100%;
+    min-width: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
   }
 }
 

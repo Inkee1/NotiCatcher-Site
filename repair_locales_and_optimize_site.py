@@ -625,7 +625,7 @@ def build_structured_data_graph(html_text: str, normalized_rel_path: str, title:
             {
                 "@type": "Offer",
                 "name": "Pro",
-                "price": "7.99",
+                "price": "6.99",
                 "priceCurrency": "USD",
                 "availability": "https://schema.org/InStock",
                 "url": canonical,
