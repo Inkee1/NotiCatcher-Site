@@ -446,27 +446,39 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "Free",
-          "price": "0.00",
+          "name": "Basic / monthly",
+          "price": "2.4",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/fil/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "Mga sangguniang presyo ng USD. Ang mga lokal na presyo at kwalipikadong alok ay ipinapakita sa Google Play bago bumili.",
+          "availability": "https://schema.org/PreOrder"
         },
         {
           "@type": "Offer",
-          "name": "Basic",
-          "price": "2.99",
+          "name": "Basic / annual",
+          "price": "19.9",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/fil/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "Mga sangguniang presyo ng USD. Ang mga lokal na presyo at kwalipikadong alok ay ipinapakita sa Google Play bago bumili.",
+          "availability": "https://schema.org/PreOrder"
         },
         {
           "@type": "Offer",
-          "name": "Pro",
-          "price": "6.99",
+          "name": "Pro / monthly",
+          "price": "4.9",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/fil/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "Mga sangguniang presyo ng USD. Ang mga lokal na presyo at kwalipikadong alok ay ipinapakita sa Google Play bago bumili.",
+          "availability": "https://schema.org/PreOrder"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro / annual",
+          "price": "39.9",
+          "priceCurrency": "USD",
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "Mga sangguniang presyo ng USD. Ang mga lokal na presyo at kwalipikadong alok ay ipinapakita sa Google Play bago bumili.",
+          "availability": "https://schema.org/PreOrder"
         }
       ]
     },
@@ -504,7 +516,7 @@
   ]
 }</script>
 <!-- noticatcher-structured-data:end -->
-</head>
+<style id="subscription-v2-style">.v2-price{font-size:1.2rem;line-height:1.65;margin:1.2rem 0}.price-card p{line-height:1.65}.price-card .btn{margin-top:1rem}.pricing-grid{align-items:stretch}</style></head>
 <body>
 <div class="bg-glow"></div>
 <nav class="navbar">
@@ -518,54 +530,16 @@
 <a class="active" href="/fil/price/">Presyo</a>
 <a href="/fil/download/">I-download</a>
 <a href="/fil/faq/">FAQ</a>
-<a class="btn btn-glass" href="/fil/myinfo/" id="auth-link" style="padding: 0.5rem 1.25rem;">Mag-login / Aking Impormasyon</a>
+<a class="btn btn-glass" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher" id="auth-link" style="padding: 0.5rem 1.25rem;">Kunin ito sa Google Play</a>
 </div>
 </nav>
 <!-- Header -->
 <div class="pricing-header">
 <i class="bx bxs-check-shield"></i>
 <h1>Huwag Nang Palampasin ang Mahalaga</h1>
-<p style="color: var(--text-muted);">Piliin ang planong akma sa iyong pangangailangan sa mga notification.</p>
-<p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 6px;">Maaaring bahagyang mag-iba ang presyo depende sa rehiyon.</p>
-</div>
+<p>Mga sangguniang presyo ng USD. Ang mga lokal na presyo at kwalipikadong alok ay ipinapakita sa Google Play bago bumili.</p><p>Available lang ang unang buwang alok sa mga kwalipikadong bagong subscriber.</p><p class="release-pending-v2" role="status" style="border:1px solid #f59e0b;padding:1rem;border-radius:12px;">Magiging available ang mga planong ito sa susunod na pag-update ng app. Tingnan ang Google Play para sa mga tuntuning kasalukuyang available sa iyo.</p></div>
 <!-- Pricing Cards -->
-<div class="pricing-grid">
-<!-- Free -->
-<div class="price-card free-tier">
-<div class="card-tier free-color">Libre</div>
-<div class="card-price">Libre</div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span>Keyword catches para sa <strong>lahat ng app</strong>: <span class="highlight">2 kada araw</span></span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">Walang limit na general app catches</span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">Walang limit na financial at Telegram catches</span></li>
-</ul>
-<button class="btn btn-glass btn-buy" disabled="">Kasalukuyang Plano</button>
-</div>
-<!-- Basic -->
-<div class="price-card special">
-<div class="card-tier">Basic</div>
-<div class="card-price">$2.99 <span>/ buwan</span></div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span><strong>General apps</strong> keyword catches: <span class="highlight">Walang limit</span></span></li>
-<li><i class="bx bxs-info-circle limit"></i> <span><strong>Financial &amp; Telegram</strong> keyword catches: 2 kada araw</span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">Walang limit na financial at Telegram catches</span></li>
-</ul>
-<button class="btn btn-primary btn-buy" id="btn-basic-cta" style="background: var(--secondary);"><i class="bx bx-rocket"></i> Mag-subscribe</button>
-<div class="trial-under-btn" id="basic-trial-note" style="display:none;">3-araw na libreng trial</div>
-</div>
-<!-- Pro -->
-<div class="price-card recommended">
-<div class="card-badge">Inirerekomenda</div>
-<div class="card-tier">Pro</div>
-<div class="card-price">$6.99 <span>/ buwan</span></div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span><strong>Lahat ng app</strong> keyword catches: <span class="highlight">Walang limit</span></span></li>
-<li><i class="bx bxs-check-circle check"></i> <span>Kasama ang mga financial app at Telegram — <strong>walang limit</strong></span></li>
-</ul>
-<button class="btn btn-primary btn-buy" id="btn-pro-cta"><i class="bx bx-crown"></i> Mag-subscribe</button>
-<div class="trial-under-btn" id="pro-trial-note" style="display:none;">3-araw na libreng trial</div>
-</div>
-</div>
+<div class="pricing-grid"><div class="price-card free-tier"><div class="card-tier">Free</div><h2>7 araw na libre, nang walang subscription</h2><p>7 araw kasama ang lahat ng feature, pagkatapos ay 2 alarm sa kabuuan bawat 48 oras. Walang awtomatikong pagbabayad.</p><p>Para maiwasan ang mga paulit-ulit na pagsubok, nagpapadala kami ng na-hash na identifier ng device at nag-iimbak ng mga petsa ng pagsubok at mga bilang ng paggamit. Kailangan ng koneksyon sa internet upang simulan o maibalik ang pagsubok at para pahintulutan ang 2 libreng alarma. Mananatili sa iyong device ang text ng notification at mga keyword.</p><a class="btn btn-glass" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Kunin ito sa Google Play</a></div><div class="price-card special"><div class="card-tier">Basic</div><p>Walang limitasyong mga alarma sa keyword para sa mga pangkalahatang app. Ginagamit ng mga financial app at Telegram ang 2 libreng alarm sa bawat 48 oras.</p><p class="v2-price">Unang buwan $0.90, pagkatapos ay $2.40 bawat buwan. Awtomatikong magre-renew hanggang makansela.</p><p class="v2-price">$19.90 na sinisingil nang maaga bawat taon. Awtomatikong magre-renew hanggang makansela.</p><p>Makatipid ng 31% kumpara sa 12 buwan sa regular na buwanang presyo</p><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Kunin ito sa Google Play</a></div><div class="price-card recommended"><div class="card-tier">Pro</div><p>Walang limitasyong mga alarma sa keyword para sa lahat ng app, kabilang ang mga financial app at Telegram.</p><p class="v2-price">Unang buwan $1.90, pagkatapos ay $4.90 bawat buwan. Awtomatikong magre-renew hanggang makansela.</p><p class="v2-price">$39.90 na sinisingil nang maaga bawat taon. Awtomatikong magre-renew hanggang makansela.</p><p>Makatipid ng 32% kumpara sa 12 buwan sa regular na buwanang presyo</p><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Kunin ito sa Google Play</a></div></div>
 <!-- App Category Note -->
 <div class="app-note" style="margin-top: 3rem;">
 <div class="app-note-box">
@@ -573,54 +547,6 @@
 <p><strong>Mga pangkalahatang app</strong> = Anumang app <em>maliban</em> sa mga app na may kinalaman sa financial/crypto at Telegram.<br/> <strong>Mga financial at Telegram app</strong> = Mga trading platform, crypto exchange, wallet app, at Telegram.</p>
 <button class="restricted-apps-btn" onclick="document.getElementById('apps-modal').classList.add('active')"><i class="bx bx-list-ul"></i> Tingnan ang listahan ng mga restricted na app<br/>(Financial at Telegram)</button>
 </div>
-</div>
-</div>
-<!-- Feature Comparison Table -->
-<div class="comparison-section">
-<h2>Paghahambing ng Mga Feature</h2>
-<div class="comparison-table-wrap">
-<table class="comparison-table">
-<thead>
-<tr>
-<th>Feature</th>
-<th>Free</th>
-<th class="col-basic">Basic</th>
-<th class="col-pro">Pro</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>General apps keyword catches</td>
-<td>2 / day</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-</tr>
-<tr>
-<td>Financial &amp; Telegram keyword catches</td>
-<td>2 / day</td>
-<td>2 / day</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-</tr>
-<tr>
-<td>3-day free trial</td>
-<td><i class="bx bx-x"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-<tr>
-<td>Silent mode override</td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-<tr>
-<td>Custom keyword matching</td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <!-- Restricted Apps Modal -->
@@ -631,13 +557,17 @@
 <button class="modal-close" onclick="document.getElementById('apps-modal').classList.remove('active')">×</button>
 </div>
 <div class="modal-body">
-<p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">Ang mga sumusunod na app ay ikinategorya bilang "Financial at Telegram." Sa Free at Basic na mga plan, limitado sa 2 kada araw ang keyword catches mula sa mga app na ito.</p>
+<p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">7 araw kasama ang lahat ng feature, pagkatapos ay 2 alarm sa kabuuan bawat 48 oras. Walang awtomatikong pagbabayad. Walang limitasyong mga alarma sa keyword para sa mga pangkalahatang app. Ginagamit ng mga financial app at Telegram ang 2 libreng alarm sa bawat 48 oras. Walang limitasyong mga alarma sa keyword para sa lahat ng app, kabilang ang mga financial app at Telegram.</p>
 <div class="app-category">Pagmemensahe</div>
 <div class="app-list"><span>Telegram</span></div>
 <div class="app-category">Mga Crypto Exchange (Pangunahing)</div>
 <div class="app-list"><span>TradingView</span><span>Binance</span><span>Bybit</span><span>OKX</span> <span>Coinbase</span><span>Crypto.com</span><span>Kraken</span><span>KuCoin</span> <span>Gate</span><span>MEXC</span><span>Bitget</span><span>HTX</span> <span>Bitfinex</span><span>Bitstamp</span><span>Gemini</span><span>CoinEx</span> <span>Phemex</span><span>BingX</span><span>Pionex</span><span>Kraken Pro</span></div>
 <div class="app-category">Mga Crypto Exchange at Tool</div>
 <div class="app-list"><span>BitMart</span><span>WhiteBIT</span><span>LBank</span><span>WOO X</span> <span>CoinW</span><span>ProBit Global</span><span>XT.com</span><span>Poloniex</span> <span>Coinigy</span><span>TabTrader</span><span>CoinGlass</span><span>Pionex.US</span> <span>Bitsgap</span><span>Cryptohopper</span><span>GoodCrypto</span><span>WunderTrading</span> <span>WEEX</span><span>Bitpanda</span><span>Bitvavo</span><span>CoinMarketCap</span> <span>CoinGecko</span><span>CoinStats</span><span>Delta by eToro</span><span>CoinTracker</span> <span>Coinpanda</span><span>unchain.app</span><span>Investing.com Crypto</span><span>Crypto Price Alert</span> <span>CryptoRank</span><span>The Crypto App</span><span>Delta Exchange</span><span>Coindisco</span> <span>Edge Wallet</span><span>Crypto Market Cap</span><span>Bitcoin Chart Widget</span><span>CryptoCharts Widget</span> <span>KuCoin Info</span><span>BBX</span><span>Coin Book</span><span>Wealthica</span> <span>Finary</span><span>Trade Republic</span><span>Revolut</span> <span>Crypto Signals (Fortune Traders)</span> <span>Crypto Coin Check</span><span>Bitcoin Crypto News</span> <span>DOPAMINE Crypto</span><span>PayPal</span><span>Bitsnapp Portfolio</span><span>Coin Plaza (KR)</span></div>
+<div class="app-category">Global Stock &amp; Forex Brokers</div>
+<div class="app-list">
+<span>IBKR Mobile</span><span>Schwab Mobile</span><span>thinkorswim</span><span>Fidelity Investments</span><span>E*TRADE</span><span>Trading 212</span><span>XTB</span><span>DEGIRO</span><span>moomoo</span><span>Zerodha Kite</span><span>Upstox</span><span>Groww</span><span>Angel One</span><span>MetaTrader 4</span><span>MetaTrader 5</span><span>cTrader</span><span>OANDA</span>
+</div>
 <div class="app-category">Mga Regional Exchange</div>
 <div class="app-list"><span>Upbit</span><span>Upbit Global</span><span>Bithumb</span><span>Coinone</span> <span>Korbit</span><span>Coincheck</span><span>bitFlyer</span><span>bitbank</span> <span>GMO Coin</span><span>OKCoin Japan (OKJ)</span><span>CoinDCX</span><span>CoinDCX Pro</span> <span>WazirX</span><span>CoinSwitch</span><span>ZebPay</span><span>Delta Exchange India</span> <span>BtcTurk</span><span>Paribu</span><span>Binance TR</span><span>CoinTR</span> <span>Indodax</span><span>Tokocrypto</span><span>Coins (PH/TH)</span><span>Bitkub</span> <span>Mercado Bitcoin</span><span>Bitso</span><span>Bitybank</span><span>Yellow Card</span> <span>VALR</span><span>Luno</span><span>NDAX</span><span>Coinsquare (Canada)</span> <span>CoinSpot</span><span>Independent Reserve</span><span>Bitcoin.com.au</span><span>Swyftx</span> <span>WhiteBIT TR</span><span>WhiteBIT GE</span><span>GOPAX</span><span>Coinhako</span> <span>Pintu</span><span>BtcTurk Hisse</span><span>Newton (Canada)</span><span>Shakepay (Canada)</span> <span>CoinJar</span><span>Bitbns</span><span>Bitbns Pay</span> <span>Robinhood</span><span>Webull</span><span>eToro</span></div>
 <div class="app-category">Mga Wallet</div>
@@ -646,362 +576,6 @@
 </div>
 </div>
 <!-- Checkout Overlay -->
-<div id="checkout-overlay">
-<div class="loader" style="margin-bottom: 20px;"></div>
-<h2>Inihahanda ang Secure Checkout...</h2>
-<p style="color: var(--text-muted)">Ire-redirect ka sa Stripe.</p>
-</div>
-<script type="module">
-        import { auth, db, onAuthStateChanged, signInWithCustomToken } from "./js/firebase-config.js";
-        import { autoLoginFromFragment } from "./js/auto-login.js";
-        import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-        await autoLoginFromFragment(auth, signInWithCustomToken, "ct");
-
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('nav-links').classList.toggle('active');
-        });
-
-        document.getElementById('apps-modal').addEventListener('click', function(e) {
-            if (e.target === this) this.classList.remove('active');
-        });
-
-        const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
-
-        const btnBasic = document.getElementById('btn-basic-cta');
-        const btnPro = document.getElementById('btn-pro-cta');
-        const noteBasicTrial = document.getElementById('basic-trial-note');
-        const noteProTrial = document.getElementById('pro-trial-note');
-
-        
-
-        
-
-
-
-        
-
-
-
-        
-
-
-
-        
-
-
-
-        const __WEB_SUB_COPY = {
-                subscribeBasic: 'Mag-subscribe',
-                subscribePro: 'Mag-subscribe',
-                manage: 'Pamamahala ng Subscription',
-                upgradeToPro: 'Lumipat sa Pro',
-                toastUpdated: 'Na-update ang plan.',
-                toastScheduled: 'Magbabago ang plan sa susunod na petsa ng pagsingil.',
-                errPlanChangeFailed: 'Hindi napalitan ang plan.',
-                errPortalFailed: 'Hindi mabuksan ang billing portal.',
-                errRequestFailed: 'Nabigo ang request. Pakisubukang muli.',
-                errLoginRequiredSubscribe: 'Kailangan mong mag-log in bago mag-subscribe.\n\nDadalhin ka ngayon sa login page.',
-                msgAlreadySubscribed: 'Naka-subscribe ka na.',
-                errCheckoutMissingUrl: 'Nagawa ang checkout session, pero nawawala ang redirect URL. Pakikontak ang support.',
-                errCheckoutFailed: 'Nabigo ang checkout. Pakisubukang muli.',
-        };
-
-let unsubscribeUserDoc = null;
-        let hasLoadedUserDocSnapshot = false;
-        let ctaAction = {
-            basic: { type: 'checkout', plan: 'basic' },
-            pro: { type: 'checkout', plan: 'pro' }
-        };
-
-        function setButton(btn, iconHtml, label) {
-            if (!btn) return;
-            btn.innerHTML = `${iconHtml} ${label}`;
-        }
-
-
-        function setPricingButtonsDisabled(disabled) {
-            if (btnBasic) btnBasic.disabled = disabled;
-            if (btnPro) btnPro.disabled = disabled;
-        }
-
-        function applyPricingLoadingState() {
-            setButton(btnBasic, "<i class='bx bx-loader-alt'></i>", "Loading...");
-            setButton(btnPro, "<i class='bx bx-loader-alt'></i>", "Loading...");
-            setTrialNotesVisible(false);
-            setPricingButtonsDisabled(true);
-        }
-        function setTrialNotesVisible(visible) {
-            if (noteBasicTrial) noteBasicTrial.style.display = visible ? '' : 'none';
-            if (noteProTrial) noteProTrial.style.display = visible ? '' : 'none';
-        }
-
-        function applyPricingUIFromUserDoc(data) {
-                                                                        
-
-            const grade = String(data?.grade || 'free').toLowerCase();
-            const subStatus = String(data?.subscriptionStatus || '').toLowerCase();
-            const hasUsedTrial = Boolean(data?.hasUsedTrial);
-            const hasEverPaid = Boolean(data?.hasEverPaid);
-            const hadStripeHistory = Boolean(data?.hadStripeHistory);
-
-            const isTrialing = subStatus === 'trialing';
-            const isActive = subStatus === 'active';
-            const isPaidGrade = grade === 'basic' || grade === 'pro';
-            const isTrialingPaid = isTrialing && isPaidGrade;
-            const isActivePaid = isActive && isPaidGrade;
-
-            // Defaults (new user / no subscription): show trial CTAs + show trial note.
-                        // Defaults (new user / no subscription): show trial CTAs + show trial note.
-            let showTrial = (!hasUsedTrial && !hasEverPaid && !hadStripeHistory);
-            let basicLabel = __WEB_SUB_COPY.subscribeBasic;
-            let proLabel = __WEB_SUB_COPY.subscribePro;
-            let basicAction = { type: 'checkout', plan: 'basic' };
-            let proAction = { type: 'checkout', plan: 'pro' };
-// Scenario 2: free trial in progress
-            if (isTrialingPaid) {
-                showTrial = false;
-                basicLabel = __WEB_SUB_COPY.manage;
-                basicAction = { type: 'portal' };
-
-                if (grade === 'basic') {
-                    proLabel = __WEB_SUB_COPY.upgradeToPro;
-                    proAction = { type: 'changePlan', plan: 'pro' };
-                } else {
-                    // If already on Pro (trialing), "Upgrade" doesn't make sense.
-                    proLabel = __WEB_SUB_COPY.manage;
-                    proAction = { type: 'portal' };
-                }
-            }
-            // Paid active subscription (not explicitly listed, but keep sensible UX)
-            else if (isActivePaid) {
-                showTrial = false;
-                if (grade === 'basic') {
-                    basicLabel = __WEB_SUB_COPY.manage;
-                    basicAction = { type: 'portal' };
-                    proLabel = __WEB_SUB_COPY.upgradeToPro;
-                    proAction = { type: 'changePlan', plan: 'pro' };
-                } else if (grade === 'pro') {
-                    basicLabel = __WEB_SUB_COPY.manage;
-                    basicAction = { type: 'portal' };
-                    proLabel = __WEB_SUB_COPY.manage;
-                    proAction = { type: 'portal' };
-                } else {
-                    basicLabel = __WEB_SUB_COPY.manage;
-                    basicAction = { type: 'portal' };
-                    proLabel = __WEB_SUB_COPY.manage;
-                    proAction = { type: 'portal' };
-                }
-            }
-            // No active subscription
-            else {
-                // Scenario 4: resubscribe (paid before)
-                if (hasEverPaid) {
-                    showTrial = false;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-                // Scenario 3: trial ended, never paid
-                else if (hasUsedTrial || hadStripeHistory) {
-                    showTrial = false;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-                // Scenario 1: new user (trial eligible)
-                else {
-                    showTrial = true;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-            }
-
-            setButton(btnBasic, "<i class='bx bx-rocket'></i>", basicLabel);
-            setButton(btnPro, "<i class='bx bx-crown'></i>", proLabel);
-            setTrialNotesVisible(showTrial);
-
-            setPricingButtonsDisabled(false);
-            ctaAction = { basic: basicAction, pro: proAction };
-        }
-
-        async function openBillingPortal() {
-            if (!auth.currentUser) {
-                const next = "/fil/price/";
-                window.location.href = `/fil/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "fil"); } catch (_) {}
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreatePortalSession`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({})
-                });
-                const data = await resp.json().catch(() => ({}));
-                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
-                if (!data.url) throw new Error("Missing portal URL");
-                try { localStorage.setItem("lang", document.documentElement.lang || "fil"); } catch (_) {}
-                window.location.href = data.url;
-            } catch (e) {
-                console.error("Portal error", e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errPortalFailed);
-            }
-        }
-
-        async function changePlan(plan) {
-            if (!auth.currentUser) {
-                const returnUrl = new URL(window.location.href);
-                returnUrl.searchParams.set("checkoutPlan", plan);
-                const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
-                window.location.href = `/fil/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "fil"); } catch (_) {}
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiChangePlan`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({ plan, returnUrl, cancelUrl: returnUrl, locale: document.documentElement.lang || "fil" })
-                });
-                const data = await resp.json().catch(() => ({}));
-                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
-                if (data.hostedInvoiceUrl) {
-                    try { localStorage.setItem("lang", document.documentElement.lang || "fil"); } catch (_) {}
-                    window.location.href = data.hostedInvoiceUrl;
-                    return;
-                }
-                window.location.href = "/fil/myinfo/";
-            } catch (e) {
-                console.error("Change plan error", e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errPlanChangeFailed);
-            }
-        }
-
-        window.handleCheckout = async function(plan) {
-            if (!auth.currentUser) {
-                alert(__WEB_SUB_COPY.errLoginRequiredSubscribe);
-
-                const returnUrl = new URL(window.location.href);
-                returnUrl.searchParams.set("checkoutPlan", plan);
-                const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
-                window.location.href = `/fil/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-
-            document.getElementById('checkout-overlay').classList.add('active');
-
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "fil"); } catch (_) {}
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreateCheckoutSession`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({ plan, returnUrl, cancelUrl: returnUrl, locale: document.documentElement.lang || "fil" })
-                });
-                const data = await resp.json().catch(() => ({}));
-                if (!resp.ok) {
-                    throw new Error(data.error || `Failed (${resp.status})`);
-                }
-                if (data.alreadySubscribed) {
-                    alert(__WEB_SUB_COPY.msgAlreadySubscribed);
-                    window.location.href = "/fil/myinfo/";
-                    return;
-                }
-
-                if (data.url) {
-                    window.location.href = data.url;
-                    return;
-                }
-                if (data.sessionId) {
-                    alert(__WEB_SUB_COPY.errCheckoutMissingUrl);
-                    return;
-                }
-                throw new Error("Unexpected response from server");
-            } catch (e) {
-                console.error("Checkout error", e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errCheckoutFailed);
-                document.getElementById('checkout-overlay').classList.remove('active');
-            }
-        }
-
-        async function handleCtaClick(which) {
-            if (auth.currentUser && !hasLoadedUserDocSnapshot) return;
-            const action = ctaAction[which];
-            if (!action) return;
-            if (action.type === 'portal') return await openBillingPortal();
-            if (action.type === 'changePlan') return await changePlan(action.plan);
-            return await window.handleCheckout(action.plan || which);
-        }
-
-        if (btnBasic) btnBasic.addEventListener('click', () => handleCtaClick('basic'));
-        if (btnPro) btnPro.addEventListener('click', () => handleCtaClick('pro'));
-
-        function stopUserDocListener() {
-            if (unsubscribeUserDoc) {
-                try { unsubscribeUserDoc(); } catch (_) {}
-                unsubscribeUserDoc = null;
-            }
-        }
-
-        function startUserDocListener(user) {
-            stopUserDocListener();
-            hasLoadedUserDocSnapshot = false;
-            applyPricingLoadingState();
-            const ref = doc(db, "users", user.uid);
-            unsubscribeUserDoc = onSnapshot(ref, (snap) => {
-                hasLoadedUserDocSnapshot = true;
-                applyPricingUIFromUserDoc(snap.exists() ? (snap.data() || {}) : {});
-            }, (err) => {
-                console.warn("User doc listener error", err);
-                hasLoadedUserDocSnapshot = true;
-                applyPricingUIFromUserDoc({});
-            });
-        }
-
-        // Default UI for logged-out/new users
-        applyPricingUIFromUserDoc({});
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                startUserDocListener(user);
-            } else {
-                stopUserDocListener();
-                hasLoadedUserDocSnapshot = false;
-                applyPricingUIFromUserDoc({});
-            }
-        });
-
-        // If we came back from login with a plan selected, auto-start checkout.
-        const params = new URLSearchParams(window.location.search);
-        const checkoutPlan = params.get("checkoutPlan");
-        if (checkoutPlan) {
-            onAuthStateChanged(auth, (user) => {
-                if (!user) return;
-                if (window.__checkoutAutoStarted) return;
-                window.__checkoutAutoStarted = true;
-                try {
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                } catch (_) {}
-                window.handleCheckout(checkoutPlan);
-            });
-        }
-    </script>
 <script defer="" src="js/lang-widget.js"></script>
 <footer id="wisesignal-legal-footer" style="margin-top: 4rem; padding: 3rem 5% 2.5rem; color: rgba(148,163,184,0.90); font-size: 0.82rem; line-height: 1.7; text-align: center;">
 <div style="max-width: 1100px; margin: 0 auto;">
@@ -1011,6 +585,6 @@ let unsubscribeUserDoc = null;
 <div>Registered Office: 71-75 Shelton Street, London, WC2H 9JQ, UK.</div>
 <div>Contact: <a href="mailto:info@wise-signal.com" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">info@wise-signal.com</a></div>
 </div>
-</footer>
-</body>
+<p id="subscription-v2-links"><a href="/en/privacy/">Patakaran sa privacy</a> · <a href="/en/terms/">Mga tuntunin sa paggamit</a> · <a href="/fil/myinfo/">Mga kasalukuyang subscriber sa web</a></p></footer>
+<script data-subscription-navigation="">document.getElementById("mobile-menu-btn")?.addEventListener("click",()=>document.getElementById("nav-links")?.classList.toggle("active"));</script></body>
 </html>

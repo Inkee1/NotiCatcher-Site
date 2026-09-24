@@ -446,27 +446,39 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "Free",
-          "price": "0.00",
+          "name": "Basic / monthly",
+          "price": "2.4",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/ko/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "USD 기준 가격입니다. 지역별 실제 가격과 적용 가능한 할인은 구매 전 Google Play에서 표시됩니다.",
+          "availability": "https://schema.org/PreOrder"
         },
         {
           "@type": "Offer",
-          "name": "Basic",
-          "price": "2.99",
+          "name": "Basic / annual",
+          "price": "19.9",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/ko/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "USD 기준 가격입니다. 지역별 실제 가격과 적용 가능한 할인은 구매 전 Google Play에서 표시됩니다.",
+          "availability": "https://schema.org/PreOrder"
         },
         {
           "@type": "Offer",
-          "name": "Pro",
-          "price": "6.99",
+          "name": "Pro / monthly",
+          "price": "4.9",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/ko/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "USD 기준 가격입니다. 지역별 실제 가격과 적용 가능한 할인은 구매 전 Google Play에서 표시됩니다.",
+          "availability": "https://schema.org/PreOrder"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro / annual",
+          "price": "39.9",
+          "priceCurrency": "USD",
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "USD 기준 가격입니다. 지역별 실제 가격과 적용 가능한 할인은 구매 전 Google Play에서 표시됩니다.",
+          "availability": "https://schema.org/PreOrder"
         }
       ]
     },
@@ -504,7 +516,7 @@
   ]
 }</script>
 <!-- noticatcher-structured-data:end -->
-</head>
+<style id="subscription-v2-style">.v2-price{font-size:1.2rem;line-height:1.65;margin:1.2rem 0}.price-card p{line-height:1.65}.price-card .btn{margin-top:1rem}.pricing-grid{align-items:stretch}</style></head>
 <body>
 <div class="bg-glow"></div>
 <nav class="navbar">
@@ -518,54 +530,16 @@
 <a class="active" href="/ko/price/">가격</a>
 <a href="/ko/download/">다운로드</a>
 <a href="/ko/faq/">FAQ</a>
-<a class="btn btn-glass" href="/ko/myinfo/" id="auth-link" style="padding: 0.5rem 1.25rem;">로그인 / 내 정보</a>
+<a class="btn btn-glass" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher" id="auth-link" style="padding: 0.5rem 1.25rem;">Google Play에서 받기</a>
 </div>
 </nav>
 <!-- Header -->
 <div class="pricing-header">
 <i class="bx bxs-check-shield"></i>
 <h1>중요한 알림을 더 이상 놓치지 마세요</h1>
-<p style="color: var(--text-muted);">알림 필요에 맞는 요금제를 선택하세요.</p>
-<p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 6px;">가격은 지역에 따라 약간 달라질 수 있습니다.</p>
-</div>
+<p>USD 기준 가격입니다. 지역별 실제 가격과 적용 가능한 할인은 구매 전 Google Play에서 표시됩니다.</p><p>첫 달 할인은 대상 신규 구독자에게만 적용됩니다.</p><p class="release-pending-v2" role="status" style="border:1px solid #f59e0b;padding:1rem;border-radius:12px;">새 요금제는 다음 앱 업데이트에서 제공됩니다. 현재 이용 가능한 구매 조건은 Google Play에서 확인하세요.</p></div>
 <!-- Pricing Cards -->
-<div class="pricing-grid">
-<!-- Free -->
-<div class="price-card free-tier">
-<div class="card-tier free-color">무료</div>
-<div class="card-price">무료</div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span><strong>모든 앱</strong> 키워드 캐치: <span class="highlight">하루 2회</span></span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">일반 앱 캐치 무제한</span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">금융 &amp; Telegram 캐치 무제한</span></li>
-</ul>
-<button class="btn btn-glass btn-buy" disabled="">현재 요금제</button>
-</div>
-<!-- Basic -->
-<div class="price-card special">
-<div class="card-tier">베이직</div>
-<div class="card-price">$2.99 <span>/월</span></div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span><strong>일반 앱</strong> 키워드 캐치: <span class="highlight">무제한</span></span></li>
-<li><i class="bx bxs-info-circle limit"></i> <span><strong>금융 &amp; Telegram</strong> 키워드 캐치: 하루 2회</span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">금융 &amp; Telegram 캐치 무제한</span></li>
-</ul>
-<button class="btn btn-primary btn-buy" id="btn-basic-cta" style="background: var(--secondary);"><i class="bx bx-rocket"></i> 구독하기</button>
-<div class="trial-under-btn" id="basic-trial-note" style="display:none;">3일 무료 체험</div>
-</div>
-<!-- Pro -->
-<div class="price-card recommended">
-<div class="card-badge">추천</div>
-<div class="card-tier">프로</div>
-<div class="card-price">$6.99 <span>/월</span></div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span><strong>모든 앱</strong> 키워드 캐치: <span class="highlight">무제한</span></span></li>
-<li><i class="bx bxs-check-circle check"></i> <span>금융 앱 및 Telegram 포함 — <strong>제한 없음</strong></span></li>
-</ul>
-<button class="btn btn-primary btn-buy" id="btn-pro-cta"><i class="bx bx-crown"></i> 구독하기</button>
-<div class="trial-under-btn" id="pro-trial-note" style="display:none;">3일 무료 체험</div>
-</div>
-</div>
+<div class="pricing-grid"><div class="price-card free-tier"><div class="card-tier">Free</div><h2>구독 신청 없이 7일 무료</h2><p>전체 기능 7일 체험 후 모든 앱 합계 48시간당 알람 2회 무료. 자동 결제 없음.</p><p>중복 체험 방지를 위해 기기 식별값의 해시를 전송하고 체험 날짜와 사용 횟수를 저장합니다. 체험 시작·복구 및 무료 2회 사용 확인에는 인터넷 연결이 필요합니다. 알림 내용과 키워드는 기기에 보관합니다.</p><a class="btn btn-glass" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Google Play에서 받기</a></div><div class="price-card special"><div class="card-tier">Basic</div><p>일반 앱의 키워드 알람 무제한. 금융 앱과 Telegram은 48시간당 무료 2회를 사용할 수 있습니다.</p><p class="v2-price">첫 1개월 $0.90, 이후 매월 $2.40. 해지 전까지 자동 갱신됩니다.</p><p class="v2-price">매년 $19.90 선결제. 해지 전까지 자동 갱신됩니다.</p><p>정상 월 요금 12개월 대비 31% 절약</p><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Google Play에서 받기</a></div><div class="price-card recommended"><div class="card-tier">Pro</div><p>금융 앱과 Telegram을 포함한 모든 앱의 키워드 알람 무제한.</p><p class="v2-price">첫 1개월 $1.90, 이후 매월 $4.90. 해지 전까지 자동 갱신됩니다.</p><p class="v2-price">매년 $39.90 선결제. 해지 전까지 자동 갱신됩니다.</p><p>정상 월 요금 12개월 대비 32% 절약</p><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Google Play에서 받기</a></div></div>
 <!-- App Category Note -->
 <div class="app-note" style="margin-top: 3rem;">
 <div class="app-note-box">
@@ -573,54 +547,6 @@
 <p><strong>일반 앱</strong> = 금융/암호화폐 관련 앱과 Telegram을 <em>제외</em>한 모든 앱.<br/> <strong>금융 &amp; Telegram 앱</strong> = 트레이딩 플랫폼, 암호화폐 거래소, 지갑 앱, 그리고 Telegram.</p>
 <button class="restricted-apps-btn" onclick="document.getElementById('apps-modal').classList.add('active')"><i class="bx bx-list-ul"></i> 제한 앱 목록 보기<br/>(금융 &amp; Telegram)</button>
 </div>
-</div>
-</div>
-<!-- Feature Comparison Table -->
-<div class="comparison-section">
-<h2>기능 비교</h2>
-<div class="comparison-table-wrap">
-<table class="comparison-table">
-<thead>
-<tr>
-<th>Feature</th>
-<th>Free</th>
-<th class="col-basic">Basic</th>
-<th class="col-pro">Pro</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>General apps keyword catches</td>
-<td>2 / day</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-</tr>
-<tr>
-<td>Financial &amp; Telegram keyword catches</td>
-<td>2 / day</td>
-<td>2 / day</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-</tr>
-<tr>
-<td>3-day free trial</td>
-<td><i class="bx bx-x"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-<tr>
-<td>Silent mode override</td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-<tr>
-<td>Custom keyword matching</td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <!-- Restricted Apps Modal -->
@@ -631,13 +557,17 @@
 <button class="modal-close" onclick="document.getElementById('apps-modal').classList.remove('active')">×</button>
 </div>
 <div class="modal-body">
-<p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">다음 앱은 "금융 &amp; Telegram"으로 분류됩니다. Free 및 Basic 요금제에서는 이 앱들의 키워드 감지가 하루 2회로 제한됩니다.</p>
+<p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">전체 기능 7일 체험 후 모든 앱 합계 48시간당 알람 2회 무료. 자동 결제 없음. 일반 앱의 키워드 알람 무제한. 금융 앱과 Telegram은 48시간당 무료 2회를 사용할 수 있습니다. 금융 앱과 Telegram을 포함한 모든 앱의 키워드 알람 무제한.</p>
 <div class="app-category">메시징</div>
 <div class="app-list"><span>Telegram</span></div>
 <div class="app-category">암호화폐 거래소(주요)</div>
 <div class="app-list"><span>TradingView</span><span>Binance</span><span>Bybit</span><span>OKX</span> <span>Coinbase</span><span>Crypto.com</span><span>Kraken</span><span>KuCoin</span> <span>Gate</span><span>MEXC</span><span>Bitget</span><span>HTX</span> <span>Bitfinex</span><span>Bitstamp</span><span>Gemini</span><span>CoinEx</span> <span>Phemex</span><span>BingX</span><span>Pionex</span><span>Kraken Pro</span></div>
 <div class="app-category">암호화폐 거래소 및 도구</div>
 <div class="app-list"><span>BitMart</span><span>WhiteBIT</span><span>LBank</span><span>WOO X</span> <span>CoinW</span><span>ProBit Global</span><span>XT.com</span><span>Poloniex</span> <span>Coinigy</span><span>TabTrader</span><span>CoinGlass</span><span>Pionex.US</span> <span>Bitsgap</span><span>Cryptohopper</span><span>GoodCrypto</span><span>WunderTrading</span> <span>WEEX</span><span>Bitpanda</span><span>Bitvavo</span><span>CoinMarketCap</span> <span>CoinGecko</span><span>CoinStats</span><span>Delta by eToro</span><span>CoinTracker</span> <span>Coinpanda</span><span>unchain.app</span><span>Investing.com Crypto</span><span>Crypto Price Alert</span> <span>CryptoRank</span><span>The Crypto App</span><span>Delta Exchange</span><span>Coindisco</span> <span>Edge Wallet</span><span>Crypto Market Cap</span><span>Bitcoin Chart Widget</span><span>CryptoCharts Widget</span> <span>KuCoin Info</span><span>BBX</span><span>Coin Book</span><span>Wealthica</span> <span>Finary</span><span>Trade Republic</span><span>Revolut</span> <span>Crypto Signals (Fortune Traders)</span> <span>Crypto Coin Check</span><span>Bitcoin Crypto News</span> <span>DOPAMINE Crypto</span><span>PayPal</span><span>Bitsnapp Portfolio</span><span>Coin Plaza (KR)</span></div>
+<div class="app-category">Global Stock &amp; Forex Brokers</div>
+<div class="app-list">
+<span>IBKR Mobile</span><span>Schwab Mobile</span><span>thinkorswim</span><span>Fidelity Investments</span><span>E*TRADE</span><span>Trading 212</span><span>XTB</span><span>DEGIRO</span><span>moomoo</span><span>Zerodha Kite</span><span>Upstox</span><span>Groww</span><span>Angel One</span><span>MetaTrader 4</span><span>MetaTrader 5</span><span>cTrader</span><span>OANDA</span>
+</div>
 <div class="app-category">지역 거래소</div>
 <div class="app-list"><span>업비트</span><span>Upbit Global</span><span>빗썸</span><span>코인원</span> <span>코빗</span><span>Coincheck</span><span>bitFlyer</span><span>bitbank</span> <span>GMO Coin</span><span>OKCoin Japan (OKJ)</span><span>CoinDCX</span><span>CoinDCX Pro</span> <span>WazirX</span><span>CoinSwitch</span><span>ZebPay</span><span>Delta Exchange India</span> <span>BtcTurk</span><span>Paribu</span><span>Binance TR</span><span>CoinTR</span> <span>Indodax</span><span>Tokocrypto</span><span>Coins (PH/TH)</span><span>Bitkub</span> <span>Mercado Bitcoin</span><span>Bitso</span><span>Bitybank</span><span>Yellow Card</span> <span>VALR</span><span>Luno</span><span>NDAX</span><span>Coinsquare (Canada)</span> <span>CoinSpot</span><span>Independent Reserve</span><span>Bitcoin.com.au</span><span>Swyftx</span> <span>WhiteBIT TR</span><span>WhiteBIT GE</span><span>GOPAX</span><span>Coinhako</span> <span>Pintu</span><span>BtcTurk Hisse</span><span>Newton (Canada)</span><span>Shakepay (Canada)</span> <span>CoinJar</span><span>Bitbns</span><span>Bitbns Pay</span> <span>Robinhood</span><span>Webull</span><span>eToro</span></div>
 <div class="app-category">지갑</div>
@@ -646,513 +576,6 @@
 </div>
 </div>
 <!-- Checkout Overlay -->
-<div id="checkout-overlay">
-<div class="loader" style="margin-bottom: 20px;"></div>
-<h2>안전한 결제를 준비하는 중...</h2>
-<p style="color: var(--text-muted)">Stripe(으)로 이동하는 중입니다.</p>
-</div>
-<script type="module">
-        import { auth, db, onAuthStateChanged, signInWithCustomToken } from "./js/firebase-config.js";
-        import { autoLoginFromFragment } from "./js/auto-login.js";
-        import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-        function createCheckoutDebug(options = {}) {
-            const summarizeUser = (user) => {
-                if (!user) return null;
-                const uid = String(user.uid || '');
-                const email = String(user.email || '').trim();
-                const at = email.indexOf('@');
-                const maskedEmail = at <= 0
-                    ? email
-                    : `${email.slice(0, Math.min(2, at))}${at > 2 ? '***' : ''}${email.slice(at)}`;
-                return {
-                    uid: uid ? `${uid.slice(0, 6)}...${uid.slice(-4)}` : '',
-                    email: maskedEmail,
-                    anonymous: Boolean(user.isAnonymous),
-                };
-            };
-            return {
-                enabled: false,
-                log() {},
-                summarizeUser,
-            };
-        }
-
-        const __checkoutDebug = createCheckoutDebug({
-            mobileEnabled: window.matchMedia('(max-width: 900px)').matches,
-        });
-        try {
-            const staticEl = document.getElementById('checkout-debug-static-text');
-            if (staticEl) {
-                staticEl.textContent = 'JS 모듈도 실행되었습니다. 아래 패널에 auth/firestore/checkout 로그가 쌓여야 합니다.';
-            }
-        } catch (_) {}
-        window.addEventListener('error', (event) => {
-            __checkoutDebug.log('js', 'window error', {
-                message: event.message,
-                source: event.filename,
-                line: event.lineno,
-                column: event.colno,
-            });
-        });
-        window.addEventListener('unhandledrejection', (event) => {
-            __checkoutDebug.log('js', 'unhandled rejection', event.reason);
-        });
-        __checkoutDebug.log('debug', 'debug panel initialized', {
-            url: window.location.href,
-            width: window.innerWidth,
-            height: window.innerHeight,
-            userAgent: navigator.userAgent,
-        });
-        const __autoLoginResult = await autoLoginFromFragment(auth, signInWithCustomToken, "ct");
-        __checkoutDebug.log('auth', 'autoLoginFromFragment finished', __autoLoginResult || {attempted: false});
-
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('nav-links').classList.toggle('active');
-        });
-
-        document.getElementById('apps-modal').addEventListener('click', function(e) {
-            if (e.target === this) this.classList.remove('active');
-        });
-
-        const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
-
-        const btnBasic = document.getElementById('btn-basic-cta');
-        const btnPro = document.getElementById('btn-pro-cta');
-        const noteBasicTrial = document.getElementById('basic-trial-note');
-        const noteProTrial = document.getElementById('pro-trial-note');
-
-        
-
-        
-
-
-
-        
-
-
-
-        
-
-
-
-        
-
-
-
-        const __WEB_SUB_COPY = {
-                subscribeBasic: '구독하기',
-                subscribePro: '구독하기',
-                manage: '구독 관리',
-                upgradeToPro: 'Pro로 전환',
-                toastUpdated: '요금제가 업데이트되었습니다.',
-                toastScheduled: '다음 결제일에 요금제가 변경됩니다.',
-                errPlanChangeFailed: '요금제 변경에 실패했습니다.',
-                errPortalFailed: '결제 포털을 여는 데 실패했습니다.',
-                errRequestFailed: '요청에 실패했습니다. 다시 시도해 주세요.',
-                errLoginRequiredSubscribe: '구독하려면 먼저 로그인해야 합니다.\n\n지금 로그인 페이지로 이동합니다.',
-                msgAlreadySubscribed: '이미 구독 중입니다.',
-                errCheckoutMissingUrl: '결제 세션이 생성되었지만 리디렉션 URL이 없습니다. 지원팀에 문의해 주세요.',
-                errCheckoutFailed: '결제에 실패했습니다. 다시 시도해 주세요.',
-        };
-
-let unsubscribeUserDoc = null;
-        let hasLoadedUserDocSnapshot = false;
-        let userDocLoadTimeoutId = null;
-        let ctaAction = {
-            basic: { type: 'checkout', plan: 'basic' },
-            pro: { type: 'checkout', plan: 'pro' }
-        };
-
-        function setButton(btn, iconHtml, label) {
-            if (!btn) return;
-            btn.innerHTML = `${iconHtml} ${label}`;
-        }
-
-
-        function setPricingButtonsDisabled(disabled) {
-            if (btnBasic) btnBasic.disabled = disabled;
-            if (btnPro) btnPro.disabled = disabled;
-        }
-
-        function applyPricingLoadingState() {
-            setButton(btnBasic, "<i class='bx bx-loader-alt'></i>", "Loading...");
-            setButton(btnPro, "<i class='bx bx-loader-alt'></i>", "Loading...");
-            setTrialNotesVisible(false);
-            setPricingButtonsDisabled(true);
-            __checkoutDebug.log('ui', 'applyPricingLoadingState');
-        }
-        function setTrialNotesVisible(visible) {
-            if (noteBasicTrial) noteBasicTrial.style.display = visible ? '' : 'none';
-            if (noteProTrial) noteProTrial.style.display = visible ? '' : 'none';
-        }
-
-        function applyPricingUIFromUserDoc(data) {
-                                                            
-
-            const grade = String(data?.grade || 'free').toLowerCase();
-            const subStatus = String(data?.subscriptionStatus || '').toLowerCase();
-            const hasUsedTrial = Boolean(data?.hasUsedTrial);
-            const hasEverPaid = Boolean(data?.hasEverPaid);
-            const hadStripeHistory = Boolean(data?.hadStripeHistory);
-            __checkoutDebug.log('ui', 'applyPricingUIFromUserDoc', {
-                grade,
-                subStatus,
-                hasUsedTrial,
-                hasEverPaid,
-                hadStripeHistory,
-            });
-
-            const isTrialing = subStatus === 'trialing';
-            const isActive = subStatus === 'active';
-            const isPaidGrade = grade === 'basic' || grade === 'pro';
-            const isTrialingPaid = isTrialing && isPaidGrade;
-            const isActivePaid = isActive && isPaidGrade;
-
-            // Defaults (new user / no subscription): show trial CTAs + show trial note.
-                        // Defaults (new user / no subscription): show trial CTAs + show trial note.
-            let showTrial = (!hasUsedTrial && !hasEverPaid && !hadStripeHistory);
-            let basicLabel = __WEB_SUB_COPY.subscribeBasic;
-            let proLabel = __WEB_SUB_COPY.subscribePro;
-            let basicAction = { type: 'checkout', plan: 'basic' };
-            let proAction = { type: 'checkout', plan: 'pro' };
-// Scenario 2: free trial in progress
-            if (isTrialingPaid) {
-                showTrial = false;
-                basicLabel = __WEB_SUB_COPY.manage;
-                basicAction = { type: 'portal' };
-
-                if (grade === 'basic') {
-                    proLabel = __WEB_SUB_COPY.upgradeToPro;
-                    proAction = { type: 'changePlan', plan: 'pro' };
-                } else {
-                    // If already on Pro (trialing), "Upgrade" doesn't make sense.
-                    proLabel = __WEB_SUB_COPY.manage;
-                    proAction = { type: 'portal' };
-                }
-            }
-            // Paid active subscription (not explicitly listed, but keep sensible UX)
-            else if (isActivePaid) {
-                showTrial = false;
-                if (grade === 'basic') {
-                    basicLabel = __WEB_SUB_COPY.manage;
-                    basicAction = { type: 'portal' };
-                    proLabel = __WEB_SUB_COPY.upgradeToPro;
-                    proAction = { type: 'changePlan', plan: 'pro' };
-                } else if (grade === 'pro') {
-                    basicLabel = __WEB_SUB_COPY.manage;
-                    basicAction = { type: 'portal' };
-                    proLabel = __WEB_SUB_COPY.manage;
-                    proAction = { type: 'portal' };
-                } else {
-                    // Defensive: if subscriptionStatus says active but grade isn't a paid tier,
-                    // don't lock the user into "manage" CTAs (it can happen with stale/incomplete user docs).
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-            }
-            // No active subscription
-            else {
-                // Scenario 4: resubscribe (paid before)
-                if (hasEverPaid) {
-                    showTrial = false;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-                // Scenario 3: trial ended, never paid
-                else if (hasUsedTrial || hadStripeHistory) {
-                    showTrial = false;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-                // Scenario 1: new user (trial eligible)
-                else {
-                    showTrial = true;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-            }
-
-            setButton(btnBasic, "<i class='bx bx-rocket'></i>", basicLabel);
-            setButton(btnPro, "<i class='bx bx-crown'></i>", proLabel);
-            setTrialNotesVisible(showTrial);
-
-            setPricingButtonsDisabled(false);
-            ctaAction = { basic: basicAction, pro: proAction };
-        }
-
-        async function openBillingPortal() {
-            if (!auth.currentUser) {
-                __checkoutDebug.log('portal', 'redirecting to login because auth.currentUser is missing');
-                const next = "/ko/price/";
-                window.location.href = `/ko/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "ko"); } catch (_) {}
-                __checkoutDebug.log('portal', 'starting portal request', {
-                    user: __checkoutDebug.summarizeUser(auth.currentUser),
-                });
-                const idToken = await auth.currentUser.getIdToken(true);
-                const returnUrl = new URL(window.location.href).toString();
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreatePortalSession`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({ returnUrl })
-                });
-                const data = await resp.json().catch(() => ({}));
-                __checkoutDebug.log('portal', 'portal response received', {
-                    ok: resp.ok,
-                    status: resp.status,
-                    data,
-                });
-                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
-                if (!data.url) throw new Error("Missing portal URL");
-                try { localStorage.setItem("lang", document.documentElement.lang || "ko"); } catch (_) {}
-                __checkoutDebug.log('portal', 'redirecting to portal', {url: data.url});
-                window.location.href = data.url;
-            } catch (e) {
-                console.error("Portal error", e);
-                __checkoutDebug.log('error', 'portal request failed', e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errPortalFailed);
-            }
-        }
-
-        async function changePlan(plan) {
-            if (!auth.currentUser) {
-                const returnUrl = new URL(window.location.href);
-                returnUrl.searchParams.set("checkoutPlan", plan);
-                const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
-                window.location.href = `/ko/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "ko"); } catch (_) {}
-                const returnUrl = new URL(window.location.href).toString();
-                __checkoutDebug.log('plan', 'starting plan change request', {
-                    plan,
-                    returnUrl,
-                    user: __checkoutDebug.summarizeUser(auth.currentUser),
-                });
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiChangePlan`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({ plan, returnUrl, cancelUrl: returnUrl, locale: document.documentElement.lang || "ko" })
-                });
-                const data = await resp.json().catch(() => ({}));
-                __checkoutDebug.log('plan', 'plan change response received', {
-                    ok: resp.ok,
-                    status: resp.status,
-                    data,
-                });
-                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
-                if (data.hostedInvoiceUrl) {
-                    try { localStorage.setItem("lang", document.documentElement.lang || "ko"); } catch (_) {}
-                    __checkoutDebug.log('plan', 'redirecting to hosted invoice', {url: data.hostedInvoiceUrl});
-                    window.location.href = data.hostedInvoiceUrl;
-                    return;
-                }
-                __checkoutDebug.log('plan', 'plan change finished; redirecting to myinfo');
-                window.location.href = "/ko/myinfo/";
-            } catch (e) {
-                console.error("Change plan error", e);
-                __checkoutDebug.log('error', 'plan change failed', e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errPlanChangeFailed);
-            }
-        }
-
-        window.handleCheckout = async function(plan) {
-            if (!auth.currentUser) {
-                __checkoutDebug.log('checkout', 'redirecting to login because auth.currentUser is missing', {plan});
-                alert(__WEB_SUB_COPY.errLoginRequiredSubscribe);
-
-                const returnUrl = new URL(window.location.href);
-                returnUrl.searchParams.set("checkoutPlan", plan);
-                const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
-                window.location.href = `/ko/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-
-            document.getElementById('checkout-overlay').classList.add('active');
-
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "ko"); } catch (_) {}
-                __checkoutDebug.log('checkout', 'starting checkout request', {
-                    plan,
-                    user: __checkoutDebug.summarizeUser(auth.currentUser),
-                });
-                const idToken = await auth.currentUser.getIdToken(true);
-                const returnUrl = new URL(window.location.pathname, location.origin).toString();
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreateCheckoutSession`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({ plan, returnUrl, cancelUrl: returnUrl, locale: document.documentElement.lang || "ko" })
-                });
-                const data = await resp.json().catch(() => ({}));
-                __checkoutDebug.log('checkout', 'checkout response received', {
-                    ok: resp.ok,
-                    status: resp.status,
-                    data,
-                });
-                if (!resp.ok) {
-                    throw new Error(data.error || `Failed (${resp.status})`);
-                }
-                if (data.alreadySubscribed) {
-                    __checkoutDebug.log('checkout', 'server reported alreadySubscribed; redirecting to myinfo');
-                    alert(__WEB_SUB_COPY.msgAlreadySubscribed);
-                    window.location.href = "/ko/myinfo/";
-                    return;
-                }
-
-                if (data.url) {
-                    __checkoutDebug.log('checkout', 'redirecting to Stripe checkout', {url: data.url});
-                    window.location.href = data.url;
-                    return;
-                }
-                if (data.sessionId) {
-                    __checkoutDebug.log('checkout', 'sessionId returned without url', {sessionId: data.sessionId});
-                    alert(__WEB_SUB_COPY.errCheckoutMissingUrl);
-                    document.getElementById('checkout-overlay').classList.remove('active');
-                    return;
-                }
-                throw new Error("Unexpected response from server");
-            } catch (e) {
-                console.error("Checkout error", e);
-                __checkoutDebug.log('error', 'checkout failed', e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errCheckoutFailed);
-                document.getElementById('checkout-overlay').classList.remove('active');
-            }
-        }
-
-        async function handleCtaClick(which) {
-            if (auth.currentUser && !hasLoadedUserDocSnapshot) {
-                __checkoutDebug.log('warn', 'user doc snapshot still pending; proceeding with current CTA action', {
-                    which,
-                    action: ctaAction[which],
-                    user: __checkoutDebug.summarizeUser(auth.currentUser),
-                });
-            }
-            const action = ctaAction[which];
-            __checkoutDebug.log('click', 'CTA clicked', {
-                which,
-                action,
-                hasLoadedUserDocSnapshot,
-                user: __checkoutDebug.summarizeUser(auth.currentUser),
-            });
-            if (!action) return;
-            if (action.type === 'portal') return await openBillingPortal();
-            if (action.type === 'changePlan') return await changePlan(action.plan);
-            return await window.handleCheckout(action.plan || which);
-        }
-
-        if (btnBasic) btnBasic.addEventListener('click', () => handleCtaClick('basic'));
-        if (btnPro) btnPro.addEventListener('click', () => handleCtaClick('pro'));
-
-        function stopUserDocListener() {
-            if (userDocLoadTimeoutId) {
-                clearTimeout(userDocLoadTimeoutId);
-                userDocLoadTimeoutId = null;
-            }
-            if (unsubscribeUserDoc) {
-                try { unsubscribeUserDoc(); } catch (_) {}
-                unsubscribeUserDoc = null;
-            }
-            __checkoutDebug.log('firestore', 'stopped user doc listener');
-        }
-
-        function startUserDocListener(user) {
-            stopUserDocListener();
-            hasLoadedUserDocSnapshot = false;
-            applyPricingLoadingState();
-            __checkoutDebug.log('firestore', 'starting user doc listener', {
-                user: __checkoutDebug.summarizeUser(user),
-            });
-            userDocLoadTimeoutId = setTimeout(() => {
-                if (hasLoadedUserDocSnapshot) return;
-                hasLoadedUserDocSnapshot = true;
-                __checkoutDebug.log('warn', 'user doc listener timed out; using default pricing UI', {
-                    user: __checkoutDebug.summarizeUser(user),
-                });
-                applyPricingUIFromUserDoc({});
-            }, 4000);
-            const ref = doc(db, "users", user.uid);
-            unsubscribeUserDoc = onSnapshot(ref, (snap) => {
-                if (userDocLoadTimeoutId) {
-                    clearTimeout(userDocLoadTimeoutId);
-                    userDocLoadTimeoutId = null;
-                }
-                hasLoadedUserDocSnapshot = true;
-                __checkoutDebug.log('firestore', 'user doc snapshot received', {
-                    exists: snap.exists(),
-                    keys: snap.exists() ? Object.keys(snap.data() || {}) : [],
-                });
-                applyPricingUIFromUserDoc(snap.exists() ? (snap.data() || {}) : {});
-            }, (err) => {
-                console.warn("User doc listener error", err);
-                if (userDocLoadTimeoutId) {
-                    clearTimeout(userDocLoadTimeoutId);
-                    userDocLoadTimeoutId = null;
-                }
-                hasLoadedUserDocSnapshot = true;
-                __checkoutDebug.log('error', 'user doc listener error', err);
-                applyPricingUIFromUserDoc({});
-            });
-        }
-
-        // Default UI for logged-out/new users
-        applyPricingUIFromUserDoc({});
-
-        onAuthStateChanged(auth, (user) => {
-            __checkoutDebug.log('auth', 'onAuthStateChanged fired', {
-                user: __checkoutDebug.summarizeUser(user),
-            });
-            if (user) {
-                startUserDocListener(user);
-            } else {
-                stopUserDocListener();
-                hasLoadedUserDocSnapshot = false;
-                applyPricingUIFromUserDoc({});
-            }
-        });
-
-        // If we came back from login with a plan selected, auto-start checkout.
-        const params = new URLSearchParams(window.location.search);
-        const checkoutPlan = params.get("checkoutPlan");
-        if (checkoutPlan) {
-            __checkoutDebug.log('checkout', 'checkoutPlan query detected', {checkoutPlan});
-            onAuthStateChanged(auth, (user) => {
-                if (!user) return;
-                if (window.__checkoutAutoStarted) return;
-                window.__checkoutAutoStarted = true;
-                try {
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                } catch (_) {}
-                __checkoutDebug.log('checkout', 'auto-starting checkout from query', {
-                    checkoutPlan,
-                    user: __checkoutDebug.summarizeUser(user),
-                });
-                window.handleCheckout(checkoutPlan);
-            });
-        }
-    </script>
 <script defer="" src="js/lang-widget.js"></script>
 <footer id="wisesignal-legal-footer" style="margin-top: 4rem; padding: 3rem 5% 2.5rem; color: rgba(148,163,184,0.90); font-size: 0.82rem; line-height: 1.7; text-align: center;">
 <div style="max-width: 1100px; margin: 0 auto;">
@@ -1162,6 +585,6 @@ let unsubscribeUserDoc = null;
 <div>Registered Office: 71-75 Shelton Street, London, WC2H 9JQ, UK.</div>
 <div>Contact: <a href="mailto:info@wise-signal.com" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">info@wise-signal.com</a></div>
 </div>
-</footer>
-</body>
+<p id="subscription-v2-links"><a href="/ko/privacy/">개인정보처리방침</a> · <a href="/ko/terms/">이용약관</a> · <a href="/ko/myinfo/">기존 웹 구독자</a></p></footer>
+<script data-subscription-navigation="">document.getElementById("mobile-menu-btn")?.addEventListener("click",()=>document.getElementById("nav-links")?.classList.toggle("active"));</script></body>
 </html>

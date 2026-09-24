@@ -446,27 +446,39 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "Free",
-          "price": "0.00",
+          "name": "Basic / monthly",
+          "price": "2.4",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/bg/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "Референтни цени в USD. Местните цени и отговарящите на условията оферти се показват в Google Play преди покупка.",
+          "availability": "https://schema.org/PreOrder"
         },
         {
           "@type": "Offer",
-          "name": "Basic",
-          "price": "2.99",
+          "name": "Basic / annual",
+          "price": "19.9",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/bg/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "Референтни цени в USD. Местните цени и отговарящите на условията оферти се показват в Google Play преди покупка.",
+          "availability": "https://schema.org/PreOrder"
         },
         {
           "@type": "Offer",
-          "name": "Pro",
-          "price": "6.99",
+          "name": "Pro / monthly",
+          "price": "4.9",
           "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock",
-          "url": "https://noticatcher.com/bg/price/"
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "Референтни цени в USD. Местните цени и отговарящите на условията оферти се показват в Google Play преди покупка.",
+          "availability": "https://schema.org/PreOrder"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro / annual",
+          "price": "39.9",
+          "priceCurrency": "USD",
+          "url": "https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher",
+          "description": "Референтни цени в USD. Местните цени и отговарящите на условията оферти се показват в Google Play преди покупка.",
+          "availability": "https://schema.org/PreOrder"
         }
       ]
     },
@@ -504,7 +516,7 @@
   ]
 }</script>
 <!-- noticatcher-structured-data:end -->
-</head>
+<style id="subscription-v2-style">.v2-price{font-size:1.2rem;line-height:1.65;margin:1.2rem 0}.price-card p{line-height:1.65}.price-card .btn{margin-top:1rem}.pricing-grid{align-items:stretch}</style></head>
 <body>
 <div class="bg-glow"></div>
 <nav class="navbar">
@@ -518,54 +530,16 @@
 <a class="active" href="/bg/price/">Цена</a>
 <a href="/bg/download/">Изтегляне</a>
 <a href="/bg/faq/">ЧЗВ</a>
-<a class="btn btn-glass" href="/bg/myinfo/" id="auth-link" style="padding: 0.5rem 1.25rem;">Вход / Моята информация</a>
+<a class="btn btn-glass" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher" id="auth-link" style="padding: 0.5rem 1.25rem;">Вземете го от Google Play</a>
 </div>
 </nav>
 <!-- Header -->
 <div class="pricing-header">
 <i class="bx bxs-check-shield"></i>
 <h1>Не пропускайте важните неща повече</h1>
-<p style="color: var(--text-muted);">Изберете плана, който отговаря на нуждите ви за известия.</p>
-<p style="color: var(--text-muted); font-size: 0.82rem; margin-top: 6px;">Цените може леко да варират според региона.</p>
-</div>
+<p>Референтни цени в USD. Местните цени и отговарящите на условията оферти се показват в Google Play преди покупка.</p><p>Офертата за първи месец е достъпна само за отговарящи на условията нови абонати.</p><p class="release-pending-v2" role="status" style="border:1px solid #f59e0b;padding:1rem;border-radius:12px;">Тези планове ще бъдат налични със следващата актуализация на приложението. Проверете Google Play за наличните в момента условия.</p></div>
 <!-- Pricing Cards -->
-<div class="pricing-grid">
-<!-- Free -->
-<div class="price-card free-tier">
-<div class="card-tier free-color">Безплатен</div>
-<div class="card-price">Безплатен</div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span>Улавяния по ключови думи за <strong>всички приложения</strong>: <span class="highlight">2 на ден</span></span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">Неограничени улавяния за общи приложения</span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">Неограничени улавяния за финансови приложения и Telegram</span></li>
-</ul>
-<button class="btn btn-glass btn-buy" disabled="">Текущ план</button>
-</div>
-<!-- Basic -->
-<div class="price-card special">
-<div class="card-tier">Базов</div>
-<div class="card-price">$2.99 <span>/ месец</span></div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span>Улавяния по ключови думи за <strong>общи приложения</strong>: <span class="highlight">Неограничено</span></span></li>
-<li><i class="bx bxs-info-circle limit"></i> <span>Улавяния по ключови думи за <strong>финансови приложения и Telegram</strong>: 2 на ден</span></li>
-<li><i class="bx bx-x cross"></i> <span class="disabled-feature">Неограничени улавяния за финансови приложения и Telegram</span></li>
-</ul>
-<button class="btn btn-primary btn-buy" id="btn-basic-cta" style="background: var(--secondary);"><i class="bx bx-rocket"></i> Абониране</button>
-<div class="trial-under-btn" id="basic-trial-note" style="display:none;">3-дневен безплатен пробен период</div>
-</div>
-<!-- Pro -->
-<div class="price-card recommended">
-<div class="card-badge">Препоръчано</div>
-<div class="card-tier">Про</div>
-<div class="card-price">$6.99 <span>/ месец</span></div>
-<ul class="card-features">
-<li><i class="bx bxs-check-circle check"></i> <span>Улавяния по ключови думи за <strong>всички приложения</strong>: <span class="highlight">Неограничено</span></span></li>
-<li><i class="bx bxs-check-circle check"></i> <span>Включва финансови приложения и Telegram — <strong>без ограничения</strong></span></li>
-</ul>
-<button class="btn btn-primary btn-buy" id="btn-pro-cta"><i class="bx bx-crown"></i> Абониране</button>
-<div class="trial-under-btn" id="pro-trial-note" style="display:none;">3-дневен безплатен пробен период</div>
-</div>
-</div>
+<div class="pricing-grid"><div class="price-card free-tier"><div class="card-tier">Free</div><h2>7 дни безплатно, без абонамент</h2><p>7 дни с всички функции, след това общо 2 аларми на всеки 48 часа. Без автоматично плащане.</p><p>За да предотвратим повторни изпитания, ние изпращаме хеширан идентификатор на устройството и съхраняваме пробни дати и броя на употребата. Необходима е интернет връзка, за да стартирате или възстановите пробния период и да разрешите 2 безплатни аларми. Текстът на известието и ключовите думи остават на вашето устройство.</p><a class="btn btn-glass" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Вземете го от Google Play</a></div><div class="price-card special"><div class="card-tier">Basic</div><p>Неограничени аларми за ключови думи за общи приложения. Финансовите приложения и Telegram използват 2 безплатни аларми на 48 часа.</p><p class="v2-price">Първи месец $0.90, след това $2.40 на месец. Подновява се автоматично до анулиране.</p><p class="v2-price">$19.90 се таксува предварително всяка година. Подновява се автоматично до анулиране.</p><p>Спестете 31% в сравнение с 12 месеца на редовната месечна цена</p><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Вземете го от Google Play</a></div><div class="price-card recommended"><div class="card-tier">Pro</div><p>Неограничени аларми за ключови думи за всички приложения, включително финансови приложения и Telegram.</p><p class="v2-price">Първи месец $1.90, след това $4.90 на месец. Подновява се автоматично до анулиране.</p><p class="v2-price">$39.90 се таксува предварително всяка година. Подновява се автоматично до анулиране.</p><p>Спестете 32% в сравнение с 12 месеца на редовната месечна цена</p><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher">Вземете го от Google Play</a></div></div>
 <!-- App Category Note -->
 <div class="app-note" style="margin-top: 3rem;">
 <div class="app-note-box">
@@ -573,54 +547,6 @@
 <p><strong>Общи приложения</strong> = Всяко приложение <em>с изключение</em> на финансови/крипто приложения и Telegram.<br/> <strong>Финансови и Telegram приложения</strong> = Платформи за търговия, крипто борси, приложения за портфейли и Telegram.</p>
 <button class="restricted-apps-btn" onclick="document.getElementById('apps-modal').classList.add('active')"><i class="bx bx-list-ul"></i> Виж списъка с ограничени приложения<br/>(Финансови и Telegram)</button>
 </div>
-</div>
-</div>
-<!-- Feature Comparison Table -->
-<div class="comparison-section">
-<h2>Сравнение на функциите</h2>
-<div class="comparison-table-wrap">
-<table class="comparison-table">
-<thead>
-<tr>
-<th>Feature</th>
-<th>Free</th>
-<th class="col-basic">Basic</th>
-<th class="col-pro">Pro</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>General apps keyword catches</td>
-<td>2 / day</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-</tr>
-<tr>
-<td>Financial &amp; Telegram keyword catches</td>
-<td>2 / day</td>
-<td>2 / day</td>
-<td><i class="bx bxs-check-circle"></i> Unlimited</td>
-</tr>
-<tr>
-<td>3-day free trial</td>
-<td><i class="bx bx-x"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-<tr>
-<td>Silent mode override</td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-<tr>
-<td>Custom keyword matching</td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-<td><i class="bx bxs-check-circle"></i></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 <!-- Restricted Apps Modal -->
@@ -631,13 +557,17 @@
 <button class="modal-close" onclick="document.getElementById('apps-modal').classList.remove('active')">×</button>
 </div>
 <div class="modal-body">
-<p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">Следните приложения са категоризирани като „Финансови и Telegram“. В плановете Free и Basic уловените ключови думи от тези приложения са ограничени до 2 на ден.</p>
+<p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5;">7 дни с всички функции, след това общо 2 аларми на всеки 48 часа. Без автоматично плащане. Неограничени аларми за ключови думи за общи приложения. Финансовите приложения и Telegram използват 2 безплатни аларми на 48 часа. Неограничени аларми за ключови думи за всички приложения, включително финансови приложения и Telegram.</p>
 <div class="app-category">Съобщения</div>
 <div class="app-list"><span>Telegram</span></div>
 <div class="app-category">Крипто борси (основни)</div>
 <div class="app-list"><span>TradingView</span><span>Binance</span><span>Bybit</span><span>OKX</span> <span>Coinbase</span><span>Crypto.com</span><span>Kraken</span><span>KuCoin</span> <span>Gate</span><span>MEXC</span><span>Bitget</span><span>HTX</span> <span>Bitfinex</span><span>Bitstamp</span><span>Gemini</span><span>CoinEx</span> <span>Phemex</span><span>BingX</span><span>Pionex</span><span>Kraken Pro</span></div>
 <div class="app-category">Крипто борси и инструменти</div>
 <div class="app-list"><span>BitMart</span><span>WhiteBIT</span><span>LBank</span><span>WOO X</span> <span>CoinW</span><span>ProBit Global</span><span>XT.com</span><span>Poloniex</span> <span>Coinigy</span><span>TabTrader</span><span>CoinGlass</span><span>Pionex.US</span> <span>Bitsgap</span><span>Cryptohopper</span><span>GoodCrypto</span><span>WunderTrading</span> <span>WEEX</span><span>Bitpanda</span><span>Bitvavo</span><span>CoinMarketCap</span> <span>CoinGecko</span><span>CoinStats</span><span>Delta by eToro</span><span>CoinTracker</span> <span>Coinpanda</span><span>unchain.app</span><span>Investing.com Crypto</span><span>Crypto Price Alert</span> <span>CryptoRank</span><span>The Crypto App</span><span>Delta Exchange</span><span>Coindisco</span> <span>Edge Wallet</span><span>Crypto Market Cap</span><span>Bitcoin Chart Widget</span><span>CryptoCharts Widget</span> <span>KuCoin Info</span><span>BBX</span><span>Coin Book</span><span>Wealthica</span> <span>Finary</span><span>Trade Republic</span><span>Revolut</span> <span>Crypto Signals (Fortune Traders)</span> <span>Crypto Coin Check</span><span>Bitcoin Crypto News</span> <span>DOPAMINE Crypto</span><span>PayPal</span><span>Bitsnapp Portfolio</span><span>Coin Plaza (KR)</span></div>
+<div class="app-category">Global Stock &amp; Forex Brokers</div>
+<div class="app-list">
+<span>IBKR Mobile</span><span>Schwab Mobile</span><span>thinkorswim</span><span>Fidelity Investments</span><span>E*TRADE</span><span>Trading 212</span><span>XTB</span><span>DEGIRO</span><span>moomoo</span><span>Zerodha Kite</span><span>Upstox</span><span>Groww</span><span>Angel One</span><span>MetaTrader 4</span><span>MetaTrader 5</span><span>cTrader</span><span>OANDA</span>
+</div>
 <div class="app-category">Регионални борси</div>
 <div class="app-list"><span>Upbit</span><span>Upbit Global</span><span>Bithumb</span><span>Coinone</span> <span>Korbit</span><span>Coincheck</span><span>bitFlyer</span><span>bitbank</span> <span>GMO Coin</span><span>OKCoin Japan (OKJ)</span><span>CoinDCX</span><span>CoinDCX Pro</span> <span>WazirX</span><span>CoinSwitch</span><span>ZebPay</span><span>Delta Exchange India</span> <span>BtcTurk</span><span>Paribu</span><span>Binance TR</span><span>CoinTR</span> <span>Indodax</span><span>Tokocrypto</span><span>Coins (PH/TH)</span><span>Bitkub</span> <span>Mercado Bitcoin</span><span>Bitso</span><span>Bitybank</span><span>Yellow Card</span> <span>VALR</span><span>Luno</span><span>NDAX</span><span>Coinsquare (Canada)</span> <span>CoinSpot</span><span>Independent Reserve</span><span>Bitcoin.com.au</span><span>Swyftx</span> <span>WhiteBIT TR</span><span>WhiteBIT GE</span><span>GOPAX</span><span>Coinhako</span> <span>Pintu</span><span>BtcTurk Hisse</span><span>Newton (Canada)</span><span>Shakepay (Canada)</span> <span>CoinJar</span><span>Bitbns</span><span>Bitbns Pay</span> <span>Robinhood</span><span>Webull</span><span>eToro</span></div>
 <div class="app-category">Портфейли</div>
@@ -646,362 +576,6 @@
 </div>
 </div>
 <!-- Checkout Overlay -->
-<div id="checkout-overlay">
-<div class="loader" style="margin-bottom: 20px;"></div>
-<h2>Подготвяме сигурно плащане...</h2>
-<p style="color: var(--text-muted)">Пренасочваме ви към Stripe.</p>
-</div>
-<script type="module">
-        import { auth, db, onAuthStateChanged, signInWithCustomToken } from "./js/firebase-config.js";
-        import { autoLoginFromFragment } from "./js/auto-login.js";
-        import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-        await autoLoginFromFragment(auth, signInWithCustomToken, "ct");
-
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('nav-links').classList.toggle('active');
-        });
-
-        document.getElementById('apps-modal').addEventListener('click', function(e) {
-            if (e.target === this) this.classList.remove('active');
-        });
-
-        const FUNCTIONS_ORIGIN = "https://us-central1-noticatcher-eb157.cloudfunctions.net";
-
-        const btnBasic = document.getElementById('btn-basic-cta');
-        const btnPro = document.getElementById('btn-pro-cta');
-        const noteBasicTrial = document.getElementById('basic-trial-note');
-        const noteProTrial = document.getElementById('pro-trial-note');
-
-        
-
-        
-
-
-
-        
-
-
-
-        
-
-
-
-        
-
-
-
-        const __WEB_SUB_COPY = {
-                subscribeBasic: 'Абониране',
-                subscribePro: 'Абониране',
-                manage: 'Управление на абонамента',
-                upgradeToPro: 'Премини към Pro',
-                toastUpdated: 'Планът е обновен.',
-                toastScheduled: 'Планът ще се промени на следващата дата на фактуриране.',
-                errPlanChangeFailed: 'Неуспешна промяна на плана.',
-                errPortalFailed: 'Неуспешно отваряне на портала за фактуриране.',
-                errRequestFailed: 'Заявката не бе изпълнена. Моля, опитайте отново.',
-                errLoginRequiredSubscribe: 'Трябва да влезете в профила си, преди да се абонирате.\n\nСега ще бъдете пренасочени към страницата за вход.',
-                msgAlreadySubscribed: 'Вече сте абонирани.',
-                errCheckoutMissingUrl: 'Сесията за плащане е създадена, но липсва URL за пренасочване. Моля, свържете се с поддръжката.',
-                errCheckoutFailed: 'Плащането не бе успешно. Моля, опитайте отново.',
-        };
-
-let unsubscribeUserDoc = null;
-        let hasLoadedUserDocSnapshot = false;
-        let ctaAction = {
-            basic: { type: 'checkout', plan: 'basic' },
-            pro: { type: 'checkout', plan: 'pro' }
-        };
-
-        function setButton(btn, iconHtml, label) {
-            if (!btn) return;
-            btn.innerHTML = `${iconHtml} ${label}`;
-        }
-
-
-        function setPricingButtonsDisabled(disabled) {
-            if (btnBasic) btnBasic.disabled = disabled;
-            if (btnPro) btnPro.disabled = disabled;
-        }
-
-        function applyPricingLoadingState() {
-            setButton(btnBasic, "<i class='bx bx-loader-alt'></i>", "Loading...");
-            setButton(btnPro, "<i class='bx bx-loader-alt'></i>", "Loading...");
-            setTrialNotesVisible(false);
-            setPricingButtonsDisabled(true);
-        }
-        function setTrialNotesVisible(visible) {
-            if (noteBasicTrial) noteBasicTrial.style.display = visible ? '' : 'none';
-            if (noteProTrial) noteProTrial.style.display = visible ? '' : 'none';
-        }
-
-        function applyPricingUIFromUserDoc(data) {
-                                                                        
-
-            const grade = String(data?.grade || 'free').toLowerCase();
-            const subStatus = String(data?.subscriptionStatus || '').toLowerCase();
-            const hasUsedTrial = Boolean(data?.hasUsedTrial);
-            const hasEverPaid = Boolean(data?.hasEverPaid);
-            const hadStripeHistory = Boolean(data?.hadStripeHistory);
-
-            const isTrialing = subStatus === 'trialing';
-            const isActive = subStatus === 'active';
-            const isPaidGrade = grade === 'basic' || grade === 'pro';
-            const isTrialingPaid = isTrialing && isPaidGrade;
-            const isActivePaid = isActive && isPaidGrade;
-
-            // Defaults (new user / no subscription): show trial CTAs + show trial note.
-                        // Defaults (new user / no subscription): show trial CTAs + show trial note.
-            let showTrial = (!hasUsedTrial && !hasEverPaid && !hadStripeHistory);
-            let basicLabel = __WEB_SUB_COPY.subscribeBasic;
-            let proLabel = __WEB_SUB_COPY.subscribePro;
-            let basicAction = { type: 'checkout', plan: 'basic' };
-            let proAction = { type: 'checkout', plan: 'pro' };
-// Scenario 2: free trial in progress
-            if (isTrialingPaid) {
-                showTrial = false;
-                basicLabel = __WEB_SUB_COPY.manage;
-                basicAction = { type: 'portal' };
-
-                if (grade === 'basic') {
-                    proLabel = __WEB_SUB_COPY.upgradeToPro;
-                    proAction = { type: 'changePlan', plan: 'pro' };
-                } else {
-                    // If already on Pro (trialing), "Upgrade" doesn't make sense.
-                    proLabel = __WEB_SUB_COPY.manage;
-                    proAction = { type: 'portal' };
-                }
-            }
-            // Paid active subscription (not explicitly listed, but keep sensible UX)
-            else if (isActivePaid) {
-                showTrial = false;
-                if (grade === 'basic') {
-                    basicLabel = __WEB_SUB_COPY.manage;
-                    basicAction = { type: 'portal' };
-                    proLabel = __WEB_SUB_COPY.upgradeToPro;
-                    proAction = { type: 'changePlan', plan: 'pro' };
-                } else if (grade === 'pro') {
-                    basicLabel = __WEB_SUB_COPY.manage;
-                    basicAction = { type: 'portal' };
-                    proLabel = __WEB_SUB_COPY.manage;
-                    proAction = { type: 'portal' };
-                } else {
-                    basicLabel = __WEB_SUB_COPY.manage;
-                    basicAction = { type: 'portal' };
-                    proLabel = __WEB_SUB_COPY.manage;
-                    proAction = { type: 'portal' };
-                }
-            }
-            // No active subscription
-            else {
-                // Scenario 4: resubscribe (paid before)
-                if (hasEverPaid) {
-                    showTrial = false;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-                // Scenario 3: trial ended, never paid
-                else if (hasUsedTrial || hadStripeHistory) {
-                    showTrial = false;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-                // Scenario 1: new user (trial eligible)
-                else {
-                    showTrial = true;
-                    basicLabel = __WEB_SUB_COPY.subscribeBasic;
-                    proLabel = __WEB_SUB_COPY.subscribePro;
-                    basicAction = { type: 'checkout', plan: 'basic' };
-                    proAction = { type: 'checkout', plan: 'pro' };
-                }
-            }
-
-            setButton(btnBasic, "<i class='bx bx-rocket'></i>", basicLabel);
-            setButton(btnPro, "<i class='bx bx-crown'></i>", proLabel);
-            setTrialNotesVisible(showTrial);
-
-            setPricingButtonsDisabled(false);
-            ctaAction = { basic: basicAction, pro: proAction };
-        }
-
-        async function openBillingPortal() {
-            if (!auth.currentUser) {
-                const next = "/bg/price/";
-                window.location.href = `/bg/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "bg"); } catch (_) {}
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreatePortalSession`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({})
-                });
-                const data = await resp.json().catch(() => ({}));
-                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
-                if (!data.url) throw new Error("Missing portal URL");
-                try { localStorage.setItem("lang", document.documentElement.lang || "bg"); } catch (_) {}
-                window.location.href = data.url;
-            } catch (e) {
-                console.error("Portal error", e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errPortalFailed);
-            }
-        }
-
-        async function changePlan(plan) {
-            if (!auth.currentUser) {
-                const returnUrl = new URL(window.location.href);
-                returnUrl.searchParams.set("checkoutPlan", plan);
-                const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
-                window.location.href = `/bg/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "bg"); } catch (_) {}
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiChangePlan`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({ plan, returnUrl, cancelUrl: returnUrl, locale: document.documentElement.lang || "bg" })
-                });
-                const data = await resp.json().catch(() => ({}));
-                if (!resp.ok) throw new Error(data.error || `Failed (${resp.status})`);
-                if (data.hostedInvoiceUrl) {
-                    try { localStorage.setItem("lang", document.documentElement.lang || "bg"); } catch (_) {}
-                    window.location.href = data.hostedInvoiceUrl;
-                    return;
-                }
-                window.location.href = "/bg/myinfo/";
-            } catch (e) {
-                console.error("Change plan error", e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errPlanChangeFailed);
-            }
-        }
-
-        window.handleCheckout = async function(plan) {
-            if (!auth.currentUser) {
-                alert(__WEB_SUB_COPY.errLoginRequiredSubscribe);
-
-                const returnUrl = new URL(window.location.href);
-                returnUrl.searchParams.set("checkoutPlan", plan);
-                const next = returnUrl.pathname + returnUrl.search + returnUrl.hash;
-                window.location.href = `/bg/myinfo/?next=${encodeURIComponent(next)}`;
-                return;
-            }
-
-            document.getElementById('checkout-overlay').classList.add('active');
-
-            try {
-                try { localStorage.setItem("lang", document.documentElement.lang || "bg"); } catch (_) {}
-                const idToken = await auth.currentUser.getIdToken(true);
-                const resp = await fetch(`${FUNCTIONS_ORIGIN}/notiCreateCheckoutSession`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${idToken}`
-                    },
-                    body: JSON.stringify({ plan, returnUrl, cancelUrl: returnUrl, locale: document.documentElement.lang || "bg" })
-                });
-                const data = await resp.json().catch(() => ({}));
-                if (!resp.ok) {
-                    throw new Error(data.error || `Failed (${resp.status})`);
-                }
-                if (data.alreadySubscribed) {
-                    alert(__WEB_SUB_COPY.msgAlreadySubscribed);
-                    window.location.href = "/bg/myinfo/";
-                    return;
-                }
-
-                if (data.url) {
-                    window.location.href = data.url;
-                    return;
-                }
-                if (data.sessionId) {
-                    alert(__WEB_SUB_COPY.errCheckoutMissingUrl);
-                    return;
-                }
-                throw new Error("Unexpected response from server");
-            } catch (e) {
-                console.error("Checkout error", e);
-                alert((e && e.message) ? e.message : __WEB_SUB_COPY.errCheckoutFailed);
-                document.getElementById('checkout-overlay').classList.remove('active');
-            }
-        }
-
-        async function handleCtaClick(which) {
-            if (auth.currentUser && !hasLoadedUserDocSnapshot) return;
-            const action = ctaAction[which];
-            if (!action) return;
-            if (action.type === 'portal') return await openBillingPortal();
-            if (action.type === 'changePlan') return await changePlan(action.plan);
-            return await window.handleCheckout(action.plan || which);
-        }
-
-        if (btnBasic) btnBasic.addEventListener('click', () => handleCtaClick('basic'));
-        if (btnPro) btnPro.addEventListener('click', () => handleCtaClick('pro'));
-
-        function stopUserDocListener() {
-            if (unsubscribeUserDoc) {
-                try { unsubscribeUserDoc(); } catch (_) {}
-                unsubscribeUserDoc = null;
-            }
-        }
-
-        function startUserDocListener(user) {
-            stopUserDocListener();
-            hasLoadedUserDocSnapshot = false;
-            applyPricingLoadingState();
-            const ref = doc(db, "users", user.uid);
-            unsubscribeUserDoc = onSnapshot(ref, (snap) => {
-                hasLoadedUserDocSnapshot = true;
-                applyPricingUIFromUserDoc(snap.exists() ? (snap.data() || {}) : {});
-            }, (err) => {
-                console.warn("User doc listener error", err);
-                hasLoadedUserDocSnapshot = true;
-                applyPricingUIFromUserDoc({});
-            });
-        }
-
-        // Default UI for logged-out/new users
-        applyPricingUIFromUserDoc({});
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                startUserDocListener(user);
-            } else {
-                stopUserDocListener();
-                hasLoadedUserDocSnapshot = false;
-                applyPricingUIFromUserDoc({});
-            }
-        });
-
-        // If we came back from login with a plan selected, auto-start checkout.
-        const params = new URLSearchParams(window.location.search);
-        const checkoutPlan = params.get("checkoutPlan");
-        if (checkoutPlan) {
-            onAuthStateChanged(auth, (user) => {
-                if (!user) return;
-                if (window.__checkoutAutoStarted) return;
-                window.__checkoutAutoStarted = true;
-                try {
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                } catch (_) {}
-                window.handleCheckout(checkoutPlan);
-            });
-        }
-    </script>
 <script defer="" src="js/lang-widget.js"></script>
 <footer id="wisesignal-legal-footer" style="margin-top: 4rem; padding: 3rem 5% 2.5rem; color: rgba(148,163,184,0.90); font-size: 0.82rem; line-height: 1.7; text-align: center;">
 <div style="max-width: 1100px; margin: 0 auto;">
@@ -1011,6 +585,6 @@ let unsubscribeUserDoc = null;
 <div>Registered Office: 71-75 Shelton Street, London, WC2H 9JQ, UK.</div>
 <div>Contact: <a href="mailto:info@wise-signal.com" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">info@wise-signal.com</a></div>
 </div>
-</footer>
-</body>
+<p id="subscription-v2-links"><a href="/en/privacy/">Политика за поверителност</a> · <a href="/en/terms/">Условия за ползване</a> · <a href="/bg/myinfo/">Съществуващи уеб абонати</a></p></footer>
+<script data-subscription-navigation="">document.getElementById("mobile-menu-btn")?.addEventListener("click",()=>document.getElementById("nav-links")?.classList.toggle("active"));</script></body>
 </html>

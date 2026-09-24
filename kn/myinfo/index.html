@@ -20,7 +20,7 @@
             padding: 0 1.5rem;
             width: 100%;
         }
-        
+
         /* Auth States */
         #logged-out-view, #logged-in-view {
             display: none;
@@ -170,7 +170,7 @@
             font-weight: 500;
             margin-left: 4px;
         }
-        
+
         .input-wrapper {
             position: relative;
         }
@@ -339,19 +339,19 @@
             font-weight: 700;
             color: white;
         }
-        .val.pro { 
+        .val.pro {
             background: linear-gradient(to right, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .action-card {
-            background: var(--bg-card); 
-            border-radius: 20px; 
-            padding: 3rem 2.5rem; 
-            border: 1px solid var(--border-light); 
-            backdrop-filter: blur(var(--glass-blur)); 
-            margin-bottom: 2rem; 
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(var(--glass-blur));
+            margin-bottom: 2rem;
             text-align: center;
         }
         .action-card h3 {
@@ -385,7 +385,7 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
         .btn-upgrade:hover { background: #4f46e5; transform: translateY(-2px); }
-        
+
         .btn-cancel {
             background: rgba(239, 68, 68, 0.1);
             color: #ef4444;
@@ -651,11 +651,10 @@
 <div class="login-header">
 <i class="bx bxs-user-circle"></i>
 <h2>ಮತ್ತೆ ಸ್ವಾಗತ</h2>
-<p>ನಿಮ್ಮ ಚಂದಾದಾರಿಕೆ ಮತ್ತು ಆದ್ಯತೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ</p>
+<p>ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ವೆಬ್ ಚಂದಾದಾರರು. ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ವೆಬ್ ಚಂದಾದಾರರು ವೆಬ್‌ಸೈಟ್‌ನಿಂದ ಒಂದು ಬಾರಿ ವರ್ಗಾವಣೆ ಕೋಡ್ ಅನ್ನು ಪಡೆಯಬಹುದು ಮತ್ತು ಅದನ್ನು ಇಲ್ಲಿ ಅಂಟಿಸಬಹುದು. ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಚಂದಾದಾರಿಕೆ ಮತ್ತು ರದ್ದತಿ ವಿಧಾನವು ಒಂದೇ ಆಗಿರುತ್ತದೆ.</p>
 </div>
 <div class="auth-tabs">
 <button class="auth-tab active" data-tab="login">ಸೈನ್ ಇನ್</button>
-<button class="auth-tab" data-tab="signup">ಸೈನ್ ಅಪ್</button>
 </div>
 <!-- Removed the info-circle icon -->
 <div class="auth-message" id="auth-msg">
@@ -688,7 +687,7 @@
 </div>
 </form>
 <!-- Sign-up Form -->
-<form autocomplete="on" class="auth-form" id="form-signup">
+<form autocomplete="on" class="auth-form" id="form-signup" style="display:none!important">
 <div class="form-group">
 <label for="signup-email">ಇಮೇಲ್ ವಿಳಾಸ</label>
 <div class="input-wrapper">
@@ -712,10 +711,6 @@
 </div>
 <button class="btn-submit" type="submit"><i class="bx bx-user-plus"></i> ಖಾತೆ ರಚಿಸಿ</button>
 <div class="auth-divider">ಅಥವಾ ಮುಂದುವರಿಸಿ</div>
-<button class="btn-google" id="btn-google-signup" type="button">
-<img alt="Google" src="https://www.svgrepo.com/show/475656/google-color.svg"/>
-                        Google
-                    </button>
 </form>
 <!-- Forgot Password Form -->
 <form autocomplete="on" class="auth-form" id="form-forgot" style="display:none;">
@@ -757,7 +752,7 @@
 <h3>ಚಂದಾದಾರಿಕೆ ನಿರ್ವಹಣೆ</h3>
 <div class="dashboard-btns">
 <button class="btn-upgrade" id="btn-upgrade-subscription" style="display:none;"><i class="bx bx-crown"></i> ಪ್ರೋಗೆ ಬದಲಿಸಿ</button>
-<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> ಬೇಸಿಕ್‌ಗೆ ಬದಲಿಸಿ</button>
+<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> Manage billing cycle</button>
 <button class="btn-cancel" id="btn-cancel-subscription" style="display:none;"><i class="bx bx-x-circle"></i> ಚಂದಾದಾರಿಕೆಯನ್ನು ರದ್ದುಮಾಡಿ</button>
 </div>
 </div>
@@ -778,7 +773,7 @@
 <div class="btn-logout-wrap">
 <button class="btn-logout" id="btn-logout"><i class="bx bx-log-out"></i> ಸೈನ್ ಔಟ್</button>
 </div>
-</div>
+<section id="legacy-transfer-v2" style="margin:2rem 0;padding:1.5rem;border:1px solid #64748b;border-radius:16px;"><h2>ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ವೆಬ್ ಚಂದಾದಾರಿಕೆಯನ್ನು ಸಂಪರ್ಕಿಸಿ</h2><p>ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ವೆಬ್ ಚಂದಾದಾರರು ವೆಬ್‌ಸೈಟ್‌ನಿಂದ ಒಂದು ಬಾರಿ ವರ್ಗಾವಣೆ ಕೋಡ್ ಅನ್ನು ಪಡೆಯಬಹುದು ಮತ್ತು ಅದನ್ನು ಇಲ್ಲಿ ಅಂಟಿಸಬಹುದು. ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಚಂದಾದಾರಿಕೆ ಮತ್ತು ರದ್ದತಿ ವಿಧಾನವು ಒಂದೇ ಆಗಿರುತ್ತದೆ.</p><button class="btn btn-primary" id="generate-transfer-v2" type="button">ಅಪ್ಲಿಕೇಶನ್‌ಗಾಗಿ ಸಂಪರ್ಕ ಕೋಡ್ ಪಡೆಯಿರಿ</button><label style="display:block;margin-top:1rem">ಒಂದು-ಬಾರಿ ಸಂಪರ್ಕ ಕೋಡ್ <input autocomplete="off" id="transfer-code-v2" readonly="" style="display:block;width:100%;font-family:monospace;padding:.7rem;"/></label><p>ಈ ಕೋಡ್ ಅನ್ನು 10 ನಿಮಿಷಗಳಲ್ಲಿ ಒಮ್ಮೆ ಬಳಸಬಹುದು.</p><p id="transfer-status-v2" role="status"></p></section></div>
 </main>
 <script type="module">
         import { auth, db, provider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, signInWithCustomToken } from "./js/firebase-config.js";
@@ -893,7 +888,7 @@
                 tierEl.textContent = "Pro";
                 tierEl.classList.add("pro");
             } else if (g === "basic") {
-                tierEl.textContent = "Basic";
+                tierEl.textContent = "Pro";
                 tierEl.classList.remove("pro");
             } else {
                 tierEl.textContent = "Free";
@@ -979,14 +974,14 @@
         const __WEB_SUB_COPY = {
             subscribeBasic: 'ಸಬ್\u200cಸ್ಕ್ರೈಬ್ ಮಾಡಿ',
             subscribePro: 'ಚಂದಾದಾರರಾಗಿ',
-            trialNote: '3 ದಿನಗಳ ಉಚಿತ ಟ್ರಯಲ್',
+            trialNote: '',
             manage: 'ಚಂದಾದಾರಿಕೆ ನಿರ್ವಹಣೆ',
             endDateLabel: 'ಮುಕ್ತಾಯ ದಿನಾಂಕ',
             renewDateLabel: 'ನವೀಕರಣ ದಿನಾಂಕ',
 
             upgradeToPro: 'ಪ್ರೋಗೆ ಬದಲಿಸಿ',
-            switchToBasic: 'ಬೇಸಿಕ್\u200cಗೆ ಬದಲಿಸಿ',
-            basicBullets: ['ಸಾಮಾನ್ಯ ಆ್ಯಪ್\u200cಗಳ ಕೀವರ್ಡ್ ಕ್ಯಾಚ್\u200cಗಳು: ಅನಿಯಮಿತ', 'ಹಣಕಾಸು & Telegram ಕೀವರ್ಡ್ ಕ್ಯಾಚ್\u200cಗಳು: ದಿನಕ್ಕೆ 2', 'ಅನಿಯಮಿತ ಹಣಕಾಸು & Telegram ಕ್ಯಾಚ್\u200cಗಳು'],
+            switchToBasic: 'Manage billing cycle',
+            basicBullets: [],
             proBullets: ['ಎಲ್ಲಾ ಆ್ಯಪ್\u200cಗಳ ಕೀವರ್ಡ್ ಕ್ಯಾಚ್\u200cಗಳು: ಅನಿಯಮಿತ', 'ಹಣಕಾಸು ಆ್ಯಪ್\u200cಗಳು & Telegram ಸೇರಿವೆ — ಯಾವುದೇ ಮಿತಿಗಳಿಲ್ಲ'],
             toastUpdated: 'ಪ್ಲಾನ್ ನವೀಕರಿಸಲಾಗಿದೆ.',
             toastScheduled: 'ಮುಂದಿನ ಬಿಲ್ಲಿಂಗ್ ದಿನಾಂಕದಲ್ಲಿ ಪ್ಲಾನ್ ಬದಲಾಗುತ್ತದೆ.',
@@ -1156,14 +1151,14 @@
                 const isPaid = g === 'basic' || g === 'pro';
 
                 if (upgradeBtn) {
-                    const showUpgrade = g === 'free' || g === 'basic';
+                    const showUpgrade = g === 'free';
                     upgradeBtn.style.display = showUpgrade ? '' : 'none';
                     upgradeBtn.disabled = false;
                     upgradeBtn.innerHTML = `<i class='bx bx-crown'></i> ${g === 'free' ? __WEB_SUB_COPY.subscribePro : __WEB_SUB_COPY.upgradeSubscription}`;
                 }
 
                 if (changeSubscriptionBtn) {
-                    changeSubscriptionBtn.style.display = (g === 'pro') ? '' : 'none';
+                    changeSubscriptionBtn.style.display = 'none';
                     changeSubscriptionBtn.disabled = false;
                     changeSubscriptionBtn.innerHTML = `<i class='bx bx-transfer-alt'></i> ${__WEB_SUB_COPY.changeSubscription}`;
                 }
@@ -1265,7 +1260,7 @@ onAuthStateChanged(auth, (user) => {
         // Add listeners to both Google buttons
         const googleLoginBtn = document.getElementById('btn-google-login');
         if(googleLoginBtn) googleLoginBtn.addEventListener('click', handleGoogleLogin);
-        
+
         const googleSignupBtn = document.getElementById('btn-google-signup');
         if(googleSignupBtn) googleSignupBtn.addEventListener('click', handleGoogleLogin);
 
@@ -1275,7 +1270,7 @@ onAuthStateChanged(auth, (user) => {
             const email = document.getElementById('login-email').value.trim();
             const pw = document.getElementById('login-pw').value;
             const btn = formLogin.querySelector('.btn-submit');
-            
+
             const originalBtnContent = btn.innerHTML;
             btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "ಸೈನ್ ಇನ್...";
             btn.disabled = true;
@@ -1321,7 +1316,7 @@ onAuthStateChanged(auth, (user) => {
             hideMsg();
             const email = document.getElementById('forgot-email').value.trim();
             const btn = formForgot.querySelector('.btn-submit');
-            
+
             const originalBtnContent = btn.innerHTML;
             btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ...";
             btn.disabled = true;
@@ -1332,7 +1327,7 @@ onAuthStateChanged(auth, (user) => {
             } catch (err) {
                 showMsg(firebaseErrorMsg(err.code), 'error');
             }
-            
+
             btn.innerHTML = originalBtnContent;
             btn.disabled = false;
         });
@@ -1456,7 +1451,25 @@ onAuthStateChanged(auth, (user) => {
                     `<div class="keyword-empty"><i class='bx bx-error-circle'></i>Failed to load statistics</div>`;
             }
         }
-    </script>
+
+// Existing subscribers only: issue a short-lived, one-use connection code.
+document.getElementById('generate-transfer-v2').addEventListener('click', async (event) => {
+  const button = event.currentTarget;
+  const status = document.getElementById('transfer-status-v2');
+  const output = document.getElementById('transfer-code-v2');
+  status.textContent = ''; output.value = ''; button.disabled = true;
+  try {
+    if (!auth.currentUser) throw new Error('AUTH_REQUIRED');
+    const token = await auth.currentUser.getIdToken(true);
+    const response = await fetch('https://us-central1-noticatcher-eb157.cloudfunctions.net/notiIssueLegacyTransferCode', {
+      method: 'POST', headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + token}, body: '{}'
+    });
+    if (!response.ok) throw new Error('CONNECTION_FAILED');
+    const data = await response.json(); output.value = data.code; output.focus(); output.select();
+  } catch (_) { status.textContent = "ಸಂಪರ್ಕ ಅಥವಾ ಪರಿಶೀಲನೆ ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."; }
+  finally { button.disabled = false; }
+});
+</script>
 <script defer="" src="js/lang-widget.js"></script>
 <footer id="wisesignal-legal-footer" style="margin-top: 4rem; padding: 3rem 5% 2.5rem; color: rgba(148,163,184,0.90); font-size: 0.82rem; line-height: 1.7; text-align: center;">
 <div style="max-width: 1100px; margin: 0 auto;">
@@ -1466,6 +1479,6 @@ onAuthStateChanged(auth, (user) => {
 <div>Registered Office: 71-75 Shelton Street, London, WC2H 9JQ, UK.</div>
 <div>Contact: <a href="mailto:info@wise-signal.com" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">info@wise-signal.com</a></div>
 </div>
-</footer>
+<p id="subscription-v2-links"><a href="/en/privacy/">ಗೌಪ್ಯತೆ ನೀತಿ</a> · <a href="/en/terms/">ಬಳಕೆಯ ನಿಯಮಗಳು</a> · <a href="/kn/myinfo/">ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ವೆಬ್ ಚಂದಾದಾರರು</a></p></footer>
 </body>
 </html>

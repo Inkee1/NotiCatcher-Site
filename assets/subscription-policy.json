@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "playReleaseReady": false,
+  "trialHours": 168,
+  "freeWindowHours": 48,
+  "freeAlarmLimit": 2,
+  "paidCacheHours": 72,
+  "currency": "USD",
+  "plans": {
+    "basic": {
+      "productId": "noticatcher_basic_v2",
+      "intro": 0.9,
+      "monthly": 2.4,
+      "annual": 19.9
+    },
+    "pro": {
+      "productId": "noticatcher_pro_v2",
+      "intro": 1.9,
+      "monthly": 4.9,
+      "annual": 39.9
+    }
+  },
+  "basePlanIds": {
+    "monthly": "monthly",
+    "annual": "annual"
+  },
+  "introOfferId": "first-month",
+  "legacyProProductIds": [
+    "noticatcher_basic",
+    "noticatcher_pro_yearly",
+    "noticatcher_pro"
+  ]
+}

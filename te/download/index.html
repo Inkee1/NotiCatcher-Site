@@ -26,7 +26,7 @@
             text-align: center;
             padding: 2rem 5%;
         }
-        
+
         .download-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
@@ -41,14 +41,14 @@
             opacity: 0;
             transform: translateY(30px);
         }
-        
+
         @keyframes slideUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         .download-card h1 {
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 1rem;
@@ -57,7 +57,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .download-card p {
             font-size: 1.1rem;
             color: var(--text-muted);
@@ -66,7 +66,7 @@
             margin-inline: auto;
             line-height: 1.6;
         }
-        
+
         .btn-large {
             padding: 1.25rem 2.5rem;
             font-size: 1.25rem;
@@ -78,18 +78,18 @@
             min-width: 260px;
             transition: all 0.3s ease;
         }
-        
+
         .btn-large i {
             font-size: 1.8rem;
         }
-        
+
         .download-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
         .btn-android {
             background: linear-gradient(135deg, #00C853, #64DD17);
             color: white;
@@ -97,13 +97,13 @@
             border: none;
             text-decoration: none;
         }
-        
+
         .btn-android:hover {
             transform: translateY(-4px);
             box-shadow: 0 15px 35px rgba(0, 200, 83, 0.4);
             filter: brightness(1.05);
         }
-        
+
         .btn-ios {
             background: linear-gradient(135deg, #111, #333);
             color: white;
@@ -111,7 +111,7 @@
             border: 1px solid rgba(255,255,255,0.1);
             text-decoration: none;
         }
-        
+
         .btn-ios:hover {
             transform: translateY(-4px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
@@ -216,7 +216,7 @@
 <a href="/te/price/">ధర</a>
 <a class="active" href="/te/download/">డౌన్‌లోడ్</a>
 <a href="/te/faq/">FAQ</a>
-<a class="btn btn-glass" href="/te/myinfo/" id="auth-link" style="padding: 0.5rem 1.25rem;">లాగిన్ / నా సమాచారం</a>
+<a class="btn btn-glass" href="https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher" id="auth-link" style="padding: 0.5rem 1.25rem;">దీన్ని Google Playలో పొందండి</a>
 </div>
 </nav>
 <!-- Main Content -->
@@ -247,7 +247,6 @@
 </div>
 </main>
 <!-- Scripts -->
-<script src="js/firebase-config.js" type="module"></script>
 <script defer="" src="js/lang-widget.js"></script>
 <script>
         // Mobile Menu Toggle
@@ -263,6 +262,6 @@
 <div>Registered Office: 71-75 Shelton Street, London, WC2H 9JQ, UK.</div>
 <div>Contact: <a href="mailto:info@wise-signal.com" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">info@wise-signal.com</a></div>
 </div>
-</footer>
+<p id="subscription-v2-links"><a href="/en/privacy/">గోప్యతా విధానం</a> · <a href="/en/terms/">ఉపయోగ నిబంధనలు</a> · <a href="/te/myinfo/">ఇప్పటికే ఉన్న వెబ్ సబ్‌స్క్రైబర్‌లు</a></p></footer>
 </body>
 </html>

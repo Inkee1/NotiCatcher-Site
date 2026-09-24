@@ -20,7 +20,7 @@
             padding: 0 1.5rem;
             width: 100%;
         }
-        
+
         /* Auth States */
         #logged-out-view, #logged-in-view {
             display: none;
@@ -170,7 +170,7 @@
             font-weight: 500;
             margin-left: 4px;
         }
-        
+
         .input-wrapper {
             position: relative;
         }
@@ -339,19 +339,19 @@
             font-weight: 700;
             color: white;
         }
-        .val.pro { 
+        .val.pro {
             background: linear-gradient(to right, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .action-card {
-            background: var(--bg-card); 
-            border-radius: 20px; 
-            padding: 2.5rem; 
-            border: 1px solid var(--border-light); 
-            backdrop-filter: blur(var(--glass-blur)); 
-            margin-bottom: 2rem; 
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(var(--glass-blur));
+            margin-bottom: 2rem;
             text-align: center;
         }
         .action-card h3 {
@@ -385,7 +385,7 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
         .btn-upgrade:hover { background: #4f46e5; transform: translateY(-2px); }
-        
+
         .btn-cancel {
             background: rgba(239, 68, 68, 0.1);
             color: #ef4444;
@@ -613,7 +613,7 @@
     </style>
 <link href="/img/appicon.png" rel="icon" type="image/png"/>
 <meta content="NotiCatcher - My Info" property="og:title"/>
-<meta content="Sign in to NotiCatcher to manage your account and notification preferences." property="og:description">
+<meta content="Sign in to NotiCatcher to manage your account and notification preferences." property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://noticatcher.com/en/myinfo/" property="og:url"/>
 <meta content="https://noticatcher.com/img/main1.jpg" property="og:image"/>
@@ -623,7 +623,7 @@
 <meta content="Sign in to NotiCatcher to manage your account and notification preferences." name="twitter:description"/>
 <meta content="https://noticatcher.com/img/main1.jpg" name="twitter:image"/>
 <meta content="noindex,follow" name="robots"/>
-</meta></head>
+</head>
 <body>
 <div class="bg-glow"></div>
 <nav class="navbar">
@@ -651,11 +651,10 @@
 <div class="login-header">
 <i class="bx bxs-user-circle"></i>
 <h2>Welcome Back</h2>
-<p>Manage your subscription and preferences</p>
+<p>Existing web subscribers. Existing web subscribers can get a one-time transfer code from the website and paste it here. Your current subscription and cancellation method stay the same.</p>
 </div>
 <div class="auth-tabs">
 <button class="auth-tab active" data-tab="login">Sign In</button>
-<button class="auth-tab" data-tab="signup">Sign Up</button>
 </div>
 <!-- Removed the info-circle icon -->
 <div class="auth-message" id="auth-msg">
@@ -688,7 +687,7 @@
 </div>
 </form>
 <!-- Sign-up Form -->
-<form autocomplete="on" class="auth-form" id="form-signup">
+<form autocomplete="on" class="auth-form" id="form-signup" style="display:none!important">
 <div class="form-group">
 <label for="signup-email">Email Address</label>
 <div class="input-wrapper">
@@ -712,10 +711,6 @@
 </div>
 <button class="btn-submit" type="submit"><i class="bx bx-user-plus"></i> Create Account</button>
 <div class="auth-divider">or continue with</div>
-<button class="btn-google" id="btn-google-signup" type="button">
-<img alt="Google" src="https://www.svgrepo.com/show/475656/google-color.svg"/>
-                        Google
-                    </button>
 </form>
 <!-- Forgot Password Form -->
 <form autocomplete="on" class="auth-form" id="form-forgot" style="display:none;">
@@ -761,9 +756,7 @@
 <button class="btn-upgrade" id="btn-upgrade-subscription" style="display:none;">
 <i class="bx bx-crown"></i> Upgrade Subscription
                     </button>
-<button class="btn-upgrade" id="btn-change-subscription" style="display:none;">
-<i class="bx bx-transfer-alt"></i> Change Subscription
-                    </button>
+<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> Manage billing cycle</button>
 <button class="btn-cancel" id="btn-cancel-subscription" style="display:none;">
 <i class="bx bx-x-circle"></i> Cancel Subscription
                     </button>
@@ -794,7 +787,7 @@
 <i class="bx bx-log-out"></i> Sign Out
                 </button>
 </div>
-</div>
+<section id="legacy-transfer-v2" style="margin:2rem 0;padding:1.5rem;border:1px solid #64748b;border-radius:16px;"><h2>Connect an existing web subscription</h2><p>Existing web subscribers can get a one-time transfer code from the website and paste it here. Your current subscription and cancellation method stay the same.</p><button class="btn btn-primary" id="generate-transfer-v2" type="button">Get a connection code for the app</button><label style="display:block;margin-top:1rem">One-time connection code <input autocomplete="off" id="transfer-code-v2" readonly="" style="display:block;width:100%;font-family:monospace;padding:.7rem;"/></label><p>This code can be used once within 10 minutes.</p><p id="transfer-status-v2" role="status"></p></section></div>
 </main>
 <script type="module">
         import { auth, db, provider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, signInWithCustomToken } from "./js/firebase-config.js";
@@ -909,7 +902,7 @@
                 tierEl.textContent = "Pro";
                 tierEl.classList.add("pro");
             } else if (g === "basic") {
-                tierEl.textContent = "Basic";
+                tierEl.textContent = "Pro";
                 tierEl.classList.remove("pro");
             } else {
                 tierEl.textContent = "Free";
@@ -1125,14 +1118,14 @@
                 const isPaid = g === 'basic' || g === 'pro';
 
                 if (upgradeBtn) {
-                    const showUpgrade = g === 'free' || g === 'basic';
+                    const showUpgrade = g === 'free';
                     upgradeBtn.style.display = showUpgrade ? '' : 'none';
                     upgradeBtn.disabled = false;
                     upgradeBtn.innerHTML = `<i class='bx bx-crown'></i> ${g === 'free' ? __WEB_SUB_COPY.subscribePro : __WEB_SUB_COPY.upgradeSubscription}`;
                 }
 
                 if (changeSubscriptionBtn) {
-                    changeSubscriptionBtn.style.display = (g === 'pro') ? '' : 'none';
+                    changeSubscriptionBtn.style.display = 'none';
                     changeSubscriptionBtn.disabled = false;
                     changeSubscriptionBtn.innerHTML = `<i class='bx bx-transfer-alt'></i> ${__WEB_SUB_COPY.changeSubscription}`;
                 }
@@ -1234,7 +1227,7 @@ onAuthStateChanged(auth, (user) => {
         // Add listeners to both Google buttons
         const googleLoginBtn = document.getElementById('btn-google-login');
         if(googleLoginBtn) googleLoginBtn.addEventListener('click', handleGoogleLogin);
-        
+
         const googleSignupBtn = document.getElementById('btn-google-signup');
         if(googleSignupBtn) googleSignupBtn.addEventListener('click', handleGoogleLogin);
 
@@ -1244,7 +1237,7 @@ onAuthStateChanged(auth, (user) => {
             const email = document.getElementById('login-email').value.trim();
             const pw = document.getElementById('login-pw').value;
             const btn = formLogin.querySelector('.btn-submit');
-            
+
             const originalBtnContent = btn.innerHTML;
             btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "Sign in...";
             btn.disabled = true;
@@ -1290,7 +1283,7 @@ onAuthStateChanged(auth, (user) => {
             hideMsg();
             const email = document.getElementById('forgot-email').value.trim();
             const btn = formForgot.querySelector('.btn-submit');
-            
+
             const originalBtnContent = btn.innerHTML;
             btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> ' + "Sending...";
             btn.disabled = true;
@@ -1301,7 +1294,7 @@ onAuthStateChanged(auth, (user) => {
             } catch (err) {
                 showMsg(firebaseErrorMsg(err.code), 'error');
             }
-            
+
             btn.innerHTML = originalBtnContent;
             btn.disabled = false;
         });
@@ -1425,7 +1418,25 @@ onAuthStateChanged(auth, (user) => {
                     `<div class="keyword-empty"><i class='bx bx-error-circle'></i>Failed to load statistics</div>`;
             }
         }
-    </script>
+
+// Existing subscribers only: issue a short-lived, one-use connection code.
+document.getElementById('generate-transfer-v2').addEventListener('click', async (event) => {
+  const button = event.currentTarget;
+  const status = document.getElementById('transfer-status-v2');
+  const output = document.getElementById('transfer-code-v2');
+  status.textContent = ''; output.value = ''; button.disabled = true;
+  try {
+    if (!auth.currentUser) throw new Error('AUTH_REQUIRED');
+    const token = await auth.currentUser.getIdToken(true);
+    const response = await fetch('https://us-central1-noticatcher-eb157.cloudfunctions.net/notiIssueLegacyTransferCode', {
+      method: 'POST', headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + token}, body: '{}'
+    });
+    if (!response.ok) throw new Error('CONNECTION_FAILED');
+    const data = await response.json(); output.value = data.code; output.focus(); output.select();
+  } catch (_) { status.textContent = "Connection or verification failed. Please try again."; }
+  finally { button.disabled = false; }
+});
+</script>
 <script defer="" src="js/lang-widget.js"></script>
 </body>
 </html>
