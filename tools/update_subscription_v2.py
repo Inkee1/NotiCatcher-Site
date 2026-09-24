@@ -15,9 +15,6 @@ def text(copy, key, **params):
         value = value.replace('{' + name + '}', str(replacement))
     return html.escape(value)
 
-def money(value):
-    return f'${value:.2f}'
-
 def fragment(value):
     return BeautifulSoup(value, 'html.parser')
 
@@ -25,13 +22,10 @@ def price_grid(copy):
     cards = [f'<div class="price-card free-tier"><div class="card-tier">Free</div>'
              f'<h2>{text(copy,"v2TrialTitle")}</h2><p>{text(copy,"v2FreeBenefits")}</p>'
              f'<p>{text(copy,"v2DataNotice")}</p><a class="btn btn-glass" href="{PLAY}">{text(copy,"v2Download")}</a></div>']
-    for name, plan in POLICY['plans'].items():
-        savings = round(100 * (1 - plan['annual'] / (12 * plan['monthly'])))
+    for name in POLICY['plans']:
         cards.append(f'<div class="price-card {"recommended" if name == "pro" else "special"}">'
           f'<div class="card-tier">{name.title()}</div><p>{text(copy,"v2ProBenefits" if name == "pro" else "v2BasicBenefits")}</p>'
-          f'<p class="v2-price">{text(copy,"v2IntroPrice",intro=money(plan["intro"]),price=money(plan["monthly"]))}</p>'
-          f'<p class="v2-price">{text(copy,"v2AnnualPrice",price=money(plan["annual"]))}</p>'
-          f'<p>{text(copy,"v2Savings",percent=savings)}</p><a class="btn btn-primary" href="{PLAY}">{text(copy,"v2Download")}</a></div>')
+          f'<a class="btn btn-primary" href="{PLAY}">{text(copy,"v2Download")}</a></div>')
     return '<div class="pricing-grid">' + ''.join(cards) + '</div>'
 
 def update_schema(soup, copy):
@@ -41,13 +35,10 @@ def update_schema(soup, copy):
                 value['mainEntity'] = [{'@type': 'Question', 'name': node.select_one('.faq-question').get_text(' ', strip=True),
                   'acceptedAnswer': {'@type': 'Answer', 'text': node.select_one('.faq-answer').get_text(' ', strip=True)}}
                   for node in soup.select('.faq-item')]
-            if value.get('@type') in ('SoftwareApplication', 'MobileApplication', 'Product') and 'offers' in value:
-                value['offers'] = [{'@type':'Offer', 'name':name.title() + ' / ' + period,
-                  'price':str(plan[period]), 'priceCurrency':'USD', 'url':PLAY,
-                  'description':copy['v2ReferencePrice']}
-                  for name, plan in POLICY['plans'].items() for period in ('monthly', 'annual')]
-                if not POLICY.get('playReleaseReady', False):
-                    for offer in value['offers']: offer['availability'] = 'https://schema.org/PreOrder'
+            if value.get('@type') in ('SoftwareApplication', 'MobileApplication', 'Product'):
+                # The app's purchase screen supplies regional prices and offers.
+                # Publishing a fixed USD offer here would misrepresent that page.
+                value.pop('offers', None)
             for item in value.values(): visit(item)
         elif isinstance(value, list):
             for item in value: visit(item)
@@ -80,7 +71,7 @@ def update_page(path, lang, page):
         intro = soup.select_one('.pricing-header') or soup.select_one('.page-header')
         if intro:
             for p in intro.find_all('p'): p.decompose()
-            intro.append(fragment(f'<p>{text(copy,"v2ReferencePrice")}</p><p>{text(copy,"v2IntroEligibility")}</p>'))
+            intro.append(fragment(f'<p>{text(copy,"v2ReferencePrice")}</p>'))
             if not POLICY.get('playReleaseReady', False):
                 intro.append(fragment(f'<p role="status" class="release-pending-v2" style="border:1px solid #f59e0b;padding:1rem;border-radius:12px;">{text(copy,"v2ReleasePending")}</p>'))
         modal_text = soup.select_one('#apps-modal .modal-body p')
@@ -89,8 +80,11 @@ def update_page(path, lang, page):
             obsolete.decompose()
         if not soup.select_one('script[data-subscription-navigation]'):
             soup.body.append(fragment('<script data-subscription-navigation>document.getElementById("mobile-menu-btn")?.addEventListener("click",()=>document.getElementById("nav-links")?.classList.toggle("active"));</script>'))
-        if not soup.select_one('#subscription-v2-style'):
-            soup.head.append(fragment('<style id="subscription-v2-style">.v2-price{font-size:1.2rem;line-height:1.65;margin:1.2rem 0}.price-card p{line-height:1.65}.price-card .btn{margin-top:1rem}.pricing-grid{align-items:stretch}</style>'))
+        style = soup.select_one('#subscription-v2-style')
+        if style is None:
+            style = soup.new_tag('style', id='subscription-v2-style')
+            soup.head.append(style)
+        style.string = '.price-card{display:flex;flex-direction:column}.price-card p{line-height:1.65}.price-card .btn{margin-top:auto;align-self:flex-start}.pricing-grid{align-items:stretch}'
     if page == 'faq':
         items = soup.select('.faq-item')
         replacements = {
