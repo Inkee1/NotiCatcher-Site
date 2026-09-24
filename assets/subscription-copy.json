@@ -1,5 +1,6 @@
 {
   "en": {
+    "v2ScheduledChange": "Changes to {plan} on {date}",
     "v2ReleasePending": "These plans will be available with the next app update. Check Google Play for the terms currently available to you.",
     "v2StatusTitle": "Usage and subscription",
     "v2TrialTitle": "7 days free, without a subscription",
@@ -54,6 +55,7 @@
     "v2MonitoringChannel": "Alarm monitoring status"
   },
   "ko": {
+    "v2ScheduledChange": "{date}에 {plan}(으)로 변경 예정",
     "v2ReleasePending": "새 요금제는 다음 앱 업데이트에서 제공됩니다. 현재 이용 가능한 구매 조건은 Google Play에서 확인하세요.",
     "v2StatusTitle": "이용 상태·구독 관리",
     "v2TrialTitle": "구독 신청 없이 7일 무료",
@@ -159,7 +161,8 @@
     "v2GenerateCode": "অ্যাপের জন্য একটি সংযোগ কোড পান",
     "v2CodeExpires": "এই কোডটি 10 মিনিটের মধ্যে একবার ব্যবহার করা যেতে পারে।",
     "v2MonitoringChannel": "অ্যালার্ম পর্যবেক্ষণ অবস্থা",
-    "v2ReleasePending": "এই প্ল্যানগুলি পরবর্তী অ্যাপ আপডেটের সাথে পাওয়া যাবে। বর্তমানে আপনার কাছে উপলব্ধ শর্তাবলীর জন্য Google Play চেক করুন৷"
+    "v2ReleasePending": "এই প্ল্যানগুলি পরবর্তী অ্যাপ আপডেটের সাথে পাওয়া যাবে। বর্তমানে আপনার কাছে উপলব্ধ শর্তাবলীর জন্য Google Play চেক করুন৷",
+    "v2ScheduledChange": "{date}-এ {plan}-এ পরিবর্তন"
   },
   "ar": {
     "v2StatusTitle": "الاستخدام والاشتراك",
@@ -213,7 +216,8 @@
     "v2GenerateCode": "احصل على رمز الاتصال للتطبيق",
     "v2CodeExpires": "يمكن استخدام هذا الرمز مرة واحدة خلال 10 دقائق.",
     "v2MonitoringChannel": "حالة مراقبة الإنذار",
-    "v2ReleasePending": "ستكون هذه الخطط متاحة مع تحديث التطبيق التالي. تحقق من Google Play لمعرفة الشروط المتاحة لك حاليًا."
+    "v2ReleasePending": "ستكون هذه الخطط متاحة مع تحديث التطبيق التالي. تحقق من Google Play لمعرفة الشروط المتاحة لك حاليًا.",
+    "v2ScheduledChange": "التغييرات على {plan} على {date}"
   },
   "am": {
     "v2StatusTitle": "አጠቃቀም እና ምዝገባ",
@@ -267,7 +271,8 @@
     "v2GenerateCode": "ለመተግበሪያው የግንኙነት ኮድ ያግኙ",
     "v2CodeExpires": "ይህ ኮድ በ 10 ደቂቃዎች ውስጥ አንድ ጊዜ ጥቅም ላይ ሊውል ይችላል.",
     "v2MonitoringChannel": "የማንቂያ ክትትል ሁኔታ",
-    "v2ReleasePending": "እነዚህ ዕቅዶች በሚቀጥለው የመተግበሪያ ዝማኔ ይገኛሉ። በአሁኑ ጊዜ ለእርስዎ የሚገኙትን ውሎች Google Playን ያረጋግጡ።"
+    "v2ReleasePending": "እነዚህ ዕቅዶች በሚቀጥለው የመተግበሪያ ዝማኔ ይገኛሉ። በአሁኑ ጊዜ ለእርስዎ የሚገኙትን ውሎች Google Playን ያረጋግጡ።",
+    "v2ScheduledChange": "በ{date} ላይ ወደ {plan} ለውጦች"
   },
   "bg": {
     "v2StatusTitle": "Използване и абонамент",
@@ -321,7 +326,8 @@
     "v2GenerateCode": "Вземете код за връзка за приложението",
     "v2CodeExpires": "Този код може да се използва веднъж в рамките на 10 минути.",
     "v2MonitoringChannel": "Състояние на наблюдение на алармата",
-    "v2ReleasePending": "Тези планове ще бъдат налични със следващата актуализация на приложението. Проверете Google Play за наличните в момента условия."
+    "v2ReleasePending": "Тези планове ще бъдат налични със следващата актуализация на приложението. Проверете Google Play за наличните в момента условия.",
+    "v2ScheduledChange": "Промени в {plan} на {date}"
   },
   "cs": {
     "v2StatusTitle": "Použití a předplatné",
@@ -375,7 +381,8 @@
     "v2GenerateCode": "Získejte kód připojení pro aplikaci",
     "v2CodeExpires": "Tento kód lze použít jednou za 10 minut.",
     "v2MonitoringChannel": "Stav monitorování alarmu",
-    "v2ReleasePending": "Tyto plány budou k dispozici s příští aktualizací aplikace. Podmínky, které máte aktuálně k dispozici, najdete na Google Play."
+    "v2ReleasePending": "Tyto plány budou k dispozici s příští aktualizací aplikace. Podmínky, které máte aktuálně k dispozici, najdete na Google Play.",
+    "v2ScheduledChange": "Změny na {plan} na {date}"
   },
   "el": {
     "v2StatusTitle": "Χρήση και συνδρομή",
@@ -429,7 +436,8 @@
     "v2GenerateCode": "Λάβετε έναν κωδικό σύνδεσης για την εφαρμογή",
     "v2CodeExpires": "Αυτός ο κωδικός μπορεί να χρησιμοποιηθεί μία φορά μέσα σε 10 λεπτά.",
     "v2MonitoringChannel": "Κατάσταση παρακολούθησης συναγερμού",
-    "v2ReleasePending": "Αυτά τα σχέδια θα είναι διαθέσιμα με την επόμενη ενημέρωση εφαρμογής. Ελέγξτε το Google Play για τους όρους που διατίθενται αυτήν τη στιγμή."
+    "v2ReleasePending": "Αυτά τα σχέδια θα είναι διαθέσιμα με την επόμενη ενημέρωση εφαρμογής. Ελέγξτε το Google Play για τους όρους που διατίθενται αυτήν τη στιγμή.",
+    "v2ScheduledChange": "Αλλαγές σε {plan} στο {date}"
   },
   "da": {
     "v2StatusTitle": "Brug og abonnement",
@@ -483,7 +491,8 @@
     "v2GenerateCode": "Få en forbindelseskode til appen",
     "v2CodeExpires": "Denne kode kan bruges én gang inden for 10 minutter.",
     "v2MonitoringChannel": "Alarmovervågningsstatus",
-    "v2ReleasePending": "Disse planer vil være tilgængelige med den næste appopdatering. Tjek Google Play for de vilkår, der er tilgængelige for dig i øjeblikket."
+    "v2ReleasePending": "Disse planer vil være tilgængelige med den næste appopdatering. Tjek Google Play for de vilkår, der er tilgængelige for dig i øjeblikket.",
+    "v2ScheduledChange": "Ændringer til {plan} på {date}"
   },
   "de": {
     "v2StatusTitle": "Nutzung und Abonnement",
@@ -537,7 +546,8 @@
     "v2GenerateCode": "Holen Sie sich einen Verbindungscode für die App",
     "v2CodeExpires": "Dieser Code kann innerhalb von 10 Minuten einmal verwendet werden.",
     "v2MonitoringChannel": "Status der Alarmüberwachung",
-    "v2ReleasePending": "Diese Pläne werden mit dem nächsten App-Update verfügbar sein. Suchen Sie bei Google Play nach den derzeit für Sie verfügbaren Bedingungen."
+    "v2ReleasePending": "Diese Pläne werden mit dem nächsten App-Update verfügbar sein. Suchen Sie bei Google Play nach den derzeit für Sie verfügbaren Bedingungen.",
+    "v2ScheduledChange": "Änderungen an {plan} auf {date}"
   },
   "es-419": {
     "v2StatusTitle": "Uso y suscripción",
@@ -591,7 +601,8 @@
     "v2GenerateCode": "Obtenga un código de conexión para la aplicación",
     "v2CodeExpires": "Este código se puede utilizar una vez en 10 minutos.",
     "v2MonitoringChannel": "Estado de monitoreo de alarma",
-    "v2ReleasePending": "Estos planes estarán disponibles con la próxima actualización de la aplicación. Consulte Google Play para conocer los términos actualmente disponibles para usted."
+    "v2ReleasePending": "Estos planes estarán disponibles con la próxima actualización de la aplicación. Consulte Google Play para conocer los términos actualmente disponibles para usted.",
+    "v2ScheduledChange": "Cambios en {plan} en {date}"
   },
   "es": {
     "v2StatusTitle": "Uso y suscripción",
@@ -645,7 +656,8 @@
     "v2GenerateCode": "Obtenga un código de conexión para la aplicación",
     "v2CodeExpires": "Este código se puede utilizar una vez en 10 minutos.",
     "v2MonitoringChannel": "Estado de monitoreo de alarma",
-    "v2ReleasePending": "Estos planes estarán disponibles con la próxima actualización de la aplicación. Consulte Google Play para conocer los términos actualmente disponibles para usted."
+    "v2ReleasePending": "Estos planes estarán disponibles con la próxima actualización de la aplicación. Consulte Google Play para conocer los términos actualmente disponibles para usted.",
+    "v2ScheduledChange": "Cambios en {plan} en {date}"
   },
   "es_419": {
     "v2StatusTitle": "Uso y suscripción",
@@ -699,7 +711,8 @@
     "v2GenerateCode": "Obtenga un código de conexión para la aplicación",
     "v2CodeExpires": "Este código se puede utilizar una vez en 10 minutos.",
     "v2MonitoringChannel": "Estado de monitoreo de alarma",
-    "v2ReleasePending": "Estos planes estarán disponibles con la próxima actualización de la aplicación. Consulte Google Play para conocer los términos actualmente disponibles para usted."
+    "v2ReleasePending": "Estos planes estarán disponibles con la próxima actualización de la aplicación. Consulte Google Play para conocer los términos actualmente disponibles para usted.",
+    "v2ScheduledChange": "Cambios en {plan} en {date}"
   },
   "fa": {
     "v2StatusTitle": "استفاده و اشتراک",
@@ -753,7 +766,8 @@
     "v2GenerateCode": "یک کد اتصال برای برنامه دریافت کنید",
     "v2CodeExpires": "این کد یک بار در مدت 10 دقیقه قابل استفاده است.",
     "v2MonitoringChannel": "وضعیت نظارت بر زنگ هشدار",
-    "v2ReleasePending": "این طرح ها با به روز رسانی بعدی برنامه در دسترس خواهند بود. برای شرایط موجود در حال حاضر Google Play را بررسی کنید."
+    "v2ReleasePending": "این طرح ها با به روز رسانی بعدی برنامه در دسترس خواهند بود. برای شرایط موجود در حال حاضر Google Play را بررسی کنید.",
+    "v2ScheduledChange": "به {plan} در {date} تغییر می کند"
   },
   "fil": {
     "v2StatusTitle": "Paggamit at subscription",
@@ -807,7 +821,8 @@
     "v2GenerateCode": "Kumuha ng code ng koneksyon para sa app",
     "v2CodeExpires": "Maaaring gamitin ang code na ito nang isang beses sa loob ng 10 minuto.",
     "v2MonitoringChannel": "Status ng pagsubaybay sa alarm",
-    "v2ReleasePending": "Magiging available ang mga planong ito sa susunod na pag-update ng app. Tingnan ang Google Play para sa mga tuntuning kasalukuyang available sa iyo."
+    "v2ReleasePending": "Magiging available ang mga planong ito sa susunod na pag-update ng app. Tingnan ang Google Play para sa mga tuntuning kasalukuyang available sa iyo.",
+    "v2ScheduledChange": "Mga pagbabago sa {plan} sa {date}"
   },
   "et": {
     "v2StatusTitle": "Kasutamine ja tellimine",
@@ -861,7 +876,8 @@
     "v2GenerateCode": "Hankige rakenduse ühenduskood",
     "v2CodeExpires": "Seda koodi saab kasutada üks kord 10 minuti jooksul.",
     "v2MonitoringChannel": "Häire jälgimise olek",
-    "v2ReleasePending": "Need plaanid on saadaval järgmise rakenduse värskendusega. Vaadake Google Playst teile praegu saadaolevaid tingimusi."
+    "v2ReleasePending": "Need plaanid on saadaval järgmise rakenduse värskendusega. Vaadake Google Playst teile praegu saadaolevaid tingimusi.",
+    "v2ScheduledChange": "Muudatused {plan} mudelil {date}"
   },
   "fi": {
     "v2StatusTitle": "Käyttö ja tilaus",
@@ -915,7 +931,8 @@
     "v2GenerateCode": "Hanki yhteyskoodi sovellukselle",
     "v2CodeExpires": "Tätä koodia voi käyttää kerran 10 minuutin sisällä.",
     "v2MonitoringChannel": "Hälytysvalvontatila",
-    "v2ReleasePending": "Nämä suunnitelmat ovat saatavilla seuraavan sovelluspäivityksen yhteydessä. Tarkista tällä hetkellä käytettävissäsi olevat ehdot Google Playsta."
+    "v2ReleasePending": "Nämä suunnitelmat ovat saatavilla seuraavan sovelluspäivityksen yhteydessä. Tarkista tällä hetkellä käytettävissäsi olevat ehdot Google Playsta.",
+    "v2ScheduledChange": "Muutokset malliin {plan} mallissa {date}"
   },
   "fr": {
     "v2StatusTitle": "Utilisation et abonnement",
@@ -969,7 +986,8 @@
     "v2GenerateCode": "Obtenez un code de connexion pour l'application",
     "v2CodeExpires": "Ce code peut être utilisé une fois dans les 10 minutes.",
     "v2MonitoringChannel": "État de surveillance des alarmes",
-    "v2ReleasePending": "Ces forfaits seront disponibles avec la prochaine mise à jour de l'application. Consultez Google Play pour connaître les conditions actuellement disponibles."
+    "v2ReleasePending": "Ces forfaits seront disponibles avec la prochaine mise à jour de l'application. Consultez Google Play pour connaître les conditions actuellement disponibles.",
+    "v2ScheduledChange": "Modifications apportées à {plan} sur {date}"
   },
   "gu": {
     "v2StatusTitle": "ઉપયોગ અને સબ્સ્ક્રિપ્શન",
@@ -1023,7 +1041,8 @@
     "v2GenerateCode": "એપ્લિકેશન માટે કનેક્શન કોડ મેળવો",
     "v2CodeExpires": "આ કોડ 10 મિનિટની અંદર એકવાર વાપરી શકાય છે.",
     "v2MonitoringChannel": "એલાર્મ મોનિટરિંગ સ્થિતિ",
-    "v2ReleasePending": "આ પ્લાન આગામી એપ અપડેટ સાથે ઉપલબ્ધ થશે. હાલમાં તમારા માટે ઉપલબ્ધ શરતો માટે Google Play તપાસો."
+    "v2ReleasePending": "આ પ્લાન આગામી એપ અપડેટ સાથે ઉપલબ્ધ થશે. હાલમાં તમારા માટે ઉપલબ્ધ શરતો માટે Google Play તપાસો.",
+    "v2ScheduledChange": "{date} પર {plan} માં ફેરફારો"
   },
   "hi": {
     "v2StatusTitle": "उपयोग और सदस्यता",
@@ -1077,7 +1096,8 @@
     "v2GenerateCode": "ऐप के लिए एक कनेक्शन कोड प्राप्त करें",
     "v2CodeExpires": "इस कोड को 10 मिनट के अंदर एक बार इस्तेमाल किया जा सकता है.",
     "v2MonitoringChannel": "अलार्म निगरानी स्थिति",
-    "v2ReleasePending": "ये प्लान अगले ऐप अपडेट के साथ उपलब्ध होंगे। आपके लिए वर्तमान में उपलब्ध शर्तों के लिए Google Play देखें।"
+    "v2ReleasePending": "ये प्लान अगले ऐप अपडेट के साथ उपलब्ध होंगे। आपके लिए वर्तमान में उपलब्ध शर्तों के लिए Google Play देखें।",
+    "v2ScheduledChange": "{date} पर {plan} में परिवर्तन"
   },
   "he": {
     "v2StatusTitle": "שימוש ומנוי",
@@ -1131,7 +1151,8 @@
     "v2GenerateCode": "קבל קוד חיבור לאפליקציה",
     "v2CodeExpires": "ניתן להשתמש בקוד זה פעם אחת תוך 10 דקות.",
     "v2MonitoringChannel": "מצב ניטור אזעקה",
-    "v2ReleasePending": "תוכניות אלה יהיו זמינות עם עדכון האפליקציה הבא. בדוק ב-Google Play את התנאים הזמינים עבורך כעת."
+    "v2ReleasePending": "תוכניות אלה יהיו זמינות עם עדכון האפליקציה הבא. בדוק ב-Google Play את התנאים הזמינים עבורך כעת.",
+    "v2ScheduledChange": "שינויים ל-{plan} ב-{date}"
   },
   "hu": {
     "v2StatusTitle": "Használat és előfizetés",
@@ -1185,7 +1206,8 @@
     "v2GenerateCode": "Szerezzen be egy csatlakozási kódot az alkalmazáshoz",
     "v2CodeExpires": "Ez a kód 10 percen belül egyszer használható fel.",
     "v2MonitoringChannel": "Riasztás figyelési állapota",
-    "v2ReleasePending": "Ezek a tervek a következő alkalmazásfrissítéssel lesznek elérhetők. Tekintse meg a Google Playen a jelenleg elérhető feltételeket."
+    "v2ReleasePending": "Ezek a tervek a következő alkalmazásfrissítéssel lesznek elérhetők. Tekintse meg a Google Playen a jelenleg elérhető feltételeket.",
+    "v2ScheduledChange": "Változások a {plan}-re a {date}-n"
   },
   "hr": {
     "v2StatusTitle": "Korištenje i pretplata",
@@ -1239,7 +1261,8 @@
     "v2GenerateCode": "Nabavite kod veze za aplikaciju",
     "v2CodeExpires": "Ovaj kod se može koristiti jednom unutar 10 minuta.",
     "v2MonitoringChannel": "Status praćenja alarma",
-    "v2ReleasePending": "Ti će planovi biti dostupni sa sljedećim ažuriranjem aplikacije. Provjerite Google Play za uvjete koji su vam trenutno dostupni."
+    "v2ReleasePending": "Ti će planovi biti dostupni sa sljedećim ažuriranjem aplikacije. Provjerite Google Play za uvjete koji su vam trenutno dostupni.",
+    "v2ScheduledChange": "Promjene u {plan} na {date}"
   },
   "id": {
     "v2StatusTitle": "Penggunaan dan berlangganan",
@@ -1293,7 +1316,8 @@
     "v2GenerateCode": "Dapatkan kode koneksi untuk aplikasi",
     "v2CodeExpires": "Kode ini dapat digunakan sekali dalam 10 menit.",
     "v2MonitoringChannel": "Status pemantauan alarm",
-    "v2ReleasePending": "Paket ini akan tersedia dengan pembaruan aplikasi berikutnya. Periksa Google Play untuk mengetahui persyaratan yang saat ini tersedia untuk Anda."
+    "v2ReleasePending": "Paket ini akan tersedia dengan pembaruan aplikasi berikutnya. Periksa Google Play untuk mengetahui persyaratan yang saat ini tersedia untuk Anda.",
+    "v2ScheduledChange": "Perubahan pada {plan} menjadi {date}"
   },
   "it": {
     "v2StatusTitle": "Utilizzo e abbonamento",
@@ -1347,7 +1371,8 @@
     "v2GenerateCode": "Ottieni un codice di connessione per l'app",
     "v2CodeExpires": "Questo codice può essere utilizzato una volta entro 10 minuti.",
     "v2MonitoringChannel": "Stato del monitoraggio degli allarmi",
-    "v2ReleasePending": "Questi piani saranno disponibili con il prossimo aggiornamento dell'app. Controlla su Google Play i termini attualmente disponibili per te."
+    "v2ReleasePending": "Questi piani saranno disponibili con il prossimo aggiornamento dell'app. Controlla su Google Play i termini attualmente disponibili per te.",
+    "v2ScheduledChange": "Modifiche a {plan} su {date}"
   },
   "kn": {
     "v2StatusTitle": "ಬಳಕೆ ಮತ್ತು ಚಂದಾದಾರಿಕೆ",
@@ -1401,7 +1426,8 @@
     "v2GenerateCode": "ಅಪ್ಲಿಕೇಶನ್‌ಗಾಗಿ ಸಂಪರ್ಕ ಕೋಡ್ ಪಡೆಯಿರಿ",
     "v2CodeExpires": "ಈ ಕೋಡ್ ಅನ್ನು 10 ನಿಮಿಷಗಳಲ್ಲಿ ಒಮ್ಮೆ ಬಳಸಬಹುದು.",
     "v2MonitoringChannel": "ಅಲಾರಾಂ ಮಾನಿಟರಿಂಗ್ ಸ್ಥಿತಿ",
-    "v2ReleasePending": "ಈ ಯೋಜನೆಗಳು ಮುಂದಿನ ಅಪ್ಲಿಕೇಶನ್ ಅಪ್‌ಡೇಟ್‌ನೊಂದಿಗೆ ಲಭ್ಯವಿರುತ್ತವೆ. ಪ್ರಸ್ತುತ ನಿಮಗೆ ಲಭ್ಯವಿರುವ ನಿಯಮಗಳಿಗಾಗಿ Google Play ಅನ್ನು ಪರಿಶೀಲಿಸಿ."
+    "v2ReleasePending": "ಈ ಯೋಜನೆಗಳು ಮುಂದಿನ ಅಪ್ಲಿಕೇಶನ್ ಅಪ್‌ಡೇಟ್‌ನೊಂದಿಗೆ ಲಭ್ಯವಿರುತ್ತವೆ. ಪ್ರಸ್ತುತ ನಿಮಗೆ ಲಭ್ಯವಿರುವ ನಿಯಮಗಳಿಗಾಗಿ Google Play ಅನ್ನು ಪರಿಶೀಲಿಸಿ.",
+    "v2ScheduledChange": "{date} ನಲ್ಲಿ {plan} ಗೆ ಬದಲಾವಣೆಗಳು"
   },
   "ja": {
     "v2StatusTitle": "使用方法とサブスクリプション",
@@ -1455,7 +1481,8 @@
     "v2GenerateCode": "アプリの接続コードを取得する",
     "v2CodeExpires": "このコードは10分以内に1回のみ使用できます。",
     "v2MonitoringChannel": "アラーム監視状態",
-    "v2ReleasePending": "これらのプランは、次回のアプリのアップデートで利用可能になります。現在利用可能な規約については、Google Play を確認してください。"
+    "v2ReleasePending": "これらのプランは、次回のアプリのアップデートで利用可能になります。現在利用可能な規約については、Google Play を確認してください。",
+    "v2ScheduledChange": "{date} での {plan} への変更"
   },
   "km": {
     "v2StatusTitle": "ការប្រើប្រាស់ និងការជាវ",
@@ -1509,7 +1536,8 @@
     "v2GenerateCode": "ទទួលបានលេខកូដភ្ជាប់សម្រាប់កម្មវិធី",
     "v2CodeExpires": "លេខកូដនេះអាចប្រើបានម្តងក្នុងរយៈពេល 10 នាទី។",
     "v2MonitoringChannel": "ស្ថានភាពត្រួតពិនិត្យសំឡេងរោទិ៍",
-    "v2ReleasePending": "គម្រោងទាំងនេះនឹងមានជាមួយការអាប់ដេតកម្មវិធីបន្ទាប់។ ពិនិត្យ Google Play សម្រាប់លក្ខខណ្ឌដែលមានសម្រាប់អ្នកនាពេលបច្ចុប្បន្ន។"
+    "v2ReleasePending": "គម្រោងទាំងនេះនឹងមានជាមួយការអាប់ដេតកម្មវិធីបន្ទាប់។ ពិនិត្យ Google Play សម្រាប់លក្ខខណ្ឌដែលមានសម្រាប់អ្នកនាពេលបច្ចុប្បន្ន។",
+    "v2ScheduledChange": "ការផ្លាស់ប្តូរទៅ {plan} នៅលើ {date}"
   },
   "lo": {
     "v2StatusTitle": "ການ​ນໍາ​ໃຊ້​ແລະ​ການ​ສະ​ຫມັກ​",
@@ -1563,7 +1591,8 @@
     "v2GenerateCode": "ເອົາລະຫັດການເຊື່ອມຕໍ່ສໍາລັບແອັບຯ",
     "v2CodeExpires": "ລະຫັດນີ້ສາມາດໃຊ້ໄດ້ຄັ້ງດຽວພາຍໃນ 10 ນາທີ.",
     "v2MonitoringChannel": "ສະຖານະການຕິດຕາມສັນຍານເຕືອນ",
-    "v2ReleasePending": "ແຜນການເຫຼົ່ານີ້ຈະສາມາດໃຊ້ໄດ້ກັບການອັບເດດແອັບຯຄັ້ງຕໍ່ໄປ. ກວດເບິ່ງ Google Play ສໍາລັບເງື່ອນໄຂທີ່ມີຢູ່ໃນປັດຈຸບັນສໍາລັບທ່ານ."
+    "v2ReleasePending": "ແຜນການເຫຼົ່ານີ້ຈະສາມາດໃຊ້ໄດ້ກັບການອັບເດດແອັບຯຄັ້ງຕໍ່ໄປ. ກວດເບິ່ງ Google Play ສໍາລັບເງື່ອນໄຂທີ່ມີຢູ່ໃນປັດຈຸບັນສໍາລັບທ່ານ.",
+    "v2ScheduledChange": "ການປ່ຽນແປງເປັນ {plan} ໃນ {date}"
   },
   "ml": {
     "v2StatusTitle": "ഉപയോഗവും സബ്സ്ക്രിപ്ഷനും",
@@ -1617,7 +1646,8 @@
     "v2GenerateCode": "ആപ്പിനായി ഒരു കണക്ഷൻ കോഡ് നേടുക",
     "v2CodeExpires": "ഈ കോഡ് 10 മിനിറ്റിനുള്ളിൽ ഒരിക്കൽ ഉപയോഗിക്കാം.",
     "v2MonitoringChannel": "അലാറം നിരീക്ഷണ നില",
-    "v2ReleasePending": "അടുത്ത ആപ്പ് അപ്‌ഡേറ്റിനൊപ്പം ഈ പ്ലാനുകൾ ലഭ്യമാകും. നിലവിൽ നിങ്ങൾക്ക് ലഭ്യമായ നിബന്ധനകൾക്കായി Google Play പരിശോധിക്കുക."
+    "v2ReleasePending": "അടുത്ത ആപ്പ് അപ്‌ഡേറ്റിനൊപ്പം ഈ പ്ലാനുകൾ ലഭ്യമാകും. നിലവിൽ നിങ്ങൾക്ക് ലഭ്യമായ നിബന്ധനകൾക്കായി Google Play പരിശോധിക്കുക.",
+    "v2ScheduledChange": "{date}-ൽ {plan}-ലേക്കുള്ള മാറ്റങ്ങൾ"
   },
   "lt": {
     "v2StatusTitle": "Naudojimas ir prenumerata",
@@ -1671,7 +1701,8 @@
     "v2GenerateCode": "Gaukite programos ryšio kodą",
     "v2CodeExpires": "Šį kodą galima panaudoti vieną kartą per 10 minučių.",
     "v2MonitoringChannel": "Signalizacijos stebėjimo būsena",
-    "v2ReleasePending": "Šie planai bus pasiekiami su kitu programos atnaujinimu. Šiuo metu jums prieinamų sąlygų ieškokite „Google Play“."
+    "v2ReleasePending": "Šie planai bus pasiekiami su kitu programos atnaujinimu. Šiuo metu jums prieinamų sąlygų ieškokite „Google Play“.",
+    "v2ScheduledChange": "{plan} pakeitimai {date}"
   },
   "lv": {
     "v2StatusTitle": "Lietošana un abonēšana",
@@ -1725,7 +1756,8 @@
     "v2GenerateCode": "Iegūstiet lietotnes savienojuma kodu",
     "v2CodeExpires": "Šo kodu var izmantot vienu reizi 10 minūšu laikā.",
     "v2MonitoringChannel": "Trauksmes uzraudzības statuss",
-    "v2ReleasePending": "Šie plāni būs pieejami ar nākamo lietotnes atjauninājumu. Pakalpojumā Google Play meklējiet jums pašlaik pieejamos noteikumus."
+    "v2ReleasePending": "Šie plāni būs pieejami ar nākamo lietotnes atjauninājumu. Pakalpojumā Google Play meklējiet jums pašlaik pieejamos noteikumus.",
+    "v2ScheduledChange": "{plan} izmaiņas uz {date}"
   },
   "mr": {
     "v2StatusTitle": "वापर आणि सदस्यता",
@@ -1779,7 +1811,8 @@
     "v2GenerateCode": "ॲपसाठी कनेक्शन कोड मिळवा",
     "v2CodeExpires": "हा कोड 10 मिनिटांत एकदा वापरला जाऊ शकतो.",
     "v2MonitoringChannel": "अलार्म निरीक्षण स्थिती",
-    "v2ReleasePending": "या योजना पुढील ॲप अपडेटसह उपलब्ध होतील. तुमच्यासाठी सध्या उपलब्ध असलेल्या अटींसाठी Google Play तपासा."
+    "v2ReleasePending": "या योजना पुढील ॲप अपडेटसह उपलब्ध होतील. तुमच्यासाठी सध्या उपलब्ध असलेल्या अटींसाठी Google Play तपासा.",
+    "v2ScheduledChange": "{date} वर {plan} मध्ये बदल"
   },
   "ms": {
     "v2StatusTitle": "Penggunaan dan langganan",
@@ -1833,7 +1866,8 @@
     "v2GenerateCode": "Dapatkan kod sambungan untuk apl",
     "v2CodeExpires": "Kod ini boleh digunakan sekali dalam masa 10 minit.",
     "v2MonitoringChannel": "Status pemantauan penggera",
-    "v2ReleasePending": "Pelan ini akan tersedia dengan kemas kini apl seterusnya. Semak Google Play untuk terma yang tersedia untuk anda pada masa ini."
+    "v2ReleasePending": "Pelan ini akan tersedia dengan kemas kini apl seterusnya. Semak Google Play untuk terma yang tersedia untuk anda pada masa ini.",
+    "v2ScheduledChange": "Perubahan kepada {plan} pada {date}"
   },
   "my": {
     "v2StatusTitle": "အသုံးပြုမှုနှင့် စာရင်းသွင်းမှု",
@@ -1887,7 +1921,8 @@
     "v2GenerateCode": "အက်ပ်အတွက် ချိတ်ဆက်မှုကုဒ်ကို ရယူပါ။",
     "v2CodeExpires": "ဤကုဒ်ကို 10 မိနစ်အတွင်း တစ်ကြိမ်အသုံးပြုနိုင်ပါသည်။",
     "v2MonitoringChannel": "နှိုးစက်စောင့်ကြည့်မှုအခြေအနေ",
-    "v2ReleasePending": "ဤအစီအစဉ်များကို လာမည့်အက်ပ်အပ်ဒိတ်တွင် ရနိုင်ပါမည်။ သင့်အတွက် လက်ရှိရရှိနိုင်သော စည်းမျဉ်းများအတွက် Google Play ကို စစ်ဆေးပါ။"
+    "v2ReleasePending": "ဤအစီအစဉ်များကို လာမည့်အက်ပ်အပ်ဒိတ်တွင် ရနိုင်ပါမည်။ သင့်အတွက် လက်ရှိရရှိနိုင်သော စည်းမျဉ်းများအတွက် Google Play ကို စစ်ဆေးပါ။",
+    "v2ScheduledChange": "{date} ရှိ {plan} သို့ ပြောင်းလဲမှုများ"
   },
   "nl": {
     "v2StatusTitle": "Gebruik en abonnement",
@@ -1941,7 +1976,8 @@
     "v2GenerateCode": "Ontvang een verbindingscode voor de app",
     "v2CodeExpires": "Deze code is eenmalig te gebruiken binnen 10 minuten.",
     "v2MonitoringChannel": "Alarmbewakingsstatus",
-    "v2ReleasePending": "Deze plannen zullen beschikbaar zijn bij de volgende app-update. Controleer Google Play voor de voorwaarden die momenteel voor u beschikbaar zijn."
+    "v2ReleasePending": "Deze plannen zullen beschikbaar zijn bij de volgende app-update. Controleer Google Play voor de voorwaarden die momenteel voor u beschikbaar zijn.",
+    "v2ScheduledChange": "Wijzigingen aan {plan} op {date}"
   },
   "no": {
     "v2StatusTitle": "Bruk og abonnement",
@@ -1995,7 +2031,8 @@
     "v2GenerateCode": "Få en tilkoblingskode for appen",
     "v2CodeExpires": "Denne koden kan brukes én gang innen 10 minutter.",
     "v2MonitoringChannel": "Alarmovervåkingsstatus",
-    "v2ReleasePending": "Disse planene vil være tilgjengelige med neste appoppdatering. Sjekk Google Play for vilkårene som er tilgjengelige for deg."
+    "v2ReleasePending": "Disse planene vil være tilgjengelige med neste appoppdatering. Sjekk Google Play for vilkårene som er tilgjengelige for deg.",
+    "v2ScheduledChange": "Endringer til {plan} på {date}"
   },
   "pa": {
     "v2StatusTitle": "ਵਰਤੋਂ ਅਤੇ ਗਾਹਕੀ",
@@ -2049,7 +2086,8 @@
     "v2GenerateCode": "ਐਪ ਲਈ ਇੱਕ ਕਨੈਕਸ਼ਨ ਕੋਡ ਪ੍ਰਾਪਤ ਕਰੋ",
     "v2CodeExpires": "ਇਹ ਕੋਡ 10 ਮਿੰਟਾਂ ਦੇ ਅੰਦਰ ਇੱਕ ਵਾਰ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
     "v2MonitoringChannel": "ਅਲਾਰਮ ਨਿਗਰਾਨੀ ਸਥਿਤੀ",
-    "v2ReleasePending": "ਇਹ ਪਲਾਨ ਅਗਲੇ ਐਪ ਅਪਡੇਟ ਦੇ ਨਾਲ ਉਪਲਬਧ ਹੋਣਗੇ। ਵਰਤਮਾਨ ਵਿੱਚ ਤੁਹਾਡੇ ਲਈ ਉਪਲਬਧ ਸ਼ਰਤਾਂ ਲਈ Google Play ਦੀ ਜਾਂਚ ਕਰੋ।"
+    "v2ReleasePending": "ਇਹ ਪਲਾਨ ਅਗਲੇ ਐਪ ਅਪਡੇਟ ਦੇ ਨਾਲ ਉਪਲਬਧ ਹੋਣਗੇ। ਵਰਤਮਾਨ ਵਿੱਚ ਤੁਹਾਡੇ ਲਈ ਉਪਲਬਧ ਸ਼ਰਤਾਂ ਲਈ Google Play ਦੀ ਜਾਂਚ ਕਰੋ।",
+    "v2ScheduledChange": "{date} 'ਤੇ {plan} ਵਿੱਚ ਬਦਲਾਅ"
   },
   "pt_BR": {
     "v2StatusTitle": "Uso e assinatura",
@@ -2103,7 +2141,8 @@
     "v2GenerateCode": "Obtenha um código de conexão para o aplicativo",
     "v2CodeExpires": "Este código pode ser usado uma vez em 10 minutos.",
     "v2MonitoringChannel": "Status de monitoramento de alarme",
-    "v2ReleasePending": "Esses planos estarão disponíveis na próxima atualização do aplicativo. Verifique no Google Play os termos atualmente disponíveis para você."
+    "v2ReleasePending": "Esses planos estarão disponíveis na próxima atualização do aplicativo. Verifique no Google Play os termos atualmente disponíveis para você.",
+    "v2ScheduledChange": "Mudanças em {plan} em {date}"
   },
   "pt-br": {
     "v2StatusTitle": "Uso e assinatura",
@@ -2157,7 +2196,8 @@
     "v2GenerateCode": "Obtenha um código de conexão para o aplicativo",
     "v2CodeExpires": "Este código pode ser usado uma vez em 10 minutos.",
     "v2MonitoringChannel": "Status de monitoramento de alarme",
-    "v2ReleasePending": "Esses planos estarão disponíveis na próxima atualização do aplicativo. Verifique no Google Play os termos atualmente disponíveis para você."
+    "v2ReleasePending": "Esses planos estarão disponíveis na próxima atualização do aplicativo. Verifique no Google Play os termos atualmente disponíveis para você.",
+    "v2ScheduledChange": "Mudanças em {plan} em {date}"
   },
   "pt": {
     "v2StatusTitle": "Uso e assinatura",
@@ -2211,7 +2251,8 @@
     "v2GenerateCode": "Obtenha um código de conexão para o aplicativo",
     "v2CodeExpires": "Este código pode ser usado uma vez em 10 minutos.",
     "v2MonitoringChannel": "Status de monitoramento de alarme",
-    "v2ReleasePending": "Esses planos estarão disponíveis na próxima atualização do aplicativo. Verifique no Google Play os termos atualmente disponíveis para você."
+    "v2ReleasePending": "Esses planos estarão disponíveis na próxima atualização do aplicativo. Verifique no Google Play os termos atualmente disponíveis para você.",
+    "v2ScheduledChange": "Mudanças em {plan} em {date}"
   },
   "pl": {
     "v2StatusTitle": "Korzystanie i subskrypcja",
@@ -2265,7 +2306,8 @@
     "v2GenerateCode": "Uzyskaj kod połączenia dla aplikacji",
     "v2CodeExpires": "Kod ten można wykorzystać raz w ciągu 10 minut.",
     "v2MonitoringChannel": "Stan monitorowania alarmów",
-    "v2ReleasePending": "Plany te będą dostępne wraz z następną aktualizacją aplikacji. Sprawdź w Google Play aktualnie dostępne warunki."
+    "v2ReleasePending": "Plany te będą dostępne wraz z następną aktualizacją aplikacji. Sprawdź w Google Play aktualnie dostępne warunki.",
+    "v2ScheduledChange": "Zmiany w {plan} w {date}"
   },
   "ru": {
     "v2StatusTitle": "Использование и подписка",
@@ -2319,7 +2361,8 @@
     "v2GenerateCode": "Получите код подключения для приложения",
     "v2CodeExpires": "Этот код можно использовать один раз в течение 10 минут.",
     "v2MonitoringChannel": "Статус мониторинга тревог",
-    "v2ReleasePending": "Эти планы будут доступны со следующим обновлением приложения. Проверьте Google Play, чтобы узнать доступные вам условия."
+    "v2ReleasePending": "Эти планы будут доступны со следующим обновлением приложения. Проверьте Google Play, чтобы узнать доступные вам условия.",
+    "v2ScheduledChange": "Изменения {plan} на {date}"
   },
   "ro": {
     "v2StatusTitle": "Utilizare și abonament",
@@ -2373,7 +2416,8 @@
     "v2GenerateCode": "Obțineți un cod de conectare pentru aplicație",
     "v2CodeExpires": "Acest cod poate fi folosit o dată în 10 minute.",
     "v2MonitoringChannel": "Starea monitorizării alarmei",
-    "v2ReleasePending": "Aceste planuri vor fi disponibile cu următoarea actualizare a aplicației. Verificați Google Play pentru condițiile disponibile în prezent."
+    "v2ReleasePending": "Aceste planuri vor fi disponibile cu următoarea actualizare a aplicației. Verificați Google Play pentru condițiile disponibile în prezent.",
+    "v2ScheduledChange": "Modificări la {plan} pe {date}"
   },
   "sk": {
     "v2StatusTitle": "Použitie a predplatné",
@@ -2427,7 +2471,8 @@
     "v2GenerateCode": "Získajte kód pripojenia pre aplikáciu",
     "v2CodeExpires": "Tento kód je možné použiť raz za 10 minút.",
     "v2MonitoringChannel": "Stav monitorovania alarmu",
-    "v2ReleasePending": "Tieto plány budú k dispozícii s ďalšou aktualizáciou aplikácie. Aktuálne dostupné podmienky nájdete v službe Google Play."
+    "v2ReleasePending": "Tieto plány budú k dispozícii s ďalšou aktualizáciou aplikácie. Aktuálne dostupné podmienky nájdete v službe Google Play.",
+    "v2ScheduledChange": "Zmeny na {plan} na {date}"
   },
   "sl": {
     "v2StatusTitle": "Uporaba in naročnina",
@@ -2481,7 +2526,8 @@
     "v2GenerateCode": "Pridobite kodo povezave za aplikacijo",
     "v2CodeExpires": "To kodo lahko uporabite enkrat v 10 minutah.",
     "v2MonitoringChannel": "Stanje spremljanja alarma",
-    "v2ReleasePending": "Ti načrti bodo na voljo z naslednjo posodobitvijo aplikacije. Preverite Google Play za pogoje, ki so vam trenutno na voljo."
+    "v2ReleasePending": "Ti načrti bodo na voljo z naslednjo posodobitvijo aplikacije. Preverite Google Play za pogoje, ki so vam trenutno na voljo.",
+    "v2ScheduledChange": "Spremembe v {plan} na {date}"
   },
   "ta": {
     "v2StatusTitle": "பயன்பாடு மற்றும் சந்தா",
@@ -2535,7 +2581,8 @@
     "v2GenerateCode": "பயன்பாட்டிற்கான இணைப்புக் குறியீட்டைப் பெறவும்",
     "v2CodeExpires": "இந்தக் குறியீட்டை 10 நிமிடங்களுக்குள் ஒருமுறை பயன்படுத்தலாம்.",
     "v2MonitoringChannel": "அலாரம் கண்காணிப்பு நிலை",
-    "v2ReleasePending": "இந்த திட்டங்கள் அடுத்த ஆப் அப்டேட்டுடன் கிடைக்கும். தற்போது உங்களுக்குக் கிடைக்கும் விதிமுறைகளை Google Playயில் பார்க்கவும்."
+    "v2ReleasePending": "இந்த திட்டங்கள் அடுத்த ஆப் அப்டேட்டுடன் கிடைக்கும். தற்போது உங்களுக்குக் கிடைக்கும் விதிமுறைகளை Google Playயில் பார்க்கவும்.",
+    "v2ScheduledChange": "{date} இல் {plan} க்கு மாற்றங்கள்"
   },
   "sv": {
     "v2StatusTitle": "Användning och prenumeration",
@@ -2589,7 +2636,8 @@
     "v2GenerateCode": "Skaffa en anslutningskod för appen",
     "v2CodeExpires": "Denna kod kan användas en gång inom 10 minuter.",
     "v2MonitoringChannel": "Larmövervakningsstatus",
-    "v2ReleasePending": "Dessa planer kommer att vara tillgängliga med nästa appuppdatering. Kolla på Google Play för att se vilka villkor som är tillgängliga för dig för närvarande."
+    "v2ReleasePending": "Dessa planer kommer att vara tillgängliga med nästa appuppdatering. Kolla på Google Play för att se vilka villkor som är tillgängliga för dig för närvarande.",
+    "v2ScheduledChange": "Ändringar till {plan} på {date}"
   },
   "sw": {
     "v2StatusTitle": "Matumizi na usajili",
@@ -2643,7 +2691,8 @@
     "v2GenerateCode": "Pata msimbo wa muunganisho wa programu",
     "v2CodeExpires": "Nambari hii inaweza kutumika mara moja ndani ya dakika 10.",
     "v2MonitoringChannel": "Hali ya ufuatiliaji wa kengele",
-    "v2ReleasePending": "Mipango hii itapatikana kwa sasisho linalofuata la programu. Angalia Google Play kwa sheria na masharti yanayopatikana kwa sasa."
+    "v2ReleasePending": "Mipango hii itapatikana kwa sasisho linalofuata la programu. Angalia Google Play kwa sheria na masharti yanayopatikana kwa sasa.",
+    "v2ScheduledChange": "Mabadiliko ya {plan} kwa {date}"
   },
   "te": {
     "v2StatusTitle": "వినియోగం మరియు చందా",
@@ -2697,7 +2746,8 @@
     "v2GenerateCode": "యాప్ కోసం కనెక్షన్ కోడ్‌ని పొందండి",
     "v2CodeExpires": "ఈ కోడ్‌ని 10 నిమిషాలలోపు ఒకసారి ఉపయోగించవచ్చు.",
     "v2MonitoringChannel": "అలారం పర్యవేక్షణ స్థితి",
-    "v2ReleasePending": "తదుపరి యాప్ అప్‌డేట్‌తో ఈ ప్లాన్‌లు అందుబాటులో ఉంటాయి. ప్రస్తుతం మీకు అందుబాటులో ఉన్న నిబంధనల కోసం Google Playని తనిఖీ చేయండి."
+    "v2ReleasePending": "తదుపరి యాప్ అప్‌డేట్‌తో ఈ ప్లాన్‌లు అందుబాటులో ఉంటాయి. ప్రస్తుతం మీకు అందుబాటులో ఉన్న నిబంధనల కోసం Google Playని తనిఖీ చేయండి.",
+    "v2ScheduledChange": "{date}లో {plan}కి మార్పులు"
   },
   "ur": {
     "v2StatusTitle": "استعمال اور رکنیت",
@@ -2751,7 +2801,8 @@
     "v2GenerateCode": "ایپ کے لیے کنکشن کوڈ حاصل کریں۔",
     "v2CodeExpires": "یہ کوڈ 10 منٹ کے اندر ایک بار استعمال کیا جا سکتا ہے۔",
     "v2MonitoringChannel": "الارم کی نگرانی کی حیثیت",
-    "v2ReleasePending": "یہ منصوبے اگلی ایپ اپ ڈیٹ کے ساتھ دستیاب ہوں گے۔ فی الحال آپ کے لیے دستیاب شرائط کے لیے Google Play چیک کریں۔"
+    "v2ReleasePending": "یہ منصوبے اگلی ایپ اپ ڈیٹ کے ساتھ دستیاب ہوں گے۔ فی الحال آپ کے لیے دستیاب شرائط کے لیے Google Play چیک کریں۔",
+    "v2ScheduledChange": "{date} پر {plan} میں تبدیلیاں"
   },
   "th": {
     "v2StatusTitle": "การใช้งานและการสมัครสมาชิก",
@@ -2805,7 +2856,8 @@
     "v2GenerateCode": "รับรหัสการเชื่อมต่อสำหรับแอป",
     "v2CodeExpires": "รหัสนี้สามารถใช้ได้หนึ่งครั้งภายใน 10 นาที",
     "v2MonitoringChannel": "สถานะการตรวจสอบสัญญาณเตือน",
-    "v2ReleasePending": "แผนเหล่านี้จะพร้อมใช้งานในการอัปเดตแอปครั้งถัดไป ตรวจสอบ Google Play เพื่อดูข้อกำหนดที่คุณสามารถใช้ได้ในปัจจุบัน"
+    "v2ReleasePending": "แผนเหล่านี้จะพร้อมใช้งานในการอัปเดตแอปครั้งถัดไป ตรวจสอบ Google Play เพื่อดูข้อกำหนดที่คุณสามารถใช้ได้ในปัจจุบัน",
+    "v2ScheduledChange": "การเปลี่ยนแปลงเป็น {plan} บน {date}"
   },
   "tr": {
     "v2StatusTitle": "Kullanım ve abonelik",
@@ -2859,7 +2911,8 @@
     "v2GenerateCode": "Uygulama için bir bağlantı kodu alın",
     "v2CodeExpires": "Bu kod 10 dakika içerisinde 1 kez kullanılabilir.",
     "v2MonitoringChannel": "Alarm izleme durumu",
-    "v2ReleasePending": "Bu planlar bir sonraki uygulama güncellemesiyle kullanıma sunulacak. Şu anda kullanabileceğiniz şartlar için Google Play'i kontrol edin."
+    "v2ReleasePending": "Bu planlar bir sonraki uygulama güncellemesiyle kullanıma sunulacak. Şu anda kullanabileceğiniz şartlar için Google Play'i kontrol edin.",
+    "v2ScheduledChange": "{date}'de {plan}'de yapılan değişiklikler"
   },
   "uk": {
     "v2StatusTitle": "Використання та підписка",
@@ -2913,7 +2966,8 @@
     "v2GenerateCode": "Отримайте код підключення до програми",
     "v2CodeExpires": "Цей код можна використовувати один раз протягом 10 хвилин.",
     "v2MonitoringChannel": "Стан моніторингу тривоги",
-    "v2ReleasePending": "Ці плани стануть доступними з наступним оновленням програми. Перевірте Google Play, щоб дізнатися про доступні для вас умови."
+    "v2ReleasePending": "Ці плани стануть доступними з наступним оновленням програми. Перевірте Google Play, щоб дізнатися про доступні для вас умови.",
+    "v2ScheduledChange": "Зміни на {plan} на {date}"
   },
   "vi": {
     "v2StatusTitle": "Cách sử dụng và đăng ký",
@@ -2967,7 +3021,8 @@
     "v2GenerateCode": "Nhận mã kết nối cho ứng dụng",
     "v2CodeExpires": "Mã này có thể được sử dụng một lần trong vòng 10 phút.",
     "v2MonitoringChannel": "Trạng thái giám sát báo động",
-    "v2ReleasePending": "Các gói này sẽ có sẵn trong bản cập nhật ứng dụng tiếp theo. Kiểm tra Google Play để biết các điều khoản hiện có sẵn cho bạn."
+    "v2ReleasePending": "Các gói này sẽ có sẵn trong bản cập nhật ứng dụng tiếp theo. Kiểm tra Google Play để biết các điều khoản hiện có sẵn cho bạn.",
+    "v2ScheduledChange": "Những thay đổi đối với {plan} trên {date}"
   },
   "zh": {
     "v2StatusTitle": "使用和订阅",
@@ -3021,7 +3076,8 @@
     "v2GenerateCode": "获取应用程序的连接代码",
     "v2CodeExpires": "此代码可在 10 分钟内使用一次。",
     "v2MonitoringChannel": "报警监控状态",
-    "v2ReleasePending": "这些计划将在下一次应用程序更新时提供。检查 Google Play 以了解当前适用于您的条款。"
+    "v2ReleasePending": "这些计划将在下一次应用程序更新时提供。检查 Google Play 以了解当前适用于您的条款。",
+    "v2ScheduledChange": "{date} 上 {plan} 的更改"
   },
   "zh-hans": {
     "v2StatusTitle": "使用和订阅",
@@ -3075,7 +3131,8 @@
     "v2GenerateCode": "获取应用程序的连接代码",
     "v2CodeExpires": "此代码可在 10 分钟内使用一次。",
     "v2MonitoringChannel": "报警监控状态",
-    "v2ReleasePending": "这些计划将在下一次应用程序更新时提供。检查 Google Play 以了解当前适用于您的条款。"
+    "v2ReleasePending": "这些计划将在下一次应用程序更新时提供。检查 Google Play 以了解当前适用于您的条款。",
+    "v2ScheduledChange": "{date} 上 {plan} 的更改"
   },
   "zh_Hans": {
     "v2StatusTitle": "使用和订阅",
@@ -3129,7 +3186,8 @@
     "v2GenerateCode": "获取应用程序的连接代码",
     "v2CodeExpires": "此代码可在 10 分钟内使用一次。",
     "v2MonitoringChannel": "报警监控状态",
-    "v2ReleasePending": "这些计划将在下一次应用程序更新时提供。检查 Google Play 以了解当前适用于您的条款。"
+    "v2ReleasePending": "这些计划将在下一次应用程序更新时提供。检查 Google Play 以了解当前适用于您的条款。",
+    "v2ScheduledChange": "{date} 上 {plan} 的更改"
   },
   "zh_Hant": {
     "v2StatusTitle": "使用和訂閱",
@@ -3183,7 +3241,8 @@
     "v2GenerateCode": "取得應用程式的連接代碼",
     "v2CodeExpires": "此代碼可在 10 分鐘內使用一次。",
     "v2MonitoringChannel": "警報監控狀態",
-    "v2ReleasePending": "這些計劃將在下一次應用程式更新時提供。檢查 Google Play 以了解目前適用於您的條款。"
+    "v2ReleasePending": "這些計劃將在下一次應用程式更新時提供。檢查 Google Play 以了解目前適用於您的條款。",
+    "v2ScheduledChange": "{date} 上 {plan} 的更改"
   },
   "zh-hant": {
     "v2StatusTitle": "使用和訂閱",
@@ -3237,7 +3296,8 @@
     "v2GenerateCode": "取得應用程式的連接代碼",
     "v2CodeExpires": "此代碼可在 10 分鐘內使用一次。",
     "v2MonitoringChannel": "警報監控狀態",
-    "v2ReleasePending": "這些計劃將在下一次應用程式更新時提供。檢查 Google Play 以了解目前適用於您的條款。"
+    "v2ReleasePending": "這些計劃將在下一次應用程式更新時提供。檢查 Google Play 以了解目前適用於您的條款。",
+    "v2ScheduledChange": "{date} 上 {plan} 的更改"
   },
   "sr": {
     "v2StatusTitle": "Статус коришћења и претплата",
@@ -3291,6 +3351,7 @@
     "v2GenerateCode": "Добијте код за повезивање апликације",
     "v2CodeExpires": "Овај код можете употребити једном у року од 10 минута.",
     "v2MonitoringChannel": "Статус праћења аларма",
-    "v2ReleasePending": "Ови планови ће бити доступни са следећим ажурирањем апликације. Проверите на Гоогле Плаи-у услове који су вам тренутно доступни."
+    "v2ReleasePending": "Ови планови ће бити доступни са следећим ажурирањем апликације. Проверите на Гоогле Плаи-у услове који су вам тренутно доступни.",
+    "v2ScheduledChange": "Промена на {plan} од {date}"
   }
 }
