@@ -1,0 +1,115 @@
+{
+  "language": "Estonian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Telefon alati hääletu peal?",
+      "body": "Vaikus on mõnus, kuni mõni tõesti oluline sõnum märkamata jääb. NotiCatcher jätab muud teavitused vaikseks ja heliseb nagu alarm ainult siis, kui teavitus sisaldab sinu valitud märksõna.",
+      "feedLabel": "Näide: hääletul telefonil kõlab ainult märksõnaga teavitus",
+      "mutedLabel": "Hääletu",
+      "ringLabel": "Alarm heliseb",
+      "feed": [
+        {
+          "app": "Ostud",
+          "text": "Ainult täna: kuni 70% soodsamalt"
+        },
+        {
+          "app": "Grupivestlus",
+          "text": "haha, kas sa pilte nägid?"
+        },
+        {
+          "app": "Uudised",
+          "text": "Sinu hommikune uudisteülevaade on valmis"
+        },
+        {
+          "app": "Mäng",
+          "text": "Su energia on jälle täis"
+        }
+      ],
+      "ring": {
+        "app": "Messenger",
+        "before": "",
+        "keyword": "Ülemus",
+        "after": ": Kas saad kohe korraks rääkida?"
+      }
+    },
+    "personas": {
+      "title": "Kas tuleb tuttav ette?",
+      "items": [
+        {
+          "title": "Töötad kodust",
+          "body": "Lase ülemuse sõnumitel valjult märku anda ka siis, kui telefon on hääletu.",
+          "app": "Messenger",
+          "before": "",
+          "keyword": "Ülemus",
+          "after": ": Kas saad esitluse enne kella kolme saata?"
+        },
+        {
+          "title": "Päev möödub Slackis või Telegramis",
+          "body": "Kümnetest kanalitest pääsevad läbi ainult sinu valitud teavitused.",
+          "app": "Slack",
+          "before": "#rikked ",
+          "keyword": "kiire",
+          "after": ": makseliides ei vasta"
+        },
+        {
+          "title": "Kaupled või investeerid",
+          "body": "Hoolitse selle eest, et sinu kauplemisotsuste aluseks olevad signaalid alati heliseksid.",
+          "app": "Telegram",
+          "before": "BTC ",
+          "keyword": "läbimurdesignaal",
+          "after": ", hind jõuab ostutsooni"
+        },
+        {
+          "title": "Läbi pääsevad vaid pere kõned",
+          "body": "Hääletul telefonil kõlavad ainult pereliikmete kõned.",
+          "app": "Telefon",
+          "before": "Sissetulev kõne: ",
+          "keyword": "Ema",
+          "after": ""
+        },
+        {
+          "title": "Ootad pakki või kinnituskoodi",
+          "body": "Märka kohe tarne-, broneeringu- ja kinnitussõnumeid.",
+          "app": "Sõnumid",
+          "before": "Sinu pakk on ",
+          "keyword": "saabunud",
+          "after": " ukse taha"
+        },
+        {
+          "title": "Hoiad maksetel silma peal",
+          "body": "Ära maga maha ühtegi kaardimakse ega laekumise teavitust.",
+          "app": "Pank",
+          "before": "",
+          "keyword": "Laekumine",
+          "after": ": töötasu 3 200,00 €"
+        }
+      ],
+      "note": "Finantsäppide ja Telegrami piiramatute alarmide jaoks on vaja Pro paketti. Kõnealarmid toimivad siis, kui määrad NotiCatcheri helistaja tuvastamise ja rämpskõnede rakenduseks."
+    },
+    "steps": {
+      "title": "Kolm sammu ja valmis",
+      "items": [
+        {
+          "title": "Vali märksõnad",
+          "body": "Lisa sõnad, mis peaksid alarmi käivitama, ja sõnad, mida eirata."
+        },
+        {
+          "title": "Vali, mida jälgida",
+          "body": "Äppide teavitusi, tekstsõnumeid, sissetulevaid kõnesid või kõiki kolme."
+        },
+        {
+          "title": "Heliseb ka hääletul telefonil",
+          "body": "Alarm või värin kordub, kuni selle peatad. Ooteaeg hoiab ära sama teavituse peale üha uuesti helisemise."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ära lase järgmisel olulisel sõnumil kaduma minna",
+      "body": "Proovi kõiki funktsioone 7 päeva tasuta. Makseviisi lisada pole vaja.",
+      "privacy": "Teavituste sisu võrreldakse sinu märksõnadega sinu seadmes ja seda ei saadeta meie serveritesse.",
+      "play": "Laadi alla Google Playst",
+      "plans": "Vaata pakette"
+    }
+  }
+}

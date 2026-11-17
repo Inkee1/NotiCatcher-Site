@@ -1,0 +1,115 @@
+{
+  "language": "German",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Handy immer auf lautlos?",
+      "body": "Ruhe tut gut. Nur die eine wichtige Nachricht möchtest du nicht verpassen. NotiCatcher lässt alle anderen Benachrichtigungen stumm und schlägt nur dann Alarm, wenn eine dein festgelegtes Stichwort enthält.",
+      "feedLabel": "Beispiel: Auf lautlos klingelt nur die Benachrichtigung mit deinem Stichwort",
+      "mutedLabel": "Lautlos",
+      "ringLabel": "Alarm klingelt",
+      "feed": [
+        {
+          "app": "Shopping",
+          "text": "Nur heute: bis zu 70 % Rabatt"
+        },
+        {
+          "app": "Gruppenchat",
+          "text": "Haha, hast du die Fotos gesehen?"
+        },
+        {
+          "app": "Nachrichten",
+          "text": "Dein Nachrichtenüberblick für den Morgen ist da"
+        },
+        {
+          "app": "Spiel",
+          "text": "Deine Energie ist wieder voll"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Chef",
+        "after": ": Kannst du gerade kurz telefonieren?"
+      }
+    },
+    "personas": {
+      "title": "Passt zu deinem Alltag",
+      "items": [
+        {
+          "title": "Im Homeoffice",
+          "body": "Lass Nachrichten von deinem Chef laut klingeln, auch wenn dein Handy auf lautlos steht.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Chef",
+          "after": ": Kannst du mir die Präsentation vor 15 Uhr schicken?"
+        },
+        {
+          "title": "Den ganzen Tag Slack oder Telegram",
+          "body": "Aus Dutzenden Kanälen kommen nur die Meldungen durch, die du auswählst.",
+          "app": "Slack",
+          "before": "#störungen ",
+          "keyword": "dringend",
+          "after": ": Zahlungsschnittstelle reagiert nicht"
+        },
+        {
+          "title": "Beim Traden oder Investieren",
+          "body": "Sorge dafür, dass die Signale, nach denen du handelst, immer klingeln.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "Ausbruchssignal",
+          "after": ", Kaufzone erreicht"
+        },
+        {
+          "title": "Nur Anrufe von der Familie",
+          "body": "Trotz lautlosem Handy klingelt es nur, wenn deine Familie anruft.",
+          "app": "Telefon",
+          "before": "Eingehender Anruf: ",
+          "keyword": "Mama",
+          "after": ""
+        },
+        {
+          "title": "Warten auf ein Paket oder einen Code",
+          "body": "Bekomme Nachrichten zu Lieferungen, Buchungen und Bestätigungscodes sofort mit.",
+          "app": "Nachrichten",
+          "before": "Dein Paket ist vor deiner Tür ",
+          "keyword": "angekommen",
+          "after": "."
+        },
+        {
+          "title": "Zahlungen im Blick",
+          "body": "Verpasse keine Meldung zu Kartenzahlungen oder Geldeingängen.",
+          "app": "Bank",
+          "before": "",
+          "keyword": "Geldeingang",
+          "after": ": Gehalt in Höhe von 3.200,00 € erhalten"
+        }
+      ],
+      "note": "Für unbegrenzte Alarme aus Finanz-Apps und Telegram brauchst du den Pro-Tarif. Alarme bei Anrufen funktionieren, sobald du NotiCatcher als App für Anruferkennung und Spamschutz festgelegt hast."
+    },
+    "steps": {
+      "title": "In drei Schritten startklar",
+      "items": [
+        {
+          "title": "Stichwörter festlegen",
+          "body": "Trage die Wörter ein, die einen Alarm auslösen sollen, und die Wörter, die ignoriert werden sollen."
+        },
+        {
+          "title": "Quellen auswählen",
+          "body": "App-Benachrichtigungen, Textnachrichten, eingehende Anrufe oder alle drei."
+        },
+        {
+          "title": "Klingelt auch auf lautlos",
+          "body": "Ein wiederholter Alarm oder Vibration macht dich aufmerksam, bis du ihn stoppst. Eine Pause zwischen den Alarmen verhindert, dass dieselbe Meldung immer wieder klingelt."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Verpass nicht die nächste wichtige Nachricht",
+      "body": "Teste alle Funktionen 7 Tage kostenlos. Du brauchst kein Zahlungsmittel zu hinterlegen.",
+      "privacy": "Benachrichtigungen werden auf deinem Gerät mit deinen Stichwörtern abgeglichen. Ihr Inhalt wird nicht an unsere Server gesendet.",
+      "play": "Bei Google Play herunterladen",
+      "plans": "Tarife ansehen"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "language": "Czech",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Máte telefon pořád potichu?",
+      "body": "Klid je fajn, dokud vám neunikne důležitá zpráva. NotiCatcher nechá ostatní oznámení potichu a rozezní alarm, jen když některé obsahuje vaše klíčové slovo.",
+      "feedLabel": "Příklad: v tichém režimu zazní jen oznámení s vaším klíčovým slovem",
+      "mutedLabel": "Potichu",
+      "ringLabel": "Zvoní alarm",
+      "feed": [
+        {
+          "app": "Nákupy",
+          "text": "Jen dnes: slevy až 70 %"
+        },
+        {
+          "app": "Skupinový chat",
+          "text": "haha, už jste viděli ty fotky?"
+        },
+        {
+          "app": "Zpravodajství",
+          "text": "Ranní přehled zpráv je připravený"
+        },
+        {
+          "app": "Hra",
+          "text": "Energie je zase na maximu"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Šéf",
+        "after": ": Můžeme si hned zavolat?"
+      }
+    },
+    "personas": {
+      "title": "Poznáváte se?",
+      "items": [
+        {
+          "title": "Pracujete z domova",
+          "body": "Zprávy od šéfa se ozvou nahlas i v tichém režimu.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Šéf",
+          "after": ": Pošleš mi tu prezentaci před třetí?"
+        },
+        {
+          "title": "Celý den na Slacku nebo Telegramu",
+          "body": "Z desítek kanálů se ozvou jen upozornění, která si vyberete.",
+          "app": "Slack",
+          "before": "#incidenty ",
+          "keyword": "naléhavé",
+          "after": ": platební rozhraní neodpovídá"
+        },
+        {
+          "title": "Obchodujete nebo investujete",
+          "body": "Signály, podle kterých obchodujete, se vždy ozvou.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "signál průrazu",
+          "after": ", vstup do nákupní zóny"
+        },
+        {
+          "title": "Dovolá se jen rodina",
+          "body": "V tichém režimu zazvoní jen hovory od rodiny.",
+          "app": "Telefon",
+          "before": "Příchozí hovor: ",
+          "keyword": "Máma",
+          "after": ""
+        },
+        {
+          "title": "Čekáte na balíček nebo kód",
+          "body": "O doručení, rezervaci i ověřovacím kódu se dozvíte hned.",
+          "app": "Zprávy",
+          "before": "Váš balíček ",
+          "keyword": "dorazil",
+          "after": " ke dveřím"
+        },
+        {
+          "title": "Hlídáte si platby",
+          "body": "Nenechte si ujít oznámení o platbě kartou ani o příchozí platbě.",
+          "app": "Banka",
+          "before": "",
+          "keyword": "Příchozí platba",
+          "after": ": výplata 72 000 Kč"
+        }
+      ],
+      "note": "Pro neomezený počet alarmů z finančních aplikací a Telegramu potřebujete tarif Pro. Alarmy při příchozích hovorech fungují po nastavení NotiCatcher jako aplikace pro identifikaci volajícího a ochranu před spamem."
+    },
+    "steps": {
+      "title": "Nastaveno ve třech krocích",
+      "items": [
+        {
+          "title": "Vyberte klíčová slova",
+          "body": "Přidejte slova, která mají spustit alarm, i ta, která chcete ignorovat."
+        },
+        {
+          "title": "Vyberte, co hlídat",
+          "body": "Oznámení z aplikací, textové zprávy, příchozí hovory nebo všechno dohromady."
+        },
+        {
+          "title": "Ozve se i v tichém režimu",
+          "body": "Alarm nebo vibrace se opakují, dokud je nevypnete. Časová prodleva zabrání tomu, aby stejné upozornění spouštělo alarm znovu a znovu."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ať vám příště nic důležitého neunikne",
+      "body": "Vyzkoušejte všechny funkce na 7 dní zdarma. Bez zadávání platebních údajů.",
+      "privacy": "Obsah oznámení se porovnává s vašimi klíčovými slovy přímo ve vašem zařízení a neodesílá se na naše servery.",
+      "play": "Stáhnout z Google Play",
+      "plans": "Prohlédnout tarify"
+    }
+  }
+}

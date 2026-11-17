@@ -1,0 +1,115 @@
+{
+  "language": "Norwegian (Bokmal)",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Alltid mobilen på lydløs?",
+      "body": "Det er deilig med ro, helt til du går glipp av en viktig melding. NotiCatcher lar alle andre varsler være stille og ringer som en alarm bare når et varsel inneholder nøkkelordet ditt.",
+      "feedLabel": "Eksempel: På lydløs ringer bare varselet med nøkkelordet ditt",
+      "mutedLabel": "Lydløs",
+      "ringLabel": "Alarmen ringer",
+      "feed": [
+        {
+          "app": "Shopping",
+          "text": "Bare i dag: opptil 70 % rabatt"
+        },
+        {
+          "app": "Gruppechat",
+          "text": "haha, har du sett bildene?"
+        },
+        {
+          "app": "Nyheter",
+          "text": "Morgenens nyhetsoversikt er klar"
+        },
+        {
+          "app": "Spill",
+          "text": "Du har full energi igjen"
+        }
+      ],
+      "ring": {
+        "app": "Messenger",
+        "before": "",
+        "keyword": "Sjefen",
+        "after": ": Har du tid til en prat på telefonen nå?"
+      }
+    },
+    "personas": {
+      "title": "Kjenner du deg igjen?",
+      "items": [
+        {
+          "title": "På hjemmekontor",
+          "body": "La meldinger fra sjefen ringe høyt, selv når mobilen er på lydløs.",
+          "app": "Messenger",
+          "before": "",
+          "keyword": "Sjefen",
+          "after": ": Kan du sende presentasjonen før klokka tre?"
+        },
+        {
+          "title": "Hele dagen på Slack eller Telegram",
+          "body": "Blant dusinvis av kanaler slipper bare varslene du velger gjennom.",
+          "app": "Slack",
+          "before": "#driftsfeil ",
+          "keyword": "haster",
+          "after": ": betalingsgrensesnittet svarer ikke"
+        },
+        {
+          "title": "Handler eller investerer",
+          "body": "Sørg for at signalene du handler på, alltid ringer.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "bruddsignal",
+          "after": ", på vei inn i kjøpssonen"
+        },
+        {
+          "title": "Bare anrop fra familien",
+          "body": "Anrop ringer på lydløs bare når det er familien som ringer.",
+          "app": "Telefon",
+          "before": "Innkommende anrop: ",
+          "keyword": "Mamma",
+          "after": ""
+        },
+        {
+          "title": "Venter på en pakke eller kode",
+          "body": "Få med deg tekstmeldinger om levering, bestillinger og bekreftelseskoder med en gang.",
+          "app": "Meldinger",
+          "before": "Pakken din er ",
+          "keyword": "levert",
+          "after": " på døra"
+        },
+        {
+          "title": "Følger med på betalinger",
+          "body": "Gå aldri glipp av et varsel om kortbetaling eller innbetaling.",
+          "app": "Bank",
+          "before": "",
+          "keyword": "Innbetaling",
+          "after": ": Lønn på 32 000,00 kr er kommet inn på konto"
+        }
+      ],
+      "note": "Du trenger Pro-abonnementet for ubegrensede alarmer fra finansapper og Telegram. Alarmer for anrop fungerer når du har valgt NotiCatcher som app for anrops-ID og spam."
+    },
+    "steps": {
+      "title": "Kom i gang med tre steg",
+      "items": [
+        {
+          "title": "Velg nøkkelord",
+          "body": "Legg til ordene som skal utløse alarmen, og ordene som skal ignoreres."
+        },
+        {
+          "title": "Velg hva appen skal fange opp",
+          "body": "Appvarsler, tekstmeldinger, innkommende anrop eller alle tre."
+        },
+        {
+          "title": "Det ringer, selv på lydløs",
+          "body": "En alarm eller vibrasjon gjentas til du stopper den. Med en ventetid mellom alarmene unngår du at samme varsel ringer om og om igjen."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Få med deg det neste som betyr noe",
+      "body": "Prøv alle funksjonene gratis i 7 dager. Du trenger ikke å legge inn noen betalingsmåte.",
+      "privacy": "Varselinnholdet sammenlignes med nøkkelordene dine på enheten din og sendes ikke til serverne våre.",
+      "play": "Last ned på Google Play",
+      "plans": "Se abonnementer"
+    }
+  }
+}

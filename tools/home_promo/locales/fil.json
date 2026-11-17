@@ -1,0 +1,115 @@
+{
+  "language": "Filipino",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Laging naka-silent ang phone mo?",
+      "body": "Masarap ang tahimik, pero paano kung mahalagang mensahe ang hindi mo napansin? Pinapanatiling tahimik ng NotiCatcher ang ibang notification at tumutunog lang na parang alarm kapag may salitang itinakda mo.",
+      "feedLabel": "Halimbawa: naka-silent, pero tutunog ang notification na may keyword mo",
+      "mutedLabel": "Naka-silent",
+      "ringLabel": "Tumutunog ang alarm",
+      "feed": [
+        {
+          "app": "Pamimili",
+          "text": "Ngayong araw lang: hanggang 70% diskuwento"
+        },
+        {
+          "app": "Usapang grupo",
+          "text": "haha nakita mo na yung mga litrato?"
+        },
+        {
+          "app": "Balita",
+          "text": "Handa na ang mga balita mo ngayong umaga"
+        },
+        {
+          "app": "Laro",
+          "text": "Puno na ulit ang energy mo"
+        }
+      ],
+      "ring": {
+        "app": "Messenger",
+        "before": "",
+        "keyword": "Sir Mark",
+        "after": ": Puwede ba tayong mag-call ngayon?"
+      }
+    },
+    "personas": {
+      "title": "Para sa mga tulad mo",
+      "items": [
+        {
+          "title": "Nagtatrabaho mula sa bahay",
+          "body": "Patunugin nang malakas ang mensahe ng boss mo, kahit naka-silent.",
+          "app": "Messenger",
+          "before": "",
+          "keyword": "Sir Mark",
+          "after": ": Pakisend ang presentation bago mag-alas-3."
+        },
+        {
+          "title": "Maghapong nasa Slack o Telegram",
+          "body": "Sa dose-dosenang channel, ang mga alertong pinili mo lang ang tutunog.",
+          "app": "Slack",
+          "before": "#mga-insidente ",
+          "keyword": "apurahan",
+          "after": ": hindi tumutugon ang payment interface"
+        },
+        {
+          "title": "Nagte-trade o namumuhunan",
+          "body": "Siguraduhing laging tutunog ang mga signal na batayan mo sa pag-trade.",
+          "app": "Telegram",
+          "before": "BTC: may ",
+          "keyword": "signal ng breakout",
+          "after": ", papasok na sa buy zone"
+        },
+        {
+          "title": "Tawag ng pamilya lang",
+          "body": "Tawag lang ng pamilya ang tutunog kahit naka-silent.",
+          "app": "Telepono",
+          "before": "Papasok na tawag: ",
+          "keyword": "Nanay",
+          "after": ""
+        },
+        {
+          "title": "May hinihintay na delivery o code",
+          "body": "Mapansin agad ang mga text tungkol sa delivery, booking, at verification.",
+          "app": "Mga Mensahe",
+          "before": "",
+          "keyword": "Dumating",
+          "after": " na ang package mo sa tapat ng pinto"
+        },
+        {
+          "title": "Binabantayan ang mga bayad",
+          "body": "Huwag palampasin ang alerto sa bayad gamit ang card o perang pumasok.",
+          "app": "Bangko",
+          "before": "",
+          "keyword": "Deposito",
+          "after": ": pumasok na ang suweldong ₱32,000.00"
+        }
+      ],
+      "note": "Kailangan ang Pro plan para sa walang limitasyong alarm mula sa mga financial app at Telegram. Para gumana ang alarm sa tawag, itakda ang NotiCatcher bilang caller ID at spam app mo."
+    },
+    "steps": {
+      "title": "Tatlong hakbang lang",
+      "items": [
+        {
+          "title": "Piliin ang mga keyword mo",
+          "body": "Ilagay ang mga salitang dapat magpatunog ng alarm at ang mga salitang babalewalain."
+        },
+        {
+          "title": "Piliin kung saan mag-aabang",
+          "body": "Mga notification ng app, text message, papasok na tawag, o lahat ng tatlo."
+        },
+        {
+          "title": "Tutunog kahit naka-silent",
+          "body": "Paulit-ulit na alarm o pag-vibrate hanggang ihinto mo. Magtakda ng pagitan para hindi sunod-sunod na tumunog ang parehong alerto."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Huwag palampasin ang susunod na mahalagang mensahe",
+      "body": "Subukan nang libre ang lahat ng feature sa loob ng 7 araw. Hindi kailangan ng paraan ng pagbabayad.",
+      "privacy": "Sa device mo mismo inihahambing ang mga notification sa mga keyword mo. Hindi ipinapadala ang nilalaman ng mga notification sa aming mga server.",
+      "play": "Kunin sa Google Play",
+      "plans": "Tingnan ang mga plan"
+    }
+  }
+}

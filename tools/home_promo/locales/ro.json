@@ -1,0 +1,115 @@
+{
+  "language": "Romanian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Ții mereu telefonul pe silențios?",
+      "body": "Liniștea e plăcută, până când ratezi un mesaj care chiar contează. NotiCatcher păstrează celelalte notificări silențioase și sună ca o alarmă doar când o notificare conține cuvântul-cheie ales de tine.",
+      "feedLabel": "Exemplu: pe silențios, sună doar notificarea cu cuvântul-cheie ales",
+      "mutedLabel": "Silențios",
+      "ringLabel": "Sună alarma",
+      "feed": [
+        {
+          "app": "Cumpărături",
+          "text": "Doar azi: reduceri de până la 70%"
+        },
+        {
+          "app": "Grup",
+          "text": "haha, ai văzut pozele?"
+        },
+        {
+          "app": "Știri",
+          "text": "Știrile dimineții sunt gata"
+        },
+        {
+          "app": "Joc",
+          "text": "Energia ta e din nou la maximum"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Șeful",
+        "after": ": Putem vorbi puțin la telefon chiar acum?"
+      }
+    },
+    "personas": {
+      "title": "Pentru oameni ca tine",
+      "items": [
+        {
+          "title": "Lucrezi de acasă",
+          "body": "Lasă mesajele de la șef să sune tare, chiar și pe silențios.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Șeful",
+          "after": ": Poți trimite prezentarea înainte de ora 3?"
+        },
+        {
+          "title": "Stai toată ziua pe Slack sau Telegram",
+          "body": "Din zeci de canale, te anunță doar alertele pe care le alegi.",
+          "app": "Slack",
+          "before": "#incidente ",
+          "keyword": "urgent",
+          "after": ": interfața de plăți nu răspunde"
+        },
+        {
+          "title": "Tranzacționezi sau investești",
+          "body": "Asigură-te că semnalele după care tranzacționezi sună de fiecare dată.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "semnal de străpungere",
+          "after": ", intră în zona de cumpărare"
+        },
+        {
+          "title": "Vrei să sune doar familia",
+          "body": "Telefonul sună pe silențios doar când te sună cineva din familie.",
+          "app": "Telefon",
+          "before": "Apel primit: ",
+          "keyword": "Mama",
+          "after": ""
+        },
+        {
+          "title": "Aștepți o livrare sau un cod",
+          "body": "Observi imediat mesajele despre livrări, rezervări și coduri de verificare.",
+          "app": "Mesaje",
+          "before": "Coletul tău a ",
+          "keyword": "ajuns",
+          "after": " la ușă"
+        },
+        {
+          "title": "Urmărești plățile și încasările",
+          "body": "Nu rata nicio alertă de plată cu cardul sau de încasare.",
+          "app": "Bancă",
+          "before": "",
+          "keyword": "Încasare",
+          "after": ": ai primit salariul de 3.200,00 lei"
+        }
+      ],
+      "note": "Pentru alarme nelimitate de la aplicații financiare și Telegram, ai nevoie de planul Pro. Alarmele pentru apeluri funcționează după ce setezi NotiCatcher ca aplicație pentru identificarea apelantului și a apelurilor spam."
+    },
+    "steps": {
+      "title": "Totul e gata în trei pași",
+      "items": [
+        {
+          "title": "Alege cuvintele-cheie",
+          "body": "Adaugă cuvintele care declanșează alarma și cuvintele de ignorat."
+        },
+        {
+          "title": "Alege ce să urmărească",
+          "body": "Notificări din aplicații, mesaje text, apeluri primite sau toate trei."
+        },
+        {
+          "title": "Sună chiar și pe silențios",
+          "body": "O alarmă sau o vibrație se repetă până o oprești. Intervalul de pauză împiedică aceeași alertă să sune iar și iar."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Nu rata următorul mesaj important",
+      "body": "Încearcă toate funcțiile gratuit timp de 7 zile. Nu ai nevoie de o metodă de plată.",
+      "privacy": "Conținutul notificărilor este comparat cu cuvintele-cheie pe dispozitivul tău și nu este trimis către serverele noastre.",
+      "play": "Descarcă din Google Play",
+      "plans": "Vezi planurile"
+    }
+  }
+}

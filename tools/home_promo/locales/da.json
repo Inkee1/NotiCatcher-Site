@@ -1,0 +1,115 @@
+{
+  "language": "Danish",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Er mobilen altid på lydløs?",
+      "body": "Det er rart med ro, lige indtil du misser den ene besked, der var vigtig. NotiCatcher lader alle andre notifikationer være stille og ringer kun som en alarm, når en notifikation indeholder dit nøgleord.",
+      "feedLabel": "Eksempel: På lydløs ringer kun notifikationen med dit nøgleord",
+      "mutedLabel": "Lydløs",
+      "ringLabel": "Alarmen ringer",
+      "feed": [
+        {
+          "app": "Shopping",
+          "text": "Kun i dag: op til 70 % rabat"
+        },
+        {
+          "app": "Gruppechat",
+          "text": "haha har I set billederne?"
+        },
+        {
+          "app": "Nyheder",
+          "text": "Dit morgenoverblik er klar"
+        },
+        {
+          "app": "Spil",
+          "text": "Din energi er fyldt op igen"
+        }
+      ],
+      "ring": {
+        "app": "Messenger",
+        "before": "",
+        "keyword": "Chefen",
+        "after": ": Har du tid til et opkald lige nu?"
+      }
+    },
+    "personas": {
+      "title": "Til dig og din hverdag",
+      "items": [
+        {
+          "title": "Når du arbejder hjemme",
+          "body": "Lad beskeder fra chefen ringe højt, selv når mobilen er på lydløs.",
+          "app": "Messenger",
+          "before": "",
+          "keyword": "Chefen",
+          "after": ": Kan du sende præsentationen inden kl. 15?"
+        },
+        {
+          "title": "Hele dagen på Slack eller Telegram",
+          "body": "Blandt snesevis af kanaler slipper kun de beskeder igennem, du selv vælger.",
+          "app": "Slack",
+          "before": "#driftsproblemer ",
+          "keyword": "haster",
+          "after": ": betalings-API'et svarer ikke"
+        },
+        {
+          "title": "Når du handler eller investerer",
+          "body": "Sørg for, at de signaler, du handler på, altid får alarmen til at ringe.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "udbrudssignal",
+          "after": ", på vej ind i købszonen"
+        },
+        {
+          "title": "Når kun familien skal kunne ringe igennem",
+          "body": "Lad kun opkald fra familien bryde stilheden, når mobilen er på lydløs.",
+          "app": "Telefon",
+          "before": "Indgående opkald: ",
+          "keyword": "Mor",
+          "after": ""
+        },
+        {
+          "title": "Når du venter på en pakke eller kode",
+          "body": "Opdag sms'er om levering, reservationer og bekræftelseskoder med det samme.",
+          "app": "Beskeder",
+          "before": "Din pakke er ",
+          "keyword": "leveret",
+          "after": " ved din dør"
+        },
+        {
+          "title": "Når du holder øje med betalinger",
+          "body": "Gå aldrig glip af en besked om en kortbetaling eller indbetaling.",
+          "app": "Bank",
+          "before": "",
+          "keyword": "Indbetaling",
+          "after": ": Løn på 24.000,00 kr. er gået ind"
+        }
+      ],
+      "note": "Ubegrænsede alarmer fra finansapps og Telegram kræver Pro. Alarmer ved opkald virker, når du har indstillet NotiCatcher som din app til opkalds-id og spam."
+    },
+    "steps": {
+      "title": "Kom i gang på tre trin",
+      "items": [
+        {
+          "title": "Vælg dine nøgleord",
+          "body": "Tilføj de ord, der skal udløse alarmen, og dem, der skal ignoreres."
+        },
+        {
+          "title": "Vælg, hvor der skal lyttes",
+          "body": "Appnotifikationer, sms'er, indgående opkald eller alle tre."
+        },
+        {
+          "title": "Det ringer, selv på lydløs",
+          "body": "En alarm eller vibration gentages, indtil du stopper den. En pause mellem alarmerne forhindrer, at den samme besked får alarmen til at ringe igen og igen."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Fang den næste vigtige besked",
+      "body": "Prøv alle funktioner gratis i 7 dage. Du behøver ikke tilføje en betalingsmetode.",
+      "privacy": "Notifikationernes indhold sammenlignes med dine nøgleord på din enhed og sendes ikke til vores servere.",
+      "play": "Hent på Google Play",
+      "plans": "Se abonnementer"
+    }
+  }
+}

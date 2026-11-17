@@ -1,0 +1,115 @@
+{
+  "language": "Indonesian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "HP selalu dalam mode senyap?",
+      "body": "Tenang tanpa bunyi notifikasi memang nyaman, sampai pesan penting ikut terlewat. NotiCatcher membiarkan notifikasi lain tetap senyap dan hanya berbunyi seperti alarm saat ada notifikasi berisi kata kunci pilihanmu.",
+      "feedLabel": "Contoh: dalam mode senyap, hanya notifikasi berisi kata kuncimu yang berbunyi",
+      "mutedLabel": "Senyap",
+      "ringLabel": "Alarm berbunyi",
+      "feed": [
+        {
+          "app": "Belanja",
+          "text": "Hanya hari ini: diskon hingga 70%"
+        },
+        {
+          "app": "Obrolan grup",
+          "text": "wkwk udah lihat foto-fotonya?"
+        },
+        {
+          "app": "Berita",
+          "text": "Rangkuman berita pagimu sudah siap"
+        },
+        {
+          "app": "Gim",
+          "text": "Energimu sudah penuh lagi"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Pak Budi",
+        "after": ": Bisa telepon sebentar sekarang?"
+      }
+    },
+    "personas": {
+      "title": "Pas buat keseharianmu",
+      "items": [
+        {
+          "title": "Kerja dari rumah",
+          "body": "Biar pesan dari atasan tetap berbunyi nyaring meski HP dalam mode senyap.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Pak Budi",
+          "after": ": Bisa kirim materi presentasinya sebelum jam 3?"
+        },
+        {
+          "title": "Seharian di Slack atau Telegram",
+          "body": "Dari puluhan kanal, hanya notifikasi pilihanmu yang berbunyi.",
+          "app": "Slack",
+          "before": "#insiden ",
+          "keyword": "mendesak",
+          "after": ": antarmuka pembayaran tidak merespons"
+        },
+        {
+          "title": "Aktif trading atau investasi",
+          "body": "Pastikan sinyal yang jadi acuan transaksimu selalu berbunyi.",
+          "app": "Telegram",
+          "before": "BTC muncul ",
+          "keyword": "sinyal breakout",
+          "after": ", masuk zona beli"
+        },
+        {
+          "title": "Hanya telepon keluarga yang berbunyi",
+          "body": "Dalam mode senyap, telepon hanya berbunyi saat keluarga yang menghubungi.",
+          "app": "Telepon",
+          "before": "Panggilan masuk: ",
+          "keyword": "Ibu",
+          "after": ""
+        },
+        {
+          "title": "Menunggu paket atau kode",
+          "body": "Langsung tahu saat pesan pengiriman, pemesanan, dan verifikasi masuk.",
+          "app": "Pesan",
+          "before": "Paketmu sudah ",
+          "keyword": "sampai",
+          "after": " di depan pintu"
+        },
+        {
+          "title": "Memantau pembayaran",
+          "body": "Jangan lewatkan notifikasi pembayaran kartu atau dana masuk.",
+          "app": "Bank",
+          "before": "",
+          "keyword": "Dana masuk",
+          "after": ": gaji sebesar Rp3.200.000 telah diterima"
+        }
+      ],
+      "note": "Alarm tanpa batas dari aplikasi keuangan dan Telegram memerlukan paket Pro. Alarm panggilan berfungsi setelah kamu mengatur NotiCatcher sebagai aplikasi ID penelepon dan spam."
+    },
+    "steps": {
+      "title": "Siap dalam tiga langkah",
+      "items": [
+        {
+          "title": "Tentukan kata kunci",
+          "body": "Tambahkan kata yang akan memicu alarm dan kata yang ingin diabaikan."
+        },
+        {
+          "title": "Pilih yang ingin dipantau",
+          "body": "Notifikasi aplikasi, pesan teks, panggilan masuk, atau ketiganya."
+        },
+        {
+          "title": "Tetap berbunyi meski senyap",
+          "body": "Alarm atau getaran berulang sampai kamu menghentikannya. Jeda antaralarm mencegah notifikasi yang sama berbunyi berkali-kali."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Jangan lewatkan kabar penting berikutnya",
+      "body": "Coba semua fitur gratis selama 7 hari. Tanpa perlu metode pembayaran.",
+      "privacy": "Isi notifikasi dicocokkan dengan kata kuncimu di perangkatmu dan tidak dikirim ke server kami.",
+      "play": "Unduh di Google Play",
+      "plans": "Lihat paket"
+    }
+  }
+}

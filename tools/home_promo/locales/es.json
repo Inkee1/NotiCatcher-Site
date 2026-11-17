@@ -1,0 +1,115 @@
+{
+  "language": "Spanish (Spain)",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "¿Siempre con el móvil en silencio?",
+      "body": "Se agradece el silencio, hasta que se te escapa un mensaje importante. NotiCatcher mantiene las demás notificaciones en silencio y solo suena como una alarma cuando alguna contiene la palabra clave que has elegido.",
+      "feedLabel": "Ejemplo: con el móvil en silencio, solo suena la notificación con tu palabra clave",
+      "mutedLabel": "En silencio",
+      "ringLabel": "Alarma sonando",
+      "feed": [
+        {
+          "app": "Compras",
+          "text": "Solo hoy: hasta un 70 % de descuento"
+        },
+        {
+          "app": "Chat de grupo",
+          "text": "jajaja ¿has visto las fotos?"
+        },
+        {
+          "app": "Noticias",
+          "text": "Ya tienes tu resumen de noticias de la mañana"
+        },
+        {
+          "app": "Juego",
+          "text": "Tu energía vuelve a estar al máximo"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Marta (jefa)",
+        "after": ": ¿Puedes hablar un momento ahora?"
+      }
+    },
+    "personas": {
+      "title": "Para tu día a día",
+      "items": [
+        {
+          "title": "Si teletrabajas",
+          "body": "Haz que los mensajes de tu jefa suenen fuerte, incluso con el móvil en silencio.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Marta (jefa)",
+          "after": ": ¿Me envías la presentación antes de las 3?"
+        },
+        {
+          "title": "Si te pasas el día en Slack o Telegram",
+          "body": "Entre decenas de canales, solo suenan las alertas que tú elijas.",
+          "app": "Slack",
+          "before": "#incidencias ",
+          "keyword": "urgente",
+          "after": ": la interfaz de pagos no responde"
+        },
+        {
+          "title": "Si operas o inviertes",
+          "body": "Haz que las señales que guían tus operaciones suenen siempre.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "señal de ruptura",
+          "after": ", entrando en zona de compra"
+        },
+        {
+          "title": "Si solo quieres que suene la familia",
+          "body": "Las llamadas solo suenan con el móvil en silencio cuando te llama alguien de tu familia.",
+          "app": "Teléfono",
+          "before": "Llamada entrante: ",
+          "keyword": "Mamá",
+          "after": ""
+        },
+        {
+          "title": "Si esperas un paquete o un código",
+          "body": "Entérate al momento de los mensajes de entregas, reservas y códigos de verificación.",
+          "app": "Mensajes",
+          "before": "Tu paquete ha ",
+          "keyword": "llegado",
+          "after": " a tu puerta"
+        },
+        {
+          "title": "Si estás pendiente de tus pagos",
+          "body": "No te pierdas ninguna alerta de pagos con tarjeta o ingresos.",
+          "app": "Banco",
+          "before": "",
+          "keyword": "Ingreso",
+          "after": ": nómina de 3.200,00 € recibida"
+        }
+      ],
+      "note": "Para tener alarmas ilimitadas de aplicaciones financieras y Telegram necesitas el plan Pro. Las alarmas de llamadas funcionan cuando configuras NotiCatcher como aplicación de identificación de llamadas y spam."
+    },
+    "steps": {
+      "title": "Listo en tres pasos",
+      "items": [
+        {
+          "title": "Elige tus palabras clave",
+          "body": "Añade las palabras que deben activar la alarma y las que quieres ignorar."
+        },
+        {
+          "title": "Elige dónde detectar",
+          "body": "Notificaciones de aplicaciones, mensajes de texto, llamadas entrantes o las tres opciones."
+        },
+        {
+          "title": "Suena incluso en silencio",
+          "body": "Una alarma o vibración que se repite hasta que la pares. El intervalo de espera evita que una misma alerta suene una y otra vez."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Que no se te escape lo importante",
+      "body": "Prueba todas las funciones gratis durante 7 días. No necesitas añadir ningún método de pago.",
+      "privacy": "El contenido de las notificaciones se compara con tus palabras clave en tu dispositivo y no se envía a nuestros servidores.",
+      "play": "Descárgalo en Google Play",
+      "plans": "Ver planes"
+    }
+  }
+}

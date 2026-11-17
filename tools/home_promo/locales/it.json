@@ -1,0 +1,115 @@
+{
+  "language": "Italian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Telefono sempre in silenzioso?",
+      "body": "Il silenzio è bello, finché non ti perdi proprio il messaggio che contava. NotiCatcher lascia silenziose tutte le altre notifiche e suona come una sveglia solo quando una contiene la parola chiave che hai scelto.",
+      "feedLabel": "Esempio: in silenzioso, suona solo la notifica con la tua parola chiave",
+      "mutedLabel": "Silenzioso",
+      "ringLabel": "Sveglia in corso",
+      "feed": [
+        {
+          "app": "Shopping",
+          "text": "Solo oggi: sconti fino al 70%"
+        },
+        {
+          "app": "Chat di gruppo",
+          "text": "ahah ma hai visto le foto?"
+        },
+        {
+          "app": "Notizie",
+          "text": "La tua rassegna del mattino è pronta"
+        },
+        {
+          "app": "Gioco",
+          "text": "La tua energia è di nuovo al massimo"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Luca",
+        "after": " (capo): Riesci a fare una chiamata adesso?"
+      }
+    },
+    "personas": {
+      "title": "Ti ci ritrovi?",
+      "items": [
+        {
+          "title": "Lavori da casa?",
+          "body": "Fai suonare forte i messaggi del capo, anche in silenzioso.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Luca",
+          "after": " (capo): Mi mandi la presentazione prima delle 15?"
+        },
+        {
+          "title": "Sempre su Slack o Telegram?",
+          "body": "Tra decine di canali, fatti avvisare solo dalle notifiche che scegli tu.",
+          "app": "Slack",
+          "before": "#incidenti ",
+          "keyword": "urgente",
+          "after": ": l’API dei pagamenti non risponde"
+        },
+        {
+          "title": "Fai trading o investi?",
+          "body": "Fai suonare sempre i segnali su cui basi le tue operazioni.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "segnale di breakout",
+          "after": ", ingresso in zona di acquisto"
+        },
+        {
+          "title": "Vuoi sentire solo la famiglia?",
+          "body": "Fai suonare il telefono in silenzioso solo quando chiama qualcuno di famiglia.",
+          "app": "Telefono",
+          "before": "Chiamata in arrivo: ",
+          "keyword": "Mamma",
+          "after": ""
+        },
+        {
+          "title": "Aspetti un pacco o un codice?",
+          "body": "Accorgiti subito dei messaggi su consegne, prenotazioni e codici di verifica.",
+          "app": "Messaggi",
+          "before": "Il tuo pacco è ",
+          "keyword": "arrivato",
+          "after": " alla porta di casa"
+        },
+        {
+          "title": "Tieni d’occhio i pagamenti?",
+          "body": "Non perderti nessuna notifica di pagamento con carta o di accredito.",
+          "app": "Banca",
+          "before": "",
+          "keyword": "Accredito",
+          "after": ": ricevuto stipendio di 3.200,00 €"
+        }
+      ],
+      "note": "Per ricevere avvisi sonori illimitati dalle app finanziarie e da Telegram serve il piano Pro. Gli avvisi per le chiamate funzionano dopo aver impostato NotiCatcher come app per l’identificazione delle chiamate e lo spam."
+    },
+    "steps": {
+      "title": "Bastano tre passaggi",
+      "items": [
+        {
+          "title": "Scegli le parole chiave",
+          "body": "Aggiungi le parole che devono far suonare l’avviso e quelle da ignorare."
+        },
+        {
+          "title": "Scegli cosa controllare",
+          "body": "Notifiche delle app, messaggi di testo, chiamate in arrivo o tutte e tre."
+        },
+        {
+          "title": "Suona anche in silenzioso",
+          "body": "Una sveglia o una vibrazione si ripete finché non la fermi. Imposta un intervallo di pausa per evitare che lo stesso avviso suoni di continuo."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Non perderti il prossimo messaggio importante",
+      "body": "Prova tutte le funzioni gratis per 7 giorni. Non serve un metodo di pagamento.",
+      "privacy": "Il contenuto delle notifiche viene confrontato con le tue parole chiave sul tuo dispositivo e non viene inviato ai nostri server.",
+      "play": "Scarica su Google Play",
+      "plans": "Scopri i piani"
+    }
+  }
+}

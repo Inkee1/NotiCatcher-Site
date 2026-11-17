@@ -1,0 +1,115 @@
+{
+  "language": "Vietnamese",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Bạn hay để điện thoại im lặng?",
+      "body": "Yên tĩnh thì thích thật, nhưng lỡ mất tin nhắn quan trọng thì lại lo. NotiCatcher giữ các thông báo khác im lặng, chỉ reo báo động khi có thông báo chứa từ khóa bạn đã chọn.",
+      "feedLabel": "Ví dụ: khi để im lặng, chỉ thông báo có từ khóa mới reo",
+      "mutedLabel": "Im lặng",
+      "ringLabel": "Đang reo báo động",
+      "feed": [
+        {
+          "app": "Mua sắm",
+          "text": "Chỉ hôm nay: giảm đến 70%"
+        },
+        {
+          "app": "Nhóm chat",
+          "text": "Haha xem mấy tấm ảnh chưa?"
+        },
+        {
+          "app": "Tin tức",
+          "text": "Bản tin buổi sáng đã sẵn sàng"
+        },
+        {
+          "app": "Trò chơi",
+          "text": "Năng lượng đã đầy trở lại"
+        }
+      ],
+      "ring": {
+        "app": "Zalo",
+        "before": "",
+        "keyword": "Sếp Minh",
+        "after": ": Giờ em nghe máy một chút được không?"
+      }
+    },
+    "personas": {
+      "title": "Dành cho những lúc bạn cần",
+      "items": [
+        {
+          "title": "Làm việc tại nhà",
+          "body": "Tin nhắn từ sếp vẫn reo to, ngay cả khi điện thoại để im lặng.",
+          "app": "Zalo",
+          "before": "",
+          "keyword": "Sếp Minh",
+          "after": ": Em gửi bản trình chiếu trước 3 giờ nhé?"
+        },
+        {
+          "title": "Dùng Slack hay Telegram cả ngày",
+          "body": "Giữa hàng chục kênh, chỉ những thông báo bạn chọn mới reo.",
+          "app": "Slack",
+          "before": "#xử-lý-sự-cố ",
+          "keyword": "khẩn cấp",
+          "after": ": API thanh toán không phản hồi"
+        },
+        {
+          "title": "Giao dịch hay đầu tư",
+          "body": "Để những tín hiệu bạn dựa vào để giao dịch luôn reo báo.",
+          "app": "Telegram",
+          "before": "BTC có ",
+          "keyword": "tín hiệu bứt phá",
+          "after": ", đang vào vùng mua"
+        },
+        {
+          "title": "Chỉ muốn cuộc gọi từ người nhà reo",
+          "body": "Khi để im lặng, chỉ cuộc gọi từ gia đình mới reo.",
+          "app": "Điện thoại",
+          "before": "Cuộc gọi đến: ",
+          "keyword": "Mẹ",
+          "after": ""
+        },
+        {
+          "title": "Đang chờ giao hàng hay mã xác thực",
+          "body": "Biết ngay khi có tin nhắn giao hàng, đặt chỗ hay mã xác thực.",
+          "app": "Tin nhắn",
+          "before": "Đơn hàng của bạn đã ",
+          "keyword": "đến",
+          "after": " trước cửa nhà"
+        },
+        {
+          "title": "Theo dõi tiền ra, tiền vào",
+          "body": "Không bỏ lỡ thông báo thanh toán thẻ hay tiền vào tài khoản.",
+          "app": "Ngân hàng",
+          "before": "",
+          "keyword": "Tiền vào",
+          "after": ": đã nhận lương 32.000.000 ₫"
+        }
+      ],
+      "note": "Cần gói Pro để nhận báo động không giới hạn từ các ứng dụng tài chính và Telegram. Báo động cuộc gọi hoạt động khi bạn đặt NotiCatcher làm ứng dụng nhận diện người gọi và chặn cuộc gọi rác."
+    },
+    "steps": {
+      "title": "Cài xong trong ba bước",
+      "items": [
+        {
+          "title": "Chọn từ khóa",
+          "body": "Thêm những từ cần reo báo và những từ muốn bỏ qua."
+        },
+        {
+          "title": "Chọn nơi cần theo dõi",
+          "body": "Thông báo ứng dụng, tin nhắn, cuộc gọi đến hoặc cả ba."
+        },
+        {
+          "title": "Để im lặng vẫn reo",
+          "body": "Báo động hoặc rung lặp lại cho đến khi bạn tắt. Khoảng nghỉ giúp cùng một thông báo không reo liên tục."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Đừng lỡ liên lạc quan trọng tiếp theo",
+      "body": "Dùng thử miễn phí mọi tính năng trong 7 ngày. Không cần thêm phương thức thanh toán.",
+      "privacy": "Nội dung thông báo được đối chiếu với từ khóa ngay trên thiết bị của bạn và không được gửi đến máy chủ của chúng tôi.",
+      "play": "Tải trên Google Play",
+      "plans": "Xem các gói"
+    }
+  }
+}

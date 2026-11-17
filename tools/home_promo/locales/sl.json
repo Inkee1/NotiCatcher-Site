@@ -1,0 +1,115 @@
+{
+  "language": "Slovenian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Je tvoj telefon vedno na tiho?",
+      "body": "Mir je prijeten, dokler ne spregledaš res pomembnega sporočila. NotiCatcher pusti druga obvestila tiho, kot alarm pa zazvoni le ob tistih, ki vsebujejo tvojo ključno besedo.",
+      "feedLabel": "Primer: telefon je na tiho, zazvoni le obvestilo s tvojo ključno besedo",
+      "mutedLabel": "Tiho",
+      "ringLabel": "Alarm zvoni",
+      "feed": [
+        {
+          "app": "Nakupovanje",
+          "text": "Samo danes: do 70 % popusta"
+        },
+        {
+          "app": "Skupinski klepet",
+          "text": "Haha, ste videli fotke?"
+        },
+        {
+          "app": "Novice",
+          "text": "Tvoj jutranji pregled novic je pripravljen"
+        },
+        {
+          "app": "Igra",
+          "text": "Tvoja energija je spet polna"
+        }
+      ],
+      "ring": {
+        "app": "Viber",
+        "before": "",
+        "keyword": "Šef",
+        "after": ": Imaš zdaj čas za kratek klic?"
+      }
+    },
+    "personas": {
+      "title": "Za tvoj vsakdan",
+      "items": [
+        {
+          "title": "Delaš od doma?",
+          "body": "Naj šefova sporočila glasno zazvonijo, tudi ko je telefon na tiho.",
+          "app": "Viber",
+          "before": "",
+          "keyword": "Šef",
+          "after": ": Lahko pošlješ predstavitev pred 3. uro?"
+        },
+        {
+          "title": "Ves dan na Slacku ali Telegramu?",
+          "body": "Med desetinami kanalov naj zazvonijo le opozorila, ki jih izbereš.",
+          "app": "Slack",
+          "before": "#incidenti ",
+          "keyword": "nujno",
+          "after": ": plačilni vmesnik se ne odziva"
+        },
+        {
+          "title": "Trguješ ali vlagaš?",
+          "body": "Poskrbi, da trgovalni signali, na katere se zanašaš, vedno zazvonijo.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "signal preboja",
+          "after": ", vstop v območje za nakup"
+        },
+        {
+          "title": "Naj zazvonijo le klici družine",
+          "body": "Tudi na tiho naj telefon zazvoni le, ko kliče kdo od domačih.",
+          "app": "Telefon",
+          "before": "Dohodni klic: ",
+          "keyword": "Mami",
+          "after": ""
+        },
+        {
+          "title": "Čakaš dostavo ali kodo?",
+          "body": "Takoj opazi sporočila o dostavi, rezervaciji ali potrditveni kodi.",
+          "app": "Sporočila",
+          "before": "Tvoj paket je ",
+          "keyword": "prispel",
+          "after": " pred tvoja vrata"
+        },
+        {
+          "title": "Spremljaš plačila?",
+          "body": "Ne spreglej obvestil o kartičnih plačilih ali prilivih.",
+          "app": "Banka",
+          "before": "",
+          "keyword": "Priliv",
+          "after": ": prejeta plača v višini 3.200,00 €"
+        }
+      ],
+      "note": "Za neomejeno število alarmov iz finančnih aplikacij in Telegrama potrebuješ paket Pro. Alarmi za klice delujejo, ko NotiCatcher nastaviš kot aplikacijo za prepoznavanje klicateljev in neželenih klicev."
+    },
+    "steps": {
+      "title": "Trije koraki in že deluje",
+      "items": [
+        {
+          "title": "Izberi ključne besede",
+          "body": "Dodaj besede, ki naj sprožijo alarm, in tiste, ki naj jih aplikacija prezre."
+        },
+        {
+          "title": "Izberi, kaj naj spremlja",
+          "body": "Obvestila aplikacij, besedilna sporočila, dohodne klice ali vse troje."
+        },
+        {
+          "title": "Zazvoni tudi na tiho",
+          "body": "Alarm ali vibriranje se ponavlja, dokler ga ne ustaviš. Z nastavljivim premorom preprečiš, da bi isto opozorilo sprožalo alarm znova in znova."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Naj naslednje pomembno sporočilo ne uide",
+      "body": "Vse funkcije preizkušaj brezplačno 7 dni. Brez vnosa plačilnega sredstva.",
+      "privacy": "Vsebina obvestil se s tvojimi ključnimi besedami primerja na tvoji napravi in se ne pošilja na naše strežnike.",
+      "play": "Prenesi iz Google Play",
+      "plans": "Oglej si pakete"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "language": "Latvian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Telefons vienmēr klusuma režīmā?",
+      "body": "Klusums ir patīkams, līdz palaid garām kādu patiešām svarīgu ziņu. NotiCatcher ļauj pārējiem paziņojumiem palikt klusiem un atskaņo trauksmes signālu tikai tad, ja paziņojumā ir tavs izvēlētais atslēgvārds.",
+      "feedLabel": "Piemērs: klusuma režīmā atskan tikai paziņojums ar tavu atslēgvārdu",
+      "mutedLabel": "Bez skaņas",
+      "ringLabel": "Skan trauksme",
+      "feed": [
+        {
+          "app": "Iepirkšanās",
+          "text": "Tikai šodien: atlaides līdz 70%"
+        },
+        {
+          "app": "Grupas sarakste",
+          "text": "Haha, redzēji bildes?"
+        },
+        {
+          "app": "Ziņas",
+          "text": "Tavs rīta ziņu apskats ir gatavs"
+        },
+        {
+          "app": "Spēle",
+          "text": "Enerģija atkal pilna"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Jānis",
+        "after": " (vadītājs): Vari tagad sazvanīties?"
+      }
+    },
+    "personas": {
+      "title": "Tavam ikdienas ritmam",
+      "items": [
+        {
+          "title": "Strādā no mājām?",
+          "body": "Lai vadītāja ziņas atskan skaļi arī klusuma režīmā.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Jānis",
+          "after": " (vadītājs): Vari atsūtīt prezentāciju pirms 15.00?"
+        },
+        {
+          "title": "Visa diena Slack vai Telegram?",
+          "body": "No desmitiem kanālu atskan tikai tevis izvēlētie brīdinājumi.",
+          "app": "Slack",
+          "before": "#incidenti ",
+          "keyword": "steidzami",
+          "after": ": maksājumu saskarne neatbild"
+        },
+        {
+          "title": "Tirgojies vai ieguldi?",
+          "body": "Lai signāli, pēc kuriem pieņem tirdzniecības lēmumus, vienmēr atskan.",
+          "app": "Telegram",
+          "before": "BTC ",
+          "keyword": "izlaušanās signāls",
+          "after": ", cena ieiet pirkšanas zonā"
+        },
+        {
+          "title": "Lai zvana tikai ģimene",
+          "body": "Klusuma režīmā zvani atskan tikai tad, kad zvana kāds no ģimenes.",
+          "app": "Tālrunis",
+          "before": "Ienākošais zvans: ",
+          "keyword": "Mamma",
+          "after": ""
+        },
+        {
+          "title": "Gaidi sūtījumu vai kodu?",
+          "body": "Uzreiz pamani īsziņas par piegādi un rezervācijām, kā arī verifikācijas kodus.",
+          "app": "Īsziņas",
+          "before": "Tavs sūtījums ir ",
+          "keyword": "piegādāts",
+          "after": " pie tavām durvīm"
+        },
+        {
+          "title": "Seko līdzi maksājumiem?",
+          "body": "Nepalaid garām nevienu paziņojumu par kartes maksājumu vai ienākošu naudu.",
+          "app": "Banka",
+          "before": "",
+          "keyword": "Ieskaitījums",
+          "after": ": saņemta alga 3 200,00 €"
+        }
+      ],
+      "note": "Neierobežotam trauksmes signālu skaitam no finanšu lietotnēm un Telegram nepieciešams Pro plāns. Trauksmes signāli par zvaniem darbojas, kad NotiCatcher ir iestatīta kā zvanītāja identifikācijas un surogātzvanu noteikšanas lietotne."
+    },
+    "steps": {
+      "title": "Sāc ar trim soļiem",
+      "items": [
+        {
+          "title": "Izvēlies atslēgvārdus",
+          "body": "Pievieno vārdus, kuriem jāizraisa trauksme, un vārdus, kurus ignorēt."
+        },
+        {
+          "title": "Izvēlies, kam sekot",
+          "body": "Lietotņu paziņojumiem, īsziņām, ienākošajiem zvaniem vai visiem trim."
+        },
+        {
+          "title": "Atskan arī klusuma režīmā",
+          "body": "Trauksmes signāls vai vibrācija atkārtojas, līdz to apturi. Pauze starp brīdinājumiem neļauj vienam un tam pašam paziņojumam izraisīt trauksmi atkal un atkal."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Nepalaid garām nākamo svarīgo ziņu",
+      "body": "Izmēģini visas funkcijas 7 dienas bez maksas. Maksājuma veids nav jānorāda.",
+      "privacy": "Paziņojumu saturs tiek salīdzināts ar taviem atslēgvārdiem tavā ierīcē un netiek nosūtīts uz mūsu serveriem.",
+      "play": "Lejupielādē Google Play",
+      "plans": "Apskatīt plānus"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "language": "Portuguese (Brazil)",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Seu celular vive no silencioso?",
+      "body": "Silêncio é bom, até você perder aquela mensagem importante. O NotiCatcher mantém as outras notificações em silêncio e só toca como um alarme quando alguma contém a palavra-chave que você escolheu.",
+      "feedLabel": "Exemplo: no silencioso, só toca a notificação com sua palavra-chave",
+      "mutedLabel": "Silencioso",
+      "ringLabel": "Alarme tocando",
+      "feed": [
+        {
+          "app": "Compras",
+          "text": "Só hoje: até 70% de desconto"
+        },
+        {
+          "app": "Grupo",
+          "text": "kkkk você viu as fotos?"
+        },
+        {
+          "app": "Notícias",
+          "text": "Seu resumo da manhã está pronto"
+        },
+        {
+          "app": "Jogo",
+          "text": "Sua energia está cheia de novo"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Mariana",
+        "after": ": Pode falar por chamada agora?"
+      }
+    },
+    "personas": {
+      "title": "Feito para a sua rotina",
+      "items": [
+        {
+          "title": "Trabalha de casa?",
+          "body": "Faça as mensagens da sua chefe tocarem alto, mesmo no silencioso.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Mariana",
+          "after": ": Pode mandar a apresentação antes das 3?"
+        },
+        {
+          "title": "O dia todo no Slack ou Telegram?",
+          "body": "Entre dezenas de canais, só os alertas que você escolher chamam sua atenção.",
+          "app": "Slack",
+          "before": "#incidentes ",
+          "keyword": "urgente",
+          "after": ": interface de pagamentos sem resposta"
+        },
+        {
+          "title": "Investe ou faz operações?",
+          "body": "Garanta que os sinais que orientam suas operações sempre toquem.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "sinal de rompimento",
+          "after": ", entrando na zona de compra"
+        },
+        {
+          "title": "Só a família pode ligar?",
+          "body": "As chamadas só tocam no silencioso quando são da família.",
+          "app": "Telefone",
+          "before": "Chamada recebida: ",
+          "keyword": "Mãe",
+          "after": ""
+        },
+        {
+          "title": "Esperando uma entrega ou código?",
+          "body": "Perceba na hora as mensagens de entrega, reserva e verificação.",
+          "app": "Mensagens",
+          "before": "Sua encomenda ",
+          "keyword": "chegou",
+          "after": " à sua porta"
+        },
+        {
+          "title": "De olho nos pagamentos?",
+          "body": "Não perca nenhum alerta de pagamento com cartão ou depósito.",
+          "app": "Banco",
+          "before": "",
+          "keyword": "Depósito",
+          "after": ": salário de R$ 3.200,00 recebido"
+        }
+      ],
+      "note": "Para receber alarmes ilimitados de apps financeiros e do Telegram, é preciso ter o plano Pro. Os alarmes de chamadas funcionam depois que você define o NotiCatcher como seu app de identificação de chamadas e spam."
+    },
+    "steps": {
+      "title": "Tudo pronto em três passos",
+      "items": [
+        {
+          "title": "Escolha suas palavras-chave",
+          "body": "Adicione as palavras que devem acionar o alarme e as que devem ser ignoradas."
+        },
+        {
+          "title": "Escolha o que acompanhar",
+          "body": "Notificações de apps, mensagens de texto, chamadas recebidas ou os três."
+        },
+        {
+          "title": "Toca até no silencioso",
+          "body": "Um alarme ou uma vibração se repete até você parar. O intervalo entre alertas evita que o mesmo aviso toque várias vezes seguidas."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Não perca o próximo aviso importante",
+      "body": "Experimente todos os recursos grátis por 7 dias. Não precisa cadastrar uma forma de pagamento.",
+      "privacy": "O conteúdo das notificações é comparado com suas palavras-chave no próprio aparelho e não é enviado aos nossos servidores.",
+      "play": "Baixe no Google Play",
+      "plans": "Ver planos"
+    }
+  }
+}

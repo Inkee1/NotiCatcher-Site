@@ -1,0 +1,115 @@
+{
+  "language": "Portuguese (Portugal)",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Telemóvel sempre no silêncio?",
+      "body": "O silêncio sabe bem, até perderes aquela mensagem que era mesmo importante. O NotiCatcher mantém as outras notificações em silêncio e só toca como um alarme quando uma contém a palavra-chave que escolheste.",
+      "feedLabel": "Exemplo: no modo silencioso, só toca a notificação com a tua palavra-chave",
+      "mutedLabel": "Em silêncio",
+      "ringLabel": "Alarme a tocar",
+      "feed": [
+        {
+          "app": "Compras",
+          "text": "Só hoje: até 70% de desconto"
+        },
+        {
+          "app": "Conversa de grupo",
+          "text": "ahah já viste as fotos?"
+        },
+        {
+          "app": "Notícias",
+          "text": "O teu resumo da manhã está pronto"
+        },
+        {
+          "app": "Jogo",
+          "text": "A tua energia voltou ao máximo"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Chefe",
+        "after": ": Podes falar agora?"
+      }
+    },
+    "personas": {
+      "title": "Feito a pensar em ti",
+      "items": [
+        {
+          "title": "Trabalhas a partir de casa?",
+          "body": "Faz as mensagens do teu chefe tocar bem alto, mesmo no modo silencioso.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Chefe",
+          "after": ": Podes enviar a apresentação antes das 15h?"
+        },
+        {
+          "title": "Sempre no Slack ou no Telegram?",
+          "body": "Entre dezenas de canais, só soam os alertas que escolheres.",
+          "app": "Slack",
+          "before": "#incidentes ",
+          "keyword": "urgente",
+          "after": ": a interface de pagamentos não responde"
+        },
+        {
+          "title": "Fazes trading ou investes?",
+          "body": "Garante que os sinais que orientam as tuas operações tocam sempre.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "sinal de rutura",
+          "after": ", a entrar na zona de compra"
+        },
+        {
+          "title": "Só a família faz tocar?",
+          "body": "No modo silencioso, as chamadas só tocam quando é alguém da família.",
+          "app": "Telefone",
+          "before": "Chamada recebida: ",
+          "keyword": "Mãe",
+          "after": ""
+        },
+        {
+          "title": "À espera de uma entrega ou código?",
+          "body": "Dá logo pelas mensagens de entregas, reservas e códigos de verificação.",
+          "app": "Mensagens",
+          "before": "A tua encomenda foi ",
+          "keyword": "entregue",
+          "after": " à tua porta"
+        },
+        {
+          "title": "De olho nos pagamentos?",
+          "body": "Não percas nenhum alerta de pagamento com cartão ou de depósito.",
+          "app": "Banco",
+          "before": "",
+          "keyword": "Depósito",
+          "after": ": salário de 3 200,00 € recebido"
+        }
+      ],
+      "note": "Para teres alarmes ilimitados de aplicações financeiras e do Telegram, precisas do plano Pro. Os alarmes de chamadas funcionam depois de definires o NotiCatcher como aplicação de identificação de chamadas e spam."
+    },
+    "steps": {
+      "title": "Tudo pronto em três passos",
+      "items": [
+        {
+          "title": "Escolhe as palavras-chave",
+          "body": "Adiciona as palavras que devem fazer tocar e as que queres ignorar."
+        },
+        {
+          "title": "Escolhe onde procurar",
+          "body": "Nas notificações de aplicações, nas mensagens de texto, nas chamadas recebidas ou nas três opções."
+        },
+        {
+          "title": "Toca, mesmo no silêncio",
+          "body": "Um alarme ou uma vibração que se repete até parares. O intervalo entre alarmes evita que o mesmo alerta toque vezes sem conta."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Não percas a próxima mensagem importante",
+      "body": "Experimenta todas as funcionalidades grátis durante 7 dias. Não precisas de indicar um método de pagamento.",
+      "privacy": "O conteúdo das notificações é comparado com as tuas palavras-chave no teu dispositivo e não é enviado para os nossos servidores.",
+      "play": "Descarregar no Google Play",
+      "plans": "Ver planos"
+    }
+  }
+}

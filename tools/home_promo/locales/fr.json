@@ -1,0 +1,115 @@
+{
+  "language": "French",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Toujours en mode silencieux ?",
+      "body": "Le calme, c’est agréable… jusqu’à ce qu’un message important vous échappe. NotiCatcher laisse les autres notifications en silence et déclenche une alarme uniquement quand l’une d’elles contient votre mot-clé.",
+      "feedLabel": "Exemple : en mode silencieux, seule la notification contenant votre mot-clé sonne",
+      "mutedLabel": "Silencieux",
+      "ringLabel": "Alarme en cours",
+      "feed": [
+        {
+          "app": "Shopping",
+          "text": "Aujourd’hui seulement : jusqu’à 70 % de réduction"
+        },
+        {
+          "app": "Discussion de groupe",
+          "text": "mdr t’as vu les photos ?"
+        },
+        {
+          "app": "Actualités",
+          "text": "Votre point sur l’actualité du matin est prêt"
+        },
+        {
+          "app": "Jeu",
+          "text": "Votre énergie est à nouveau au maximum"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Julien",
+        "after": " : Tu es dispo pour un appel maintenant ?"
+      }
+    },
+    "personas": {
+      "title": "Ça vous parle ?",
+      "items": [
+        {
+          "title": "En télétravail",
+          "body": "Faites sonner les messages de votre responsable, même en mode silencieux.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Julien",
+          "after": " : Tu peux m’envoyer la présentation avant 15 h ?"
+        },
+        {
+          "title": "Toute la journée sur Slack ou Telegram",
+          "body": "Parmi des dizaines de canaux, seules les alertes que vous choisissez se font entendre.",
+          "app": "Slack",
+          "before": "#incidents ",
+          "keyword": "urgent",
+          "after": " : le service de paiement ne répond plus"
+        },
+        {
+          "title": "Vous tradez ou investissez",
+          "body": "Faites toujours sonner les signaux qui guident vos opérations.",
+          "app": "Telegram",
+          "before": "BTC : ",
+          "keyword": "signal de cassure",
+          "after": ", entrée en zone d’achat"
+        },
+        {
+          "title": "La famille avant tout",
+          "body": "Seuls les appels de votre famille font sonner le téléphone en mode silencieux.",
+          "app": "Téléphone",
+          "before": "Appel entrant : ",
+          "keyword": "Maman",
+          "after": ""
+        },
+        {
+          "title": "Un colis ou un code à recevoir",
+          "body": "Repérez tout de suite les messages de livraison, de réservation et de vérification.",
+          "app": "Messages",
+          "before": "Votre colis est ",
+          "keyword": "arrivé",
+          "after": " devant votre porte"
+        },
+        {
+          "title": "Vos paiements à l’œil",
+          "body": "Ne manquez aucune alerte de paiement par carte ou de versement.",
+          "app": "Banque",
+          "before": "",
+          "keyword": "Versement",
+          "after": " : salaire de 3 200,00 € reçu"
+        }
+      ],
+      "note": "Le forfait Pro est nécessaire pour recevoir des alarmes sans limite depuis les applications financières et Telegram. Les alarmes d’appel fonctionnent une fois NotiCatcher défini comme application d’identification des appels et de protection antispam."
+    },
+    "steps": {
+      "title": "Trois étapes, et c’est prêt",
+      "items": [
+        {
+          "title": "Choisissez vos mots-clés",
+          "body": "Ajoutez les mots qui doivent déclencher une alarme et ceux à ignorer."
+        },
+        {
+          "title": "Choisissez quoi surveiller",
+          "body": "Les notifications d’applications, les messages texte, les appels entrants ou les trois."
+        },
+        {
+          "title": "Ça sonne, même en silencieux",
+          "body": "Une alarme ou une vibration se répète jusqu’à ce que vous l’arrêtiez. Un délai entre les alertes évite de faire sonner la même notification en boucle."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Gardez une oreille sur l’essentiel",
+      "body": "Essayez toutes les fonctionnalités gratuitement pendant 7 jours. Aucun moyen de paiement à renseigner.",
+      "privacy": "Le contenu des notifications est comparé à vos mots-clés sur votre appareil et n’est pas envoyé à nos serveurs.",
+      "play": "Télécharger sur Google Play",
+      "plans": "Voir les forfaits"
+    }
+  }
+}

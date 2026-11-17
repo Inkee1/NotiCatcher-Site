@@ -1,0 +1,115 @@
+{
+  "language": "Croatian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Mobitel ti je uvijek utišan?",
+      "body": "Mir je ugodan, sve dok ne propustiš baš onu važnu poruku. NotiCatcher ostavlja ostale obavijesti tihima, a poput alarma oglašava se samo kad neka sadrži tvoju ključnu riječ.",
+      "feedLabel": "Primjer: mobitel je utišan, a zvoni samo obavijest s tvojom ključnom riječi",
+      "mutedLabel": "Utišano",
+      "ringLabel": "Alarm zvoni",
+      "feed": [
+        {
+          "app": "Kupovina",
+          "text": "Samo danas: do 70 % popusta"
+        },
+        {
+          "app": "Grupni razgovor",
+          "text": "Haha, jeste vidjeli fotke?"
+        },
+        {
+          "app": "Vijesti",
+          "text": "Tvoj jutarnji pregled vijesti je spreman"
+        },
+        {
+          "app": "Igra",
+          "text": "Energija ti je opet puna"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Šef",
+        "after": ": Možemo se sad kratko čuti?"
+      }
+    },
+    "personas": {
+      "title": "Za tvoju svakodnevicu",
+      "items": [
+        {
+          "title": "Radiš od kuće?",
+          "body": "Neka šefove poruke zazvone glasno, čak i kad je mobitel utišan.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Šef",
+          "after": ": Možeš poslati prezentaciju prije 15 sati?"
+        },
+        {
+          "title": "Cijeli dan na Slacku ili Telegramu?",
+          "body": "Od desetaka kanala oglase se samo obavijesti koje odabereš.",
+          "app": "Slack",
+          "before": "#incidenti ",
+          "keyword": "hitno",
+          "after": ": programsko sučelje za plaćanje ne odgovara"
+        },
+        {
+          "title": "Trguješ ili ulažeš?",
+          "body": "Neka signali prema kojima trguješ uvijek zazvone.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "signal proboja",
+          "after": ", ulazak u zonu kupnje"
+        },
+        {
+          "title": "Samo pozivi obitelji",
+          "body": "Neka utišani mobitel zazvoni samo kad zove netko iz obitelji.",
+          "app": "Telefon",
+          "before": "Dolazni poziv: ",
+          "keyword": "Mama",
+          "after": ""
+        },
+        {
+          "title": "Čekaš dostavu ili kôd?",
+          "body": "Odmah primijeti poruke o dostavi, rezervacijama i kodovima za potvrdu.",
+          "app": "Poruke",
+          "before": "Tvoj paket je ",
+          "keyword": "stigao",
+          "after": " pred vrata"
+        },
+        {
+          "title": "Pratiš uplate i plaćanja?",
+          "body": "Ne propusti obavijest o plaćanju karticom ili uplati.",
+          "app": "Banka",
+          "before": "",
+          "keyword": "Uplata",
+          "after": ": primljena plaća od 3.200,00 €"
+        }
+      ],
+      "note": "Za neograničene alarme iz financijskih aplikacija i Telegrama potreban je paket Pro. Alarmi za pozive rade nakon što NotiCatcher postaviš kao aplikaciju za identifikaciju pozivatelja i neželjene pozive."
+    },
+    "steps": {
+      "title": "Tri koraka i spremno",
+      "items": [
+        {
+          "title": "Odaberi ključne riječi",
+          "body": "Dodaj riječi koje trebaju pokrenuti alarm i one koje želiš zanemariti."
+        },
+        {
+          "title": "Odaberi što pratiti",
+          "body": "Obavijesti aplikacija, tekstualne poruke, dolazne pozive ili sve troje."
+        },
+        {
+          "title": "Zvoni i kad je mobitel utišan",
+          "body": "Alarm ili vibracija ponavljaju se dok ih ne zaustaviš. Razmak između alarma sprječava da ista obavijest zvoni iznova i iznova."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ne propusti sljedeću važnu poruku",
+      "body": "Isprobaj sve značajke besplatno 7 dana. Ne trebaš dodati način plaćanja.",
+      "privacy": "Obavijesti se uspoređuju s tvojim ključnim riječima na tvom uređaju, a njihov se sadržaj ne šalje na naše poslužitelje.",
+      "play": "Preuzmi na Google Play",
+      "plans": "Pogledaj pakete"
+    }
+  }
+}

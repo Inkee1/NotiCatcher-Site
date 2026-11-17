@@ -1,0 +1,115 @@
+{
+  "language": "Turkish",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Telefonunuz hep sessizde mi?",
+      "body": "Sessizlik güzel, ta ki önemli bir mesajı kaçırana kadar. NotiCatcher diğer bildirimleri sessiz tutar, yalnızca seçtiğiniz anahtar kelimeyi içeren bir bildirim geldiğinde alarm gibi çalar.",
+      "feedLabel": "Örnek: Telefon sessizdeyken yalnızca anahtar kelimenizi içeren bildirim çalar",
+      "mutedLabel": "Sessiz",
+      "ringLabel": "Alarm çalıyor",
+      "feed": [
+        {
+          "app": "Alışveriş",
+          "text": "Sadece bugün: %70'e varan indirim"
+        },
+        {
+          "app": "Grup sohbeti",
+          "text": "hahaha fotoğrafları gördünüz mü?"
+        },
+        {
+          "app": "Haberler",
+          "text": "Sabah haber özetiniz hazır"
+        },
+        {
+          "app": "Oyun",
+          "text": "Enerjin yine doldu"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Murat Bey",
+        "after": ": Şimdi kısaca konuşabilir miyiz?"
+      }
+    },
+    "personas": {
+      "title": "Tam size göre",
+      "items": [
+        {
+          "title": "Evden çalışıyorsanız",
+          "body": "Yöneticinizden gelen mesajlar, telefon sessizdeyken bile yüksek sesle çalsın.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Murat Bey",
+          "after": ": Sunumu 3'ten önce gönderebilir misiniz?"
+        },
+        {
+          "title": "Gününüz Slack veya Telegram'da geçiyorsa",
+          "body": "Onlarca kanal arasından yalnızca seçtiğiniz bildirimler ses versin.",
+          "app": "Slack",
+          "before": "#sorunlar ",
+          "keyword": "acil",
+          "after": ": ödeme arayüzü yanıt vermiyor"
+        },
+        {
+          "title": "Alım satım veya yatırım yapıyorsanız",
+          "body": "İşlemlerinize yön veren sinyaller her zaman çalsın.",
+          "app": "Telegram",
+          "before": "BTC ",
+          "keyword": "kırılım sinyali",
+          "after": ", alım bölgesine giriyor"
+        },
+        {
+          "title": "Sadece aileniz aradığında çalsın",
+          "body": "Telefon sessizdeyken yalnızca ailenizden gelen aramalar çalsın.",
+          "app": "Telefon",
+          "before": "Gelen arama: ",
+          "keyword": "Annem",
+          "after": ""
+        },
+        {
+          "title": "Kargo veya kod bekliyorsanız",
+          "body": "Teslimat, rezervasyon ve doğrulama mesajlarından hemen haberiniz olsun.",
+          "app": "Mesajlar",
+          "before": "Paketiniz kapınıza ",
+          "keyword": "ulaştı",
+          "after": "."
+        },
+        {
+          "title": "Ödemeleri takip ediyorsanız",
+          "body": "Kart ödemesi ve hesaba para girişi bildirimlerini kaçırmayın.",
+          "app": "Banka",
+          "before": "",
+          "keyword": "Para girişi",
+          "after": ": 32.000,00 ₺ maaşınız hesabınıza yatırıldı"
+        }
+      ],
+      "note": "Finans uygulamaları ve Telegram'dan sınırsız alarm almak için Pro planı gerekir. Arama alarmları, NotiCatcher'ı arayan kimliği ve spam uygulaması olarak ayarladıktan sonra çalışır."
+    },
+    "steps": {
+      "title": "Üç adımda hazır",
+      "items": [
+        {
+          "title": "Anahtar kelimelerinizi seçin",
+          "body": "Alarmı çaldıracak kelimeleri ve yok sayılacak kelimeleri ekleyin."
+        },
+        {
+          "title": "Nelerin takip edileceğini seçin",
+          "body": "Uygulama bildirimleri, kısa mesajlar, gelen aramalar veya üçü birden."
+        },
+        {
+          "title": "Sessizde bile haberiniz olsun",
+          "body": "Siz durdurana kadar tekrarlayan alarm veya titreşimle haber verir. Bekleme süresi, aynı bildirimin tekrar tekrar çalmasını önler."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bir sonraki önemli mesajı kaçırmayın",
+      "body": "Tüm özellikleri 7 gün ücretsiz deneyin. Ödeme yöntemi eklemeniz gerekmez.",
+      "privacy": "Bildirim içerikleri cihazınızda anahtar kelimelerinizle karşılaştırılır ve sunucularımıza gönderilmez.",
+      "play": "Google Play'den indirin",
+      "plans": "Planları inceleyin"
+    }
+  }
+}

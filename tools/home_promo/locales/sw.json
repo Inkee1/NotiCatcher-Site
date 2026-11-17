@@ -1,0 +1,115 @@
+{
+  "language": "Swahili",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Simu yako huwa kimya?",
+      "body": "Utulivu ni mzuri, hadi ujumbe muhimu unapokupita. NotiCatcher huacha arifa nyingine zote kimya na kulia kama kengele pale tu arifa inapokuwa na neno ulilochagua.",
+      "feedLabel": "Mfano: simu ikiwa kimya, arifa yenye neno ulilochagua pekee ndiyo inalia",
+      "mutedLabel": "Kimya",
+      "ringLabel": "Kengele inalia",
+      "feed": [
+        {
+          "app": "Manunuzi",
+          "text": "Leo tu: punguzo la hadi 70%"
+        },
+        {
+          "app": "Gumzo la kikundi",
+          "text": "hahaha mmeziona zile picha?"
+        },
+        {
+          "app": "Habari",
+          "text": "Muhtasari wako wa habari za asubuhi uko tayari"
+        },
+        {
+          "app": "Mchezo",
+          "text": "Nguvu zako zimejaa tena"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Bosi Juma",
+        "after": ": Unaweza kuongea kwenye simu sasa hivi?"
+      }
+    },
+    "personas": {
+      "title": "Kwa watu kama wewe",
+      "items": [
+        {
+          "title": "Unafanya kazi nyumbani?",
+          "body": "Acha ujumbe wa bosi wako ulie kwa sauti, hata simu ikiwa kimya.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Bosi Juma",
+          "after": ": Unaweza kutuma slaidi kabla ya saa tisa alasiri?"
+        },
+        {
+          "title": "Slack au Telegram siku nzima?",
+          "body": "Kati ya makumi ya chaneli, arifa unazochagua pekee ndizo zinasikika.",
+          "app": "Slack",
+          "before": "#hitilafu ",
+          "keyword": "dharura",
+          "after": ": kiolesura cha malipo hakijibu"
+        },
+        {
+          "title": "Unafanya biashara au kuwekeza?",
+          "body": "Hakikisha ishara unazotumia kufanya maamuzi ya biashara zinalia kila wakati.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "ishara ya kuvuka kiwango",
+          "after": ", inaingia kwenye eneo la kununua"
+        },
+        {
+          "title": "Simu za familia pekee",
+          "body": "Simu inalia ikiwa kwenye hali ya kimya pale tu mtu wa familia anapopiga.",
+          "app": "Simu",
+          "before": "Anayepiga: ",
+          "keyword": "Mama",
+          "after": ""
+        },
+        {
+          "title": "Unasubiri kifurushi au msimbo?",
+          "body": "Tambua mara moja ujumbe wa usafirishaji, nafasi ulizohifadhi na misimbo ya uthibitishaji.",
+          "app": "Ujumbe",
+          "before": "Kifurushi chako ",
+          "keyword": "kimefika",
+          "after": " mlangoni kwako"
+        },
+        {
+          "title": "Unafuatilia malipo?",
+          "body": "Usikose arifa ya malipo ya kadi au pesa zinazoingia.",
+          "app": "Benki",
+          "before": "",
+          "keyword": "Pesa zimeingia",
+          "after": ": mshahara wa TSh 3,200,000 umepokelewa"
+        }
+      ],
+      "note": "Ili kupata kengele bila kikomo kutoka programu za fedha na Telegram, unahitaji mpango wa Pro. Kengele za simu hufanya kazi baada ya kuweka NotiCatcher kuwa programu yako ya kutambua wanaopiga na simu taka."
+    },
+    "steps": {
+      "title": "Hatua tatu tu",
+      "items": [
+        {
+          "title": "Chagua maneno yako",
+          "body": "Ongeza maneno yatakayowasha kengele na yale ya kupuuzwa."
+        },
+        {
+          "title": "Chagua pa kufuatilia",
+          "body": "Arifa za programu, ujumbe mfupi, simu zinazoingia, au vyote vitatu."
+        },
+        {
+          "title": "Inalia hata simu ikiwa kimya",
+          "body": "Kengele au mtetemo hujirudia hadi uuzime. Muda wa kusubiri kati ya kengele huzuia arifa ileile kulia tena na tena."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ujumbe muhimu unaofuata usikupite",
+      "body": "Jaribu vipengele vyote bila malipo kwa siku 7. Huhitaji kuweka njia ya malipo.",
+      "privacy": "Arifa hulinganishwa na maneno uliyochagua kwenye kifaa chako, na maudhui yake hayatumwi kwenye seva zetu.",
+      "play": "Pakua kwenye Google Play",
+      "plans": "Angalia mipango"
+    }
+  }
+}

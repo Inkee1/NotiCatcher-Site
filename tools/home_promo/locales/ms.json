@@ -1,0 +1,115 @@
+{
+  "language": "Malay",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Telefon selalu dalam mod senyap?",
+      "body": "Memang selesa bila telefon senyap, tapi risau juga kalau terlepas mesej penting. NotiCatcher membiarkan notifikasi lain senyap dan hanya membunyikan penggera apabila notifikasi mengandungi kata kunci pilihan anda.",
+      "feedLabel": "Contoh: dalam mod senyap, hanya notifikasi dengan kata kunci anda berbunyi",
+      "mutedLabel": "Senyap",
+      "ringLabel": "Penggera berbunyi",
+      "feed": [
+        {
+          "app": "Beli-belah",
+          "text": "Hari ini sahaja: diskaun hingga 70%"
+        },
+        {
+          "app": "Sembang kumpulan",
+          "text": "Haha dah tengok gambar tadi?"
+        },
+        {
+          "app": "Berita",
+          "text": "Ringkasan berita pagi anda dah tersedia"
+        },
+        {
+          "app": "Permainan",
+          "text": "Tenaga anda dah penuh semula"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Bos Farid",
+        "after": ": Boleh bercakap di telefon sekarang?"
+      }
+    },
+    "personas": {
+      "title": "Sesuai dengan rutin anda",
+      "items": [
+        {
+          "title": "Bekerja dari rumah",
+          "body": "Biar mesej daripada bos berbunyi kuat, walaupun telefon dalam mod senyap.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Bos Farid",
+          "after": ": Boleh hantar slaid sebelum pukul 3?"
+        },
+        {
+          "title": "Seharian di Slack atau Telegram",
+          "body": "Daripada berpuluh-puluh saluran, hanya makluman pilihan anda yang berbunyi.",
+          "app": "Slack",
+          "before": "#insiden Tindakan ",
+          "keyword": "segera",
+          "after": ": antara muka pembayaran tidak memberi respons"
+        },
+        {
+          "title": "Aktif berdagang atau melabur",
+          "body": "Pastikan isyarat dagangan yang anda tunggu sentiasa berbunyi.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "isyarat penembusan",
+          "after": ", memasuki zon belian"
+        },
+        {
+          "title": "Panggilan keluarga sahaja",
+          "body": "Dalam mod senyap, hanya panggilan daripada keluarga yang berbunyi.",
+          "app": "Telefon",
+          "before": "Panggilan masuk: ",
+          "keyword": "Mak",
+          "after": ""
+        },
+        {
+          "title": "Menunggu bungkusan atau kod",
+          "body": "Terus tahu apabila mesej penghantaran, tempahan dan pengesahan masuk.",
+          "app": "Mesej",
+          "before": "Bungkusan anda sudah ",
+          "keyword": "sampai",
+          "after": " di depan pintu"
+        },
+        {
+          "title": "Pantau bayaran masuk dan keluar",
+          "body": "Jangan terlepas makluman bayaran kad atau wang masuk.",
+          "app": "Bank",
+          "before": "",
+          "keyword": "Wang masuk",
+          "after": ": Gaji RM3,200.00 telah diterima"
+        }
+      ],
+      "note": "Pelan Pro diperlukan untuk penggera tanpa had daripada aplikasi kewangan dan Telegram. Penggera panggilan berfungsi selepas anda menetapkan NotiCatcher sebagai aplikasi pengecaman pemanggil dan spam."
+    },
+    "steps": {
+      "title": "Tiga langkah, siap",
+      "items": [
+        {
+          "title": "Pilih kata kunci",
+          "body": "Tambah perkataan yang patut mencetuskan penggera dan perkataan yang mahu diabaikan."
+        },
+        {
+          "title": "Pilih sumber makluman",
+          "body": "Notifikasi aplikasi, mesej teks, panggilan masuk atau ketiga-tiganya."
+        },
+        {
+          "title": "Mod senyap pun berbunyi",
+          "body": "Penggera atau getaran berulang sehingga anda menghentikannya. Tempoh jeda mengelakkan makluman yang sama daripada berbunyi berkali-kali."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Jangan terlepas lagi yang penting",
+      "body": "Cuba semua ciri secara percuma selama 7 hari. Tak perlu daftarkan kaedah pembayaran.",
+      "privacy": "Notifikasi dipadankan dengan kata kunci pada peranti anda, dan kandungannya tidak dihantar ke pelayan kami.",
+      "play": "Dapatkan di Google Play",
+      "plans": "Lihat pelan"
+    }
+  }
+}

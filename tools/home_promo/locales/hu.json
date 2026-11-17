@@ -1,0 +1,115 @@
+{
+  "language": "Hungarian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Mindig néma a telefonod?",
+      "body": "Jó a csend, amíg le nem maradsz egy igazán fontos üzenetről. A NotiCatcher minden más értesítést csendben hagy, és csak akkor jelez ébresztőként, ha valamelyikben szerepel a megadott kulcsszavad.",
+      "feedLabel": "Példa: néma módban csak a kulcsszavadat tartalmazó értesítés szólal meg",
+      "mutedLabel": "Néma",
+      "ringLabel": "Riasztás szól",
+      "feed": [
+        {
+          "app": "Vásárlás",
+          "text": "Csak ma: akár 70% kedvezmény"
+        },
+        {
+          "app": "Csoportos csevegés",
+          "text": "haha, láttátok a képeket?"
+        },
+        {
+          "app": "Hírek",
+          "text": "Elkészült a reggeli hírösszefoglalód"
+        },
+        {
+          "app": "Játék",
+          "text": "Újra tele az energiád"
+        }
+      ],
+      "ring": {
+        "app": "Messenger",
+        "before": "",
+        "keyword": "Gábor",
+        "after": ": Tudunk most gyorsan beszélni?"
+      }
+    },
+    "personas": {
+      "title": "Neked is ismerős?",
+      "items": [
+        {
+          "title": "Otthonról dolgozol",
+          "body": "A főnököd üzenetei néma módban is hangosan jelezzenek.",
+          "app": "Messenger",
+          "before": "",
+          "keyword": "Gábor",
+          "after": ": Át tudod küldeni a prezentációt 3 előtt?"
+        },
+        {
+          "title": "Egész nap Slack vagy Telegram",
+          "body": "A több tucat csatornából csak a kiválasztott értesítések szóljanak.",
+          "app": "Slack",
+          "before": "#hibajelzések ",
+          "keyword": "sürgős",
+          "after": ": nem válaszol a fizetési interfész"
+        },
+        {
+          "title": "Kereskedsz vagy befektetsz",
+          "body": "A kereskedéshez figyelt jelzések mindig szólaljanak meg.",
+          "app": "Telegram",
+          "before": "BTC ",
+          "keyword": "kitörési jelzés",
+          "after": ", belépés a vételi zónába"
+        },
+        {
+          "title": "Csak a család hívásai csörögjenek",
+          "body": "Néma módban csak akkor csörögjön a telefon, ha a családod hív.",
+          "app": "Telefon",
+          "before": "Bejövő hívás: ",
+          "keyword": "Anya",
+          "after": ""
+        },
+        {
+          "title": "Csomagot vagy kódot vársz",
+          "body": "Azonnal vedd észre a kézbesítési, foglalási és ellenőrzőkódot tartalmazó üzeneteket.",
+          "app": "Üzenetek",
+          "before": "A csomagod ",
+          "keyword": "megérkezett",
+          "after": " az ajtód elé"
+        },
+        {
+          "title": "Figyeled a pénzmozgásokat",
+          "body": "Ne maradj le egyetlen kártyás fizetésről vagy jóváírásról sem.",
+          "app": "Bank",
+          "before": "",
+          "keyword": "Jóváírás",
+          "after": ": 320 000 Ft munkabér érkezett"
+        }
+      ],
+      "note": "A pénzügyi appokból és a Telegramból érkező korlátlan riasztásokhoz Pro csomag szükséges. A hívásriasztásokhoz állítsd be a NotiCatchert hívóazonosító és spamszűrő alkalmazásként."
+    },
+    "steps": {
+      "title": "Három lépés, és kész",
+      "items": [
+        {
+          "title": "Add meg a kulcsszavaidat",
+          "body": "Írd be, mely szavakra szólaljon meg a riasztás, és melyeket hagyja figyelmen kívül."
+        },
+        {
+          "title": "Válaszd ki, mit figyeljen",
+          "body": "Appértesítéseket, szöveges üzeneteket, bejövő hívásokat vagy mindhármat."
+        },
+        {
+          "title": "Néma módban is jelez",
+          "body": "Ismétlődő hanggal vagy rezgéssel jelez, amíg le nem állítod. A várakozási idővel elkerülheted, hogy ugyanaz az értesítés újra meg újra riasszon."
+        }
+      ]
+    },
+    "cta": {
+      "title": "A következő fontos üzenetről se maradj le",
+      "body": "Próbálj ki minden funkciót 7 napig ingyen. Fizetési módot sem kell megadnod.",
+      "privacy": "Az értesítések tartalmát a készülékeden vetjük össze a kulcsszavaiddal, és nem küldjük el a szervereinkre.",
+      "play": "Letöltés a Google Play áruházból",
+      "plans": "Csomagok megtekintése"
+    }
+  }
+}

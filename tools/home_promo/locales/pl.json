@@ -1,0 +1,115 @@
+{
+  "language": "Polish",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Telefon zawsze wyciszony?",
+      "body": "Cisza jest przyjemna, dopóki nie umknie ci ważna wiadomość. NotiCatcher zostawia pozostałe powiadomienia wyciszone, a alarm uruchamia tylko wtedy, gdy w powiadomieniu pojawi się wybrane przez ciebie słowo kluczowe.",
+      "feedLabel": "Przykład: telefon jest wyciszony, a dźwięk wydaje tylko powiadomienie ze słowem kluczowym",
+      "mutedLabel": "Wyciszone",
+      "ringLabel": "Alarm dzwoni",
+      "feed": [
+        {
+          "app": "Zakupy",
+          "text": "Tylko dziś: do 70% taniej"
+        },
+        {
+          "app": "Czat grupowy",
+          "text": "haha, widzieliście te zdjęcia?"
+        },
+        {
+          "app": "Wiadomości",
+          "text": "Twój poranny przegląd wiadomości jest gotowy"
+        },
+        {
+          "app": "Gra",
+          "text": "Masz już pełny zapas energii"
+        }
+      ],
+      "ring": {
+        "app": "Messenger",
+        "before": "",
+        "keyword": "Szef",
+        "after": ": Możesz teraz chwilę porozmawiać?"
+      }
+    },
+    "personas": {
+      "title": "Brzmi znajomo?",
+      "items": [
+        {
+          "title": "Pracujesz z domu",
+          "body": "Niech wiadomości od szefa zabrzmią głośno, nawet gdy telefon jest wyciszony.",
+          "app": "Messenger",
+          "before": "",
+          "keyword": "Szef",
+          "after": ": Podeślesz prezentację przed 15:00?"
+        },
+        {
+          "title": "Cały dzień na Slacku lub Telegramie",
+          "body": "Z dziesiątek kanałów usłyszysz tylko te powiadomienia, które wybierzesz.",
+          "app": "Slack",
+          "before": "#awarie ",
+          "keyword": "pilne",
+          "after": ": interfejs płatności nie odpowiada"
+        },
+        {
+          "title": "Handlujesz lub inwestujesz",
+          "body": "Zadbaj, by sygnały, na podstawie których zawierasz transakcje, zawsze uruchamiały alarm.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "sygnał wybicia",
+          "after": ", wejście w strefę kupna"
+        },
+        {
+          "title": "Odbierasz tylko od rodziny",
+          "body": "Wyciszony telefon zadzwoni tylko wtedy, gdy dzwoni ktoś z rodziny.",
+          "app": "Telefon",
+          "before": "Połączenie przychodzące: ",
+          "keyword": "Mama",
+          "after": ""
+        },
+        {
+          "title": "Czekasz na paczkę lub kod",
+          "body": "Od razu zauważysz wiadomości o dostawie, rezerwacji i kodach weryfikacyjnych.",
+          "app": "Wiadomości",
+          "before": "Twoja paczka ",
+          "keyword": "dotarła",
+          "after": " pod twoje drzwi"
+        },
+        {
+          "title": "Pilnujesz płatności",
+          "body": "Nie przegap powiadomienia o płatności kartą ani wpływie na konto.",
+          "app": "Bank",
+          "before": "",
+          "keyword": "Wpływ",
+          "after": ": wynagrodzenie w wysokości 3 200,00 zł"
+        }
+      ],
+      "note": "Alarmy bez limitu z aplikacji finansowych i Telegrama wymagają planu Pro. Alarmy połączeń działają po ustawieniu NotiCatcher jako aplikacji do identyfikacji rozmówcy i spamu."
+    },
+    "steps": {
+      "title": "Trzy kroki i gotowe",
+      "items": [
+        {
+          "title": "Wybierz słowa kluczowe",
+          "body": "Dodaj słowa, które mają uruchamiać alarm, i te, które mają być ignorowane."
+        },
+        {
+          "title": "Wybierz, co sprawdzać",
+          "body": "Powiadomienia z aplikacji, wiadomości tekstowe, połączenia przychodzące lub wszystkie trzy."
+        },
+        {
+          "title": "Usłyszysz nawet po wyciszeniu",
+          "body": "Powtarzający się alarm lub wibracje powiadomią cię i będą działać, aż je wyłączysz. Przerwa między alarmami zapobiega ciągłemu uruchamianiu alarmu przez to samo powiadomienie."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Nie przegap kolejnej ważnej wiadomości",
+      "body": "Wypróbuj wszystkie funkcje za darmo przez 7 dni. Nie musisz podawać metody płatności.",
+      "privacy": "Treść powiadomień jest porównywana ze słowami kluczowymi na twoim urządzeniu i nie jest wysyłana na nasze serwery.",
+      "play": "Pobierz z Google Play",
+      "plans": "Zobacz plany"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "language": "Slovak",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Máte mobil stále na tichom režime?",
+      "body": "Ticho je fajn, kým vám neunikne dôležitá správa. NotiCatcher nechá ostatné upozornenia potichu a spustí alarm len vtedy, keď upozornenie obsahuje vaše kľúčové slovo.",
+      "feedLabel": "Príklad: aj v tichom režime zaznie len upozornenie s vaším kľúčovým slovom",
+      "mutedLabel": "Potichu",
+      "ringLabel": "Znie alarm",
+      "feed": [
+        {
+          "app": "Nákupy",
+          "text": "Len dnes: zľavy až 70 %"
+        },
+        {
+          "app": "Skupinový čet",
+          "text": "haha, videli ste tie fotky?"
+        },
+        {
+          "app": "Spravodajstvo",
+          "text": "Váš ranný prehľad správ je pripravený"
+        },
+        {
+          "app": "Hra",
+          "text": "Energia je opäť doplnená"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Šéf Peter",
+        "after": ": Môžeme si hneď zavolať?"
+      }
+    },
+    "personas": {
+      "title": "Aj vám sa to zíde",
+      "items": [
+        {
+          "title": "Pracujete z domu",
+          "body": "Správy od šéfa sa ozvú nahlas aj v tichom režime.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Šéf Peter",
+          "after": ": Pošleš mi prezentáciu pred treťou?"
+        },
+        {
+          "title": "Celý deň na Slacku či Telegrame",
+          "body": "Z desiatok kanálov sa ozvú len upozornenia, ktoré si vyberiete.",
+          "app": "Slack",
+          "before": "#incidenty ",
+          "keyword": "súrne",
+          "after": ": platobné rozhranie neodpovedá"
+        },
+        {
+          "title": "Obchodujete alebo investujete",
+          "body": "Signály, podľa ktorých obchodujete, sa vždy ozvú.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "signál prerazenia",
+          "after": ", vstup do nákupnej zóny"
+        },
+        {
+          "title": "Dovolá sa vám len rodina",
+          "body": "Aj v tichom režime sa ozvú len hovory od rodiny.",
+          "app": "Telefón",
+          "before": "Prichádzajúci hovor: ",
+          "keyword": "Mama",
+          "after": ""
+        },
+        {
+          "title": "Čakáte na balík alebo kód",
+          "body": "O doručení, rezervácii či overovacom kóde sa dozviete hneď.",
+          "app": "Správy",
+          "before": "Váš balík ",
+          "keyword": "dorazil",
+          "after": " k vašim dverám"
+        },
+        {
+          "title": "Chcete mať prehľad o platbách",
+          "body": "Nezmeškajte upozornenie na platbu kartou ani na prichádzajúcu platbu.",
+          "app": "Banka",
+          "before": "",
+          "keyword": "Prichádzajúca platba",
+          "after": ": výplata 3 200,00 € pripísaná na účet"
+        }
+      ],
+      "note": "Na neobmedzené alarmy z finančných aplikácií a Telegramu potrebujete plán Pro. Alarmy pri hovoroch fungujú po nastavení NotiCatcher ako aplikácie na identifikáciu volajúceho a ochranu pred spamom."
+    },
+    "steps": {
+      "title": "Stačia tri kroky",
+      "items": [
+        {
+          "title": "Vyberte kľúčové slová",
+          "body": "Pridajte slová, ktoré majú spustiť alarm, aj tie, ktoré sa majú ignorovať."
+        },
+        {
+          "title": "Vyberte, čo sledovať",
+          "body": "Upozornenia aplikácií, textové správy, prichádzajúce hovory alebo všetky tri možnosti."
+        },
+        {
+          "title": "Ozve sa aj v tichom režime",
+          "body": "Alarm alebo vibrácie sa opakujú, kým ich nezastavíte. Časový odstup zabráni tomu, aby to isté upozornenie spúšťalo alarm stále dookola."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Nezmeškajte ďalšiu dôležitú správu",
+      "body": "Vyskúšajte všetky funkcie na 7 dní zadarmo. Bez zadávania platobných údajov.",
+      "privacy": "Obsah upozornení sa porovnáva s vašimi kľúčovými slovami priamo vo vašom zariadení a neposiela sa na naše servery.",
+      "play": "Stiahnuť z Google Play",
+      "plans": "Pozrieť plány"
+    }
+  }
+}

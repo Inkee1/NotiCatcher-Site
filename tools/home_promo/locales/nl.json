@@ -1,0 +1,115 @@
+{
+  "language": "Dutch",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Staat je telefoon altijd op stil?",
+      "body": "Lekker, die rust. Tot je net dat ene belangrijke bericht mist. NotiCatcher houdt alle andere meldingen stil en laat alleen een alarm horen als een melding jouw trefwoord bevat.",
+      "feedLabel": "Voorbeeld: je telefoon staat op stil, alleen de melding met jouw trefwoord laat een alarm horen",
+      "mutedLabel": "Stil",
+      "ringLabel": "Alarm gaat af",
+      "feed": [
+        {
+          "app": "Winkelen",
+          "text": "Alleen vandaag: tot 70% korting"
+        },
+        {
+          "app": "Groepschat",
+          "text": "haha heb je die foto's gezien?"
+        },
+        {
+          "app": "Nieuws",
+          "text": "Je nieuwsoverzicht voor vanochtend staat klaar"
+        },
+        {
+          "app": "Spel",
+          "text": "Je energie is weer helemaal aangevuld"
+        }
+      ],
+      "ring": {
+        "app": "WhatsApp",
+        "before": "",
+        "keyword": "Jeroen",
+        "after": ": Kun je nu even bellen?"
+      }
+    },
+    "personas": {
+      "title": "Herken je dit?",
+      "items": [
+        {
+          "title": "Je werkt thuis",
+          "body": "Laat berichten van je baas luid doorkomen, ook als je telefoon op stil staat.",
+          "app": "WhatsApp",
+          "before": "",
+          "keyword": "Jeroen",
+          "after": ": Kun je de presentatie vóór drie uur sturen?"
+        },
+        {
+          "title": "De hele dag Slack of Telegram",
+          "body": "Tientallen kanalen? Alleen de meldingen die jij kiest, komen door.",
+          "app": "Slack",
+          "before": "#incidenten ",
+          "keyword": "dringend",
+          "after": ": de betaalinterface reageert niet"
+        },
+        {
+          "title": "Je handelt of belegt",
+          "body": "Laat de signalen waarop je handelt altijd een alarm geven.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "uitbraaksignaal",
+          "after": ", koopzone bereikt"
+        },
+        {
+          "title": "Alleen familie mag je bellen",
+          "body": "Laat oproepen alleen door de stille stand heen komen als familie belt.",
+          "app": "Telefoon",
+          "before": "Inkomende oproep: ",
+          "keyword": "Mam",
+          "after": ""
+        },
+        {
+          "title": "Je wacht op een pakket of code",
+          "body": "Merk sms'jes over bezorging, reserveringen en verificatiecodes meteen op.",
+          "app": "Berichten",
+          "before": "Je pakket is ",
+          "keyword": "bezorgd",
+          "after": " en staat voor je deur"
+        },
+        {
+          "title": "Je houdt betalingen in de gaten",
+          "body": "Mis geen melding van een kaartbetaling of bijschrijving.",
+          "app": "Bank",
+          "before": "",
+          "keyword": "Bijschrijving",
+          "after": ": € 3.200,00 salaris ontvangen"
+        }
+      ],
+      "note": "Voor onbeperkte alarmen van financiële apps en Telegram heb je Pro nodig. Alarmen voor oproepen werken zodra je NotiCatcher instelt als je app voor beller-ID en spam."
+    },
+    "steps": {
+      "title": "Klaar in drie stappen",
+      "items": [
+        {
+          "title": "Kies je trefwoorden",
+          "body": "Voeg woorden toe die een alarm moeten laten afgaan en woorden die je wilt negeren."
+        },
+        {
+          "title": "Kies wat je wilt volgen",
+          "body": "Appmeldingen, sms'jes, inkomende oproepen of alle drie."
+        },
+        {
+          "title": "Hoor het, ook op stil",
+          "body": "Een alarm of trilling herhaalt zich tot je het stopt. Met een wachttijd voorkom je dat dezelfde melding steeds opnieuw een alarm laat afgaan."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Mis het volgende belangrijke bericht niet",
+      "body": "Probeer alle functies 7 dagen gratis. Je hoeft geen betaalmethode toe te voegen.",
+      "privacy": "De inhoud van je meldingen wordt op je eigen toestel met je trefwoorden vergeleken en niet naar onze servers verstuurd.",
+      "play": "Download via Google Play",
+      "plans": "Bekijk abonnementen"
+    }
+  }
+}

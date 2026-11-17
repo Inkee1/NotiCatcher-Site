@@ -1,0 +1,115 @@
+{
+  "language": "Lithuanian",
+  "generatedBy": "codex exec",
+  "copy": {
+    "quiet": {
+      "title": "Telefonas visada begarsiu režimu?",
+      "body": "Tyla malonu, kol nepraleidžiate svarbios žinutės. NotiCatcher leidžia kitiems pranešimams likti tyliems ir įjungia garsinį signalą tik tada, kai pranešime yra jūsų pasirinktas raktažodis.",
+      "feedLabel": "Pavyzdys: įjungus begarsį režimą, suskamba tik pranešimas su jūsų raktažodžiu",
+      "mutedLabel": "Tylu",
+      "ringLabel": "Skamba signalas",
+      "feed": [
+        {
+          "app": "Pirkiniai",
+          "text": "Tik šiandien: nuolaidos iki 70 %"
+        },
+        {
+          "app": "Grupės pokalbis",
+          "text": "cha cha, matei nuotraukas?"
+        },
+        {
+          "app": "Naujienos",
+          "text": "Jūsų rytinė naujienų apžvalga jau paruošta"
+        },
+        {
+          "app": "Žaidimas",
+          "text": "Energija vėl pilna"
+        }
+      ],
+      "ring": {
+        "app": "Messenger",
+        "before": "",
+        "keyword": "Vadovas Tomas",
+        "after": ": Ar gali dabar trumpai pasikalbėti?"
+      }
+    },
+    "personas": {
+      "title": "Pažįstama situacija?",
+      "items": [
+        {
+          "title": "Dirbate iš namų",
+          "body": "Tegul vadovo žinutės suskamba garsiai net ir įjungus begarsį režimą.",
+          "app": "Messenger",
+          "before": "",
+          "keyword": "Vadovas Tomas",
+          "after": ": Ar gali atsiųsti skaidres iki 3 val.?"
+        },
+        {
+          "title": "Visa diena su Slack ar Telegram",
+          "body": "Iš dešimčių kanalų tegul suskamba tik jūsų pasirinkti pranešimai.",
+          "app": "Slack",
+          "before": "#incidentai ",
+          "keyword": "skubu",
+          "after": ": mokėjimų sąsaja neatsako"
+        },
+        {
+          "title": "Prekiaujate ar investuojate",
+          "body": "Pasirūpinkite, kad signalai, kuriais remiatės prekiaudami, visada suskambėtų.",
+          "app": "Telegram",
+          "before": "BTC: ",
+          "keyword": "pramušimo signalas",
+          "after": ", kaina pasiekia pirkimo zoną"
+        },
+        {
+          "title": "Skambučiai – tik iš šeimos",
+          "body": "Įjungus begarsį režimą, signalas suskambės tik tada, kai skambins šeima.",
+          "app": "Telefonas",
+          "before": "Įeinantis skambutis: ",
+          "keyword": "Mama",
+          "after": ""
+        },
+        {
+          "title": "Laukiate siuntos ar kodo",
+          "body": "Iškart pastebėkite žinutes apie pristatymą, rezervacijas ir patvirtinimo kodus.",
+          "app": "Žinutės",
+          "before": "Jūsų siunta ",
+          "keyword": "pristatyta",
+          "after": " prie durų"
+        },
+        {
+          "title": "Sekate mokėjimus",
+          "body": "Nepraleiskite nė vieno pranešimo apie mokėjimą kortele ar gautas lėšas.",
+          "app": "Bankas",
+          "before": "",
+          "keyword": "Įplauka",
+          "after": ": gautas 3 200,00 € atlyginimas"
+        }
+      ],
+      "note": "Neribotiems signalams iš finansinių programėlių ir Telegram reikia Pro plano. Skambučių signalai veikia, kai NotiCatcher nustatote kaip skambintojo atpažinimo ir šlamšto blokavimo programėlę."
+    },
+    "steps": {
+      "title": "Pradėkite trimis žingsniais",
+      "items": [
+        {
+          "title": "Pasirinkite raktažodžius",
+          "body": "Įrašykite žodžius, kurie turėtų įjungti signalą, ir tuos, kuriuos norite ignoruoti."
+        },
+        {
+          "title": "Pasirinkite, ką tikrinti",
+          "body": "Programėlių pranešimus, teksto žinutes, įeinančius skambučius arba visus tris."
+        },
+        {
+          "title": "Suskamba net begarsiu režimu",
+          "body": "Garsinis signalas arba vibracija kartojasi, kol sustabdote. Nustačius pertrauką tarp signalų, tas pats pranešimas neskambės vėl ir vėl."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Nepraleiskite kitos svarbios žinutės",
+      "body": "Išbandykite visas funkcijas nemokamai 7 dienas. Mokėjimo būdo nurodyti nereikia.",
+      "privacy": "Pranešimų turinys lyginamas su jūsų raktažodžiais pačiame įrenginyje ir nesiunčiamas į mūsų serverius.",
+      "play": "Atsisiųsti iš Google Play",
+      "plans": "Peržiūrėti planus"
+    }
+  }
+}
