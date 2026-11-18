@@ -33,7 +33,7 @@ def update_schema(soup, copy):
         if isinstance(value, dict):
             if value.get('@type') == 'FAQPage':
                 value['mainEntity'] = [{'@type': 'Question', 'name': node.select_one('.faq-question').get_text(' ', strip=True),
-                  'acceptedAnswer': {'@type': 'Answer', 'text': node.select_one('.faq-answer').get_text(' ', strip=True)}}
+                  'acceptedAnswer': {'@type': 'Answer', 'text': ' '.join(p.get_text().strip() for p in node.select('.faq-answer p'))}}
                   for node in soup.select('.faq-item')]
             if value.get('@type') in ('SoftwareApplication', 'MobileApplication', 'Product'):
                 # The app's purchase screen supplies regional prices and offers.

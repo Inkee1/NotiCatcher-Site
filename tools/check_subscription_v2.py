@@ -25,11 +25,16 @@ def check_no_fixed_prices(soup, location):
 count = 0
 for path in root.glob('*/price/index.html'):
     lang = path.parent.parent.name
+    if lang != 'en':
+        # These full disclosures previously fell back to English in localized copy.
+        for key in ('v2TrialBody', 'v2IntroEligibility'):
+            assert copy[lang][key] != copy['en'][key], (lang, key, 'untranslated disclosure')
     soup = BeautifulSoup(path.read_text(encoding='utf-8'), 'html.parser')
     visible = soup.get_text(' ', strip=True)
     check_no_fixed_prices(soup, lang + '/price')
     assert len(soup.select('.price-card')) == 3, lang
     assert copy[lang]['v2FreeBenefits'] in visible, lang
+    assert copy[lang]['v2DataNotice'] in visible, (lang, 'price privacy notice')
     assert copy[lang]['v2ReferencePrice'] in visible, lang
     if not policy.get('playReleaseReady', False):
         assert copy[lang]['v2ReleasePending'] in visible, lang
@@ -43,8 +48,9 @@ for path in root.glob('*/price/index.html'):
         assert link['href'] == 'https://play.google.com/store/apps/details?id=com.flutterflow.noticatcher', lang
     faq = BeautifulSoup((path.parent.parent/'faq/index.html').read_text(encoding='utf-8'), 'html.parser')
     check_no_fixed_prices(faq, lang + '/faq')
-    assert copy[lang]['v2TrialBody'] in faq.get_text(' ', strip=True), lang
-    assert copy[lang]['v2ReferencePrice'] in faq.get_text(' ', strip=True), lang
+    faq_text = faq.get_text(' ', strip=True)
+    for key in ('v2TrialTitle', 'v2TrialBody', 'v2DataNotice', 'v2BasicBenefits', 'v2ProBenefits', 'v2ReferencePrice'):
+        assert copy[lang][key] in faq_text, (lang, 'faq', key)
     legacy = BeautifulSoup((path.parent.parent/'myinfo/index.html').read_text(encoding='utf-8'), 'html.parser')
     assert legacy.select_one('#generate-transfer-v2'), lang
     assert legacy.select_one('#btn-cancel-subscription'), lang

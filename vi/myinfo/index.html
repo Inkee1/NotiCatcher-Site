@@ -752,7 +752,7 @@
 <h3>Quản lý gói đăng ký</h3>
 <div class="dashboard-btns">
 <button class="btn-upgrade" id="btn-upgrade-subscription" style="display:none;"><i class="bx bx-crown"></i> Chuyển sang Pro</button>
-<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> Manage billing cycle</button>
+<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> Quản lý chu kỳ thanh toán</button>
 <button class="btn-cancel" id="btn-cancel-subscription" style="display:none;"><i class="bx bx-x-circle"></i> Hủy gói đăng ký</button>
 </div>
 </div>
@@ -873,7 +873,7 @@
 
         function formatDate(d) {
             try {
-                return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+                return d.toLocaleDateString(document.documentElement.lang, { year: "numeric", month: "short", day: "numeric" });
             } catch (_) {
                 return String(d);
             }
@@ -921,9 +921,9 @@
                 const pendingPlan = (data && data.pendingPlan) ? String(data.pendingPlan).toLowerCase() : null;
                 const tierEl = document.getElementById('tier-val');
                 if (tierEl && String(grade).toLowerCase() !== 'free') {
-                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "Canceling" + ")";
+                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "Đang hủy" + ")";
                     if (pendingPlan && pendingPlan !== String(grade).toLowerCase()) {
-                        tierEl.textContent = tierEl.textContent + " (" + "Changing" + ")";
+                        tierEl.textContent = tierEl.textContent + " (" + "Đang thay đổi" + ")";
                     }
                 }
             } catch (_) {}
@@ -980,7 +980,7 @@
             renewDateLabel: 'Ngày gia hạn',
 
             upgradeToPro: 'Chuyển sang Pro',
-            switchToBasic: 'Manage billing cycle',
+            switchToBasic: 'Quản lý chu kỳ thanh toán',
             basicBullets: [],
             proBullets: ['Bắt từ khóa cho tất cả ứng dụng : Không giới hạn', 'Bao gồm ứng dụng tài chính & Telegram — không giới hạn'],
             toastUpdated: 'Đã cập nhật gói.',
@@ -1044,7 +1044,7 @@
                                 __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || "Gói đăng ký của bạn sẽ vẫn hoạt động đến hết kỳ thanh toán hiện tại. Sau đó, gói sẽ không tự gia hạn.";
                                 __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || "Đã lên lịch hủy gói đăng ký.";
                                 __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || "Việc hủy đã được lên lịch sẵn.";
-                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || "Không thể hủy gói đăng ký.";
+                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || "Không thể hủy gói đăng ký.";
 
         function __showPlanToast(text) {
             try {
@@ -1129,7 +1129,7 @@
                 await cancelSubscription();
             } catch (e) {
                 console.error("Cancel subscription error", e);
-                const msg = (e && e.message) ? e.message : __WEB_SUB_COPY.errCancelFailed;
+                const msg = __WEB_SUB_COPY.errCancelFailed;
                 __showPlanToast('✗ ' + msg);
             }
         }
@@ -1194,7 +1194,7 @@ onAuthStateChanged(auth, (user) => {
                 if (loggedOutView) loggedOutView.classList.remove('active');
                 if (loggedInView) loggedInView.classList.add('active');
 
-                document.getElementById('user-name').textContent = user.displayName || 'User';
+                document.getElementById('user-name').textContent = user.displayName || "Người dùng";
                 document.getElementById('user-email').textContent = user.email;
                 if (user.photoURL) {
                     document.getElementById('user-avatar').innerHTML = `<img src="${user.photoURL}" alt="avatar">`;
@@ -1408,7 +1408,7 @@ onAuthStateChanged(auth, (user) => {
             }
 
             const { totalCount, keywords } = aggregateStats(cachedStatsDocs, period);
-            totalEl.textContent = totalCount.toLocaleString();
+            totalEl.textContent = totalCount.toLocaleString(document.documentElement.lang);
 
             if (keywords.length === 0) {
                 listEl.innerHTML = "<div class=\"keyword-empty\"><i class='bx bx-info-circle'></i>" + "Không có dữ liệu từ khóa cho khoảng thời gian này" + "</div>";
@@ -1425,7 +1425,7 @@ onAuthStateChanged(auth, (user) => {
                         <div class="keyword-name">${name}</div>
                         <div class="keyword-bar-bg"><div class="keyword-bar" style="width:${pct}%"></div></div>
                     </div>
-                    <div class="keyword-count">${count.toLocaleString()}</div>
+                    <div class="keyword-count">${count.toLocaleString(document.documentElement.lang)}</div>
                 </div>`;
             }).join('');
         }
@@ -1448,7 +1448,7 @@ onAuthStateChanged(auth, (user) => {
             } catch (e) {
                 console.warn("Failed to load keyword stats", e);
                 document.getElementById('keyword-list').innerHTML =
-                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>Failed to load statistics</div>`;
+                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>Không thể tải số liệu thống kê.</div>`;
             }
         }
 

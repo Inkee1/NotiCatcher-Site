@@ -85,7 +85,7 @@
           "after": ": palkka 3 200,00 € vastaanotettu"
         }
       ],
-      "note": "Finanssisovellusten ja Telegramin rajattomat hälytykset vaativat Pro-tilauksen. Puheluhälytykset toimivat, kun asetat NotiCatcherin soittajan tunnistus- ja roskapostisovellukseksi."
+      "note": "Finanssisovellusten ja Telegramin rajattomat hälytykset vaativat Pro-tilauksen. Puheluhälytykset toimivat, kun asetat NotiCatcherin sovellukseksi, joka tunnistaa soittajat ja häiriöpuhelut."
     },
     "steps": {
       "title": "Kolme vaihetta, ja valmista",

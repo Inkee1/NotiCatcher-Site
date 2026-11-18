@@ -752,7 +752,7 @@
 <h3>சந்தா மேலாண்மை</h3>
 <div class="dashboard-btns">
 <button class="btn-upgrade" id="btn-upgrade-subscription" style="display:none;"><i class="bx bx-crown"></i> Pro-க்கு மாற்றவும்</button>
-<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> Manage billing cycle</button>
+<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> கட்டணச் சுழற்சியை நிர்வகிக்கவும்</button>
 <button class="btn-cancel" id="btn-cancel-subscription" style="display:none;"><i class="bx bx-x-circle"></i> சந்தாவை ரத்து செய்யவும்</button>
 </div>
 </div>
@@ -873,7 +873,7 @@
 
         function formatDate(d) {
             try {
-                return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+                return d.toLocaleDateString(document.documentElement.lang, { year: "numeric", month: "short", day: "numeric" });
             } catch (_) {
                 return String(d);
             }
@@ -921,9 +921,9 @@
                 const pendingPlan = (data && data.pendingPlan) ? String(data.pendingPlan).toLowerCase() : null;
                 const tierEl = document.getElementById('tier-val');
                 if (tierEl && String(grade).toLowerCase() !== 'free') {
-                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "Canceling" + ")";
+                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "ரத்து செய்கிறது" + ")";
                     if (pendingPlan && pendingPlan !== String(grade).toLowerCase()) {
-                        tierEl.textContent = tierEl.textContent + " (" + "Changing" + ")";
+                        tierEl.textContent = tierEl.textContent + " (" + "மாற்றுகிறது" + ")";
                     }
                 }
             } catch (_) {}
@@ -980,7 +980,7 @@
             renewDateLabel: 'புதுப்பிப்பு தேதி',
 
             upgradeToPro: 'Pro-க்கு மாற்றவும்',
-            switchToBasic: 'Manage billing cycle',
+            switchToBasic: 'கட்டணச் சுழற்சியை நிர்வகிக்கவும்',
             basicBullets: [],
             proBullets: ['அனைத்து ஆப்ஸ்களிலும் முக்கியச்சொல் பிடிப்புகள்: வரம்பற்றது', 'நிதி ஆப்ஸ்கள் & Telegram உட்பட — வரம்புகள் இல்லை'],
             toastUpdated: 'திட்டம் புதுப்பிக்கப்பட்டது.',
@@ -1044,7 +1044,7 @@
                                 __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || "உங்கள் சந்தா தற்போதைய பில்லிங் காலகட்டத்தின் முடிவு வரை செயலில் இருக்கும். அதன் பிறகு அது புதுப்பிக்கப்படாது.";
                                 __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || "சந்தா ரத்து செய்வது திட்டமிடப்பட்டது.";
                                 __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || "ரத்து செய்வது ஏற்கனவே திட்டமிடப்பட்டுள்ளது.";
-                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || "சந்தாவை ரத்து செய்ய முடியவில்லை.";
+                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || "சந்தாவை ரத்து செய்ய முடியவில்லை.";
 
         function __showPlanToast(text) {
             try {
@@ -1129,7 +1129,7 @@
                 await cancelSubscription();
             } catch (e) {
                 console.error("Cancel subscription error", e);
-                const msg = (e && e.message) ? e.message : __WEB_SUB_COPY.errCancelFailed;
+                const msg = __WEB_SUB_COPY.errCancelFailed;
                 __showPlanToast('✗ ' + msg);
             }
         }
@@ -1194,7 +1194,7 @@ onAuthStateChanged(auth, (user) => {
                 if (loggedOutView) loggedOutView.classList.remove('active');
                 if (loggedInView) loggedInView.classList.add('active');
 
-                document.getElementById('user-name').textContent = user.displayName || 'User';
+                document.getElementById('user-name').textContent = user.displayName || "பயனர்";
                 document.getElementById('user-email').textContent = user.email;
                 if (user.photoURL) {
                     document.getElementById('user-avatar').innerHTML = `<img src="${user.photoURL}" alt="avatar">`;
@@ -1408,7 +1408,7 @@ onAuthStateChanged(auth, (user) => {
             }
 
             const { totalCount, keywords } = aggregateStats(cachedStatsDocs, period);
-            totalEl.textContent = totalCount.toLocaleString();
+            totalEl.textContent = totalCount.toLocaleString(document.documentElement.lang);
 
             if (keywords.length === 0) {
                 listEl.innerHTML = "<div class=\"keyword-empty\"><i class='bx bx-info-circle'></i>" + "இந்த காலகட்டத்திற்கு முக்கியச் சொல் தரவு இல்லை" + "</div>";
@@ -1425,7 +1425,7 @@ onAuthStateChanged(auth, (user) => {
                         <div class="keyword-name">${name}</div>
                         <div class="keyword-bar-bg"><div class="keyword-bar" style="width:${pct}%"></div></div>
                     </div>
-                    <div class="keyword-count">${count.toLocaleString()}</div>
+                    <div class="keyword-count">${count.toLocaleString(document.documentElement.lang)}</div>
                 </div>`;
             }).join('');
         }
@@ -1448,7 +1448,7 @@ onAuthStateChanged(auth, (user) => {
             } catch (e) {
                 console.warn("Failed to load keyword stats", e);
                 document.getElementById('keyword-list').innerHTML =
-                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>Failed to load statistics</div>`;
+                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>புள்ளிவிவரங்களை ஏற்ற முடியவில்லை.</div>`;
             }
         }
 

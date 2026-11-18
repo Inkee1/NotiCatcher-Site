@@ -61,6 +61,66 @@
     "zh-hant": "繁體中文",
   };
 
+  const CHANGE_LANGUAGE_LABELS = {
+    am: "ቋንቋ ቀይር",
+    ar: "تغيير اللغة",
+    bg: "Промяна на езика",
+    bn: "ভাষা পরিবর্তন করুন",
+    cs: "Změnit jazyk",
+    da: "Skift sprog",
+    de: "Sprache ändern",
+    el: "Άλλαξε γλώσσα",
+    en: "Change language",
+    es: "Cambiar idioma",
+    "es-419": "Cambiar idioma",
+    et: "Muuda keelt",
+    fa: "تغییر زبان",
+    fi: "Vaihda kieli",
+    fil: "Baguhin ang wika",
+    fr: "Changer de langue",
+    gu: "ભાષા બદલો",
+    he: "שנה שפה",
+    hi: "भाषा बदलें",
+    hr: "Promjena jezika",
+    hu: "Nyelv módosítása",
+    id: "Ubah bahasa",
+    it: "Cambia lingua",
+    ja: "言語を変更する",
+    km: "ផ្លាស់ប្តូរភាសា",
+    kn: "ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಿ",
+    ko: "언어 변경",
+    lo: "ປ່ຽນພາສາ",
+    lt: "Keisti kalbą",
+    lv: "Mainīt valodu",
+    ml: "ഭാഷ മാറ്റുക",
+    mr: "भाषा बदला",
+    ms: "Tukar bahasa",
+    my: "ဘာသာစကားပြောင်းပါ။",
+    nl: "Taal wijzigen",
+    no: "Bytt språk",
+    pa: "ਭਾਸ਼ਾ ਬਦਲੋ",
+    pl: "Zmień język",
+    pt: "Alterar idioma",
+    "pt-br": "Alterar idioma",
+    ro: "Schimbați limba",
+    ru: "Изменить язык",
+    sk: "Zmeniť jazyk",
+    sl: "Spremeni jezik",
+    sr: "Промени језик",
+    sv: "Byt språk",
+    sw: "Badilisha lugha",
+    ta: "மொழியை மாற்றவும்",
+    te: "భాషను మార్చండి",
+    th: "เปลี่ยนภาษา",
+    tr: "Dili değiştir",
+    uk: "Змінити мову",
+    ur: "زبان کو تبدیل کریں",
+    vi: "Thay đổi ngôn ngữ",
+    zh: "更改语言",
+    "zh-hans": "更改语言",
+    "zh-hant": "更改語言",
+  };
+
   function normalizeLang(tag) {
     return (tag || "")
       .toString()
@@ -246,7 +306,7 @@
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "lang-fab__btn";
-    btn.setAttribute("aria-label", "Change language");
+    btn.setAttribute("aria-label", CHANGE_LANGUAGE_LABELS[current] || CHANGE_LANGUAGE_LABELS.en);
     btn.setAttribute("aria-haspopup", "menu");
     btn.setAttribute("aria-expanded", "false");
     btn.innerHTML = `
@@ -271,6 +331,7 @@
       b.type = "button";
       b.className = "lang-fab__item" + (lang === current ? " is-active" : "");
       b.setAttribute("role", "menuitem");
+      b.lang = lang;
       b.setAttribute("data-lang", lang);
       b.setAttribute("data-href", href);
       b.innerHTML = `

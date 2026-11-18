@@ -752,7 +752,7 @@
 <h3>سبسکرپشن مینجمنٹ</h3>
 <div class="dashboard-btns">
 <button class="btn-upgrade" id="btn-upgrade-subscription" style="display:none;"><i class="bx bx-crown"></i> پرو پر سوئچ کریں</button>
-<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> Manage billing cycle</button>
+<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> بلنگ کا دورانیہ منظم کریں</button>
 <button class="btn-cancel" id="btn-cancel-subscription" style="display:none;"><i class="bx bx-x-circle"></i> سبسکرپشن منسوخ کریں</button>
 </div>
 </div>
@@ -873,7 +873,7 @@
 
         function formatDate(d) {
             try {
-                return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+                return d.toLocaleDateString(document.documentElement.lang, { year: "numeric", month: "short", day: "numeric" });
             } catch (_) {
                 return String(d);
             }
@@ -921,9 +921,9 @@
                 const pendingPlan = (data && data.pendingPlan) ? String(data.pendingPlan).toLowerCase() : null;
                 const tierEl = document.getElementById('tier-val');
                 if (tierEl && String(grade).toLowerCase() !== 'free') {
-                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "Canceling" + ")";
+                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "منسوخ کیا جا رہا ہے" + ")";
                     if (pendingPlan && pendingPlan !== String(grade).toLowerCase()) {
-                        tierEl.textContent = tierEl.textContent + " (" + "Changing" + ")";
+                        tierEl.textContent = tierEl.textContent + " (" + "تبدیل کیا جا رہا ہے" + ")";
                     }
                 }
             } catch (_) {}
@@ -980,7 +980,7 @@
             renewDateLabel: 'تجدید کی تاریخ',
 
             upgradeToPro: 'پرو پر سوئچ کریں',
-            switchToBasic: 'Manage billing cycle',
+            switchToBasic: 'بلنگ کا دورانیہ منظم کریں',
             basicBullets: [],
             proBullets: ['تمام ایپس کے کی ورڈ کیچز: لامحدود', 'فنانشل ایپس اور Telegram شامل — کوئی حد نہیں'],
             toastUpdated: 'پلان اپ ڈیٹ ہو گیا۔',
@@ -1044,7 +1044,7 @@
                                 __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || "آپ کی سبسکرپشن موجودہ بلنگ مدت کے اختتام تک فعال رہے گی۔ اس کے بعد یہ خودکار طور پر تجدید نہیں ہوگی۔";
                                 __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || "سبسکرپشن کی منسوخی شیڈول کر دی گئی ہے۔";
                                 __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || "منسوخی پہلے ہی شیڈول ہے۔";
-                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || "سبسکرپشن منسوخ کرنے میں ناکامی ہوئی۔";
+                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || "سبسکرپشن منسوخ کرنے میں ناکامی ہوئی۔";
 
         function __showPlanToast(text) {
             try {
@@ -1129,7 +1129,7 @@
                 await cancelSubscription();
             } catch (e) {
                 console.error("Cancel subscription error", e);
-                const msg = (e && e.message) ? e.message : __WEB_SUB_COPY.errCancelFailed;
+                const msg = __WEB_SUB_COPY.errCancelFailed;
                 __showPlanToast('✗ ' + msg);
             }
         }
@@ -1194,7 +1194,7 @@ onAuthStateChanged(auth, (user) => {
                 if (loggedOutView) loggedOutView.classList.remove('active');
                 if (loggedInView) loggedInView.classList.add('active');
 
-                document.getElementById('user-name').textContent = user.displayName || 'User';
+                document.getElementById('user-name').textContent = user.displayName || "صارف";
                 document.getElementById('user-email').textContent = user.email;
                 if (user.photoURL) {
                     document.getElementById('user-avatar').innerHTML = `<img src="${user.photoURL}" alt="avatar">`;
@@ -1408,7 +1408,7 @@ onAuthStateChanged(auth, (user) => {
             }
 
             const { totalCount, keywords } = aggregateStats(cachedStatsDocs, period);
-            totalEl.textContent = totalCount.toLocaleString();
+            totalEl.textContent = totalCount.toLocaleString(document.documentElement.lang);
 
             if (keywords.length === 0) {
                 listEl.innerHTML = "<div class=\"keyword-empty\"><i class='bx bx-info-circle'></i>" + "اس مدت کے لیے کوئی کی ورڈ ڈیٹا نہیں" + "</div>";
@@ -1425,7 +1425,7 @@ onAuthStateChanged(auth, (user) => {
                         <div class="keyword-name">${name}</div>
                         <div class="keyword-bar-bg"><div class="keyword-bar" style="width:${pct}%"></div></div>
                     </div>
-                    <div class="keyword-count">${count.toLocaleString()}</div>
+                    <div class="keyword-count">${count.toLocaleString(document.documentElement.lang)}</div>
                 </div>`;
             }).join('');
         }
@@ -1448,7 +1448,7 @@ onAuthStateChanged(auth, (user) => {
             } catch (e) {
                 console.warn("Failed to load keyword stats", e);
                 document.getElementById('keyword-list').innerHTML =
-                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>Failed to load statistics</div>`;
+                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>اعداد و شمار لوڈ نہیں ہو سکے۔</div>`;
             }
         }
 

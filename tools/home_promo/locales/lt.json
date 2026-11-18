@@ -4,7 +4,7 @@
   "copy": {
     "quiet": {
       "title": "Tegul skamba tik tai, kas jums svarbu.",
-      "body": "Tyla malonu, kol nepraleidžiate svarbios žinutės. NotiCatcher leidžia kitiems pranešimams likti tyliems ir įjungia garsinį signalą tik tada, kai pranešime yra jūsų pasirinktas raktažodis.",
+      "body": "Tyla maloni, kol nepraleidžiate svarbios žinutės. NotiCatcher leidžia kitiems pranešimams likti tyliems ir įjungia garsinį signalą tik tada, kai pranešime yra jūsų pasirinktas raktažodis.",
       "feedLabel": "Pavyzdys: įjungus begarsį režimą, suskamba tik pranešimas su jūsų raktažodžiu",
       "mutedLabel": "Tylu",
       "ringLabel": "Skamba signalas",

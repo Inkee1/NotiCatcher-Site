@@ -61,7 +61,7 @@
           "after": ", wejście w strefę kupna"
         },
         {
-          "title": "Odbierasz tylko od rodziny",
+          "title": "Chcesz słyszeć tylko połączenia od rodziny?",
           "body": "Wyciszony telefon zadzwoni tylko wtedy, gdy dzwoni ktoś z rodziny.",
           "app": "Telefon",
           "before": "Połączenie przychodzące: ",

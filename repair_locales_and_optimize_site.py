@@ -31,7 +31,7 @@ STRUCTURED_DATA_BLOCK_RE = re.compile(
     flags=re.DOTALL,
 )
 FAQ_ITEM_RE = re.compile(
-    r'<button class="faq-question"[^>]*>\s*(.*?)\s*<i\b[^>]*></i>\s*</button>\s*<div class="faq-answer">\s*<p>(.*?)</p>',
+    r'<button class="faq-question"[^>]*>\s*(.*?)\s*<i\b[^>]*></i>\s*</button>\s*<div class="faq-answer">(.*?)</div>',
     flags=re.IGNORECASE | re.DOTALL,
 )
 
@@ -332,6 +332,10 @@ def patch_myinfo_html(html_text: str, extra: dict[str, str]) -> tuple[str, bool]
         ),
     }
 
+    # Also handle pages whose English status was previously split into JS strings.
+    for status, key in (("Canceling", "cancelingSuffix"), ("Changing", "changingSuffix")):
+        html_text = html_text.replace(f'" (" + "{status}" + ")"', f'" (" + {json_string(extra[key])} + ")"')
+
     for old, new in replacements.items():
         html_text = html_text.replace(old, new)
 
@@ -372,54 +376,54 @@ def patch_myinfo_html(html_text: str, extra: dict[str, str]) -> tuple[str, bool]
         f"        __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || {json_string(extra['cancelConfirmBodyNoDate'])};\n"
         f"        __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || {json_string(extra['toastCancelScheduled'])};\n"
         f"        __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || {json_string(extra['toastAlreadyCanceled'])};\n"
-        f"        __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || {json_string(extra['errCancelFailed'])} || 'Failed to cancel subscription.';\n"
+        f"        __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || {json_string(extra['errCancelFailed'])};\n"
     )
     html_text = html_text.replace(current_fallback_block, new_fallback_block)
 
     line_replacements = [
         (
-            r"__WEB_SUB_COPY\.upgradeSubscription\s*=\s*__WEB_SUB_COPY\.upgradeSubscription\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.upgradeSubscription\s*=\s*__WEB_SUB_COPY\.upgradeSubscription\s*\|\|[^\r\n]*;",
             "        __WEB_SUB_COPY.upgradeSubscription = __WEB_SUB_COPY.upgradeSubscription || __WEB_SUB_BUTTON_TEXT.upgrade || __WEB_SUB_COPY.upgradeToPro || 'Upgrade Subscription';",
         ),
         (
-            r"__WEB_SUB_COPY\.changeSubscription\s*=\s*__WEB_SUB_COPY\.changeSubscription\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.changeSubscription\s*=\s*__WEB_SUB_COPY\.changeSubscription\s*\|\|[^\r\n]*;",
             "        __WEB_SUB_COPY.changeSubscription = __WEB_SUB_COPY.changeSubscription || __WEB_SUB_BUTTON_TEXT.change || __WEB_SUB_COPY.manage || 'Change Subscription';",
         ),
         (
-            r"__WEB_SUB_COPY\.cancelSubscription\s*=\s*__WEB_SUB_COPY\.cancelSubscription\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.cancelSubscription\s*=\s*__WEB_SUB_COPY\.cancelSubscription\s*\|\|[^\r\n]*;",
             "        __WEB_SUB_COPY.cancelSubscription = __WEB_SUB_COPY.cancelSubscription || __WEB_SUB_BUTTON_TEXT.cancel || 'Cancel Subscription';",
         ),
         (
-            r"__WEB_SUB_COPY\.cancellationScheduled\s*=\s*__WEB_SUB_COPY\.cancellationScheduled\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.cancellationScheduled\s*=\s*__WEB_SUB_COPY\.cancellationScheduled\s*\|\|[^\r\n]*;",
             f"        __WEB_SUB_COPY.cancellationScheduled = __WEB_SUB_COPY.cancellationScheduled || {json_string(extra['cancellationScheduled'])};",
         ),
         (
-            r"__WEB_SUB_COPY\.cancelConfirmTitle\s*=\s*__WEB_SUB_COPY\.cancelConfirmTitle\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.cancelConfirmTitle\s*=\s*__WEB_SUB_COPY\.cancelConfirmTitle\s*\|\|[^\r\n]*;",
             f"        __WEB_SUB_COPY.cancelConfirmTitle = __WEB_SUB_COPY.cancelConfirmTitle || {json_string(extra['cancelConfirmTitle'])};",
         ),
         (
-            r"__WEB_SUB_COPY\.cancelConfirmBody\s*=\s*__WEB_SUB_COPY\.cancelConfirmBody\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.cancelConfirmBody\s*=\s*__WEB_SUB_COPY\.cancelConfirmBody\s*\|\|[^\r\n]*;",
             f"        __WEB_SUB_COPY.cancelConfirmBody = __WEB_SUB_COPY.cancelConfirmBody || {json_string(extra['cancelConfirmBody'])};",
         ),
         (
-            r"__WEB_SUB_COPY\.cancelConfirmBodyNoDate\s*=\s*__WEB_SUB_COPY\.cancelConfirmBodyNoDate\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.cancelConfirmBodyNoDate\s*=\s*__WEB_SUB_COPY\.cancelConfirmBodyNoDate\s*\|\|[^\r\n]*;",
             f"        __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || {json_string(extra['cancelConfirmBodyNoDate'])};",
         ),
         (
-            r"__WEB_SUB_COPY\.toastCancelScheduled\s*=\s*__WEB_SUB_COPY\.toastCancelScheduled\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.toastCancelScheduled\s*=\s*__WEB_SUB_COPY\.toastCancelScheduled\s*\|\|[^\r\n]*;",
             f"        __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || {json_string(extra['toastCancelScheduled'])};",
         ),
         (
-            r"__WEB_SUB_COPY\.toastAlreadyCanceled\s*=\s*__WEB_SUB_COPY\.toastAlreadyCanceled\s*\|\|[^;]+;",
+            r"__WEB_SUB_COPY\.toastAlreadyCanceled\s*=\s*__WEB_SUB_COPY\.toastAlreadyCanceled\s*\|\|[^\r\n]*;",
             f"        __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || {json_string(extra['toastAlreadyCanceled'])};",
         ),
         (
-            r"__WEB_SUB_COPY\.errCancelFailed\s*=\s*__WEB_SUB_COPY\.errCancelFailed\s*\|\|[^;]+;",
-            f"        __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || {json_string(extra['errCancelFailed'])};",
+            r"__WEB_SUB_COPY\.errCancelFailed\s*=\s*__WEB_SUB_COPY\.errCancelFailed\s*\|\|[^\r\n]*;",
+            f"        __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || {json_string(extra['errCancelFailed'])};",
         ),
     ]
     for pattern, replacement in line_replacements:
-        html_text = re.sub(pattern, replacement, html_text, count=1)
+        html_text = re.sub(pattern, lambda _: replacement.lstrip(), html_text, count=1)
 
     return html_text, html_text != original
 
@@ -474,7 +478,7 @@ def strip_html_fragment(fragment: str) -> str:
     text = re.sub(r"<br\s*/?>", " ", fragment, flags=re.IGNORECASE)
     text = re.sub(r"</p\s*>", " ", text, flags=re.IGNORECASE)
     text = re.sub(r"<[^>]+>", "", text)
-    return re.sub(r"\s+", " ", html.unescape(text)).strip()
+    return re.sub(r"[\t\n\f\r ]+", " ", html.unescape(text)).strip()
 
 
 def structured_page_context(normalized_rel_path: str) -> tuple[str, str] | None:

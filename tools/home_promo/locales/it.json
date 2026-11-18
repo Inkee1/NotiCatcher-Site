@@ -7,7 +7,7 @@
       "body": "Il silenzio è bello, finché non ti perdi proprio il messaggio che contava. NotiCatcher lascia silenziose tutte le altre notifiche e suona come una sveglia solo quando una contiene la parola chiave che hai scelto.",
       "feedLabel": "Esempio: in silenzioso, suona solo la notifica con la tua parola chiave",
       "mutedLabel": "Silenzioso",
-      "ringLabel": "Sveglia in corso",
+      "ringLabel": "Avviso sonoro attivo",
       "feed": [
         {
           "app": "Shopping",
@@ -100,7 +100,7 @@
         },
         {
           "title": "Suona anche in silenzioso",
-          "body": "Una sveglia o una vibrazione si ripete finché non la fermi. Imposta un intervallo di pausa per evitare che lo stesso avviso suoni di continuo."
+          "body": "Il telefono continua a suonare o a vibrare finché non lo fermi. Imposta un intervallo di pausa per evitare che lo stesso avviso suoni di continuo."
         }
       ]
     },

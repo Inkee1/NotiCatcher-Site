@@ -752,7 +752,7 @@
 <h3>စာရင်းသွင်းမှု စီမံခန့်ခွဲမှု</h3>
 <div class="dashboard-btns">
 <button class="btn-upgrade" id="btn-upgrade-subscription" style="display:none;"><i class="bx bx-crown"></i> Pro သို့ ပြောင်းရန်</button>
-<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> Manage billing cycle</button>
+<button class="btn-upgrade" id="btn-change-subscription" style="display:none;"><i class="bx bx-rocket"></i> ငွေတောင်းခံသည့်ကာလကို စီမံရန်</button>
 <button class="btn-cancel" id="btn-cancel-subscription" style="display:none;"><i class="bx bx-x-circle"></i> စာရင်းသွင်းမှု ပယ်ဖျက်ရန်</button>
 </div>
 </div>
@@ -873,7 +873,7 @@
 
         function formatDate(d) {
             try {
-                return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+                return d.toLocaleDateString(document.documentElement.lang, { year: "numeric", month: "short", day: "numeric" });
             } catch (_) {
                 return String(d);
             }
@@ -921,9 +921,9 @@
                 const pendingPlan = (data && data.pendingPlan) ? String(data.pendingPlan).toLowerCase() : null;
                 const tierEl = document.getElementById('tier-val');
                 if (tierEl && String(grade).toLowerCase() !== 'free') {
-                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "Canceling" + ")";
+                    if (isCanceled) tierEl.textContent = tierEl.textContent + " (" + "ပယ်ဖျက်နေသည်" + ")";
                     if (pendingPlan && pendingPlan !== String(grade).toLowerCase()) {
-                        tierEl.textContent = tierEl.textContent + " (" + "Changing" + ")";
+                        tierEl.textContent = tierEl.textContent + " (" + "ပြောင်းလဲနေသည်" + ")";
                     }
                 }
             } catch (_) {}
@@ -980,7 +980,7 @@
             renewDateLabel: 'သက်တမ်းတိုးရက်',
 
             upgradeToPro: 'Pro သို့ ပြောင်းရန်',
-            switchToBasic: 'Manage billing cycle',
+            switchToBasic: 'ငွေတောင်းခံသည့်ကာလကို စီမံရန်',
             basicBullets: [],
             proBullets: ['အက်ပ်အားလုံး ကီးဝေါ့ဖမ်းယူမှု: အကန့်အသတ်မရှိ', 'ဘဏ္ဍာရေးအက်ပ်များ & Telegram ပါဝင်သည် — ကန့်သတ်ချက်မရှိ'],
             toastUpdated: 'အစီအစဉ်ကို အပ်ဒိတ်လုပ်ပြီးပါပြီ။',
@@ -1044,7 +1044,7 @@
                                 __WEB_SUB_COPY.cancelConfirmBodyNoDate = __WEB_SUB_COPY.cancelConfirmBodyNoDate || "သင့်စာရင်းသွင်းမှုသည် လက်ရှိ ငွေတောင်းခံကာလ အဆုံးအထိ ဆက်လက်အသက်ဝင်နေမည်ဖြစ်သည်။ ထို့နောက် ပြန်လည်သက်တမ်းတိုးမည် မဟုတ်ပါ။";
                                 __WEB_SUB_COPY.toastCancelScheduled = __WEB_SUB_COPY.toastCancelScheduled || "စာရင်းသွင်းမှု ပယ်ဖျက်ရန် စီစဉ်ပြီးပါပြီ။";
                                 __WEB_SUB_COPY.toastAlreadyCanceled = __WEB_SUB_COPY.toastAlreadyCanceled || "ပယ်ဖျက်ရန် စီစဉ်ထားပြီးသား ဖြစ်ပါသည်။";
-                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || __WEB_SUB_COPY.errRequestFailed || "စာရင်းသွင်းမှုကို ပယ်ဖျက်ရန် မအောင်မြင်ပါ။";
+                                __WEB_SUB_COPY.errCancelFailed = __WEB_SUB_COPY.errCancelFailed || "စာရင်းသွင်းမှုကို ပယ်ဖျက်ရန် မအောင်မြင်ပါ။";
 
         function __showPlanToast(text) {
             try {
@@ -1129,7 +1129,7 @@
                 await cancelSubscription();
             } catch (e) {
                 console.error("Cancel subscription error", e);
-                const msg = (e && e.message) ? e.message : __WEB_SUB_COPY.errCancelFailed;
+                const msg = __WEB_SUB_COPY.errCancelFailed;
                 __showPlanToast('✗ ' + msg);
             }
         }
@@ -1194,7 +1194,7 @@ onAuthStateChanged(auth, (user) => {
                 if (loggedOutView) loggedOutView.classList.remove('active');
                 if (loggedInView) loggedInView.classList.add('active');
 
-                document.getElementById('user-name').textContent = user.displayName || 'User';
+                document.getElementById('user-name').textContent = user.displayName || "အသုံးပြုသူ";
                 document.getElementById('user-email').textContent = user.email;
                 if (user.photoURL) {
                     document.getElementById('user-avatar').innerHTML = `<img src="${user.photoURL}" alt="avatar">`;
@@ -1408,7 +1408,7 @@ onAuthStateChanged(auth, (user) => {
             }
 
             const { totalCount, keywords } = aggregateStats(cachedStatsDocs, period);
-            totalEl.textContent = totalCount.toLocaleString();
+            totalEl.textContent = totalCount.toLocaleString(document.documentElement.lang);
 
             if (keywords.length === 0) {
                 listEl.innerHTML = "<div class=\"keyword-empty\"><i class='bx bx-info-circle'></i>" + "ဤကာလအတွက် keyword ဒေတာ မရှိပါ" + "</div>";
@@ -1425,7 +1425,7 @@ onAuthStateChanged(auth, (user) => {
                         <div class="keyword-name">${name}</div>
                         <div class="keyword-bar-bg"><div class="keyword-bar" style="width:${pct}%"></div></div>
                     </div>
-                    <div class="keyword-count">${count.toLocaleString()}</div>
+                    <div class="keyword-count">${count.toLocaleString(document.documentElement.lang)}</div>
                 </div>`;
             }).join('');
         }
@@ -1448,7 +1448,7 @@ onAuthStateChanged(auth, (user) => {
             } catch (e) {
                 console.warn("Failed to load keyword stats", e);
                 document.getElementById('keyword-list').innerHTML =
-                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>Failed to load statistics</div>`;
+                    `<div class="keyword-empty"><i class='bx bx-error-circle'></i>စာရင်းအင်းများကို မတင်နိုင်ပါ။</div>`;
             }
         }
 

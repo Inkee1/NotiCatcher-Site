@@ -4,10 +4,10 @@
   "copy": {
     "quiet": {
       "title": "Cứ để máy im lặng. Tin quan trọng vẫn reo.",
-      "body": "Yên tĩnh thì thích thật, nhưng lỡ mất tin nhắn quan trọng thì lại lo. NotiCatcher giữ các thông báo khác im lặng, chỉ reo báo động khi có thông báo chứa từ khóa bạn đã chọn.",
+      "body": "Yên tĩnh thì thích thật, nhưng lỡ mất tin nhắn quan trọng thì lại lo. NotiCatcher giữ các thông báo khác im lặng, chỉ reo khi có thông báo chứa từ khóa bạn đã chọn.",
       "feedLabel": "Ví dụ: khi để im lặng, chỉ thông báo có từ khóa mới reo",
       "mutedLabel": "Im lặng",
-      "ringLabel": "Đang reo báo động",
+      "ringLabel": "Đang đổ chuông",
       "feed": [
         {
           "app": "Mua sắm",
@@ -85,7 +85,7 @@
           "after": ": đã nhận lương 32.000.000 ₫"
         }
       ],
-      "note": "Cần gói Pro để nhận báo động không giới hạn từ các ứng dụng tài chính và Telegram. Báo động cuộc gọi hoạt động khi bạn đặt NotiCatcher làm ứng dụng nhận diện người gọi và chặn cuộc gọi rác."
+      "note": "Bạn cần gói Pro để nhận cảnh báo không giới hạn từ các ứng dụng tài chính và Telegram. Để dùng cảnh báo cuộc gọi, hãy đặt NotiCatcher làm ứng dụng nhận diện người gọi và cuộc gọi rác."
     },
     "steps": {
       "title": "Cài xong trong ba bước",
@@ -100,7 +100,7 @@
         },
         {
           "title": "Để im lặng vẫn reo",
-          "body": "Báo động hoặc rung lặp lại cho đến khi bạn tắt. Khoảng nghỉ giúp cùng một thông báo không reo liên tục."
+          "body": "Điện thoại sẽ tiếp tục reo hoặc rung cho đến khi bạn tắt cảnh báo. Khoảng nghỉ giúp cùng một thông báo không reo liên tục."
         }
       ]
     },
