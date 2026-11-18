@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Toujours en mode silencieux ?",
+      "title": "Une sonnerie pour l’essentiel, du calme pour le reste.",
       "body": "Le calme, c’est agréable… jusqu’à ce qu’un message important vous échappe. NotiCatcher laisse les autres notifications en silence et déclenche une alarme uniquement quand l’une d’elles contient votre mot-clé.",
       "feedLabel": "Exemple : en mode silencieux, seule la notification contenant votre mot-clé sonne",
       "mutedLabel": "Silencieux",
@@ -110,6 +110,28 @@
       "privacy": "Le contenu des notifications est comparé à vos mots-clés sur votre appareil et n’est pas envoyé à nos serveurs.",
       "play": "Télécharger sur Google Play",
       "plans": "Voir les forfaits"
+    },
+    "hero": {
+      "badge": "Sonnerie toujours coupée ?",
+      "intro": "Dès qu’une notification contient l’un de vos mots-clés, votre téléphone déclenche une alarme, même en mode silencieux.",
+      "cases": [
+        {
+          "before": "Quand vous travaillez de chez vous et que seuls ",
+          "emphasis": "vos messages pro",
+          "after": " doivent faire sonner votre téléphone."
+        },
+        {
+          "before": "Quand vous voulez réserver la sonnerie aux appels de ",
+          "emphasis": "vos proches",
+          "after": "."
+        },
+        {
+          "before": "Quand vous suivez ",
+          "emphasis": "les cryptos, les actions ou la finance en général",
+          "after": " et que vous ne voulez manquer aucun signal important."
+        }
+      ],
+      "outro": "NotiCatcher est là pour vous."
     }
   }
 }

@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Handy immer auf lautlos?",
+      "title": "Du hörst, was dir wichtig ist. Der Rest bleibt still.",
       "body": "Ruhe tut gut. Nur die eine wichtige Nachricht möchtest du nicht verpassen. NotiCatcher lässt alle anderen Benachrichtigungen stumm und schlägt nur dann Alarm, wenn eine dein festgelegtes Stichwort enthält.",
       "feedLabel": "Beispiel: Auf lautlos klingelt nur die Benachrichtigung mit deinem Stichwort",
       "mutedLabel": "Lautlos",
@@ -110,6 +110,28 @@
       "privacy": "Benachrichtigungen werden auf deinem Gerät mit deinen Stichwörtern abgeglichen. Ihr Inhalt wird nicht an unsere Server gesendet.",
       "play": "Bei Google Play herunterladen",
       "plans": "Tarife ansehen"
+    },
+    "hero": {
+      "badge": "Klingelton immer aus?",
+      "intro": "Sobald eine Benachrichtigung eines deiner Stichwörter enthält, schlägt NotiCatcher Alarm – auch wenn dein Handy auf lautlos steht.",
+      "cases": [
+        {
+          "before": "Wenn dich im Homeoffice nur ",
+          "emphasis": "Nachrichten von der Arbeit",
+          "after": " erreichen sollen."
+        },
+        {
+          "before": "Wenn dein Handy nur bei Anrufen von ",
+          "emphasis": "deinen Liebsten",
+          "after": " klingeln soll."
+        },
+        {
+          "before": "Wenn du bei ",
+          "emphasis": "Krypto, Aktien oder Finanzen",
+          "after": " kein wichtiges Signal verpassen möchtest."
+        }
+      ],
+      "outro": "Dafür ist NotiCatcher da."
     }
   }
 }

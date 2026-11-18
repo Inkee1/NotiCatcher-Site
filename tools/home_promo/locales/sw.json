@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Simu yako huwa kimya?",
+      "title": "Furahia utulivu. Sikia yaliyo muhimu.",
       "body": "Utulivu ni mzuri, hadi ujumbe muhimu unapokupita. NotiCatcher huacha arifa nyingine zote kimya na kulia kama kengele pale tu arifa inapokuwa na neno ulilochagua.",
       "feedLabel": "Mfano: simu ikiwa kimya, arifa yenye neno ulilochagua pekee ndiyo inalia",
       "mutedLabel": "Kimya",
@@ -110,6 +110,28 @@
       "privacy": "Arifa hulinganishwa na maneno uliyochagua kwenye kifaa chako, na maudhui yake hayatumwi kwenye seva zetu.",
       "play": "Pakua kwenye Google Play",
       "plans": "Angalia mipango"
+    },
+    "hero": {
+      "badge": "Huwa unaweka simu kimya?",
+      "intro": "Arifa ikiwa na mojawapo ya maneno uliyochagua, simu yako hulia kama kengele hata ikiwa kwenye hali ya kimya.",
+      "cases": [
+        {
+          "before": "Unapofanya kazi nyumbani na unataka simu ilie kwa ",
+          "emphasis": "ujumbe wa kazi",
+          "after": " tu."
+        },
+        {
+          "before": "Unapotaka kupokea simu kutoka kwa ",
+          "emphasis": "watu unaowapenda",
+          "after": " pekee."
+        },
+        {
+          "before": "Unapofuatilia ",
+          "emphasis": "sarafu za kidijitali, hisa au masuala ya fedha",
+          "after": " na hutaki kukosa ishara muhimu."
+        }
+      ],
+      "outro": "NotiCatcher iko hapa kwa ajili yako."
     }
   }
 }

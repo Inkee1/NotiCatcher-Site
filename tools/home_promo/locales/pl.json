@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Telefon zawsze wyciszony?",
+      "title": "Ciesz się ciszą. Usłysz to, co ważne.",
       "body": "Cisza jest przyjemna, dopóki nie umknie ci ważna wiadomość. NotiCatcher zostawia pozostałe powiadomienia wyciszone, a alarm uruchamia tylko wtedy, gdy w powiadomieniu pojawi się wybrane przez ciebie słowo kluczowe.",
       "feedLabel": "Przykład: telefon jest wyciszony, a dźwięk wydaje tylko powiadomienie ze słowem kluczowym",
       "mutedLabel": "Wyciszone",
@@ -110,6 +110,28 @@
       "privacy": "Treść powiadomień jest porównywana ze słowami kluczowymi na twoim urządzeniu i nie jest wysyłana na nasze serwery.",
       "play": "Pobierz z Google Play",
       "plans": "Zobacz plany"
+    },
+    "hero": {
+      "badge": "Zwykle wyciszasz telefon?",
+      "intro": "Gdy w powiadomieniu pojawi się wybrane przez ciebie słowo kluczowe, usłyszysz alarm – nawet w trybie cichym.",
+      "cases": [
+        {
+          "before": "Gdy pracujesz z domu i tylko ",
+          "emphasis": "wiadomości służbowe",
+          "after": " mają przerywać ciszę."
+        },
+        {
+          "before": "Gdy chcesz odbierać telefony tylko od ",
+          "emphasis": "bliskich",
+          "after": "."
+        },
+        {
+          "before": "Gdy nie chcesz przegapić ważnego sygnału ze świata ",
+          "emphasis": "kryptowalut, akcji lub finansów",
+          "after": "."
+        }
+      ],
+      "outro": "W takich chwilach przydaje się NotiCatcher."
     }
   }
 }

@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Seu celular vive no silencioso?",
+      "title": "Só o que importa quebra o silêncio.",
       "body": "Silêncio é bom, até você perder aquela mensagem importante. O NotiCatcher mantém as outras notificações em silêncio e só toca como um alarme quando alguma contém a palavra-chave que você escolheu.",
       "feedLabel": "Exemplo: no silencioso, só toca a notificação com sua palavra-chave",
       "mutedLabel": "Silencioso",
@@ -110,6 +110,28 @@
       "privacy": "O conteúdo das notificações é comparado com suas palavras-chave no próprio aparelho e não é enviado aos nossos servidores.",
       "play": "Baixe no Google Play",
       "plans": "Ver planos"
+    },
+    "hero": {
+      "badge": "Sempre no silencioso?",
+      "intro": "Quando uma das suas palavras-chave aparece em uma notificação, o celular toca como um alarme, mesmo no silencioso.",
+      "cases": [
+        {
+          "before": "Quando você trabalha de casa e quer que só as ",
+          "emphasis": "mensagens do trabalho",
+          "after": " façam o celular tocar."
+        },
+        {
+          "before": "Quando você só quer atender ligações de ",
+          "emphasis": "quem você ama",
+          "after": "."
+        },
+        {
+          "before": "Quando você não quer perder nenhum sinal importante sobre ",
+          "emphasis": "criptomoedas, ações ou finanças",
+          "after": "."
+        }
+      ],
+      "outro": "Nessas horas, conte com o NotiCatcher."
     }
   }
 }

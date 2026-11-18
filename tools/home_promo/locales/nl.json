@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Staat je telefoon altijd op stil?",
+      "title": "Hoor wat telt. De rest blijft stil.",
       "body": "Lekker, die rust. Tot je net dat ene belangrijke bericht mist. NotiCatcher houdt alle andere meldingen stil en laat alleen een alarm horen als een melding jouw trefwoord bevat.",
       "feedLabel": "Voorbeeld: je telefoon staat op stil, alleen de melding met jouw trefwoord laat een alarm horen",
       "mutedLabel": "Stil",
@@ -110,6 +110,28 @@
       "privacy": "De inhoud van je meldingen wordt op je eigen toestel met je trefwoorden vergeleken en niet naar onze servers verstuurd.",
       "play": "Download via Google Play",
       "plans": "Bekijk abonnementen"
+    },
+    "hero": {
+      "badge": "Telefoon altijd op stil?",
+      "intro": "Zodra een melding een van je trefwoorden bevat, hoor je een alarm. Ook als je telefoon op stil staat.",
+      "cases": [
+        {
+          "before": "Als je thuiswerkt en alleen ",
+          "emphasis": "berichten van je werk",
+          "after": " wilt horen."
+        },
+        {
+          "before": "Als je alleen telefoontjes van ",
+          "emphasis": "je dierbaren",
+          "after": " wilt laten doorkomen."
+        },
+        {
+          "before": "Als je geen belangrijk signaal over ",
+          "emphasis": "crypto, aandelen of geldzaken",
+          "after": " wilt missen."
+        }
+      ],
+      "outro": "NotiCatcher is er voor je."
     }
   }
 }

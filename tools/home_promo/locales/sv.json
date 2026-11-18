@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Har du alltid mobilen på ljudlöst?",
+      "title": "Låt det viktiga höras och resten vara tyst.",
       "body": "Det är skönt med lugn och ro, tills du missar ett viktigt meddelande. NotiCatcher låter alla andra notiser vara tysta och ringer som ett larm bara när en notis innehåller ditt nyckelord.",
       "feedLabel": "Exempel: mobilen är på ljudlöst, men notisen med ditt nyckelord låter ändå",
       "mutedLabel": "Ljudlöst",
@@ -110,6 +110,28 @@
       "privacy": "Notiserna jämförs med dina nyckelord på din enhet. Innehållet skickas inte till våra servrar.",
       "play": "Hämta på Google Play",
       "plans": "Se abonnemang"
+    },
+    "hero": {
+      "badge": "Alltid på ljudlöst?",
+      "intro": "När en notis innehåller något av dina nyckelord ringer mobilen som ett larm, även på ljudlöst.",
+      "cases": [
+        {
+          "before": "När du jobbar hemifrån och bara vill släppa igenom ",
+          "emphasis": "meddelanden från jobbet",
+          "after": "."
+        },
+        {
+          "before": "När du vill att bara samtal från ",
+          "emphasis": "dina nära och kära",
+          "after": " ska höras."
+        },
+        {
+          "before": "När du följer ",
+          "emphasis": "krypto, aktier eller finans",
+          "after": " och inte vill missa en viktig signal."
+        }
+      ],
+      "outro": "Då finns NotiCatcher här för dig."
     }
   }
 }

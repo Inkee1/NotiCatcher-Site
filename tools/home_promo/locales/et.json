@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Telefon alati hääletu peal?",
+      "title": "Olulist kuuled. Muu jääb vaikseks.",
       "body": "Vaikus on mõnus, kuni mõni tõesti oluline sõnum märkamata jääb. NotiCatcher jätab muud teavitused vaikseks ja heliseb nagu alarm ainult siis, kui teavitus sisaldab sinu valitud märksõna.",
       "feedLabel": "Näide: hääletul telefonil kõlab ainult märksõnaga teavitus",
       "mutedLabel": "Hääletu",
@@ -110,6 +110,28 @@
       "privacy": "Teavituste sisu võrreldakse sinu märksõnadega sinu seadmes ja seda ei saadeta meie serveritesse.",
       "play": "Laadi alla Google Playst",
       "plans": "Vaata pakette"
+    },
+    "hero": {
+      "badge": "Kas su telefon on alati hääletu?",
+      "intro": "Kui teavituses on sinu valitud märksõna, kõlab alarm ka siis, kui telefon on hääletu.",
+      "cases": [
+        {
+          "before": "Kui töötad kodus ja tahad, et märku annaksid ainult ",
+          "emphasis": "töösõnumid",
+          "after": "."
+        },
+        {
+          "before": "Kui tahad, et ainult ",
+          "emphasis": "su lähedaste",
+          "after": " kõned paneksid telefoni helisema."
+        },
+        {
+          "before": "Kui jälgid ",
+          "emphasis": "krüptot, aktsiaid või oma rahaasju",
+          "after": " ega taha ühtki olulist signaali maha magada."
+        }
+      ],
+      "outro": "Siis on NotiCatcher sulle abiks."
     }
   }
 }

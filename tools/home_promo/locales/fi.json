@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Puhelin aina äänettömällä?",
+      "title": "Anna vain tärkeän kuulua",
       "body": "Hiljaisuus on mukavaa, kunnes tärkeä viesti menee ohi. NotiCatcher pitää muut ilmoitukset hiljaisina ja hälyttää vain, kun ilmoituksessa on valitsemasi avainsana.",
       "feedLabel": "Esimerkki: äänettömällä vain avainsanan sisältävä ilmoitus hälyttää",
       "mutedLabel": "Äänetön",
@@ -110,6 +110,28 @@
       "privacy": "Ilmoitusten sisältöä verrataan avainsanoihisi omalla laitteellasi, eikä sitä lähetetä palvelimillemme.",
       "play": "Lataa Google Playsta",
       "plans": "Katso tilaukset"
+    },
+    "hero": {
+      "badge": "Pidätkö puhelinta äänettömällä?",
+      "intro": "Kun ilmoituksessa on valitsemasi avainsana, hälytys soi myös äänettömällä.",
+      "cases": [
+        {
+          "before": "Kun teet etätöitä ja haluat hälytyksen vain ",
+          "emphasis": "työviesteistä",
+          "after": "."
+        },
+        {
+          "before": "Kun haluat päästää läpi vain ",
+          "emphasis": "läheistesi",
+          "after": " puhelut."
+        },
+        {
+          "before": "Kun seuraat ",
+          "emphasis": "kryptoja, osakkeita tai taloutta",
+          "after": " etkä halua, että tärkeä signaali menee ohi."
+        }
+      ],
+      "outro": "Silloin NotiCatcher on apunasi."
     }
   }
 }

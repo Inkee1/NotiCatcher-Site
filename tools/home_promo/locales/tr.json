@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Telefonunuz hep sessizde mi?",
+      "title": "Yalnızca sizin için önemli olanlar çalsın",
       "body": "Sessizlik güzel, ta ki önemli bir mesajı kaçırana kadar. NotiCatcher diğer bildirimleri sessiz tutar, yalnızca seçtiğiniz anahtar kelimeyi içeren bir bildirim geldiğinde alarm gibi çalar.",
       "feedLabel": "Örnek: Telefon sessizdeyken yalnızca anahtar kelimenizi içeren bildirim çalar",
       "mutedLabel": "Sessiz",
@@ -110,6 +110,28 @@
       "privacy": "Bildirim içerikleri cihazınızda anahtar kelimelerinizle karşılaştırılır ve sunucularımıza gönderilmez.",
       "play": "Google Play'den indirin",
       "plans": "Planları inceleyin"
+    },
+    "hero": {
+      "badge": "Telefonu sessizde mi tutuyorsunuz?",
+      "intro": "Bir bildirimde seçtiğiniz anahtar kelimelerden biri geçerse telefonunuz sessizde bile alarm gibi çalar.",
+      "cases": [
+        {
+          "before": "Evden çalışırken yalnızca ",
+          "emphasis": "iş mesajlarından",
+          "after": " haberdar olmak istediğinizde."
+        },
+        {
+          "before": "Telefonunuzun yalnızca ",
+          "emphasis": "sevdikleriniz",
+          "after": " aradığında çalmasını istediğinizde."
+        },
+        {
+          "before": "",
+          "emphasis": "Kripto, borsa veya finans",
+          "after": " dünyasından gelen önemli sinyalleri kaçırmak istemediğinizde."
+        }
+      ],
+      "outro": "NotiCatcher yanınızda."
     }
   }
 }

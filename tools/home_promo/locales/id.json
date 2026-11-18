@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "HP selalu dalam mode senyap?",
+      "title": "Yang penting berbunyi, sisanya senyap",
       "body": "Tenang tanpa bunyi notifikasi memang nyaman, sampai pesan penting ikut terlewat. NotiCatcher membiarkan notifikasi lain tetap senyap dan hanya berbunyi seperti alarm saat ada notifikasi berisi kata kunci pilihanmu.",
       "feedLabel": "Contoh: dalam mode senyap, hanya notifikasi berisi kata kuncimu yang berbunyi",
       "mutedLabel": "Senyap",
@@ -110,6 +110,28 @@
       "privacy": "Isi notifikasi dicocokkan dengan kata kuncimu di perangkatmu dan tidak dikirim ke server kami.",
       "play": "Unduh di Google Play",
       "plans": "Lihat paket"
+    },
+    "hero": {
+      "badge": "Selalu pakai mode senyap?",
+      "intro": "Ponselmu berbunyi seperti alarm saat kata kunci pilihanmu muncul di notifikasi, bahkan dalam mode senyap.",
+      "cases": [
+        {
+          "before": "Saat kamu kerja dari rumah dan hanya ingin ",
+          "emphasis": "pesan kerja",
+          "after": " yang berbunyi."
+        },
+        {
+          "before": "Saat kamu hanya ingin mendengar dering telepon dari ",
+          "emphasis": "orang tersayang",
+          "after": "."
+        },
+        {
+          "before": "Saat kamu tak mau melewatkan sinyal penting seputar ",
+          "emphasis": "kripto, saham, atau keuangan",
+          "after": "."
+        }
+      ],
+      "outro": "NotiCatcher siap membantumu."
     }
   }
 }

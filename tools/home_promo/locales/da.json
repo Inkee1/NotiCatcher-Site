@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Er mobilen altid på lydløs?",
+      "title": "Nyd roen. Hør det vigtige.",
       "body": "Det er rart med ro, lige indtil du misser den ene besked, der var vigtig. NotiCatcher lader alle andre notifikationer være stille og ringer kun som en alarm, når en notifikation indeholder dit nøgleord.",
       "feedLabel": "Eksempel: På lydløs ringer kun notifikationen med dit nøgleord",
       "mutedLabel": "Lydløs",
@@ -110,6 +110,28 @@
       "privacy": "Notifikationernes indhold sammenlignes med dine nøgleord på din enhed og sendes ikke til vores servere.",
       "play": "Hent på Google Play",
       "plans": "Se abonnementer"
+    },
+    "hero": {
+      "badge": "Altid på lydløs?",
+      "intro": "Når en notifikation indeholder et af dine nøgleord, ringer mobilen som en alarm – også på lydløs.",
+      "cases": [
+        {
+          "before": "Når du arbejder hjemmefra og kun vil lade ",
+          "emphasis": "beskeder fra arbejdet",
+          "after": " slippe igennem."
+        },
+        {
+          "before": "Når kun ",
+          "emphasis": "dine nærmeste",
+          "after": " skal kunne ringe igennem."
+        },
+        {
+          "before": "Når du ikke vil gå glip af vigtige signaler om ",
+          "emphasis": "krypto, aktier eller økonomi",
+          "after": "."
+        }
+      ],
+      "outro": "Så er NotiCatcher til dig."
     }
   }
 }

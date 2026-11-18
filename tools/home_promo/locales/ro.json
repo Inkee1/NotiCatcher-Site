@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Ții mereu telefonul pe silențios?",
+      "title": "Te bucuri de liniște. Auzi doar ce contează.",
       "body": "Liniștea e plăcută, până când ratezi un mesaj care chiar contează. NotiCatcher păstrează celelalte notificări silențioase și sună ca o alarmă doar când o notificare conține cuvântul-cheie ales de tine.",
       "feedLabel": "Exemplu: pe silențios, sună doar notificarea cu cuvântul-cheie ales",
       "mutedLabel": "Silențios",
@@ -110,6 +110,28 @@
       "privacy": "Conținutul notificărilor este comparat cu cuvintele-cheie pe dispozitivul tău și nu este trimis către serverele noastre.",
       "play": "Descarcă din Google Play",
       "plans": "Vezi planurile"
+    },
+    "hero": {
+      "badge": "Mereu pe silențios?",
+      "intro": "Chiar și pe silențios, telefonul sună ca o alarmă când o notificare conține un cuvânt-cheie ales de tine.",
+      "cases": [
+        {
+          "before": "Când lucrezi de acasă și vrei ca doar ",
+          "emphasis": "mesajele de la serviciu",
+          "after": " să întrerupă liniștea."
+        },
+        {
+          "before": "Când vrei să auzi doar apelurile de la ",
+          "emphasis": "cei dragi",
+          "after": "."
+        },
+        {
+          "before": "Când nu vrei să ratezi un semnal important legat de ",
+          "emphasis": "criptomonede, acțiuni sau finanțe",
+          "after": "."
+        }
+      ],
+      "outro": "NotiCatcher îți e alături."
     }
   }
 }

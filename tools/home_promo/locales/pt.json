@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Telemóvel sempre no silêncio?",
+      "title": "Só o que importa quebra o silêncio.",
       "body": "O silêncio sabe bem, até perderes aquela mensagem que era mesmo importante. O NotiCatcher mantém as outras notificações em silêncio e só toca como um alarme quando uma contém a palavra-chave que escolheste.",
       "feedLabel": "Exemplo: no modo silencioso, só toca a notificação com a tua palavra-chave",
       "mutedLabel": "Em silêncio",
@@ -110,6 +110,28 @@
       "privacy": "O conteúdo das notificações é comparado com as tuas palavras-chave no teu dispositivo e não é enviado para os nossos servidores.",
       "play": "Descarregar no Google Play",
       "plans": "Ver planos"
+    },
+    "hero": {
+      "badge": "Sempre com o telemóvel sem som?",
+      "intro": "Quando uma das tuas palavras-chave aparece numa notificação, o telemóvel toca como um alarme, mesmo em modo silencioso.",
+      "cases": [
+        {
+          "before": "Quando trabalhas em casa e só queres que as ",
+          "emphasis": "mensagens de trabalho",
+          "after": " façam tocar o telemóvel."
+        },
+        {
+          "before": "Quando só queres que o telemóvel toque se for ",
+          "emphasis": "alguém de quem gostas",
+          "after": " a ligar."
+        },
+        {
+          "before": "Quando não queres perder um sinal importante sobre ",
+          "emphasis": "criptomoedas, ações ou finanças",
+          "after": "."
+        }
+      ],
+      "outro": "O NotiCatcher está cá para ti."
     }
   }
 }

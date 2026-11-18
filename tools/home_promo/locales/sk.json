@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Máte mobil stále na tichom režime?",
+      "title": "Doprajte si ticho. Ozve sa len to dôležité.",
       "body": "Ticho je fajn, kým vám neunikne dôležitá správa. NotiCatcher nechá ostatné upozornenia potichu a spustí alarm len vtedy, keď upozornenie obsahuje vaše kľúčové slovo.",
       "feedLabel": "Príklad: aj v tichom režime zaznie len upozornenie s vaším kľúčovým slovom",
       "mutedLabel": "Potichu",
@@ -110,6 +110,28 @@
       "privacy": "Obsah upozornení sa porovnáva s vašimi kľúčovými slovami priamo vo vašom zariadení a neposiela sa na naše servery.",
       "play": "Stiahnuť z Google Play",
       "plans": "Pozrieť plány"
+    },
+    "hero": {
+      "badge": "Máte mobil stále stíšený?",
+      "intro": "Keď sa v upozornení objaví vaše kľúčové slovo, zaznie alarm aj v tichom režime.",
+      "cases": [
+        {
+          "before": "Keď pracujete z domu a chcete, aby sa ozývali len ",
+          "emphasis": "pracovné správy",
+          "after": "."
+        },
+        {
+          "before": "Keď chcete, aby mobil zvonil len pri hovoroch od ",
+          "emphasis": "vašich blízkych",
+          "after": "."
+        },
+        {
+          "before": "Keď nechcete prehliadnuť dôležité signály zo sveta ",
+          "emphasis": "kryptomien, akcií či financií",
+          "after": "."
+        }
+      ],
+      "outro": "Práve vtedy je tu pre vás NotiCatcher."
     }
   }
 }

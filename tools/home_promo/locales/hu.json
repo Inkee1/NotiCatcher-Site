@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Mindig néma a telefonod?",
+      "title": "Csak az szóljon, ami fontos",
       "body": "Jó a csend, amíg le nem maradsz egy igazán fontos üzenetről. A NotiCatcher minden más értesítést csendben hagy, és csak akkor jelez ébresztőként, ha valamelyikben szerepel a megadott kulcsszavad.",
       "feedLabel": "Példa: néma módban csak a kulcsszavadat tartalmazó értesítés szólal meg",
       "mutedLabel": "Néma",
@@ -110,6 +110,28 @@
       "privacy": "Az értesítések tartalmát a készülékeden vetjük össze a kulcsszavaiddal, és nem küldjük el a szervereinkre.",
       "play": "Letöltés a Google Play áruházból",
       "plans": "Csomagok megtekintése"
+    },
+    "hero": {
+      "badge": "Nálad is mindig néma a telefon?",
+      "intro": "Ha egy értesítésben szerepel valamelyik kulcsszavad, a telefonod úgy csörög, mint az ébresztő. Még néma módban is.",
+      "cases": [
+        {
+          "before": "Amikor otthonról dolgozol, és csak a ",
+          "emphasis": "munkahelyi üzenetekről",
+          "after": " kérsz hangjelzést."
+        },
+        {
+          "before": "Amikor azt szeretnéd, hogy csak akkor csörögjön a telefonod, ha a ",
+          "emphasis": "szeretteid",
+          "after": " hívnak."
+        },
+        {
+          "before": "Amikor a ",
+          "emphasis": "kriptót, a részvényeket vagy a pénzügyeidet",
+          "after": " figyeled, és egy fontos jelzésről sem szeretnél lemaradni."
+        }
+      ],
+      "outro": "Ilyenkor jól jön a NotiCatcher."
     }
   }
 }

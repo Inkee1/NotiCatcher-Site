@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Laging naka-silent ang phone mo?",
+      "title": "Tahimik pa rin. Maririnig mo ang mahalaga.",
       "body": "Masarap ang tahimik, pero paano kung mahalagang mensahe ang hindi mo napansin? Pinapanatiling tahimik ng NotiCatcher ang ibang notification at tumutunog lang na parang alarm kapag may salitang itinakda mo.",
       "feedLabel": "Halimbawa: naka-silent, pero tutunog ang notification na may keyword mo",
       "mutedLabel": "Naka-silent",
@@ -110,6 +110,28 @@
       "privacy": "Sa device mo mismo inihahambing ang mga notification sa mga keyword mo. Hindi ipinapadala ang nilalaman ng mga notification sa aming mga server.",
       "play": "Kunin sa Google Play",
       "plans": "Tingnan ang mga plan"
+    },
+    "hero": {
+      "badge": "Laging naka-silent?",
+      "intro": "Kahit naka-silent ang phone mo, tutunog ito na parang alarm kapag lumabas sa notification ang isa sa mga keyword mo.",
+      "cases": [
+        {
+          "before": "Kapag nagtatrabaho ka sa bahay at gusto mong ",
+          "emphasis": "mga mensahe sa trabaho",
+          "after": " lang ang tumunog."
+        },
+        {
+          "before": "Kapag gusto mong tawag lang ng ",
+          "emphasis": "mga mahal mo sa buhay",
+          "after": " ang tumunog."
+        },
+        {
+          "before": "Kapag ayaw mong makaligtaan ang mahahalagang signal sa ",
+          "emphasis": "crypto, stocks, o pananalapi",
+          "after": "."
+        }
+      ],
+      "outro": "Nandito ang NotiCatcher para sa ’yo."
     }
   }
 }

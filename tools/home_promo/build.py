@@ -1,4 +1,4 @@
-"""Inject the home page promo sections into every locale's index.html.
+"""Inject the home page hero copy and promo sections into every locale's index.html.
 
 Copy comes from tools/home_promo/source.json (en, ko) and
 tools/home_promo/locales/<site-dir>.json (generated). A locale without copy is
@@ -99,6 +99,21 @@ def render(lang, c):
 """
 
 
+HERO_RE = re.compile(r'(<div class="hero-badge">)[^<]*(</div>\s*<h1>.*?</h1>\s*)<p[^>]*>.*?</p>', re.S)
+
+
+def render_hero(h):
+    """Badge question and lead paragraph of the hero; one use case per line."""
+    cases = "<br/>".join(
+        f'{e(c["before"])}<strong class="hero-emphasis">{e(c["emphasis"])}</strong>{e(c["after"])}' for c in h["cases"]
+    )
+    lead = (
+        f'<p class="hero-lead"><strong class="hero-emphasis">{e(h["intro"])}</strong><br/>'
+        f'{cases}<br/><strong>{e(h["outro"])}</strong></p>'
+    )
+    return e(h["badge"]), lead
+
+
 def load_copy():
     source = json.loads((HERE / "source.json").read_text(encoding="utf-8"))
     copies = {k: v for k, v in source.items() if not k.startswith("_")}
@@ -107,9 +122,17 @@ def load_copy():
     return copies
 
 
-def inject(page, block):
+def inject(page, block, hero):
     with open(page, encoding="utf-8", newline="") as fh:
         text = fh.read()
+    if hero:
+        badge, lead = hero
+        text, count = HERO_RE.subn(lambda m: m.group(1) + badge + m.group(2) + lead, text, count=1)
+        if count != 1:
+            raise RuntimeError(f"{page}: hero badge/h1/p not found")
+    if page.parent.name in RTL:
+        # The site has no page-level dir; at least make the hero read right to left.
+        text = text.replace('<div class="hero-content">', '<div class="hero-content" dir="rtl">', 1)
     if "\r\n" in text:
         block = block.replace("\n", "\r\n")
     if START in text:
@@ -135,7 +158,11 @@ def main():
         if lang not in copies:
             missing.append(lang)
             continue
-        inject(ROOT / lang / "index.html", render(lang, copies[lang]))
+        copy = copies[lang]
+        hero = render_hero(copy["hero"]) if "hero" in copy else None
+        if hero is None:
+            print(f"{lang}: no hero copy yet, hero left unchanged")
+        inject(ROOT / lang / "index.html", render(lang, copy), hero)
     print(f"updated {len(dirs) - len(missing)} pages")
     if missing:
         print("no copy yet (skipped):", " ".join(missing))

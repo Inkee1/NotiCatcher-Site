@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Telefono sempre in silenzioso?",
+      "title": "Solo ciò che conta rompe il silenzio",
       "body": "Il silenzio è bello, finché non ti perdi proprio il messaggio che contava. NotiCatcher lascia silenziose tutte le altre notifiche e suona come una sveglia solo quando una contiene la parola chiave che hai scelto.",
       "feedLabel": "Esempio: in silenzioso, suona solo la notifica con la tua parola chiave",
       "mutedLabel": "Silenzioso",
@@ -110,6 +110,28 @@
       "privacy": "Il contenuto delle notifiche viene confrontato con le tue parole chiave sul tuo dispositivo e non viene inviato ai nostri server.",
       "play": "Scarica su Google Play",
       "plans": "Scopri i piani"
+    },
+    "hero": {
+      "badge": "Sempre in silenzioso?",
+      "intro": "Quando una notifica contiene una delle tue parole chiave, il telefono suona come una sveglia. Anche in silenzioso.",
+      "cases": [
+        {
+          "before": "Quando lavori da casa e vuoi che suonino solo ",
+          "emphasis": "i messaggi di lavoro",
+          "after": "."
+        },
+        {
+          "before": "Quando vuoi che il telefono squilli solo se ti chiama ",
+          "emphasis": "una persona cara",
+          "after": "."
+        },
+        {
+          "before": "Quando non vuoi perderti un segnale importante su ",
+          "emphasis": "criptovalute, azioni o finanza",
+          "after": "."
+        }
+      ],
+      "outro": "Ci pensa NotiCatcher."
     }
   }
 }

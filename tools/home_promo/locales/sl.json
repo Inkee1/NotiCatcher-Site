@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Je tvoj telefon vedno na tiho?",
+      "title": "Naj tišino prekine le tisto, kar ti je pomembno.",
       "body": "Mir je prijeten, dokler ne spregledaš res pomembnega sporočila. NotiCatcher pusti druga obvestila tiho, kot alarm pa zazvoni le ob tistih, ki vsebujejo tvojo ključno besedo.",
       "feedLabel": "Primer: telefon je na tiho, zazvoni le obvestilo s tvojo ključno besedo",
       "mutedLabel": "Tiho",
@@ -110,6 +110,28 @@
       "privacy": "Vsebina obvestil se s tvojimi ključnimi besedami primerja na tvoji napravi in se ne pošilja na naše strežnike.",
       "play": "Prenesi iz Google Play",
       "plans": "Oglej si pakete"
+    },
+    "hero": {
+      "badge": "Imaš telefon vedno na tiho?",
+      "intro": "Ko se v obvestilu pojavi tvoja ključna beseda, telefon zazvoni kot alarm. Tudi ko je na tiho.",
+      "cases": [
+        {
+          "before": "Ko delaš od doma in želiš, da zazvonijo le ",
+          "emphasis": "službena sporočila",
+          "after": "."
+        },
+        {
+          "before": "Ko želiš slišati le klice ",
+          "emphasis": "svojih bližnjih",
+          "after": "."
+        },
+        {
+          "before": "Ko spremljaš ",
+          "emphasis": "kriptovalute, delnice ali finance",
+          "after": " in nočeš spregledati pomembnega signala."
+        }
+      ],
+      "outro": "NotiCatcher je tu zate."
     }
   }
 }

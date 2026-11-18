@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Telefon selalu dalam mod senyap?",
+      "title": "Yang penting berbunyi. Yang lain kekal senyap.",
       "body": "Memang selesa bila telefon senyap, tapi risau juga kalau terlepas mesej penting. NotiCatcher membiarkan notifikasi lain senyap dan hanya membunyikan penggera apabila notifikasi mengandungi kata kunci pilihan anda.",
       "feedLabel": "Contoh: dalam mod senyap, hanya notifikasi dengan kata kunci anda berbunyi",
       "mutedLabel": "Senyap",
@@ -110,6 +110,28 @@
       "privacy": "Notifikasi dipadankan dengan kata kunci pada peranti anda, dan kandungannya tidak dihantar ke pelayan kami.",
       "play": "Dapatkan di Google Play",
       "plans": "Lihat pelan"
+    },
+    "hero": {
+      "badge": "Selalu senyapkan telefon?",
+      "intro": "Bila kata kunci pilihan anda muncul dalam notifikasi, penggera berbunyi walaupun telefon dalam mod senyap.",
+      "cases": [
+        {
+          "before": "Bila anda bekerja dari rumah dan mahu ",
+          "emphasis": "mesej kerja",
+          "after": " sahaja yang berbunyi."
+        },
+        {
+          "before": "Bila anda mahu telefon berbunyi hanya untuk panggilan daripada ",
+          "emphasis": "orang tersayang",
+          "after": "."
+        },
+        {
+          "before": "Bila anda tak mahu terlepas isyarat penting berkaitan ",
+          "emphasis": "kripto, saham atau kewangan",
+          "after": "."
+        }
+      ],
+      "outro": "NotiCatcher sedia membantu."
     }
   }
 }

@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "¿Siempre tienes el celular en silencio?",
+      "title": "Que solo suene lo que te importa",
       "body": "Qué bien se siente el silencio… hasta que se te pasa un mensaje importante. NotiCatcher mantiene las demás notificaciones en silencio y solo hace sonar una alarma cuando alguna contiene la palabra clave que elegiste.",
       "feedLabel": "Ejemplo: con el celular en silencio, solo suena la notificación con tu palabra clave",
       "mutedLabel": "En silencio",
@@ -110,6 +110,28 @@
       "privacy": "El contenido de las notificaciones se compara con tus palabras clave en tu dispositivo y no se envía a nuestros servidores.",
       "play": "Descárgala en Google Play",
       "plans": "Ver planes"
+    },
+    "hero": {
+      "badge": "¿Siempre con el celular en silencio?",
+      "intro": "Si una notificación contiene una de tus palabras clave, suena una alarma, incluso con el celular en silencio.",
+      "cases": [
+        {
+          "before": "Cuando trabajas desde casa y quieres que solo suenen ",
+          "emphasis": "los mensajes del trabajo",
+          "after": "."
+        },
+        {
+          "before": "Cuando quieres que solo suenen las llamadas de ",
+          "emphasis": "tus seres queridos",
+          "after": "."
+        },
+        {
+          "before": "Cuando no quieres perderte una señal importante sobre ",
+          "emphasis": "criptomonedas, acciones o finanzas",
+          "after": "."
+        }
+      ],
+      "outro": "Para eso está NotiCatcher."
     }
   }
 }

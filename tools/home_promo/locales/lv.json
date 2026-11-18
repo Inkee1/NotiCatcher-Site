@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Telefons vienmēr klusuma režīmā?",
+      "title": "Sadzirdi svarīgo. Pārējais paliek kluss.",
       "body": "Klusums ir patīkams, līdz palaid garām kādu patiešām svarīgu ziņu. NotiCatcher ļauj pārējiem paziņojumiem palikt klusiem un atskaņo trauksmes signālu tikai tad, ja paziņojumā ir tavs izvēlētais atslēgvārds.",
       "feedLabel": "Piemērs: klusuma režīmā atskan tikai paziņojums ar tavu atslēgvārdu",
       "mutedLabel": "Bez skaņas",
@@ -110,6 +110,28 @@
       "privacy": "Paziņojumu saturs tiek salīdzināts ar taviem atslēgvārdiem tavā ierīcē un netiek nosūtīts uz mūsu serveriem.",
       "play": "Lejupielādē Google Play",
       "plans": "Apskatīt plānus"
+    },
+    "hero": {
+      "badge": "Telefons parasti bez skaņas?",
+      "intro": "Ja paziņojumā ir kāds no taviem izvēlētajiem atslēgvārdiem, atskan trauksmes signāls. Pat klusuma režīmā.",
+      "cases": [
+        {
+          "before": "Kad strādā no mājām un vēlies, lai atskan tikai ",
+          "emphasis": "darba ziņas",
+          "after": "."
+        },
+        {
+          "before": "Kad gribi dzirdēt tikai ",
+          "emphasis": "savu tuvinieku",
+          "after": " zvanus."
+        },
+        {
+          "before": "Kad negribi palaist garām svarīgus signālus par ",
+          "emphasis": "kriptovalūtām, akcijām vai finansēm",
+          "after": "."
+        }
+      ],
+      "outro": "Šādos brīžos noder NotiCatcher."
     }
   }
 }

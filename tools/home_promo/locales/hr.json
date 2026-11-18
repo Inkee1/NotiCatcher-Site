@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Mobitel ti je uvijek utišan?",
+      "title": "Neka zazvoni samo ono što ti je važno.",
       "body": "Mir je ugodan, sve dok ne propustiš baš onu važnu poruku. NotiCatcher ostavlja ostale obavijesti tihima, a poput alarma oglašava se samo kad neka sadrži tvoju ključnu riječ.",
       "feedLabel": "Primjer: mobitel je utišan, a zvoni samo obavijest s tvojom ključnom riječi",
       "mutedLabel": "Utišano",
@@ -110,6 +110,28 @@
       "privacy": "Obavijesti se uspoređuju s tvojim ključnim riječima na tvom uređaju, a njihov se sadržaj ne šalje na naše poslužitelje.",
       "play": "Preuzmi na Google Play",
       "plans": "Pogledaj pakete"
+    },
+    "hero": {
+      "badge": "Mobitel ti je stalno na tihom?",
+      "intro": "Kad se u obavijesti pojavi tvoja ključna riječ, mobitel zazvoni poput alarma, čak i kad je utišan.",
+      "cases": [
+        {
+          "before": "Kad radiš od kuće i želiš da se oglase samo ",
+          "emphasis": "poslovne poruke",
+          "after": "."
+        },
+        {
+          "before": "Kad želiš čuti samo pozive ",
+          "emphasis": "svojih najdražih",
+          "after": "."
+        },
+        {
+          "before": "Kad pratiš ",
+          "emphasis": "kriptovalute, dionice ili financije",
+          "after": " i ne želiš propustiti važan signal."
+        }
+      ],
+      "outro": "NotiCatcher je tu za tebe."
     }
   }
 }

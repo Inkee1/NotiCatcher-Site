@@ -6,7 +6,12 @@ Each language is one `codex exec` run with a JSON output schema derived from the
 English copy; answers that change the structure or drop required terms are
 retried with the problem spelled out. Then run build.py.
 
-Usage: python tools/home_promo/localize_with_codex.py [site-dir ...]
+Usage:
+  python tools/home_promo/localize_with_codex.py [site-dir ...]
+  python tools/home_promo/localize_with_codex.py --only hero,quiet.title [site-dir ...]
+
+--only translates just the listed top-level or dotted fields and merges them into
+the existing locale files, leaving the rest of each translation untouched.
 """
 
 import concurrent.futures as cf
@@ -42,6 +47,28 @@ LANGS = {
 OPTIONAL = {"before", "after"}
 
 
+def pick(copy, paths):
+    """Nested subset of copy holding only the dotted paths."""
+    out = {}
+    for path in paths:
+        keys = path.split(".")
+        src, dst = copy, out
+        for k in keys[:-1]:
+            src = src[k]
+            dst = dst.setdefault(k, {})
+        dst[keys[-1]] = src[keys[-1]]
+    return out
+
+
+def merge(base, update):
+    for k, v in update.items():
+        if isinstance(v, dict) and isinstance(base.get(k), dict):
+            merge(base[k], v)
+        else:
+            base[k] = v
+    return base
+
+
 def schema_for(value):
     if isinstance(value, dict):
         return {
@@ -71,27 +98,41 @@ def shape_problems(ref, got, path="copy"):
     return []
 
 
+def lookup(data, path):
+    for k in path.split("."):
+        if not isinstance(data, dict) or k not in data:
+            return None
+        data = data[k]
+    return data
+
+
 def violations(en, data):
     problems = shape_problems(en, data)
     if problems:
         return problems
-    for item in [data["quiet"]["ring"], *data["personas"]["items"]]:
+    highlighted = [lookup(data, "quiet.ring")] + (lookup(data, "personas.items") or [])
+    for item in filter(None, highlighted):
         if item["keyword"] != item["keyword"].strip():
             problems.append(f'keyword "{item["keyword"]}" must not start or end with spaces')
+    for case in lookup(data, "hero.cases") or []:
+        if case["emphasis"] != case["emphasis"].strip():
+            problems.append(f'emphasis "{case["emphasis"]}" must not start or end with spaces')
     checks = [
-        ("quiet.body", data["quiet"]["body"], "NotiCatcher"),
-        ("personas.note", data["personas"]["note"], "Pro"),
-        ("personas.note", data["personas"]["note"], "NotiCatcher"),
-        ("cta.body", data["cta"]["body"], "7"),
-        ("cta.play", data["cta"]["play"], "Google Play"),
+        ("quiet.body", "NotiCatcher"),
+        ("personas.note", "Pro"),
+        ("personas.note", "NotiCatcher"),
+        ("cta.body", "7"),
+        ("cta.play", "Google Play"),
+        ("hero.outro", "NotiCatcher"),
     ]
-    for field, text, term in checks:
-        if term not in text:
+    for field, term in checks:
+        text = lookup(data, field)
+        if text is not None and term not in text:
             problems.append(f'{field} must contain "{term}"')
     return problems
 
 
-def build_prompt(language, en, ko, feedback):
+def build_prompt(language, en, ko, feedback, existing=None):
     parts = [
         f"You are a native {language} marketing copywriter localizing a product website.",
         f"Localize the home page copy of the Android app NotiCatcher into {language}.",
@@ -114,6 +155,9 @@ def build_prompt(language, en, ko, feedback):
         "  needed; unlimited alarms from financial apps and Telegram need the Pro plan; caller alarms need NotiCatcher set as the caller",
         "  ID and spam app; matching happens on the device and notification content is not sent to servers.",
         "- No emoji, no ALL CAPS words, no superlatives such as 'best' or '#1'.",
+        "- hero.badge is a short question shown in a small pill above the main headline; keep it short.",
+        "- hero.cases are 'when you...' situations split into before + emphasis + after; the emphasis part is shown in bold.",
+        "  Together they must read as one natural sentence; adjust word order freely. 'before' or 'after' may be empty.",
         "",
         "English source (master):",
         json.dumps(en, ensure_ascii=False, indent=2),
@@ -123,6 +167,13 @@ def build_prompt(language, en, ko, feedback):
         "",
         "Return only the JSON object.",
     ]
+    if existing:
+        parts += [
+            "",
+            f"The rest of the page is already translated into {language} as below. Match its tone, terms, and form of address",
+            "(formal or informal), and make sure your text does not repeat these headings word for word:",
+            json.dumps(existing, ensure_ascii=False, indent=2),
+        ]
     if feedback:
         parts += ["", "Your previous answer broke these rules; fix them and keep everything else:", *[f"- {p}" for p in feedback]]
     return "\n".join(parts)
@@ -144,20 +195,23 @@ def run_codex(prompt, schema_path, workdir):
     return json.loads(text)
 
 
-def localize(lang, en, ko, schema_path):
+def localize(lang, en, ko, schema_path, only=None):
     language = LANGS[lang]
+    out_path = OUT_DIR / f"{lang}.json"
+    existing = json.loads(out_path.read_text(encoding="utf-8"))["copy"] if only else None
     feedback = []
     for attempt in range(1, 4):
         with tempfile.TemporaryDirectory(prefix=f"codex-{lang}-") as workdir:
             try:
-                data = run_codex(build_prompt(language, en, ko, feedback), schema_path, workdir)
+                data = run_codex(build_prompt(language, en, ko, feedback, existing), schema_path, workdir)
             except Exception as exc:  # noqa: BLE001 - report and retry
                 feedback = [f"no valid JSON answer ({exc})"]
                 continue
         feedback = violations(en, data)
         if not feedback:
-            out = {"language": language, "generatedBy": "codex exec", "copy": data}
-            (OUT_DIR / f"{lang}.json").write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            copy = merge(existing, data) if only else data
+            out = {"language": language, "generatedBy": "codex exec", "copy": copy}
+            out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             return lang, f"ok (attempt {attempt})"
     return lang, "FAILED: " + "; ".join(feedback)
 
@@ -165,13 +219,19 @@ def localize(lang, en, ko, schema_path):
 def main():
     source = json.loads(SOURCE.read_text(encoding="utf-8"))
     en, ko = source["en"], source["ko"]
+    args = sys.argv[1:]
+    only = None
+    if args[:1] == ["--only"]:
+        only = args[1].split(",")
+        args = args[2:]
+        en, ko = pick(en, only), pick(ko, only)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    langs = sys.argv[1:] or list(LANGS)
+    langs = args or list(LANGS)
     with tempfile.TemporaryDirectory() as tmp:
         schema_path = pathlib.Path(tmp) / "schema.json"
         schema_path.write_text(json.dumps(schema_for(en)), encoding="utf-8")
         with cf.ThreadPoolExecutor(max_workers=8) as pool:
-            for lang, status in pool.map(lambda code: localize(code, en, ko, schema_path), langs):
+            for lang, status in pool.map(lambda code: localize(code, en, ko, schema_path, only), langs):
                 print(f"{lang}: {status}", flush=True)
 
 

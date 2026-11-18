@@ -37,6 +37,30 @@
   overflow-wrap: break-word;
 }
 
+/* The hero badge holds a question ("Phone always on silent?"), not a label:
+   no forced capitals, and let long translations wrap inside the pill. */
+.hero .hero-badge {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #e0e7ff;
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(165, 180, 252, 0.45);
+  max-width: 100%;
+  border-radius: 1.25rem;
+}
+
+/* Very long single words (Malayalam, German) must wrap instead of widening the page. */
+.hero h1 {
+  overflow-wrap: anywhere;
+}
+
+/* Use cases sit one per line; avoid a lone last word on its own line. */
+.hero .hero-lead {
+  text-wrap: pretty;
+}
+
 /* Korean wraps between words, not between syllables ("두/는"). */
 .promo:lang(ko),
 .hero:lang(ko) h1,

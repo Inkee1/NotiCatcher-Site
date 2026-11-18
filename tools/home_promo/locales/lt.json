@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Telefonas visada begarsiu režimu?",
+      "title": "Tegul skamba tik tai, kas jums svarbu.",
       "body": "Tyla malonu, kol nepraleidžiate svarbios žinutės. NotiCatcher leidžia kitiems pranešimams likti tyliems ir įjungia garsinį signalą tik tada, kai pranešime yra jūsų pasirinktas raktažodis.",
       "feedLabel": "Pavyzdys: įjungus begarsį režimą, suskamba tik pranešimas su jūsų raktažodžiu",
       "mutedLabel": "Tylu",
@@ -110,6 +110,28 @@
       "privacy": "Pranešimų turinys lyginamas su jūsų raktažodžiais pačiame įrenginyje ir nesiunčiamas į mūsų serverius.",
       "play": "Atsisiųsti iš Google Play",
       "plans": "Peržiūrėti planus"
+    },
+    "hero": {
+      "badge": "Telefono garsas visada išjungtas?",
+      "intro": "Kai pranešime yra jūsų pasirinktas raktažodis, telefonas suskamba kaip žadintuvas – net ir begarsiu režimu.",
+      "cases": [
+        {
+          "before": "Kai dirbate iš namų ir norite, kad suskambėtų tik ",
+          "emphasis": "žinutės iš darbo",
+          "after": "."
+        },
+        {
+          "before": "Kai norite girdėti tik ",
+          "emphasis": "artimųjų",
+          "after": " skambučius."
+        },
+        {
+          "before": "Kai sekate ",
+          "emphasis": "kriptovaliutų, akcijų ar finansų rinkas",
+          "after": " ir nenorite praleisti svarbaus signalo."
+        }
+      ],
+      "outro": "Tam ir yra NotiCatcher."
     }
   }
 }

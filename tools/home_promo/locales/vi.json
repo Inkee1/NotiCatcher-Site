@@ -3,7 +3,7 @@
   "generatedBy": "codex exec",
   "copy": {
     "quiet": {
-      "title": "Bạn hay để điện thoại im lặng?",
+      "title": "Cứ để máy im lặng. Tin quan trọng vẫn reo.",
       "body": "Yên tĩnh thì thích thật, nhưng lỡ mất tin nhắn quan trọng thì lại lo. NotiCatcher giữ các thông báo khác im lặng, chỉ reo báo động khi có thông báo chứa từ khóa bạn đã chọn.",
       "feedLabel": "Ví dụ: khi để im lặng, chỉ thông báo có từ khóa mới reo",
       "mutedLabel": "Im lặng",
@@ -110,6 +110,28 @@
       "privacy": "Nội dung thông báo được đối chiếu với từ khóa ngay trên thiết bị của bạn và không được gửi đến máy chủ của chúng tôi.",
       "play": "Tải trên Google Play",
       "plans": "Xem các gói"
+    },
+    "hero": {
+      "badge": "Hay để máy im lặng?",
+      "intro": "Khi thông báo có từ khóa bạn chọn, điện thoại sẽ reo như báo thức, ngay cả trong chế độ im lặng.",
+      "cases": [
+        {
+          "before": "Khi bạn làm việc tại nhà và chỉ muốn nghe chuông báo ",
+          "emphasis": "tin nhắn công việc",
+          "after": "."
+        },
+        {
+          "before": "Khi bạn chỉ muốn điện thoại đổ chuông nếu ",
+          "emphasis": "người thân",
+          "after": " gọi đến."
+        },
+        {
+          "before": "Khi bạn không muốn bỏ lỡ tín hiệu quan trọng về ",
+          "emphasis": "tiền mã hóa, chứng khoán hay tài chính",
+          "after": "."
+        }
+      ],
+      "outro": "Những lúc ấy, đã có NotiCatcher."
     }
   }
 }
