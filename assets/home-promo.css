@@ -51,6 +51,11 @@
   border-radius: 1.25rem;
 }
 
+/* "silent mode" in the hero's first sentence: the one warm accent on the page. */
+.hero .hero-silent {
+  color: #fde047;
+}
+
 /* Very long single words (Malayalam, German) must wrap instead of widening the page. */
 .hero h1 {
   overflow-wrap: anywhere;

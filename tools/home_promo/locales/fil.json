@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "Laging naka-silent?",
-      "intro": "Kahit naka-silent ang phone mo, tutunog ito na parang alarm kapag lumabas sa notification ang isa sa mga keyword mo.",
+      "intro": {
+        "before": "Kahit ",
+        "highlight": "naka-silent",
+        "after": " ang phone mo, tutunog ito na parang alarm kapag lumabas ang isa sa mga keyword mo sa notification, text, o papasok na tawag."
+      },
       "cases": [
         {
           "before": "Kapag nagtatrabaho ka sa bahay at gusto mong ",

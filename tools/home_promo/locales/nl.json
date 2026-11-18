@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "Telefoon altijd op stil?",
-      "intro": "Zodra een melding een van je trefwoorden bevat, hoor je een alarm. Ook als je telefoon op stil staat.",
+      "intro": {
+        "before": "Je hoort een alarm zodra een appmelding, sms'je of inkomende oproep een van je trefwoorden bevat, ook als je telefoon ",
+        "highlight": "op stil",
+        "after": " staat."
+      },
       "cases": [
         {
           "before": "Als je thuiswerkt en alleen ",

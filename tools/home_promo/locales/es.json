@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "¿Sueles llevar el móvil en silencio?",
-      "intro": "Si una de tus palabras clave aparece en una notificación, el móvil suena como una alarma aunque lo tengas en silencio.",
+      "intro": {
+        "before": "Si una de tus palabras clave aparece en una notificación, un mensaje de texto o una llamada entrante, tu móvil suena como una alarma incluso en ",
+        "highlight": "modo silencio",
+        "after": "."
+      },
       "cases": [
         {
           "before": "Cuando trabajas desde casa y solo quieres que suenen ",

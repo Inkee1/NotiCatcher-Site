@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "Sempre no silencioso?",
-      "intro": "Quando uma das suas palavras-chave aparece em uma notificação, o celular toca como um alarme, mesmo no silencioso.",
+      "intro": {
+        "before": "Mesmo no ",
+        "highlight": "modo silencioso",
+        "after": ", seu celular toca como um alarme quando uma das suas palavras-chave aparece em uma notificação, mensagem de texto ou chamada recebida."
+      },
       "cases": [
         {
           "before": "Quando você trabalha de casa e quer que só as ",

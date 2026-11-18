@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "Telefonu sessizde mi tutuyorsunuz?",
-      "intro": "Bir bildirimde seçtiğiniz anahtar kelimelerden biri geçerse telefonunuz sessizde bile alarm gibi çalar.",
+      "intro": {
+        "before": "Bir bildirimde, kısa mesajda veya gelen aramada seçtiğiniz anahtar kelimelerden biri geçerse telefonunuz ",
+        "highlight": "sessiz modda",
+        "after": " bile alarm gibi çalar."
+      },
       "cases": [
         {
           "before": "Evden çalışırken yalnızca ",

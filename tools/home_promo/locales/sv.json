@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "Alltid på ljudlöst?",
-      "intro": "När en notis innehåller något av dina nyckelord ringer mobilen som ett larm, även på ljudlöst.",
+      "intro": {
+        "before": "När en notis, ett sms eller ett inkommande samtal matchar något av dina nyckelord hörs ett larm – även om mobilen är på ",
+        "highlight": "ljudlöst",
+        "after": "."
+      },
       "cases": [
         {
           "before": "När du jobbar hemifrån och bara vill släppa igenom ",

@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "Huwa unaweka simu kimya?",
-      "intro": "Arifa ikiwa na mojawapo ya maneno uliyochagua, simu yako hulia kama kengele hata ikiwa kwenye hali ya kimya.",
+      "intro": {
+        "before": "Neno ulilochagua likitokea kwenye arifa ya simu, ujumbe mfupi au simu inayoingia, simu yako hulia kama kengele hata ikiwa kwenye ",
+        "highlight": "hali ya kimya",
+        "after": "."
+      },
       "cases": [
         {
           "before": "Unapofanya kazi nyumbani na unataka simu ilie kwa ",

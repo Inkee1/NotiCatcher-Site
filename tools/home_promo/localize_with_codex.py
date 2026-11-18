@@ -114,6 +114,9 @@ def violations(en, data):
     for item in filter(None, highlighted):
         if item["keyword"] != item["keyword"].strip():
             problems.append(f'keyword "{item["keyword"]}" must not start or end with spaces')
+    intro = lookup(data, "hero.intro")
+    if intro and intro["highlight"] != intro["highlight"].strip():
+        problems.append("hero.intro.highlight must not start or end with spaces")
     for case in lookup(data, "hero.cases") or []:
         if case["emphasis"] != case["emphasis"].strip():
             problems.append(f'emphasis "{case["emphasis"]}" must not start or end with spaces')
@@ -156,6 +159,8 @@ def build_prompt(language, en, ko, feedback, existing=None):
         "  ID and spam app; matching happens on the device and notification content is not sent to servers.",
         "- No emoji, no ALL CAPS words, no superlatives such as 'best' or '#1'.",
         "- hero.badge is a short question shown in a small pill above the main headline; keep it short.",
+        "- hero.intro is one sentence split into before + highlight + after; highlight is the phrase for 'silent mode' and is shown",
+        "  in a yellow accent. It must name all three sources: phone notifications, text messages, and calls.",
         "- hero.cases are 'when you...' situations split into before + emphasis + after; the emphasis part is shown in bold.",
         "  Together they must read as one natural sentence; adjust word order freely. 'before' or 'after' may be empty.",
         "",

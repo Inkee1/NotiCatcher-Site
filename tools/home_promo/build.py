@@ -107,8 +107,10 @@ def render_hero(h):
     cases = "<br/>".join(
         f'{e(c["before"])}<strong class="hero-emphasis">{e(c["emphasis"])}</strong>{e(c["after"])}' for c in h["cases"]
     )
+    i = h["intro"]
     lead = (
-        f'<p class="hero-lead"><strong class="hero-emphasis">{e(h["intro"])}</strong><br/>'
+        f'<p class="hero-lead"><strong class="hero-emphasis">{e(i["before"])}'
+        f'<span class="hero-silent">{e(i["highlight"])}</span>{e(i["after"])}</strong><br/>'
         f'{cases}<br/><strong>{e(h["outro"])}</strong></p>'
     )
     return e(h["badge"]), lead

@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "Selalu pakai mode senyap?",
-      "intro": "Ponselmu berbunyi seperti alarm saat kata kunci pilihanmu muncul di notifikasi, bahkan dalam mode senyap.",
+      "intro": {
+        "before": "Ponselmu berbunyi seperti alarm saat kata kunci pilihanmu muncul di notifikasi, pesan teks, atau panggilan masuk, bahkan dalam ",
+        "highlight": "mode senyap",
+        "after": "."
+      },
       "cases": [
         {
           "before": "Saat kamu kerja dari rumah dan hanya ingin ",

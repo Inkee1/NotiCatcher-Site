@@ -113,7 +113,11 @@
     },
     "hero": {
       "badge": "Míváte vypnuté zvonění?",
-      "intro": "Když se v oznámení objeví vaše klíčové slovo, zazní alarm. I v tichém režimu.",
+      "intro": {
+        "before": "Když se vaše klíčové slovo objeví v oznámení z aplikace, v textové zprávě nebo u příchozího hovoru, zazní alarm i v ",
+        "highlight": "tichém režimu",
+        "after": "."
+      },
       "cases": [
         {
           "before": "Když pracujete z domova a chcete, aby se ozvaly jen ",
