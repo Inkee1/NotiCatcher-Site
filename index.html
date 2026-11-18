@@ -49,81 +49,45 @@
     <noscript>
         <a href="/en/">Go to English site</a>
     </noscript>
-    <script>
-        const SUPPORTED = ["en", "am", "ar", "bg", "bn", "cs", "da", "de", "el", "es", "es-419", "et", "fa", "fi", "fil", "fr", "gu", "he", "hi", "hr", "hu", "id", "it", "ja", "km", "kn", "ko", "lo", "lt", "lv", "ml", "mr", "ms", "my", "nl", "no", "pa", "pl", "pt", "pt-br", "ro", "ru", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tr", "uk", "ur", "vi", "zh", "zh-hans", "zh-hant"];
-        const ALIASES = { "ko-kr": "ko" };
-        const MANUAL_STORAGE_KEY = "lang_manual";
-
-        function normalize(tag) {
-            return tag ? tag.toLowerCase().replace(/_/g, "-") : "";
-        }
-
-        function resolve(tag) {
-            let t = normalize(tag);
-            if (!t) return "";
-            if (ALIASES[t]) t = ALIASES[t];
-            if (SUPPORTED.includes(t)) return t;
-            
-            while (t.includes("-")) {
-                t = t.substring(0, t.lastIndexOf("-"));
-                if (ALIASES[t]) t = ALIASES[t];
-                if (SUPPORTED.includes(t)) return t;
-            }
-            return SUPPORTED.includes(t) ? t : "";
-        }
-
-        function getStoredManualLang() {
-            try {
-                return localStorage.getItem(MANUAL_STORAGE_KEY);
-            } catch (_) {
-                return "";
-            }
-        }
-
-        function pickBestLang() {
-            const qsLang = new URLSearchParams(location.search).get("lang");
-            const manual = getStoredManualLang();
-
-            let r = resolve(qsLang);
-            if (r) return r;
-
-            r = resolve(manual);
-            if (r) return r;
-
-            const list = (navigator.languages && navigator.languages.length)
-                ? navigator.languages
-                : [navigator.language || "en"];
-
-            for (const l of list) {
-                r = resolve(l);
-                if (r) return r;
-            }
-
-            return "en";
-        }
-
-        const lang = pickBestLang();
-        const pathname = location.pathname || "/";
-        const basePath = pathname.endsWith("/")
-            ? pathname
-            : /\.html?$/i.test(pathname)
-                ? pathname.replace(/[^/]*$/, "")
-                : pathname + "/";
-        const target = new URL("./" + lang + "/", location.origin + basePath).toString();
-
-        // Defensive: if a language folder is missing (future locales / partial deploy),
-        // don't redirect into a cached 404 loop. Fall back to English.
-        fetch(target, { method: "HEAD", cache: "no-store" })
-            .then((r) => {
-                if (r && r.ok) {
-                    location.replace(target);
-                    return;
-                }
-                location.replace(new URL("./en/", location.origin + basePath).toString());
-            })
-            .catch(() => {
-                location.replace(target);
-            });
-    </script>
+    <!-- noticatcher-locale-redirect:start -->
+<script>
+(function(){
+var ALIAS={nb:"no",nn:"no",tl:"fil",iw:"he","in":"id"};
+var TZ={"ko":"Asia/Seoul","ja":"Asia/Tokyo","zh-hans":"Asia/Shanghai Asia/Chongqing Asia/Harbin Asia/Urumqi","zh-hant":"Asia/Taipei Asia/Hong_Kong Asia/Macau","th":"Asia/Bangkok","vi":"Asia/Ho_Chi_Minh Asia/Saigon","id":"Asia/Jakarta Asia/Makassar Asia/Jayapura Asia/Pontianak","ms":"Asia/Kuala_Lumpur Asia/Kuching","fil":"Asia/Manila","km":"Asia/Phnom_Penh","lo":"Asia/Vientiane","my":"Asia/Yangon Asia/Rangoon","bn":"Asia/Dhaka","ur":"Asia/Karachi","fa":"Asia/Tehran","he":"Asia/Jerusalem Asia/Tel_Aviv","ar":"Asia/Riyadh Asia/Baghdad Asia/Kuwait Asia/Qatar Asia/Bahrain Asia/Muscat Asia/Dubai Asia/Amman Asia/Beirut Asia/Damascus Africa/Cairo Africa/Algiers Africa/Casablanca Africa/Tunis Africa/Tripoli Africa/Khartoum","tr":"Europe/Istanbul","ru":"Europe/Moscow Europe/Samara Europe/Volgograd Asia/Yekaterinburg Asia/Omsk Asia/Novosibirsk Asia/Krasnoyarsk Asia/Irkutsk Asia/Yakutsk Asia/Vladivostok","uk":"Europe/Kiev Europe/Kyiv","pl":"Europe/Warsaw","cs":"Europe/Prague","sk":"Europe/Bratislava","hu":"Europe/Budapest","ro":"Europe/Bucharest","bg":"Europe/Sofia","el":"Europe/Athens","hr":"Europe/Zagreb","sl":"Europe/Ljubljana","sr":"Europe/Belgrade","lt":"Europe/Vilnius","lv":"Europe/Riga","et":"Europe/Tallinn","fi":"Europe/Helsinki","sv":"Europe/Stockholm","no":"Europe/Oslo","da":"Europe/Copenhagen","nl":"Europe/Amsterdam","de":"Europe/Berlin Europe/Vienna","fr":"Europe/Paris","it":"Europe/Rome","es":"Europe/Madrid","pt":"Europe/Lisbon","pt-br":"America/Sao_Paulo America/Fortaleza America/Recife America/Bahia America/Manaus America/Belem","es-419":"America/Mexico_City America/Bogota America/Lima America/Santiago America/Argentina/Buenos_Aires America/Buenos_Aires America/Caracas America/Guayaquil America/La_Paz America/Montevideo America/Asuncion America/Guatemala America/Costa_Rica America/Panama","am":"Africa/Addis_Ababa","sw":"Africa/Nairobi Africa/Dar_es_Salaam"};
+var TZ_LANG={};for(var k in TZ){TZ[k].split(" ").forEach(function(z){TZ_LANG[z]=k;});}
+function norm(t){return(t||"").toString().trim().toLowerCase().replace(/_/g,"-");}
+function resolve(tag,has){
+  var l=norm(tag);if(!l)return"";
+  var head=l.split("-")[0];if(ALIAS[head])l=ALIAS[head]+l.slice(head.length);
+  if(has("zh-hant")&&/^zh-(hant|tw|hk|mo)(-|$)/.test(l))return"zh-hant";
+  if(has("zh-hans")&&/^zh-(hans|cn|sg)(-|$)/.test(l))return"zh-hans";
+  if(has("es-419")&&/^es-(?!es(-|$))/.test(l))return"es-419";
+  if(has("pt-br")&&/^pt-br(-|$)/.test(l))return"pt-br";
+  while(l){if(has(l))return l;var i=l.lastIndexOf("-");if(i<0)break;l=l.slice(0,i);}
+  return"";
+}
+function preferred(has){
+  var list=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||""];
+  var found=[];
+  for(var i=0;i<list.length;i++){var r=resolve(list[i],has);if(r&&found.indexOf(r)<0)found.push(r);}
+  var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}
+  var local=TZ_LANG[tz];
+  if(local&&found.indexOf(local)>=0)return local;
+  return found[0]||"";
+}
+var SUPPORTED=["en", "am", "ar", "bg", "bn", "cs", "da", "de", "el", "es", "es-419", "et", "fa", "fi", "fil", "fr", "gu", "he", "hi", "hr", "hu", "id", "it", "ja", "km", "kn", "ko", "lo", "lt", "lv", "ml", "mr", "ms", "my", "nl", "no", "pa", "pl", "pt", "pt-br", "ro", "ru", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tr", "uk", "ur", "vi", "zh", "zh-hans", "zh-hant"];
+function has(l){return SUPPORTED.indexOf(l)>=0;}
+var manual="";try{manual=localStorage.getItem("lang_manual")||"";}catch(e){}
+var lang=resolve(new URLSearchParams(location.search).get("lang"),has)||resolve(manual,has)||preferred(has)||"en";
+var path=location.pathname||"/";
+var base=path.endsWith("/")?path:/\.html?$/i.test(path)?path.replace(/[^/]*$/,""):path+"/";
+var target=new URL("./"+lang+"/",location.origin+base).toString();
+// If a language folder is missing (partial deploy), fall back to English instead of a 404.
+fetch(target,{method:"HEAD",cache:"no-store"}).then(function(r){
+  location.replace(r&&r.ok?target:new URL("./en/",location.origin+base).toString());
+}).catch(function(){location.replace(target);});
+})();
+</script>
+<!-- noticatcher-locale-redirect:end -->
 </body>
 </html>

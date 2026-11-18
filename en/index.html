@@ -79,6 +79,51 @@
   ]
 }</script>
 <!-- noticatcher-structured-data:end -->
+<!-- noticatcher-locale-redirect:start -->
+<script>
+(function(){
+try{
+if(/bot|crawl|spider|slurp|mediapartners/i.test(navigator.userAgent))return;
+var ALIAS={nb:"no",nn:"no",tl:"fil",iw:"he","in":"id"};
+var TZ={"ko":"Asia/Seoul","ja":"Asia/Tokyo","zh-hans":"Asia/Shanghai Asia/Chongqing Asia/Harbin Asia/Urumqi","zh-hant":"Asia/Taipei Asia/Hong_Kong Asia/Macau","th":"Asia/Bangkok","vi":"Asia/Ho_Chi_Minh Asia/Saigon","id":"Asia/Jakarta Asia/Makassar Asia/Jayapura Asia/Pontianak","ms":"Asia/Kuala_Lumpur Asia/Kuching","fil":"Asia/Manila","km":"Asia/Phnom_Penh","lo":"Asia/Vientiane","my":"Asia/Yangon Asia/Rangoon","bn":"Asia/Dhaka","ur":"Asia/Karachi","fa":"Asia/Tehran","he":"Asia/Jerusalem Asia/Tel_Aviv","ar":"Asia/Riyadh Asia/Baghdad Asia/Kuwait Asia/Qatar Asia/Bahrain Asia/Muscat Asia/Dubai Asia/Amman Asia/Beirut Asia/Damascus Africa/Cairo Africa/Algiers Africa/Casablanca Africa/Tunis Africa/Tripoli Africa/Khartoum","tr":"Europe/Istanbul","ru":"Europe/Moscow Europe/Samara Europe/Volgograd Asia/Yekaterinburg Asia/Omsk Asia/Novosibirsk Asia/Krasnoyarsk Asia/Irkutsk Asia/Yakutsk Asia/Vladivostok","uk":"Europe/Kiev Europe/Kyiv","pl":"Europe/Warsaw","cs":"Europe/Prague","sk":"Europe/Bratislava","hu":"Europe/Budapest","ro":"Europe/Bucharest","bg":"Europe/Sofia","el":"Europe/Athens","hr":"Europe/Zagreb","sl":"Europe/Ljubljana","sr":"Europe/Belgrade","lt":"Europe/Vilnius","lv":"Europe/Riga","et":"Europe/Tallinn","fi":"Europe/Helsinki","sv":"Europe/Stockholm","no":"Europe/Oslo","da":"Europe/Copenhagen","nl":"Europe/Amsterdam","de":"Europe/Berlin Europe/Vienna","fr":"Europe/Paris","it":"Europe/Rome","es":"Europe/Madrid","pt":"Europe/Lisbon","pt-br":"America/Sao_Paulo America/Fortaleza America/Recife America/Bahia America/Manaus America/Belem","es-419":"America/Mexico_City America/Bogota America/Lima America/Santiago America/Argentina/Buenos_Aires America/Buenos_Aires America/Caracas America/Guayaquil America/La_Paz America/Montevideo America/Asuncion America/Guatemala America/Costa_Rica America/Panama","am":"Africa/Addis_Ababa","sw":"Africa/Nairobi Africa/Dar_es_Salaam"};
+var TZ_LANG={};for(var k in TZ){TZ[k].split(" ").forEach(function(z){TZ_LANG[z]=k;});}
+function norm(t){return(t||"").toString().trim().toLowerCase().replace(/_/g,"-");}
+function resolve(tag,has){
+  var l=norm(tag);if(!l)return"";
+  var head=l.split("-")[0];if(ALIAS[head])l=ALIAS[head]+l.slice(head.length);
+  if(has("zh-hant")&&/^zh-(hant|tw|hk|mo)(-|$)/.test(l))return"zh-hant";
+  if(has("zh-hans")&&/^zh-(hans|cn|sg)(-|$)/.test(l))return"zh-hans";
+  if(has("es-419")&&/^es-(?!es(-|$))/.test(l))return"es-419";
+  if(has("pt-br")&&/^pt-br(-|$)/.test(l))return"pt-br";
+  while(l){if(has(l))return l;var i=l.lastIndexOf("-");if(i<0)break;l=l.slice(0,i);}
+  return"";
+}
+function preferred(has){
+  var list=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||""];
+  var found=[];
+  for(var i=0;i<list.length;i++){var r=resolve(list[i],has);if(r&&found.indexOf(r)<0)found.push(r);}
+  var tz="";try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||"";}catch(e){}
+  var local=TZ_LANG[tz];
+  if(local&&found.indexOf(local)>=0)return local;
+  return found[0]||"";
+}
+var alt={};
+document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(function(l){var h=norm(l.getAttribute("hreflang"));if(h!=="x-default")alt[h]=l.href;});
+function has(l){return !!alt[l];}
+var manual="";try{manual=localStorage.getItem("lang_manual")||"";}catch(e){}
+var lang=resolve(manual,has);
+if(!lang){
+  // Moving around inside the site (or arriving from the root redirect) keeps the page the visitor is on.
+  if(document.referrer){try{if(new URL(document.referrer).origin===location.origin)return;}catch(e){}}
+  lang=preferred(has);
+}
+if(!lang||lang==="en")return;
+var u=new URL(alt[lang]);u.search=location.search;u.hash=location.hash;
+location.replace(u.toString());
+}catch(e){}
+})();
+</script>
+<!-- noticatcher-locale-redirect:end -->
 </head>
 <body>
 <!-- Abstract Background Gradients -->
