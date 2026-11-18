@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Kas su telefon on alati hääletu?",
-      "intro": {
-        "before": "Kui telefoni teavituses, tekstsõnumis või sissetuleva kõne andmetes on sinu valitud märksõna, kõlab alarm ka ",
-        "highlight": "hääletus režiimis",
-        "after": "."
-      },
+      "intro": "Kui telefoni teavituses, tekstsõnumis või sissetuleva kõne andmetes on sinu valitud [märksõna], kõlab [alarm] ka [hääletus režiimis].",
       "cases": [
         {
           "before": "Kui töötad kodus ja tahad, et märku annaksid ainult ",

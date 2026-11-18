@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Telefono garsas visada išjungtas?",
-      "intro": {
-        "before": "Jei telefono pranešime, teksto žinutėje ar skambučio informacijoje yra jūsų pasirinktas raktažodis, NotiCatcher suskamba kaip žadintuvas – net ir įjungus ",
-        "highlight": "begarsį režimą",
-        "after": "."
-      },
+      "intro": "Jei telefono pranešime, teksto žinutėje ar skambučio informacijoje yra jūsų pasirinktas [raktažodis], NotiCatcher suskamba kaip [žadintuvas] – net ir įjungus [begarsį režimą].",
       "cases": [
         {
           "before": "Kai dirbate iš namų ir norite, kad suskambėtų tik ",

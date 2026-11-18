@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Sempre com o telemóvel sem som?",
-      "intro": {
-        "before": "Quando uma das tuas palavras-chave aparece numa notificação, numa mensagem de texto ou numa chamada recebida, o telemóvel toca como um alarme, mesmo em ",
-        "highlight": "modo silencioso",
-        "after": "."
-      },
+      "intro": "Mesmo em [modo silencioso], o teu telemóvel toca como um [alarme] quando uma das tuas [palavras-chave] aparece numa notificação, numa mensagem de texto ou numa chamada recebida.",
       "cases": [
         {
           "before": "Quando trabalhas em casa e só queres que as ",

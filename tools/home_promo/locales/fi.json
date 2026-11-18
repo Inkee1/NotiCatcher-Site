@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Pidätkö puhelinta äänettömällä?",
-      "intro": {
-        "before": "Kun valitsemasi avainsana näkyy puhelimen ilmoituksessa, tekstiviestissä tai saapuvan puhelun tiedoissa, hälytys soi myös ",
-        "highlight": "äänettömällä",
-        "after": "."
-      },
+      "intro": "Kun valitsemasi [avainsana] näkyy puhelimesi ilmoituksessa, tekstiviestissä tai saapuvan puhelun tiedoissa, [hälytys] soi myös [äänettömällä].",
       "cases": [
         {
           "before": "Kun teet etätöitä ja haluat hälytyksen vain ",

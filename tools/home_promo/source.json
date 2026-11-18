@@ -3,11 +3,7 @@
   "en": {
     "hero": {
       "badge": "Phone always on silent?",
-      "intro": {
-        "before": "Rings like an alarm when your keywords appear in notifications, texts, or calls — even in ",
-        "highlight": "silent mode",
-        "after": "."
-      },
+      "intro": "Rings like an [alarm] when your [keywords] appear in notifications, texts, or calls — even in [silent mode].",
       "cases": [
         {
           "before": "When you're working from home and only want ",
@@ -140,11 +136,7 @@
   "ko": {
     "hero": {
       "badge": "평소 폰을 무음으로 두시나요?",
-      "intro": {
-        "before": "폰 알림, 문자, 전화에 키워드가 나타나면 알람처럼 울립니다 — ",
-        "highlight": "무음 모드",
-        "after": "에서도요."
-      },
+      "intro": "폰 알림, 문자, 전화에 [키워드]가 나타나면 [알람]처럼 울립니다 — [무음 모드]에서도요.",
       "cases": [
         {
           "before": "재택근무 중 ",

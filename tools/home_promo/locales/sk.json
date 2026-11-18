@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Máte mobil stále stíšený?",
-      "intro": {
-        "before": "Keď sa vaše kľúčové slovo objaví v upozornení, v textovej správe alebo pri prichádzajúcom hovore, zaznie alarm aj v ",
-        "highlight": "tichom režime",
-        "after": "."
-      },
+      "intro": "Keď sa vaše [kľúčové slovo] objaví v upozornení na mobile, v textovej správe alebo pri prichádzajúcom hovore, zaznie [alarm] aj v [tichom režime].",
       "cases": [
         {
           "before": "Keď pracujete z domu a chcete, aby sa ozývali len ",

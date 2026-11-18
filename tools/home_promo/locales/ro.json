@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Mereu pe silențios?",
-      "intro": {
-        "before": "Chiar și ",
-        "highlight": "pe silențios",
-        "after": ", telefonul sună ca o alarmă când un cuvânt-cheie ales de tine apare într-o notificare, într-un mesaj text sau în detaliile unui apel primit."
-      },
+      "intro": "Chiar și [pe silențios], telefonul sună ca o [alarmă] când un [cuvânt-cheie] ales de tine apare într-o notificare, într-un mesaj text sau în detaliile unui apel primit.",
       "cases": [
         {
           "before": "Când lucrezi de acasă și vrei ca doar ",

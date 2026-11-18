@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Klingelton immer aus?",
-      "intro": {
-        "before": "NotiCatcher schlägt Alarm, sobald eines deiner Stichwörter in einer Benachrichtigung, einer Textnachricht oder bei einem eingehenden Anruf auftaucht – selbst wenn dein Handy ",
-        "highlight": "auf lautlos",
-        "after": " steht."
-      },
+      "intro": "Taucht eines deiner [Stichwörter] in einer App-Benachrichtigung, einer Textnachricht oder bei einem eingehenden Anruf auf, schlägt dein Handy [Alarm] – selbst im [Lautlosmodus].",
       "cases": [
         {
           "before": "Wenn dich im Homeoffice nur ",

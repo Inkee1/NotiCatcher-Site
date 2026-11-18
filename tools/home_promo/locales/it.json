@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Sempre in silenzioso?",
-      "intro": {
-        "before": "Quando una delle tue parole chiave compare in una notifica, in un messaggio di testo o in una chiamata in arrivo, il telefono suona come una sveglia, anche ",
-        "highlight": "in silenzioso",
-        "after": "."
-      },
+      "intro": "Quando una delle tue [parole chiave] compare in una notifica, in un messaggio di testo o in una chiamata in arrivo, il telefono suona come una [sveglia], anche [in silenzioso].",
       "cases": [
         {
           "before": "Quando lavori da casa e vuoi che suonino solo ",

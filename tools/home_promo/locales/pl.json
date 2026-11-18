@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Zwykle wyciszasz telefon?",
-      "intro": {
-        "before": "Gdy wybrane przez ciebie słowo kluczowe pojawi się w powiadomieniu z aplikacji, w wiadomości tekstowej lub na ekranie połączenia przychodzącego, usłyszysz alarm – nawet w ",
-        "highlight": "trybie cichym",
-        "after": "."
-      },
+      "intro": "Nawet w [trybie cichym] usłyszysz [alarm], gdy wybrane przez ciebie [słowo kluczowe] pojawi się w powiadomieniu z aplikacji, w wiadomości tekstowej lub na ekranie połączenia przychodzącego.",
       "cases": [
         {
           "before": "Gdy pracujesz z domu i tylko ",

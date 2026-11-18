@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Telefons parasti bez skaņas?",
-      "intro": {
-        "before": "Ja tālruņa paziņojumā, īsziņā vai ienākošā zvana informācijā ir kāds no taviem atslēgvārdiem, trauksmes signāls atskan pat ",
-        "highlight": "klusuma režīmā",
-        "after": "."
-      },
+      "intro": "Ja tālruņa paziņojumā, īsziņā vai ienākošā zvana informācijā ir kāds no taviem [atslēgvārdiem], [trauksmes signāls] atskan pat [klusuma režīmā].",
       "cases": [
         {
           "before": "Kad strādā no mājām un vēlies, lai atskan tikai ",

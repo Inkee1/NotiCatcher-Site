@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Altid på lydløs?",
-      "intro": {
-        "before": "Når et af dine nøgleord dukker op i en notifikation, i en sms eller ved et indgående opkald, ringer mobilen som en alarm – også ",
-        "highlight": "på lydløs",
-        "after": "."
-      },
+      "intro": "Når et af dine [nøgleord] dukker op i en notifikation, i en sms eller ved et indgående opkald, ringer mobilen som en [alarm] – også [på lydløs].",
       "cases": [
         {
           "before": "Når du arbejder hjemmefra og kun vil lade ",

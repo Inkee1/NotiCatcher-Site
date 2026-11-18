@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "¿Siempre con el celular en silencio?",
-      "intro": {
-        "before": "Si una de tus palabras clave aparece en una notificación, un mensaje de texto o una llamada entrante, suena una alarma aunque tengas el celular en ",
-        "highlight": "modo silencio",
-        "after": "."
-      },
+      "intro": "Si una de tus [palabras clave] aparece en una notificación, un mensaje de texto o una llamada entrante, suena una [alarma] aunque tengas el celular en [modo silencio].",
       "cases": [
         {
           "before": "Cuando trabajas desde casa y quieres que solo suenen ",

@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Sonnerie toujours coupée ?",
-      "intro": {
-        "before": "Dès que votre téléphone repère l’un de vos mots-clés dans une notification, un texto ou un appel entrant, il déclenche une alarme, même en ",
-        "highlight": "mode silencieux",
-        "after": "."
-      },
+      "intro": "Même en [mode silencieux], votre téléphone déclenche une [alarme] dès qu’il repère l’un de vos [mots-clés] dans une notification, un texto ou un appel entrant.",
       "cases": [
         {
           "before": "Quand vous travaillez de chez vous et que seuls ",

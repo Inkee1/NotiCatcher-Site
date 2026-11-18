@@ -51,8 +51,8 @@
   border-radius: 1.25rem;
 }
 
-/* "silent mode" in the hero's first sentence: the one warm accent on the page. */
-.hero .hero-silent {
+/* keyword, alarm, silent mode in the hero's first sentence: the only warm accent on the page. */
+.hero .hero-accent {
   color: #fde047;
 }
 

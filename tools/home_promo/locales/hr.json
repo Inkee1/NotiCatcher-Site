@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Mobitel ti je stalno na tihom?",
-      "intro": {
-        "before": "Kad se tvoja ključna riječ pojavi u obavijesti, tekstualnoj poruci ili dolaznom pozivu, mobitel zazvoni poput alarma čak i u ",
-        "highlight": "tihom načinu rada",
-        "after": "."
-      },
+      "intro": "Kad se tvoja [ključna riječ] pojavi u obavijesti, tekstualnoj poruci ili dolaznom pozivu, mobitel zazvoni kao [alarm] čak i u [tihom načinu rada].",
       "cases": [
         {
           "before": "Kad radiš od kuće i želiš da se oglase samo ",

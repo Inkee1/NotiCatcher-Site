@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Hay để máy im lặng?",
-      "intro": {
-        "before": "Khi thông báo trên điện thoại, tin nhắn hoặc cuộc gọi đến có từ khóa bạn chọn, máy sẽ reo như báo thức, ngay cả khi đang ở ",
-        "highlight": "chế độ im lặng",
-        "after": "."
-      },
+      "intro": "Khi thông báo trên điện thoại, tin nhắn hoặc cuộc gọi đến có [từ khóa] bạn chọn, máy sẽ reo như [báo thức], ngay cả khi đang ở [chế độ im lặng].",
       "cases": [
         {
           "before": "Khi bạn làm việc tại nhà và chỉ muốn nghe chuông báo ",

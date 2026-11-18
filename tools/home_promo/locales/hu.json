@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Nálad is mindig néma a telefon?",
-      "intro": {
-        "before": "Ha egy értesítésben, szöveges üzenetben vagy bejövő hívásnál megjelenik valamelyik kulcsszavad, a telefonod még ",
-        "highlight": "néma módban",
-        "after": " is úgy csörög, mint az ébresztő."
-      },
+      "intro": "Ha egy értesítésben, szöveges üzenetben vagy bejövő hívásnál megjelenik valamelyik [kulcsszavad], a telefonod még [néma módban] is úgy csörög, mint az [ébresztő].",
       "cases": [
         {
           "before": "Amikor otthonról dolgozol, és csak a ",

@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Som regel på lydløs?",
-      "intro": {
-        "before": "Når et av nøkkelordene dine dukker opp i et appvarsel, en tekstmelding eller et innkommende anrop, ringer mobilen som en alarm – selv på ",
-        "highlight": "lydløs",
-        "after": "."
-      },
+      "intro": "Når et av [nøkkelordene] dine dukker opp i et appvarsel, en tekstmelding eller et innkommende anrop, ringer mobilen som en [alarm] – selv [på lydløs].",
       "cases": [
         {
           "before": "Når du jobber hjemmefra og bare vil bli varslet om ",

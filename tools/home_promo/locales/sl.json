@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Imaš telefon vedno na tiho?",
-      "intro": {
-        "before": "Ko se tvoja ključna beseda pojavi v obvestilu, besedilnem sporočilu ali pri dohodnem klicu, telefon zazvoni kot alarm – tudi v ",
-        "highlight": "tihem načinu",
-        "after": "."
-      },
+      "intro": "Ko se v obvestilu, besedilnem sporočilu ali pri dohodnem klicu pojavi tvoja [ključna beseda], telefon zazvoni kot [alarm] – tudi v [tihem načinu].",
       "cases": [
         {
           "before": "Ko delaš od doma in želiš, da zazvonijo le ",

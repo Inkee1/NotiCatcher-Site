@@ -113,11 +113,7 @@
     },
     "hero": {
       "badge": "Selalu senyapkan telefon?",
-      "intro": {
-        "before": "Bila kata kunci pilihan anda muncul dalam notifikasi telefon, mesej teks atau panggilan masuk, penggera tetap berbunyi walaupun telefon dalam ",
-        "highlight": "mod senyap",
-        "after": "."
-      },
+      "intro": "Bila [kata kunci] pilihan anda muncul dalam notifikasi telefon, mesej teks atau panggilan masuk, [penggera] tetap berbunyi walaupun telefon dalam [mod senyap].",
       "cases": [
         {
           "before": "Bila anda bekerja dari rumah dan mahu ",
