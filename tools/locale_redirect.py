@@ -15,6 +15,9 @@ always wins, and crawlers are never redirected.
 The scripts are injected between <!-- noticatcher-locale-redirect:start/end -->
 markers, so this is safe to re-run.
 
+It also writes the same time-zone table into every */js/lang-widget.js (between
+/* tz-langs:start/end */) so the language menu suggests the same language first.
+
 Usage: python -I tools/locale_redirect.py
 """
 
@@ -190,6 +193,14 @@ def main():
             text = original.replace("</head>", en_block + "</head>", 1)
         if write(page, text, original):
             changed.append(str(page.relative_to(ROOT)))
+    tz_json = json.dumps(TIME_ZONES, separators=(",", ":"), ensure_ascii=False)
+    for widget in sorted(ROOT.glob("*/js/lang-widget.js")):
+        with open(widget, encoding="utf-8", newline="") as fh:
+            original = fh.read()
+        text = re.sub(r"/\* tz-langs:start \*/.*?/\* tz-langs:end \*/",
+                      lambda _: "/* tz-langs:start */" + tz_json + "/* tz-langs:end */", original, flags=re.S)
+        if write(widget, text, original):
+            changed.append(str(widget.relative_to(ROOT)))
     print("updated:", ", ".join(changed) or "nothing")
 
 

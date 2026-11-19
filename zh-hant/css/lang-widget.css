@@ -98,6 +98,12 @@
   background: rgba(99, 102, 241, 0.18);
 }
 
+.lang-fab__divider {
+  height: 1px;
+  margin: 0.35rem 0.9rem;
+  background: var(--border-light, rgba(255, 255, 255, 0.12));
+}
+
 .lang-fab__label {
   display: inline-flex;
   flex-direction: column;

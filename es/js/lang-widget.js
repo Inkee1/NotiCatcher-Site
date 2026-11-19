@@ -240,47 +240,55 @@
     return "";
   }
 
-  function getLocalLang(items, currentLang) {
-    const supportedLangs = new Set(items.map((it) => normalizeLang(it.lang)).filter(Boolean));
-    const browserLangs =
-      typeof navigator !== "undefined" && Array.isArray(navigator.languages) && navigator.languages.length
-        ? navigator.languages
-        : [typeof navigator !== "undefined" ? navigator.language || "" : ""];
+  // Language spoken where the device's time zone is. Filled in by tools/locale_redirect.py,
+  // which uses the same table for the automatic redirect.
+  const TIME_ZONE_LANGS = /* tz-langs:start */{"ko":"Asia/Seoul","ja":"Asia/Tokyo","zh-hans":"Asia/Shanghai Asia/Chongqing Asia/Harbin Asia/Urumqi","zh-hant":"Asia/Taipei Asia/Hong_Kong Asia/Macau","th":"Asia/Bangkok","vi":"Asia/Ho_Chi_Minh Asia/Saigon","id":"Asia/Jakarta Asia/Makassar Asia/Jayapura Asia/Pontianak","ms":"Asia/Kuala_Lumpur Asia/Kuching","fil":"Asia/Manila","km":"Asia/Phnom_Penh","lo":"Asia/Vientiane","my":"Asia/Yangon Asia/Rangoon","bn":"Asia/Dhaka","ur":"Asia/Karachi","fa":"Asia/Tehran","he":"Asia/Jerusalem Asia/Tel_Aviv","ar":"Asia/Riyadh Asia/Baghdad Asia/Kuwait Asia/Qatar Asia/Bahrain Asia/Muscat Asia/Dubai Asia/Amman Asia/Beirut Asia/Damascus Africa/Cairo Africa/Algiers Africa/Casablanca Africa/Tunis Africa/Tripoli Africa/Khartoum","tr":"Europe/Istanbul","ru":"Europe/Moscow Europe/Samara Europe/Volgograd Asia/Yekaterinburg Asia/Omsk Asia/Novosibirsk Asia/Krasnoyarsk Asia/Irkutsk Asia/Yakutsk Asia/Vladivostok","uk":"Europe/Kiev Europe/Kyiv","pl":"Europe/Warsaw","cs":"Europe/Prague","sk":"Europe/Bratislava","hu":"Europe/Budapest","ro":"Europe/Bucharest","bg":"Europe/Sofia","el":"Europe/Athens","hr":"Europe/Zagreb","sl":"Europe/Ljubljana","sr":"Europe/Belgrade","lt":"Europe/Vilnius","lv":"Europe/Riga","et":"Europe/Tallinn","fi":"Europe/Helsinki","sv":"Europe/Stockholm","no":"Europe/Oslo","da":"Europe/Copenhagen","nl":"Europe/Amsterdam","de":"Europe/Berlin Europe/Vienna","fr":"Europe/Paris","it":"Europe/Rome","es":"Europe/Madrid","pt":"Europe/Lisbon","pt-br":"America/Sao_Paulo America/Fortaleza America/Recife America/Bahia America/Manaus America/Belem","es-419":"America/Mexico_City America/Bogota America/Lima America/Santiago America/Argentina/Buenos_Aires America/Buenos_Aires America/Caracas America/Guayaquil America/La_Paz America/Montevideo America/Asuncion America/Guatemala America/Costa_Rica America/Panama","am":"Africa/Addis_Ababa","sw":"Africa/Nairobi Africa/Dar_es_Salaam"}/* tz-langs:end */;
 
-    for (const candidate of browserLangs) {
-      const resolved = resolveSupportedLang(candidate, supportedLangs);
-      if (resolved) return resolved;
-    }
-
-    return resolveSupportedLang(currentLang, supportedLangs) || "en";
+  function timeZoneLang() {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      for (const [lang, zones] of Object.entries(TIME_ZONE_LANGS)) {
+        if (zones.split(" ").includes(tz)) return lang;
+      }
+    } catch {}
+    return "";
   }
 
-  function menuPriority(lang, localLang) {
-    if (lang === localLang) return 0;
-    if (localLang !== "en" && lang === "en") return 1;
-    return 2;
+  function browserLangs() {
+    if (typeof navigator === "undefined") return [];
+    return Array.isArray(navigator.languages) && navigator.languages.length
+      ? navigator.languages
+      : [navigator.language || ""];
   }
 
-  function sortItems(items, currentLang) {
-    const localLang = getLocalLang(items, currentLang);
-    return [...items].sort((a, b) => {
-      const aLang = normalizeLang(a.lang);
-      const bLang = normalizeLang(b.lang);
-      const priorityDiff = menuPriority(aLang, localLang) - menuPriority(bLang, localLang);
-      if (priorityDiff !== 0) return priorityDiff;
+  // Suggested languages, most likely first: the page's language, the browser language spoken
+  // in the visitor's time zone, the other browser languages, the time-zone language, English.
+  function suggestedLangs(items, currentLang) {
+    const supported = new Set(items.map((it) => normalizeLang(it.lang)).filter(Boolean));
+    const fromBrowser = browserLangs().map((tag) => resolveSupportedLang(tag, supported)).filter(Boolean);
+    const local = resolveSupportedLang(timeZoneLang(), supported);
+    const ordered = [currentLang];
+    if (local && fromBrowser.includes(local)) ordered.push(local);
+    ordered.push(...fromBrowser, local, "en");
+    return [...new Set(ordered.map(normalizeLang))].filter((l) => l && supported.has(l));
+  }
 
-      const aLabel = labelFor(aLang);
-      const bLabel = labelFor(bLang);
-      const tagDiff = aLabel.sortTag.localeCompare(bLabel.sortTag, "en", {
-        sensitivity: "base",
-        numeric: true,
-      });
-      if (tagDiff !== 0) return tagDiff;
+  function compareByTag(a, b) {
+    const aLabel = labelFor(a.lang);
+    const bLabel = labelFor(b.lang);
+    return (
+      aLabel.sortTag.localeCompare(bLabel.sortTag, "en", { sensitivity: "base", numeric: true }) ||
+      aLabel.name.localeCompare(bLabel.name, undefined, { sensitivity: "base" })
+    );
+  }
 
-      return aLabel.name.localeCompare(bLabel.name, undefined, {
-        sensitivity: "base",
-      });
-    });
+  function groupItems(items, currentLang) {
+    const suggested = suggestedLangs(items, currentLang);
+    const byLang = new Map(items.map((it) => [normalizeLang(it.lang), it]));
+    return {
+      suggested: suggested.map((l) => byLang.get(l)),
+      rest: items.filter((it) => !suggested.includes(normalizeLang(it.lang))).sort(compareByTag),
+    };
   }
 
   function fallbackTargets(currentLang) {
@@ -306,7 +314,7 @@
     const current = getCurrentLang();
     const targets = alternatesFromHead();
     const items = targets.length ? targets : fallbackTargets(current);
-    const orderedItems = sortItems(items, current);
+    const groups = groupItems(items, current);
     const navbar = document.querySelector(".navbar");
     const mountInNav = navbar instanceof HTMLElement;
 
@@ -341,8 +349,15 @@
     menu.className = "lang-fab__menu";
     menu.setAttribute("role", "menu");
 
-    // Put the browser's local language first, English second, then sort the rest by code.
-    for (const it of orderedItems) {
+    // Suggested languages on top, a divider, then every other language by code.
+    const orderedItems = [...groups.suggested, ...groups.rest];
+    orderedItems.forEach((it, index) => {
+      if (index === groups.suggested.length && groups.rest.length) {
+        const divider = document.createElement("div");
+        divider.className = "lang-fab__divider";
+        divider.setAttribute("role", "separator");
+        menu.appendChild(divider);
+      }
       const lang = normalizeLang(it.lang);
       const href = it.href;
       const l = labelFor(lang);
@@ -387,7 +402,7 @@
       });
 
       menu.appendChild(b);
-    }
+    });
 
     function setOpen(open) {
       root.setAttribute("data-open", open ? "true" : "false");
