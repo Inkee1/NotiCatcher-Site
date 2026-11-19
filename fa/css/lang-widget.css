@@ -6,14 +6,6 @@
   font-family: inherit;
 }
 
-.lang-fab--nav {
-  position: relative;
-  right: auto;
-  bottom: auto;
-  z-index: auto;
-  margin-right: 0.35rem;
-  flex: 0 0 auto;
-}
 
 .lang-fab__btn {
   width: 46px;
@@ -77,12 +69,6 @@
 
 }
 
-.lang-fab--nav .lang-fab__menu {
-  top: calc(100% + 10px);
-  bottom: auto;
-  left: 0;
-  right: auto;
-}
 
 .lang-fab[data-open="true"] .lang-fab__menu {
   display: block;
@@ -152,23 +138,136 @@
   }
 }
 
-@media (max-width: 768px) {
-  .lang-fab--nav {
-    width: 100%;
-    margin-right: 0;
-  }
+/* ---------- In the top bar: a pill with the current language, always visible ---------- */
 
-  .lang-fab--nav .lang-fab__btn {
-    width: 100%;
-    justify-content: center;
-  }
+.lang-fab--nav {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  z-index: auto;
+  flex: 0 1 auto;
+  min-width: 0;
+  /* Sits with the links on the right; the logo keeps the left. */
+  margin-inline-start: auto;
+  margin-inline-end: 1.5rem;
+}
 
-  .lang-fab--nav .lang-fab__menu {
-    width: 100%;
-    min-width: 0;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+.lang-fab--nav .lang-fab__btn {
+  width: auto;
+  height: 40px;
+  max-width: 100%;
+  padding: 0 0.7rem 0 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: none;
+}
+
+.lang-fab--nav .lang-fab__btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
+.lang-fab--nav .lang-fab__btn:focus-visible {
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.7);
+}
+
+.lang-fab--nav .lang-fab__globe {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: #a5b4fc;
+}
+
+.lang-fab__current {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lang-fab__chevron {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+  transition: rotate 0.15s ease;
+}
+
+.lang-fab[data-open="true"] .lang-fab__chevron {
+  rotate: 180deg;
+}
+
+.lang-fab--nav .lang-fab__menu {
+  top: calc(100% + 10px);
+  bottom: auto;
+  left: auto;
+  right: 0;
+  width: max-content;
+  min-width: 210px;
+  max-width: calc(100vw - 32px);
+  /* The navbar already blurs its backdrop, so a nested blur shows nothing: use a solid panel. */
+  background: #0f172a;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.lang-fab__code {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-fab__chevron {
+    transition: none;
   }
 }
 
+@media (max-width: 768px) {
+  /* Logo on the left, then the language pill next to the menu button. */
+  .lang-fab--nav {
+    margin-inline-end: 0.75rem;
+  }
+
+  .lang-fab--nav .lang-fab__btn {
+    height: 36px;
+    padding: 0 0.55rem 0 0.6rem;
+    font-size: 0.875rem;
+  }
+
+  .lang-fab--nav .lang-fab__current {
+    max-width: 7.5em;
+  }
+
+  .lang-fab--nav .lang-fab__menu {
+    max-height: min(65vh, 440px);
+  }
+}
+
+/* Very narrow phones: the logo and menu button leave room only for the code (KO, EN). */
+@media (max-width: 360px) {
+  .lang-fab--nav {
+    flex-shrink: 0;
+    margin-inline-end: 0.6rem;
+  }
+
+  .lang-fab--nav .lang-fab__btn {
+    gap: 0.25rem;
+    padding: 0 0.45rem 0 0.5rem;
+  }
+
+  .lang-fab--nav .lang-fab__current,
+  .lang-fab--nav .lang-fab__chevron {
+    display: none;
+  }
+
+  .lang-fab--nav .lang-fab__code {
+    display: inline;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+  }
+}

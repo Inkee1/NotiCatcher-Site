@@ -121,6 +121,17 @@
     "zh-hant": "更改語言",
   };
 
+  // Shorter names for the button in the top bar; the menu keeps the full names.
+  const SHORT_LABELS = {
+    "es-419": "Español",
+    "pt-br": "Português",
+    id: "Indonesia",
+    ms: "Melayu",
+    my: "မြန်မာ",
+    "zh-hans": "简体中文",
+    "zh-hant": "繁體中文",
+  };
+
   function normalizeLang(tag) {
     return (tag || "")
       .toString()
@@ -296,8 +307,8 @@
     const targets = alternatesFromHead();
     const items = targets.length ? targets : fallbackTargets(current);
     const orderedItems = sortItems(items, current);
-    const navLinks = document.querySelector(".navbar .nav-links");
-    const mountInNav = navLinks instanceof HTMLElement;
+    const navbar = document.querySelector(".navbar");
+    const mountInNav = navbar instanceof HTMLElement;
 
     const root = document.createElement("div");
     root.className = "lang-fab" + (mountInNav ? " lang-fab--nav" : "");
@@ -306,15 +317,24 @@
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "lang-fab__btn";
-    btn.setAttribute("aria-label", CHANGE_LANGUAGE_LABELS[current] || CHANGE_LANGUAGE_LABELS.en);
+    const changeLabel = CHANGE_LANGUAGE_LABELS[current] || CHANGE_LANGUAGE_LABELS.en;
+    const currentName = SHORT_LABELS[current] || nativeNameFor(current);
+    // The visible language name stays part of the accessible name.
+    btn.setAttribute("aria-label", mountInNav ? `${changeLabel}: ${currentName}` : changeLabel);
+    btn.title = changeLabel;
     btn.setAttribute("aria-haspopup", "menu");
     btn.setAttribute("aria-expanded", "false");
     btn.innerHTML = `
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <svg class="lang-fab__globe" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" stroke="currentColor" stroke-width="1.8"/>
         <path d="M2 12h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         <path d="M12 2c3 3 4.5 6.5 4.5 10S15 19 12 22c-3-3-4.5-6.5-4.5-10S9 5 12 2Z" stroke="currentColor" stroke-width="1.8"/>
       </svg>
+      ${mountInNav ? `<span class="lang-fab__current" lang="${escapeHtml(current)}">${escapeHtml(currentName)}</span>
+      <span class="lang-fab__code" aria-hidden="true">${escapeHtml(formatTag(current).split("-")[0])}</span>
+      <svg class="lang-fab__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>` : ""}
     `.trim();
 
     const menu = document.createElement("div");
@@ -389,7 +409,10 @@
     root.appendChild(btn);
     root.appendChild(menu);
     if (mountInNav) {
-      navLinks.prepend(root);
+      // Before the hamburger button and the links: visible without opening the phone menu.
+      const toggle = navbar.querySelector(".menu-toggle");
+      const links = navbar.querySelector(".nav-links");
+      navbar.insertBefore(root, toggle || links || null);
       return;
     }
     document.body.appendChild(root);
